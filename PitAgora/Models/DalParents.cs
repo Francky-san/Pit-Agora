@@ -7,23 +7,47 @@ using System.Linq;
 
 namespace PitAgora
 {
-    public class Dal : IDisposable
+    public class DalParents : IDisposable
     {
         private BddContext _bddContext;
-        public Dal()
+        public DalParents()
         {
             _bddContext = new BddContext();
-        }
-
-        public void DeleteCreateDatabase()
-        {
-            _bddContext.Database.EnsureDeleted();
-            _bddContext.Database.EnsureCreated();
         }
 
         public void Dispose()
         {
             _bddContext.Dispose();
+        }
+
+        public int CreerParent(string nom, string prenom, string mail, string motDePasse, string adresse)
+        {
+            int personneId = CreerPersonne(nom, prenom);
+            int utilisateurId = CreerUtilisateur(personneId, mail, motDePasse, adresse);
+            Parent parent = new Parent() { UtilisateurId = utilisateurId};
+            _bddContext.Parents.Add(parent);
+            _bddContext.SaveChanges();
+            return parent.Id;
+        }
+
+        // ***************** Méthodes à mettre dans DalEleve une fois la DalParent ajoutée au Master *******************
+        public int CreerEleve(int parentId, string nom, string prenom, string mail, string motDePasse, string adresse)
+        {
+            int personneId = CreerPersonne(nom, prenom);
+            int utilisateurId = CreerUtilisateur(personneId, mail, motDePasse, adresse);
+            Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, ParentId = parentId, CreditCours = 0, CreditPythos = 0 };
+            _bddContext.Eleves.Add(eleve);
+            _bddContext.SaveChanges();
+            return eleve.Id;
+
+        }
+
+
+        // ***************** Méthodes à enlever une fois la DalParent ajoutée au Master *******************
+        public void DeleteCreateDatabase()  
+        {
+            _bddContext.Database.EnsureDeleted();
+            _bddContext.Database.EnsureCreated();
         }
 
         public List<Eleve> ObtientTousLesELeves()
