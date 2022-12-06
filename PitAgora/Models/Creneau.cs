@@ -9,7 +9,7 @@ namespace PitAgora.Models
 
         public DateTime Debut { get; set; }
 
-        public Char Statut { get; set; } // D = disponible, A = en attente confirmation binome, P = reservé en presentiel, T = reservé en télépresentiel,  
+        public bool EstDisponible { get; set; }
 
         public int IdProf { get; set; }
 
