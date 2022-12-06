@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj": {}
+    "C:\\Users\\Developpeur\\source\\repos\\Pit-Agora\\PitAgora\\PitAgora.csproj": {}
   },
   "projects": {
-    "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj": {
+    "C:\\Users\\Developpeur\\source\\repos\\Pit-Agora\\PitAgora\\PitAgora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj",
+        "projectUniqueName": "C:\\Users\\Developpeur\\source\\repos\\Pit-Agora\\PitAgora\\PitAgora.csproj",
         "projectName": "PitAgora",
-        "projectPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj",
-        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\obj\\",
+        "projectPath": "C:\\Users\\Developpeur\\source\\repos\\Pit-Agora\\PitAgora\\PitAgora.csproj",
+        "packagesPath": "C:\\Users\\Developpeur\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Developpeur\\Source\\Repos\\Pit-Agora\\PitAgora\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Developpeur\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -16,7 +16,7 @@ namespace PitAgora.Controllers
         {
             if (id != 0)
             {
-                using (Dal dal = new Dal())
+                using (DalParents dal = new DalParents())
                 {
                     Personne personne = dal.ObtientToutesPersonnes().Where(r => r.Id == id).FirstOrDefault();
                     if (personne == null)
@@ -37,7 +37,7 @@ namespace PitAgora.Controllers
 
             if (personne.Id != 0)
             {
-                using (Dal dal = new Dal())
+                using (DalParents dal = new DalParents())
                 {
                     dal.ModifierPersonne(personne);
                     return RedirectToAction("ModifierPersonne", new { @id = personne.Id });
@@ -64,7 +64,7 @@ namespace PitAgora.Controllers
 
             if (personne.Id != 0)
             {
-                using (Dal dal = new Dal())
+                using (DalParents dal = new DalParents())
                 {
                     dal.CreerPersonne(personne);
                     return RedirectToAction("CreerPersonne", new { @id = personne.Id });
