@@ -10,11 +10,12 @@ namespace PitAgora.Models
         public DbSet<Utilisateur> Utilisateurs { get; set; }
         public DbSet<Eleve> Eleves { get; set; }
         public DbSet<Professeur> Professeurs { get; set; }
+        public DbSet<Creneau> Creneaux { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = Triqui24+ ; database = PitAgora");
         }
         public void InitializeDb()
         {
@@ -46,6 +47,18 @@ namespace PitAgora.Models
           new Personne { Id = 3, Nom = "Duchmolle", Prenom = "Machin" },
           new Personne { Id = 4, Nom = "Distraite", Prenom = "Laura" }
 
+            );
+
+            this.Creneaux.AddRange(
+              new Creneau { Id = 1, Debut = new DateTime(2023, 01, 05, 10, 00, 00), Statut = 'D', IdProf = 1 },
+              new Creneau { Id = 2, Debut = new DateTime(2023, 01, 05, 10, 30, 00), Statut = 'D', IdProf = 1 },
+              new Creneau { Id = 3, Debut = new DateTime(2023, 01, 05, 11, 00, 00), Statut = 'D', IdProf = 1 },
+              new Creneau { Id = 4, Debut = new DateTime(2023, 01, 05, 11, 30, 00), Statut = 'D', IdProf = 1 },
+
+              new Creneau { Id = 5, Debut = new DateTime(2023, 01, 05, 10, 00, 00), Statut = 'D', IdProf = 2 },
+              new Creneau { Id = 6, Debut = new DateTime(2023, 01, 05, 10, 30, 00), Statut = 'D', IdProf = 2 },
+              new Creneau { Id = 7, Debut = new DateTime(2023, 01, 05, 11, 00, 00), Statut = 'D', IdProf = 2 },
+              new Creneau { Id = 8, Debut = new DateTime(2023, 01, 05, 11, 30, 00), Statut = 'D', IdProf = 2 }
             );
 
             this.SaveChanges();
