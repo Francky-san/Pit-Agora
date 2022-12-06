@@ -7,33 +7,33 @@ using System.Linq;
 
 namespace PitAgora
 {
-    public class DalEleve : IDisposable
+    public class DalProf : IDisposable
     {
         private BddContext _bddContext;
-        public DalEleve()
+        public DalProf()
         {
             _bddContext = new BddContext();
         }
 
-      
-
-        public List<Eleve> ObtientTousLesELeves()
+        public List<Professeur> ObtientTousLesProfesseurs()
         {
-            return _bddContext.Eleves.ToList();
+            return _bddContext.Professeurs.ToList();
         }
-       
 
-        public int CreerEleve(string nom, string prenom, string mail, string motDePasse, string adresse, int creditCours)
+        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere)
         {
-            DalGen dal = new DalGen(); 
+            DalGen dal = new DalGen();
             int personneId = dal.CreerPersonne(nom, prenom);
             int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
-            Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, CreditCours = creditCours };
-            _bddContext.Eleves.Add(eleve);
+            Professeur professeur = new Professeur { UtilisateurId = utilisateurId, Matiere1 = matiere };
+            _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges(); /*A ne pas oublier, enregistre la modif*/
-            return eleve.Id;
+            return professeur.Id;
 
         }
+
+
+
 
         public void Dispose()
         {
