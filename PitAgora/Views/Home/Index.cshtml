@@ -1,0 +1,15 @@
+﻿@model PitAgora.ViewModels.HomeViewModel
+@{ Layout = "_Layout";
+ViewBag.Title = "Accueil Pit'Agora"; }
+
+<h1>Bienvenue sur Pit'Agora</h1>
+<p>Accueil</p>
+
+
+@section Menu{
+    <ul>
+        <li class="selectionne">@Html.ActionLink("Accueil", "Index","Home")</li>
+        <li>@Html.ActionLink("Modifier une personne", "ModifierPersonne", "Personne")</li>
+        <li>@Html.ActionLink("Ajouter une personne", "CreerPersonne", "Personne")</li>
+    </ul>
+}
