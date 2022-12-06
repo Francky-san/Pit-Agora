@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 
 namespace PitAgora.Models
 {
@@ -11,7 +12,7 @@ namespace PitAgora.Models
         public DbSet<Eleve> Eleves { get; set; }
         public DbSet<Professeur> Professeurs { get; set; }
         public DbSet<Creneau> Creneaux { get; set; }
-
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -50,16 +51,30 @@ namespace PitAgora.Models
             );
 
             this.Creneaux.AddRange(
-              new Creneau { Id = 1, Debut = new DateTime(2023, 01, 05, 10, 00, 00), Statut = 'D', IdProf = 1 },
-              new Creneau { Id = 2, Debut = new DateTime(2023, 01, 05, 10, 30, 00), Statut = 'D', IdProf = 1 },
-              new Creneau { Id = 3, Debut = new DateTime(2023, 01, 05, 11, 00, 00), Statut = 'D', IdProf = 1 },
-              new Creneau { Id = 4, Debut = new DateTime(2023, 01, 05, 11, 30, 00), Statut = 'D', IdProf = 1 },
+              new Creneau { Id = 1, Debut = new DateTime(2023, 01, 05, 10, 00, 00), EstDisponible = true, IdProf = 1 },
+              new Creneau { Id = 2, Debut = new DateTime(2023, 01, 05, 10, 30, 00), EstDisponible = true, IdProf = 1 },
+              new Creneau { Id = 3, Debut = new DateTime(2023, 01, 05, 11, 00, 00), EstDisponible = true, IdProf = 1 },
+              new Creneau { Id = 4, Debut = new DateTime(2023, 01, 05, 11, 30, 00), EstDisponible = true, IdProf = 1 },
 
-              new Creneau { Id = 5, Debut = new DateTime(2023, 01, 05, 10, 00, 00), Statut = 'D', IdProf = 2 },
-              new Creneau { Id = 6, Debut = new DateTime(2023, 01, 05, 10, 30, 00), Statut = 'D', IdProf = 2 },
-              new Creneau { Id = 7, Debut = new DateTime(2023, 01, 05, 11, 00, 00), Statut = 'D', IdProf = 2 },
-              new Creneau { Id = 8, Debut = new DateTime(2023, 01, 05, 11, 30, 00), Statut = 'D', IdProf = 2 }
+              new Creneau { Id = 5, Debut = new DateTime(2023, 01, 05, 10, 00, 00), EstDisponible = true, IdProf = 2 },
+              new Creneau { Id = 6, Debut = new DateTime(2023, 01, 05, 10, 30, 00), EstDisponible = true, IdProf = 2 },
+              new Creneau { Id = 7, Debut = new DateTime(2023, 01, 05, 11, 00, 00), EstDisponible = true, IdProf = 2 },
+              new Creneau { Id = 8, Debut = new DateTime(2023, 01, 05, 11, 30, 00), EstDisponible = true, IdProf = 2 }
             );
+
+
+
+
+
+
+            //this.Creneaux.AddRange
+            //List<Creneau> CreneauxResa = new List<Creneau>();
+            //CreneauxResa.AddRange(this.Creneaux[i]);
+
+            this.Reservations.AddRange(
+             new Reservation { Id = 1, Eleve1Id = 1, ProfesseurId = 1, Matiere = "Maths", Niveau = "Terminale", Horaire = new DateTime(2023, 01, 05, 10, 00, 00), Creneaux = CreneauxResa, IdProf = 1 },
+             
+           ); ;
 
             this.SaveChanges();
 

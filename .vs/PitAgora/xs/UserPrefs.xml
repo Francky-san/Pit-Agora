@@ -1,15 +1,14 @@
 ﻿<Properties StartupConfiguration="{B406C739-B32A-480F-AD8A-FA6B4FBDEEB6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="PitAgora/Models/Creneau.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PitAgora/Models/BddContext.cs">
     <Files>
       <File FileName="PitAgora/Models/Professeur.cs" Line="19" Column="1" />
       <File FileName="PitAgora/Startup.cs" />
-      <File FileName="PitAgora/Models/BddContext.cs" />
       <File FileName="PitAgora/Program.cs" />
       <File FileName="PitAgora/Models/DalEleve.cs" />
       <File FileName="PitAgora/Models/DalProf.cs" />
       <File FileName="PitAgora/Controllers/PersonneController.cs" />
-      <File FileName="PitAgora/Models/Reservation.cs" Line="23" Column="1" />
-      <File FileName="PitAgora/Models/Creneau.cs" Line="12" Column="20" />
+      <File FileName="PitAgora/Models/Reservation.cs" Line="22" Column="2" />
+      <File FileName="PitAgora/Models/Creneau.cs" Line="18" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,7 +18,7 @@
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="Creneau.cs" selected="True" />
+                <Node name="BddContext.cs" selected="True" />
               </Node>
               <Node name="Properties" expanded="True" />
             </Node>
