@@ -45,58 +45,61 @@ namespace PitAgora.Models
                 dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "8 rue ds Galapagos 75014 Paris", "SVT");
             }
 
-            /*
-            // Création d'élèves et de profs à la main
-
-            this.Eleves.AddRange(
-                new Eleve { Id = 1, UtilisateurId = 1, CreditCours = 400, CreditPythos = 200 },
-                new Eleve { Id = 2, UtilisateurId = 2, CreditCours = 50, CreditPythos = 20 }
-            );
-
-            this.Professeurs.AddRange(
-                new Professeur { Id = 1, UtilisateurId = 3, CreditProf = 300, Matiere1 = "Maths", Matiere2 = "Physique" },
-                new Professeur { Id = 2, UtilisateurId = 4, CreditProf = 1000, Matiere1 = "Biologie" }
-            );
-
-            this.Utilisateurs.AddRange(
-                new Utilisateur { Id = 1, Adresse = "125 rue de normandie", MotDePasse = "Hina", Mail = "Toto@toto.com", PersonneId = 1 },
-                new Utilisateur { Id = 2, Adresse = "12 avenue Denis Papin", MotDePasse = "Bouche", Mail = "Heimdal@toto.com", PersonneId = 2 },
-                new Utilisateur { Id = 3, Adresse = "1 place Arago", MotDePasse = "Tartelette", Mail = "Giroud@goat.com", PersonneId = 3 },
-                new Utilisateur { Id = 4, Adresse = "2 rue Mozart", MotDePasse = "Cornichon", Mail = "matheux@gmail.com", PersonneId = 4 }
-            );
-
-            this.Personnes.AddRange(
-                new Personne { Id = 1, Nom = "Brogniard", Prenom = "Eddy" },
-                new Personne { Id = 2, Nom = "Potter", Prenom = "Harry" },
-                new Personne { Id = 3, Nom = "Duchmolle", Prenom = "Machin" },
-                new Personne { Id = 4, Nom = "Distraite", Prenom = "Laura" }
-            );
+           
+            // Création d'instances à la main
 
             this.Creneaux.AddRange(
-              new Creneau { Id = 1, Debut = new DateTime(2023, 01, 05, 10, 00, 00), EstDisponible = true, IdProf = 1 },
-              new Creneau { Id = 2, Debut = new DateTime(2023, 01, 05, 10, 30, 00), EstDisponible = true, IdProf = 1 },
-              new Creneau { Id = 3, Debut = new DateTime(2023, 01, 05, 11, 00, 00), EstDisponible = true, IdProf = 1 },
-              new Creneau { Id = 4, Debut = new DateTime(2023, 01, 05, 11, 30, 00), EstDisponible = true, IdProf = 1 },
+              new Creneau { Id = 1, Debut = new DateTime(2023, 01, 05, 10, 00, 00), EstDisponible = true, ProfId = 1 },
+              new Creneau { Id = 2, Debut = new DateTime(2023, 01, 05, 10, 30, 00), EstDisponible = true, ProfId = 1 },
+              new Creneau { Id = 3, Debut = new DateTime(2023, 01, 05, 11, 00, 00), EstDisponible = true, ProfId = 1 },
+              new Creneau { Id = 4, Debut = new DateTime(2023, 01, 05, 11, 30, 00), EstDisponible = true, ProfId = 1 },
 
-              new Creneau { Id = 5, Debut = new DateTime(2023, 01, 05, 10, 00, 00), EstDisponible = true, IdProf = 2 },
-              new Creneau { Id = 6, Debut = new DateTime(2023, 01, 05, 10, 30, 00), EstDisponible = true, IdProf = 2 },
-              new Creneau { Id = 7, Debut = new DateTime(2023, 01, 05, 11, 00, 00), EstDisponible = true, IdProf = 2 },
-              new Creneau { Id = 8, Debut = new DateTime(2023, 01, 05, 11, 30, 00), EstDisponible = true, IdProf = 2 }
+              new Creneau { Id = 5, Debut = new DateTime(2023, 01, 05, 10, 00, 00), EstDisponible = true, ProfId = 2 },
+              new Creneau { Id = 6, Debut = new DateTime(2023, 01, 05, 10, 30, 00), EstDisponible = true, ProfId = 2 },
+              new Creneau { Id = 7, Debut = new DateTime(2023, 01, 05, 11, 00, 00), EstDisponible = true, ProfId = 2 },
+              new Creneau { Id = 8, Debut = new DateTime(2023, 01, 05, 11, 30, 00), EstDisponible = true, ProfId = 2 }
             );
 
+            /*
+           this.Eleves.AddRange(
+               new Eleve { Id = 1, UtilisateurId = 1, CreditCours = 400, CreditPythos = 200 },
+               new Eleve { Id = 2, UtilisateurId = 2, CreditCours = 50, CreditPythos = 20 }
+           );
 
-            List<Creneau> CreneauxResa = new List<Creneau>();
-            CreneauxResa.Add(this.Creneaux.Find(1));
-            CreneauxResa.Add(this.Creneaux.Find(2));
-            CreneauxResa.Add(this.Creneaux.Find(3));
+           this.Professeurs.AddRange(
+               new Professeur { Id = 1, UtilisateurId = 3, CreditProf = 300, Matiere1 = "Maths", Matiere2 = "Physique" },
+               new Professeur { Id = 2, UtilisateurId = 4, CreditProf = 1000, Matiere1 = "Biologie" }
+           );
 
-            this.Reservations.AddRange(
-            new Reservation { Id = 1, Eleve1Id = 1, ProfesseurId = 1, Matiere = "Maths",
-                  Niveau = "Terminale", Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
-                  Creneaux = CreneauxResa, Prix = 90, Binome = false, Presentiel = false, EstValide = true}
-             
-            );
-            */
+           this.Utilisateurs.AddRange(
+               new Utilisateur { Id = 1, Adresse = "125 rue de normandie", MotDePasse = "Hina", Mail = "Toto@toto.com", PersonneId = 1 },
+               new Utilisateur { Id = 2, Adresse = "12 avenue Denis Papin", MotDePasse = "Bouche", Mail = "Heimdal@toto.com", PersonneId = 2 },
+               new Utilisateur { Id = 3, Adresse = "1 place Arago", MotDePasse = "Tartelette", Mail = "Giroud@goat.com", PersonneId = 3 },
+               new Utilisateur { Id = 4, Adresse = "2 rue Mozart", MotDePasse = "Cornichon", Mail = "matheux@gmail.com", PersonneId = 4 }
+           );
+
+           this.Personnes.AddRange(
+               new Personne { Id = 1, Nom = "Brogniard", Prenom = "Eddy" },
+               new Personne { Id = 2, Nom = "Potter", Prenom = "Harry" },
+               new Personne { Id = 3, Nom = "Duchmolle", Prenom = "Machin" },
+               new Personne { Id = 4, Nom = "Distraite", Prenom = "Laura" }
+           );
+
+
+
+
+           List<Creneau> CreneauxResa = new List<Creneau>();
+           CreneauxResa.Add(this.Creneaux.Find(1));
+           CreneauxResa.Add(this.Creneaux.Find(2));
+           CreneauxResa.Add(this.Creneaux.Find(3));
+
+           this.Reservations.AddRange(
+           new Reservation { Id = 1, Eleve1Id = 1, ProfesseurId = 1, Matiere = "Maths",
+                 Niveau = "Terminale", Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
+                 Creneaux = CreneauxResa, Prix = 90, Binome = false, Presentiel = false, EstValide = true}
+
+           );
+           */
 
             this.SaveChanges();
 

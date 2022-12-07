@@ -11,7 +11,7 @@ namespace PitAgora.Models
 
         public bool EstDisponible { get; set; }
 
-        public int IdProf { get; set; }
+        public int ProfId { get; set; }
 
     }
 }

@@ -1,0 +1,27 @@
+﻿@model PitAgora.Models.Reservation
+@{
+    Layout = "_Layout";
+
+    ViewBag.Title = "Reservation d'un cours";
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+
+    <fieldset>
+        <legend>Formulaire de réservation : </legend>
+        @Html.LabelFor(m => Model.Matiere)
+        @Html.TextBoxFor(m => Model.Matiere)
+        @Html.ValidationMessageFor(m => Model.Matiere)
+        <br />
+        @Html.LabelFor(m => Model.Niveau)
+        @Html.TextBoxFor(m => Model.Niveau)
+        @Html.ValidationMessageFor(m => Model.Niveau)
+        <br />
+        <input type="submit" value="ChercherCours" />
+    </fieldset>
+
+}
