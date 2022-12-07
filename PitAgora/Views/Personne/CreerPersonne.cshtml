@@ -1,22 +1,30 @@
 ﻿@model PitAgora.Models.Personne
 @{  Layout="_Layout";
-    ViewBag.Title="Créer une personne";}
+
+    ViewBag.Title="Inscription";}
+
 
 
 
 @using (Html.BeginForm()) {
-    <fieldset>
-        <legend>Créer une personne : </legend>
-            @Html.LabelFor(m => Model.Nom)
-            @Html.TextBoxFor(m => Model.Nom)
-            @Html.ValidationMessageFor(m => Model.Nom)
-        <br />
-            @Html.LabelFor(m => Model.Prenom)
-            @Html.TextBoxFor(m => Model.Prenom)
-            @Html.ValidationMessageFor(m => Model.Prenom)
-            <br />
-            <input type="submit" value="CreerPersonne"/>    
-    </fieldset>
+
+<fieldset>
+    <legend>Formulaire d'inscription : </legend>
+    @Html.LabelFor(m => Model.Nom)
+    @Html.TextBoxFor(m => Model.Nom)
+    @Html.ValidationMessageFor(m => Model.Nom)
+    <br />
+    @Html.LabelFor(m => Model.Prenom)
+    @Html.TextBoxFor(m => Model.Prenom)
+    @Html.ValidationMessageFor(m => Model.Prenom)
+    <br />
+    @Html.LabelFor(m => Model.Prenom)
+    @Html.TextBoxFor(m => Model.Prenom)
+    @Html.ValidationMessageFor(m => Model.Prenom)
+    <br />
+    <input type="submit" value="CreerPersonne" />
+</fieldset>
+
 }
 
 @section Menu{
