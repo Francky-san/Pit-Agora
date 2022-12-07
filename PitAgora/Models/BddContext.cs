@@ -18,7 +18,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = Triqui24+ ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
 
         }
         public void InitializeDb()
@@ -28,18 +28,18 @@ namespace PitAgora.Models
 
             // Création de parents, d'élèves et de profs avec les méthodes dédiées
 
-            using (DalParents dal = new DalParents()) { 
+            using (DalParent dal = new DalParent()) { 
                 dal.CreerParent("Terrieur", "Marc", "mterrieur@monmel.fr", "ttttt", "3 pl de la Mairie 86210 Saint Médart");
                 dal.CreerParent("Vaudage", "Annie", "avaudage@monmel.fr", "vvvvv", "2 rue Mozart 89420 Louhans");
             }
 
-            using (DalParents dal = new DalParents()) {   // à changer en DalEleve
+            using (DalEleve dal = new DalEleve()) {
                 dal.CreerEleve(1, "Terrieur", "Alain", "aterrieur1@monmel.fr", "ttttt", "3 pl de la Mairie 86210 Saint Médart");
                 dal.CreerEleve(1, "Terrieur", "Alex", "aterrieur2@monmel.fr", "ttttt", "3 pl de la Mairie 86210 Saint Médart");
                 dal.CreerEleve(2, "Vaudage", "Marie", "mvaudage@monmel.fr", "vvvvv", "2 rue Mozart 89420 Louhans");
             }
 
-            using (DalParents dal = new DalParents()) {   // à changer en DalProf
+            using (DalProf dal = new DalProf()) { 
                 dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "12 rue de l'algèbre 75006 Paris", "Maths");
                 dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "20 rue de la lumière 75009 Paris", "Physique-Chimie");
                 dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "8 rue ds Galapagos 75014 Paris", "SVT");

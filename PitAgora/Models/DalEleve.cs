@@ -15,7 +15,10 @@ namespace PitAgora
             _bddContext = new BddContext();
         }
 
-      
+        public void Dispose()
+        {
+            _bddContext.Dispose();
+        }
 
         public List<Eleve> ObtientTousLesELeves()
         {
@@ -30,14 +33,20 @@ namespace PitAgora
             int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
             Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, CreditCours = creditCours };
             _bddContext.Eleves.Add(eleve);
-            _bddContext.SaveChanges(); /*A ne pas oublier, enregistre la modif*/
+            _bddContext.SaveChanges();
             return eleve.Id;
-
         }
 
-        public void Dispose()
+        public int CreerEleve(int parentId, string nom, string prenom, string mail, string motDePasse, string adresse)
         {
-            _bddContext.Dispose();
+            DalGen dal = new DalGen();
+            int personneId = dal.CreerPersonne(nom, prenom);
+            int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
+            Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, ParentId = parentId, CreditCours = 0, CreditPythos = 0 };
+            _bddContext.Eleves.Add(eleve);
+            _bddContext.SaveChanges();
+            return eleve.Id;
+
         }
 
     }

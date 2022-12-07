@@ -120,3 +120,4 @@ C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\Pit
 C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\PitAgora.dll
 C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\PitAgora.pdb
 C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\PitAgora.genruntimeconfig.cache
+C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\bin\Debug\netcoreapp3.1\Models\appsettings.json

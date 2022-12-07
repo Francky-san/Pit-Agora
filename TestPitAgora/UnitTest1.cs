@@ -12,7 +12,7 @@ namespace TestPitAgora
         public void Creer_Professeur_Verification()
         {
 
-            using (DalParents dal = new DalParents())
+            using (DalParent dal = new DalParent())
 
             {
                 // Nous supprimons et cr�ons la db avant le test
