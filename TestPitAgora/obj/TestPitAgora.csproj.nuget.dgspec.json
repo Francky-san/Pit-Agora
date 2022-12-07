@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\franc\\source\\repos\\PitAgora_main\\TestPitAgora\\TestPitAgora.csproj": {}
+    "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/TestPitAgora/TestPitAgora.csproj": {}
   },
   "projects": {
-    "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj": {
+    "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/PitAgora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj",
+        "projectUniqueName": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/PitAgora.csproj",
         "projectName": "PitAgora",
-        "projectPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj",
-        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\obj\\",
+        "projectPath": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/PitAgora.csproj",
+        "packagesPath": "/Users/rociokeuro/.nuget/packages/",
+        "outputPath": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/rociokeuro/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,8 +59,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -74,36 +71,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.106/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\franc\\source\\repos\\PitAgora_main\\TestPitAgora\\TestPitAgora.csproj": {
+    "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/TestPitAgora/TestPitAgora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\TestPitAgora\\TestPitAgora.csproj",
+        "projectUniqueName": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/TestPitAgora/TestPitAgora.csproj",
         "projectName": "TestPitAgora",
-        "projectPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\TestPitAgora\\TestPitAgora.csproj",
-        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\TestPitAgora\\obj\\",
+        "projectPath": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/TestPitAgora/TestPitAgora.csproj",
+        "packagesPath": "/Users/rociokeuro/.nuget/packages/",
+        "outputPath": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/TestPitAgora/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/rociokeuro/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj": {
-                "projectPath": "C:\\Users\\franc\\source\\repos\\PitAgora_main\\PitAgora\\PitAgora.csproj"
+              "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/PitAgora.csproj": {
+                "projectPath": "/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/PitAgora.csproj"
               }
             }
           }
@@ -145,8 +140,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -155,7 +149,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.106/RuntimeIdentifierGraph.json"
         }
       }
     }
