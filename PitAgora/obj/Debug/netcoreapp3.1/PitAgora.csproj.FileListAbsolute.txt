@@ -121,3 +121,4 @@ C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\Pit
 C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\PitAgora.pdb
 C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\PitAgora.genruntimeconfig.cache
 C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\bin\Debug\netcoreapp3.1\Models\appsettings.json
+C:\Users\Developpeur\source\repos\Pit-Agora\PitAgora\obj\Debug\netcoreapp3.1\Razor\Views\Eleve\Index.cshtml.g.cs
