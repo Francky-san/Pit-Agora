@@ -1,0 +1,19 @@
+﻿@model PitAgora.Models.Creneau
+@{
+    Layout = "_Layout";
+
+    ViewBag.Title = "Reservation d'un cours";
+}
+
+
+
+
+<h2>Cours disponibles</h2>
+
+@foreach (PitAgora.Models.Creneau c in ViewData["creneaux"] as List<PitAgora.Models.Creneau>)
+{
+    <p>@c.Debut</p>
+}
+
+
+

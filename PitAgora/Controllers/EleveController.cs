@@ -3,11 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using PitAgora.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Controllers
 {
     public class EleveController : Controller
     {
+        private readonly DalCreneaux dal;
+
+        public EleveController()
+        {
+            dal = new DalCreneaux();
+        }
+
+
         public IActionResult Index()
         {
             return View();
@@ -24,10 +33,10 @@ namespace PitAgora.Controllers
         {
             using (BddContext ctx = new BddContext())
             {
-                var creneauxDispo = ctx.Creneaux.FromSqlRaw("select * from creneaux ");
+                var creneauxDispo = ctx.Creneaux.FromSqlRaw("select * from creneaux").ToList();
+                ViewData["creneaux"]=creneauxDispo;
+                return View("ChoisirCours");
             }
-            
-            return View();
         }
 
 
