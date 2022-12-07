@@ -114,3 +114,4 @@ C:/Users/Developpeur/Documents/Isika/Projet2/Appli/PitAgora_20221205/PitAgora/ob
 /Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/obj/Debug/netcoreapp3.1/PitAgora.dll
 /Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/obj/Debug/netcoreapp3.1/PitAgora.pdb
 /Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/obj/Debug/netcoreapp3.1/PitAgora.genruntimeconfig.cache
+/Users/rociokeuro/Desktop/Projet2/Pit-Agora/PitAgora/bin/Debug/netcoreapp3.1/Models/appsettings.json

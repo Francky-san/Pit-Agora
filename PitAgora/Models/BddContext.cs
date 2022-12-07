@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Models
 {
@@ -36,17 +37,17 @@ namespace PitAgora.Models
 
 
             this.Utilisateurs.AddRange(
-                new Utilisateur { Id = 1, Adresse = "125 rue de normandie", MotDePasse = "Hina", Mail = "Toto@toto.com", PersonneId = 1 },
+                 new Utilisateur { Id = 1, Adresse = "125 rue de normandie", MotDePasse = "Hina", Mail = "Toto@toto.com", PersonneId = 1 },
                  new Utilisateur { Id = 2, Adresse = "12 avenue Denis Papin", MotDePasse = "Bouche", Mail = "Heimdal@toto.com", PersonneId = 2 },
-                  new Utilisateur { Id = 3, Adresse = "1 place Arago", MotDePasse = "Tartelette", Mail = "Giroud@goat.com", PersonneId = 3 },
-                  new Utilisateur { Id = 4, Adresse = "2 rue Mozart", MotDePasse = "Cornichon", Mail = "matheux@gmail.com", PersonneId = 4 }
+                 new Utilisateur { Id = 3, Adresse = "1 place Arago", MotDePasse = "Tartelette", Mail = "Giroud@goat.com", PersonneId = 3 },
+                 new Utilisateur { Id = 4, Adresse = "2 rue Mozart", MotDePasse = "Cornichon", Mail = "matheux@gmail.com", PersonneId = 4 }
             );
 
             this.Personnes.AddRange(
-            new Personne { Id = 1, Nom = "Brogniard", Prenom = "Eddy" },
-          new Personne { Id = 2, Nom = "Potter", Prenom = "Harry" },
-          new Personne { Id = 3, Nom = "Duchmolle", Prenom = "Machin" },
-          new Personne { Id = 4, Nom = "Distraite", Prenom = "Laura" }
+                new Personne { Id = 1, Nom = "Brogniard", Prenom = "Eddy" },
+                new Personne { Id = 2, Nom = "Potter", Prenom = "Harry" },
+                new Personne { Id = 3, Nom = "Duchmolle", Prenom = "Machin" },
+                new Personne { Id = 4, Nom = "Distraite", Prenom = "Laura" }
 
             );
 
@@ -63,18 +64,17 @@ namespace PitAgora.Models
             );
 
 
-
-
-
-
-            //this.Creneaux.AddRange
-            //List<Creneau> CreneauxResa = new List<Creneau>();
-            //CreneauxResa.AddRange(this.Creneaux[i]);
+            List<Creneau> CreneauxResa = new List<Creneau>();
+            CreneauxResa.Add(this.Creneaux.Find(1));
+            CreneauxResa.Add(this.Creneaux.Find(2));
+            CreneauxResa.Add(this.Creneaux.Find(3));
 
             this.Reservations.AddRange(
-             new Reservation { Id = 1, Eleve1Id = 1, ProfesseurId = 1, Matiere = "Maths", Niveau = "Terminale", Horaire = new DateTime(2023, 01, 05, 10, 00, 00), Creneaux = CreneauxResa, IdProf = 1 },
+            new Reservation { Id = 1, Eleve1Id = 1, ProfesseurId = 1, Matiere = "Maths",
+                  Niveau = "Terminale", Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
+                  Creneaux = CreneauxResa, Prix = 90, Binome = false, Presentiel = false, EstValide = true}
              
-           ); ;
+            );
 
             this.SaveChanges();
 
