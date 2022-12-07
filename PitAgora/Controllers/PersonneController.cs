@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using System.Linq;
 
@@ -17,6 +17,7 @@ namespace PitAgora.Controllers
             if (id != 0)
             {
                 using (DalGen dal = new DalGen())
+
                 {
                     Personne personne = dal.ObtientToutesPersonnes().Where(r => r.Id == id).FirstOrDefault();
                     if (personne == null)
@@ -37,7 +38,7 @@ namespace PitAgora.Controllers
 
             if (personne.Id != 0)
             {
-                using (DalGen dal = new DalGen())
+             using (DalGen dal = new DalGen())
                 {
                     dal.ModifierPersonne(personne);
                     return RedirectToAction("ModifierPersonne", new { @id = personne.Id });

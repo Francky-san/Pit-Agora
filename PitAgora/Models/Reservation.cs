@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace PitAgora.Models
 {
     public class Reservation
@@ -17,6 +18,5 @@ namespace PitAgora.Models
         public bool Binome { get; set; }
         public bool Presentiel { get; set; }
         public bool EstValide { get; set; }
-
     }
 }

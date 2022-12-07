@@ -1,10 +1,13 @@
 ﻿@model PitAgora.Models.Personne
 @{  Layout="_Layout";
+
     ViewBag.Title="Inscription";}
 
 
 
+
 @using (Html.BeginForm()) {
+
 <fieldset>
     <legend>Formulaire d'inscription : </legend>
     @Html.LabelFor(m => Model.Nom)
@@ -21,6 +24,7 @@
     <br />
     <input type="submit" value="CreerPersonne" />
 </fieldset>
+
 }
 
 @section Menu{

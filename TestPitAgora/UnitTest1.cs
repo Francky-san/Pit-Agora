@@ -11,7 +11,9 @@ namespace TestPitAgora
         [Fact]
         public void Creer_Professeur_Verification()
         {
-            using (Dal dal = new Dal())
+
+            using (DalParents dal = new DalParents())
+
             {
                 // Nous supprimons et cr�ons la db avant le test
                 dal.DeleteCreateDatabase();
