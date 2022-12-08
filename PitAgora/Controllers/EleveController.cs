@@ -34,23 +34,24 @@ namespace PitAgora.Controllers
         {
             using (BddContext ctx = new BddContext())
             {
-                var query = from prof in ctx.Professeurs
+                var query1 = from prof in ctx.Professeurs
                             join c in ctx.Creneaux on prof.Id equals c.ProfId
                             where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
                             select c.Debut;
 
-                //query = from prof in ctx.Professeurs
-                //            join c in ctx.Creneaux on prof.Id equals c.ProfId
-                //            join album in ctx.Album on booking.IdAlbum equals album.Id
-                //            where contact.Mail.Contains("gmail")
-                //            select new { contact.FirstName, contact.Mail, album.Title };
-                var creneauxDispo = query.ToList();
-                foreach (var item in creneauxDispo)
+                var query2 = from p in ctx.Personnes
+                        join u in ctx.Utilisateurs on p.Id equals u.PersonneId
+                        join prof in ctx.Professeurs on u.Id equals prof.UtilisateurId
+                        join c in ctx.Creneaux on prof.Id equals c.ProfId
+                        where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
+                        select new { p.Nom, c.Debut, c.Id };
+                List<CreneauResaViewModel> creneauxDispo = new List<CreneauResaViewModel>();
+                foreach (var item in query2.ToList())
                 {
-                    Console.WriteLine(item.ToString());
+                   creneauxDispo.Add(new CreneauResaViewModel() { NomProf=item.Nom, Debut=item.Debut, CreneauId=item.Id});
                 }
-                ViewData["creneaux"]=creneauxDispo;
-                return View("ChoisirCours");
+             
+                return View("ChoisirCours", creneauxDispo);
             }
         }
 

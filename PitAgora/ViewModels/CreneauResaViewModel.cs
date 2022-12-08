@@ -5,7 +5,8 @@ namespace PitAgora.ViewModels
 {
     public class CreneauResaViewModel
     {
-        public Creneau creneau { get; set; }
+        public int CreneauId { get; set; }
+        public DateTime Debut { get; set; }
         public string NomProf { get; set; }
     }
 }

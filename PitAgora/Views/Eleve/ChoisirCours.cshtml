@@ -1,4 +1,4 @@
-﻿@model PitAgora.Models.Creneau
+﻿@model List<PitAgora.ViewModels.CreneauResaViewModel>
 @{
     Layout = "_Layout";
 
@@ -10,10 +10,24 @@
 
 <h2>Cours disponibles</h2>
 
-@foreach (var item in ViewData["creneaux"] as List<DateTime>)
-{
-    <p>@item.ToString()</p>
-}
+<table>
+    <tr>
+        <th>Professeur</th>
+        <th>Id du créneau</th>
+        <th>Heure de début</th>
 
+    </tr>
+@foreach (var item in @Model)
+{
+   <tr>
+            <td>@item.NomProf</td>
+            <td>@item.CreneauId</td>
+            <td>@item.Debut.Hour:@item.Debut.Minute</td>
+   </tr>
+
+    
+    
+}
+</table>
 
 
