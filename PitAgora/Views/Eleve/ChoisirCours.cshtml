@@ -10,9 +10,9 @@
 
 <h2>Cours disponibles</h2>
 
-@foreach (PitAgora.Models.Creneau c in ViewData["creneaux"] as List<PitAgora.Models.Creneau>)
+@foreach (var item in ViewData["creneaux"] as List<DateTime>)
 {
-    <p>@c.Debut</p>
+    <p>@item.ToString()</p>
 }
 
 

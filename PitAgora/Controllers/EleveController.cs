@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PitAgora.Models;
+using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,21 @@ namespace PitAgora.Controllers
         {
             using (BddContext ctx = new BddContext())
             {
-                var creneauxDispo = ctx.Creneaux.FromSqlRaw("select c.id, debut, c.reservationId, profId from creneaux as c " +
-                    "inner join professeurs as p on p.id=c.profId " +
-                    "where p.matiere1 = 'Techno' or p.matiere2 = 'Techno'").ToList();
+                var query = from prof in ctx.Professeurs
+                            join c in ctx.Creneaux on prof.Id equals c.ProfId
+                            where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
+                            select c.Debut;
+
+                //query = from prof in ctx.Professeurs
+                //            join c in ctx.Creneaux on prof.Id equals c.ProfId
+                //            join album in ctx.Album on booking.IdAlbum equals album.Id
+                //            where contact.Mail.Contains("gmail")
+                //            select new { contact.FirstName, contact.Mail, album.Title };
+                var creneauxDispo = query.ToList();
+                foreach (var item in creneauxDispo)
+                {
+                    Console.WriteLine(item.ToString());
+                }
                 ViewData["creneaux"]=creneauxDispo;
                 return View("ChoisirCours");
             }
