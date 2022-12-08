@@ -2,10 +2,10 @@
 
 namespace PitAgora.Models
 {
-    public class DalCreneaux : IDisposable
+    public class DalNiveauxProf : IDisposable
     {
         private BddContext _bddContext;
-        public DalCreneaux()
+        public DalNiveauxProf()
         {
             _bddContext = new BddContext();
         }
@@ -15,12 +15,12 @@ namespace PitAgora.Models
             _bddContext.Dispose();
         }
 
-        public int CreerCreneau(DateTime debut, int profId)
+        public void CreerNiveauxProf(int profId, int niveauId)
         {
-            Creneau creneau = new Creneau() { Debut=debut, ProfId=profId};
-            _bddContext.Creneaux.Add(creneau);
+            NiveauxProf niveauxProf = new NiveauxProf() { ProfesseurId=profId, NiveauId=niveauId };
+            _bddContext.NiveauxProfs.Add(niveauxProf);
             _bddContext.SaveChanges();
-            return creneau.Id;
         }
+
     }
 }

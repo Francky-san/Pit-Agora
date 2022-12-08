@@ -49,9 +49,6 @@ namespace PitAgora
             return utilisateur.Id;
         }
 
-    
-
-
         public List<Personne> ObtientToutesPersonnes()
         {
             return _bddContext.Personnes.ToList();
@@ -62,5 +59,17 @@ namespace PitAgora
             _bddContext.Personnes.Update(personne);
             _bddContext.SaveChanges();
         }
+
+
+        public void CreerTableNiveaux()
+        {
+            foreach (string n in Niveau.lesNiveaux)
+            {
+                Niveau niveau = new Niveau() { Intitule = n };
+                _bddContext.Niveaux.Add(niveau);
+            }
+            _bddContext.SaveChanges();
+        }
+
     }
 }

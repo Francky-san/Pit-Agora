@@ -20,12 +20,12 @@ namespace PitAgora
             return _bddContext.Professeurs.ToList();
         }
 
-        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere)
+        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere1, string matiere2="")
         {
             DalGen dal = new DalGen();
             int personneId = dal.CreerPersonne(nom, prenom);
             int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
-            Professeur professeur = new Professeur { UtilisateurId = utilisateurId, Matiere1 = matiere };
+            Professeur professeur = new Professeur { UtilisateurId = utilisateurId, Matiere1 = matiere1, Matiere2 = matiere2 };
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges(); /*A ne pas oublier, enregistre la modif*/
             return professeur.Id;
