@@ -17,9 +17,18 @@
         @Html.TextBoxFor(m => Model.Matiere)
         @Html.ValidationMessageFor(m => Model.Matiere)
         <br />
-        @Html.LabelFor(m => Model.Niveau)
-        @Html.TextBoxFor(m => Model.Niveau)
-        @Html.ValidationMessageFor(m => Model.Niveau)
+        <label for="niveau">Niveau :</label>
+        <select id="niveau" name="niveau">
+            <option value="Sixième">6</option>
+            <option value="Cinquième">5</option>
+            <option value="Quatrième">4</option>
+            <option value="Troisième">3</option>
+            <option value="Seconde">2</option>
+            <option value="Première générale">1G</option>
+            <option value="Terminale générale">TG</option>
+            <option value="Première techno">1T</option>
+            <option value="Terminale techno">TT</option>
+        </select>
         <br />
         @Html.LabelFor(m => Model.Horaire)
         <input type="datetime-local" name="horaire">

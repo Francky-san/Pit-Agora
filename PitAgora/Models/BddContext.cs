@@ -53,6 +53,7 @@ namespace PitAgora.Models
                 dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "20 rue de la lumière 75009 Paris", "Physique-Chimie");
                 dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "8 rue ds Galapagos 75014 Paris", "SVT");
             }
+
             using (DalCreneaux dal = new DalCreneaux())
             {
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),1);
@@ -66,9 +67,16 @@ namespace PitAgora.Models
 
             // Création d'instances à la main
 
+            this.NiveauxProfs.AddRange(
+                new NiveauxProf() { ProfesseurId = 1, NiveauId = 1 },
+                new NiveauxProf() { ProfesseurId = 1, NiveauId = 2 },
+                new NiveauxProf() { ProfesseurId = 1, NiveauId = 3 },
+                new NiveauxProf() { ProfesseurId = 2, NiveauId = 3 },
+                new NiveauxProf() { ProfesseurId = 3, NiveauId = 2 },
+                new NiveauxProf() { ProfesseurId = 3, NiveauId = 3 }
+                );
 
-
-            List<Creneau> CreneauxResa1 = new List<Creneau>();
+            List <Creneau> CreneauxResa1 = new List<Creneau>();
             CreneauxResa1.Add(this.Creneaux.Find(1));
             CreneauxResa1.Add(this.Creneaux.Find(2));
             CreneauxResa1.Add(this.Creneaux.Find(3));

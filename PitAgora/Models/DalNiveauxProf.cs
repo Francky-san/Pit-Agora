@@ -14,17 +14,13 @@ namespace PitAgora.Models
         {
             _bddContext.Dispose();
         }
+
+        public void CreerNiveauxProf(int profId, int niveauId)
+        {
+            NiveauxProf niveauxProf = new NiveauxProf() { ProfesseurId=profId, NiveauId=niveauId };
+            _bddContext.NiveauxProfs.Add(niveauxProf);
+            _bddContext.SaveChanges();
+        }
+
     }
-
-    //public int CreerNiveauxProf(int profId, int niveauId)
-    //{
-    //    DalGen dal = new DalGen();
-    //    int personneId = dal.CreerPersonne(nom, prenom);
-    //    int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
-    //    Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, CreditCours = creditCours };
-    //    _bddContext.Eleves.Add(eleve);
-    //    _bddContext.SaveChanges();
-    //    return eleve.Id;
-    //}
-
 }
