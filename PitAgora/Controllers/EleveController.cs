@@ -32,21 +32,17 @@ namespace PitAgora.Controllers
         [HttpPost]
         public IActionResult ChercherCours(string matiere, string niveau, DateTime horaire)
         {
+            string gpeNiveau = Niveau.dictNiveaux[niveau];
             using (BddContext ctx = new BddContext())
             {
-                var query1 = from prof in ctx.Professeurs
-                            join c in ctx.Creneaux on prof.Id equals c.ProfId
-                            where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
-                            select c.Debut;
-
-                var query2 = from p in ctx.Personnes
+                var query = from p in ctx.Personnes
                         join u in ctx.Utilisateurs on p.Id equals u.PersonneId
                         join prof in ctx.Professeurs on u.Id equals prof.UtilisateurId
                         join c in ctx.Creneaux on prof.Id equals c.ProfId
                         where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
                         select new { p.Nom, c.Debut, c.Id };
                 List<CreneauResaViewModel> creneauxDispo = new List<CreneauResaViewModel>();
-                foreach (var item in query2.ToList())
+                foreach (var item in query.ToList())
                 {
                    creneauxDispo.Add(new CreneauResaViewModel() { NomProf=item.Nom, Debut=item.Debut, CreneauId=item.Id});
                 }
