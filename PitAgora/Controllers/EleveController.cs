@@ -33,7 +33,9 @@ namespace PitAgora.Controllers
         {
             using (BddContext ctx = new BddContext())
             {
-                var creneauxDispo = ctx.Creneaux.FromSqlRaw("select * from creneaux").ToList();
+                var creneauxDispo = ctx.Creneaux.FromSqlRaw("select c.id, debut, c.reservationId, profId from creneaux as c " +
+                    "inner join professeurs as p on p.id=c.profId " +
+                    "where p.matiere1 = 'Techno' or p.matiere2 = 'Techno'").ToList();
                 ViewData["creneaux"]=creneauxDispo;
                 return View("ChoisirCours");
             }
@@ -52,7 +54,7 @@ namespace PitAgora.Controllers
         {
             BddContext ctx = new BddContext();
             Reservation resa= new Reservation() { Eleve1Id=eleve1Id, Eleve2Id=eleve2Id, ProfesseurId=professeurId, 
-                Matiere=matiere, Niveau=niveau, Horaire=horaire, Creneaux=creneaux, Binome=binome, Presentiel=presentiel};
+                Matiere=matiere, Niveau=niveau, Horaire=horaire, Binome=binome, Presentiel=presentiel};
             ctx.Add(resa);
             return View(resa);
             
