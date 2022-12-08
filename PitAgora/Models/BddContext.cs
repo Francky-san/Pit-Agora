@@ -15,6 +15,8 @@ namespace PitAgora.Models
         public DbSet<Professeur> Professeurs { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Creneau> Creneaux { get; set; }
+        public DbSet<Niveau> Niveaux { get; set; }
+        public DbSet<NiveauxProf> NiveauxProfs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,6 +27,12 @@ namespace PitAgora.Models
         {
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
+
+            // Création de la table Niveaux
+            using (DalGen dal = new DalGen())
+            {
+                dal.CreerTableNiveaux();
+            }
 
             // Création de parents, d'élèves et de profs avec les méthodes dédiées
 
@@ -58,6 +66,50 @@ namespace PitAgora.Models
 
             // Création d'instances à la main
 
+
+
+            List<Creneau> CreneauxResa1 = new List<Creneau>();
+            CreneauxResa1.Add(this.Creneaux.Find(1));
+            CreneauxResa1.Add(this.Creneaux.Find(2));
+            CreneauxResa1.Add(this.Creneaux.Find(3));
+
+            List<Creneau> CreneauxResa2 = new List<Creneau>();
+            CreneauxResa2.Add(this.Creneaux.Find(4));
+            CreneauxResa2.Add(this.Creneaux.Find(5));
+            CreneauxResa2.Add(this.Creneaux.Find(6));
+
+            //this.Reservations.AddRange(
+            //   new Reservation
+            //   {
+            //       Id = 1,
+            //       Eleve1Id = 1,
+            //       ProfesseurId = 1,
+            //       Matiere = "Maths",
+            //       Niveau = "Terminale",
+            //       Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
+            //       Creneaux = CreneauxResa,
+            //       Prix = 90,
+            //       Binome = false,
+            //       Presentiel = false,
+            //       EstValide = true
+            //   }
+            //   new Reservation
+            //   {
+            //       Id = 2,
+            //       Eleve1Id = 1,
+            //       Eleve2Id = 2,
+            //       ProfesseurId = 3,
+            //       Matiere = "SVT",
+            //       Niveau = "Terminale",
+            //       Horaire = new DateTime(2023, 01, 08, 17, 00, 00),
+            //       Creneaux = CreneauxResa,
+            //       Prix = 90,
+            //       Binome = false,
+            //       Presentiel = false,
+            //       EstValide = true
+            //   });
+
+
             /*
            this.Eleves.AddRange(
                new Eleve { Id = 1, UtilisateurId = 1, CreditCours = 400, CreditPythos = 200 },
@@ -84,17 +136,6 @@ namespace PitAgora.Models
            );
 
 
-
-
-           List<Creneau> CreneauxResa = new List<Creneau>();
-           CreneauxResa.Add(this.Creneaux.Find(1));
-           CreneauxResa.Add(this.Creneaux.Find(2));
-           CreneauxResa.Add(this.Creneaux.Find(3));
-
-           this.Reservations.AddRange(
-           new Reservation { Id = 1, Eleve1Id = 1, ProfesseurId = 1, Matiere = "Maths",
-                 Niveau = "Terminale", Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
-                 Creneaux = CreneauxResa, Prix = 90, Binome = false, Presentiel = false, EstValide = true}
 
            );
            */

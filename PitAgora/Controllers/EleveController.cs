@@ -30,7 +30,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChercherCours(string matiere, string niveau)
+        public IActionResult ChercherCours(string matiere, string niveau, DateTime horaire)
         {
             using (BddContext ctx = new BddContext())
             {

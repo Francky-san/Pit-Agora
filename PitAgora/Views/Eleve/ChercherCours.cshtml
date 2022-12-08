@@ -21,6 +21,8 @@
         @Html.TextBoxFor(m => Model.Niveau)
         @Html.ValidationMessageFor(m => Model.Niveau)
         <br />
+        @Html.LabelFor(m => Model.Horaire)
+        <input type="datetime-local" name="horaire">
         <input type="submit" value="ChercherCours" />
     </fieldset>
 
