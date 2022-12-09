@@ -7,18 +7,11 @@ namespace PitAgora.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AccueilGeneral()
         {
-            Personne personne = new Personne { Nom = "TANGUY", Prenom = "Hina" };
+          
 
-            HomeViewModel hvm = new HomeViewModel
-            {
-                Message = "Bonjour tout le monde",
-                Date = DateTime.Now,
-                Personne = personne
-            };
-
-            return View(hvm);
+            return View();
         }
     }
 }

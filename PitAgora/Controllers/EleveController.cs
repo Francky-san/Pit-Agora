@@ -18,7 +18,7 @@ namespace PitAgora.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult AccueilEleve()
         {
             return View();
         }

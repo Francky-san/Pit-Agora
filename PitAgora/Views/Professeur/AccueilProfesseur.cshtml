@@ -1,0 +1,23 @@
+﻿@model PitAgora.Models.Professeur
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Accueil Espace Prof";
+}
+
+<a href="../Eleve/ChercherCours">Réserver un cours</a>
+
+
+@section Fieldset{
+Mon profil :
+}
+
+@section Champ1{
+    Bonjour je m'appelle TrucMush et j'enseigne les mathématiques depuis 15ans. J'ai enseigné à tous les niveaux depuis la 6ème à la Terminale.
+    Vous pouvez me faire confiance pour vous enseigner de manière efficace et adaptée.
+}
+
+<li>@Html.ActionLink("Mes dispos","ListeDispo","Professeur")</li>
+<li class="selectionne">@Html.ActionLink("Accueil", "AccueilProfesseur","Professeur")</li>
+<li>@Html.ActionLink("Mes réservations", "ListeReservations", "Professeur")</li>
+<li>@Html.ActionLink("Mes évaluations", "ListeEvaluations", "Professeur")</li>
+<button value="@Model.CreditProf">Crédit : </button>
