@@ -36,18 +36,24 @@ namespace PitAgora.Controllers
             using (BddContext ctx = new BddContext())
             {
                 var query = from p in ctx.Personnes
-                        join u in ctx.Utilisateurs on p.Id equals u.PersonneId
-                        join prof in ctx.Professeurs on u.Id equals prof.UtilisateurId
-                        join c in ctx.Creneaux on prof.Id equals c.ProfId
-                        where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
-                        select new { p.Nom, c.Debut, c.Id };
+                            join u in ctx.Utilisateurs on p.Id equals u.PersonneId
+                            join prof in ctx.Professeurs on u.Id equals prof.UtilisateurId
+                            join c in ctx.Creneaux on prof.Id equals c.ProfId
+                            where prof.Matiere1.Equals("Maths") || prof.Matiere2.Equals("Maths")
+                            select new { p.Nom, c.Debut, c.Id };
                 List<CreneauResaViewModel> creneauxDispo = new List<CreneauResaViewModel>();
                 foreach (var item in query.ToList())
                 {
-                   creneauxDispo.Add(new CreneauResaViewModel() { NomProf=item.Nom, Debut=item.Debut, CreneauId=item.Id});
+                    creneauxDispo.Add(new CreneauResaViewModel() { NomProf = item.Nom, Debut = item.Debut, CreneauId = item.Id });
                 }
-             
-                return View("ChoisirCours", creneauxDispo);
+                PlanningViewModel pwm = new PlanningViewModel("Toto", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true } );
+                List<PlanningViewModel> laListe = new List<PlanningViewModel>();
+                laListe.Add(pwm);
+                laListe.Add(pwm);
+                laListe.Add(pwm);
+                laListe.Add(pwm);
+                laListe.Add(pwm);
+                return View("ChoisirCours", laListe);
             }
         }
 
@@ -59,15 +65,16 @@ namespace PitAgora.Controllers
 
         }
         [HttpPost]
-        public IActionResult CreerReservation(int eleve1Id, int professeurId, string matiere, string niveau, DateTime horaire, 
-            List<Creneau> creneaux, bool binome, bool presentiel, int eleve2Id=0)
+        public IActionResult CreerReservation(int eleve1Id, int professeurId, string matiere, string niveau, DateTime horaire,
+            List<Creneau> creneaux, bool binome, bool presentiel, int eleve2Id = 0)
         {
             BddContext ctx = new BddContext();
-            Reservation resa= new Reservation() { Eleve1Id=eleve1Id, Eleve2Id=eleve2Id, ProfesseurId=professeurId, 
-                Matiere=matiere, Niveau=niveau, Horaire=horaire, Binome=binome, Presentiel=presentiel};
+            Reservation resa = new Reservation() { Eleve1Id = eleve1Id, Eleve2Id = eleve2Id, ProfesseurId = professeurId,
+                Matiere = matiere, Niveau = niveau, Horaire = horaire, Binome = binome, Presentiel = presentiel };
             ctx.Add(resa);
             return View(resa);
-            
+
         }
+
     }
 }

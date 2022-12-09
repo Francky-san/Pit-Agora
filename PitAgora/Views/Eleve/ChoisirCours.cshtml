@@ -1,4 +1,5 @@
-﻿@model List<PitAgora.ViewModels.CreneauResaViewModel>
+﻿@using PitAgora.Models;
+@model List<PitAgora.ViewModels.PlanningViewModel>
 @{
     Layout = "_Layout";
 
@@ -6,28 +7,23 @@
 }
 
 
-
-
 <h2>Cours disponibles</h2>
-
-<table>
-    <tr>
-        <th>Professeur</th>
-        <th>Id du créneau</th>
-        <th>Heure de début</th>
-
-    </tr>
 @foreach (var item in @Model)
 {
-   <tr>
-            <td>@item.NomProf</td>
-            <td>@item.CreneauId</td>
-            <td>@item.Debut.Hour:@item.Debut.Minute</td>
-   </tr>
-
-    
-    
+    <p>Planning de @item.NomProf :</p>
+    <div class="planningContainer">
+        @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            @if (item.Dispos[k])    
+            {
+                <div class="cellulePlanning nonDispo"></div>
+            } 
+            else
+            {
+                <div class="cellulePlanning dispo"></div>
+            }
+    </div>
+    <br />
 }
-</table>
+<br />
 
 

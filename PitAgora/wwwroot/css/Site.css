@@ -37,3 +37,29 @@
 .selectionne {
     color: red;
 }
+
+/************ pour les plannings *********/
+.planningContainer {
+    width: 100%;
+    display: block;
+    height: 30px;
+    padding: 0px 20px;
+}
+
+.cellulePlanning {
+    color: blue;
+    float: left;
+    width: 4.5%;
+    padding: 10px 0px;
+    text-align: center;
+    border: 2px solid darkblue;
+    border-radius: 4px;
+}
+
+.dispo {
+    background-color: coral;
+}
+
+.nonDispo {
+    background-color: lightgray;
+}
