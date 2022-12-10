@@ -12,10 +12,11 @@
     var statut, prof;
 </script>
 
-
-<h2 style="float: left">Cours disponibles</h2>
-<div style="float:left padding:20px">Choisis au moins deux créneaux disponibles consécutifs</div>
-<button onclick="validerChoixCours()" class="boutonChoixCours">Valider</button>
+<div style="height:28px">
+    <h2 style="float: left">Cours disponibles</h2>
+    <div style="float:left; padding:20px; height: inherit">Choisis au moins deux créneaux disponibles consécutifs</div>
+    <button onclick="validerChoixCours()" class="boutonChoixCours">Valider</button>
+</div>
 
 <br />
 
@@ -26,11 +27,11 @@
         @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
             @if (item.Dispos[k])
             {
-                <div class="cellulePlanning nonDispo"></div>
+                <div id="@(Model.IndexOf(item)*100+k)" class="cellulePlanning dispo" onclick="changeStatut(this)" onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
             }
             else
             {
-                <div id="@(Model.IndexOf(item)*100+k)" class="cellulePlanning dispo" onclick="changeStatut(this)" onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                <div class="cellulePlanning nonDispo"></div>
             }
     </div>
     <br />

@@ -62,6 +62,7 @@
 
 .survole {
     background-color: indianred;
+    opacity: .7;
 }
 
 .selectionne {

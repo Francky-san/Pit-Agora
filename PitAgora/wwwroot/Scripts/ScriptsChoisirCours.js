@@ -35,5 +35,20 @@ function profId(n) {
 }
 
 function validerChoixCours() {
-    document.getElementById("103").innerHTML = "Valider !";
-}
+    if (selectionnes.length < 2) {
+        alert("Un cours dure au moins une heure, merci de sélectionner au moins deux créneaux")
+    }
+    else {
+        let valid = true;
+        selectionnes.sort();
+        for (let k = 1; k < selectionnes.length; k++) {
+            if (selectionnes[k] - selectionnes[k - 1] != 1) valid = false;
+        }
+        if (!valid) {
+            alert("Merci de sélectionner des créneaux consécutifs")
+        }
+        else {
+            // réfléchir à comment renvoyer les infos au contrôleur
+        }
+    }
+} 
