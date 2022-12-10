@@ -60,6 +60,22 @@
     background-color: coral;
 }
 
+.survole {
+    background-color: indianred;
+}
+
+.selectionne {
+    background-color: orangered;
+}
+
 .nonDispo {
     background-color: lightgray;
+}
+
+.boutonChoixCours {
+    float: right;
+    background-color: orange;
+    border: 2px solid red;
+    padding: 5px;
+    margin: 20px;
 }

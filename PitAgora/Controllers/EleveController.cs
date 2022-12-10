@@ -46,13 +46,13 @@ namespace PitAgora.Controllers
                 {
                     creneauxDispo.Add(new CreneauResaViewModel() { NomProf = item.Nom, Debut = item.Debut, CreneauId = item.Id });
                 }
-                PlanningViewModel pwm = new PlanningViewModel("Toto", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true } );
+                // test de la gestion du planning dans la page web
                 List<PlanningViewModel> laListe = new List<PlanningViewModel>();
-                laListe.Add(pwm);
-                laListe.Add(pwm);
-                laListe.Add(pwm);
-                laListe.Add(pwm);
-                laListe.Add(pwm);
+                laListe.Add(new PlanningViewModel("Tata", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tete", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Titi", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Toto", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tutu", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
                 return View("ChoisirCours", laListe);
             }
         }
