@@ -38,5 +38,60 @@ namespace PitAgora.Models
             }
             return res;
         }
+
+        public static string Jour(String day)
+        {
+            switch (day)
+            {
+                case "Monday":
+                    return "Lundi";
+                case "Tuesday":
+                    return "Mardi";
+                case "Wenensday":
+                    return "Mercredi";
+                case "Thursday":
+                    return "Jeudi";
+                case "Friday":
+                    return "Vendredi";
+                case "Saturday":
+                    return "Samedi";
+                case "Sunday":
+                    return "Dimanche";
+                default:
+                    return "Erreur";
+            }
+        }
+        public static string Mois(int month)
+        {
+            switch (month)
+            {
+                case 1:
+                    return "janvier";
+                case 2:
+                    return "février";
+                case 3:
+                    return "mars";
+                case 4:
+                    return "avril";
+                case 5:
+                    return "mai";
+                case 6:
+                    return "juin";
+                case 7:
+                    return "juillet";
+                case 8:
+                    return "août";
+                case 9:
+                    return "septembre";
+                case 10:
+                    return "octobre";
+                case 11:
+                    return "novembre";
+                case 12:
+                    return "décembre";
+                default:
+                    return "Erreur";
+            }
+        }
     }
 }

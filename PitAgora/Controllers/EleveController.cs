@@ -48,11 +48,11 @@ namespace PitAgora.Controllers
                 }
                 // test de la gestion du planning dans la page web
                 List<PlanningViewModel> laListe = new List<PlanningViewModel>();
-                laListe.Add(new PlanningViewModel("Tata", new bool[] { true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Tete", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Titi", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Toto", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Tutu", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tata", "Tata", new bool[] { true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tata", "Tété", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tata", "Titi", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tata", "Toto", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel("Tata", "Tutu", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
                 return View("ChoisirCours", laListe);
             }
         }

@@ -1,4 +1,4 @@
-﻿function changeStatut(obj) {
+﻿function changerStatut(obj) {
     if (selectionnes.indexOf(obj.id) == -1) {            // le créneau n'a pas le statut "sélectionné"
         if (profId(obj.id) != prof) {                           // soit première sélection, soit l'élève change de prof
             selectionnes.forEach(i => document.getElementById(i).className = "cellulePlanning dispo");
@@ -16,6 +16,7 @@
     }
     statutModifie = true;
     statut = obj.className;
+    calculerPrix(selectionnes.length);
 }
 
 function mOver(obj) {
@@ -36,7 +37,7 @@ function profId(n) {
 
 function validerChoixCours() {
     if (selectionnes.length < 2) {
-        alert("Un cours dure au moins une heure, merci de sélectionner au moins deux créneaux")
+        alert("Un cours dure au moins une heure, merci de sélectionner au moins deux créneaux");
     }
     else {
         let valid = true;
@@ -45,7 +46,7 @@ function validerChoixCours() {
             if (selectionnes[k] - selectionnes[k - 1] != 1) valid = false;
         }
         if (!valid) {
-            alert("Merci de sélectionner des créneaux consécutifs")
+            alert("Merci de sélectionner des créneaux consécutifs");
         }
         else {
             // réfléchir à comment renvoyer les infos au contrôleur
