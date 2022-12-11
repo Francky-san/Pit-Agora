@@ -26,6 +26,8 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult ChercherCours()
         {
+            // Test de la méthode TestCalculerDistance()
+            DistanceDom.TestCalculerDistance();
             return View();
         }
 

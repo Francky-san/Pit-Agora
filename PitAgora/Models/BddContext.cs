@@ -17,6 +17,8 @@ namespace PitAgora.Models
         public DbSet<Creneau> Creneaux { get; set; }
         public DbSet<Niveau> Niveaux { get; set; }
         public DbSet<NiveauxProf> NiveauxProfs { get; set; }
+        public DbSet<DistanceDom> DistanceDoms { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -76,7 +78,7 @@ namespace PitAgora.Models
                 new NiveauxProf() { ProfesseurId = 3, NiveauId = 3 }
                 );
 
-            List <Creneau> CreneauxResa1 = new List<Creneau>();
+            List<Creneau> CreneauxResa1 = new List<Creneau>();
             CreneauxResa1.Add(this.Creneaux.Find(1));
             CreneauxResa1.Add(this.Creneaux.Find(2));
             CreneauxResa1.Add(this.Creneaux.Find(3));
