@@ -36,11 +36,12 @@ function profId(n) {
 }
 
 function validerChoixCours() {
+    let valid = true;
     if (selectionnes.length < 2) {
+        valid = false;
         alert("Un cours dure au moins une heure, merci de sélectionner au moins deux créneaux");
     }
     else {
-        let valid = true;
         selectionnes.sort();
         for (let k = 1; k < selectionnes.length; k++) {
             if (selectionnes[k] - selectionnes[k - 1] != 1) valid = false;
@@ -48,8 +49,6 @@ function validerChoixCours() {
         if (!valid) {
             alert("Merci de sélectionner des créneaux consécutifs");
         }
-        else {
-            // réfléchir à comment renvoyer les infos au contrôleur
-        }
     }
+    return valid;
 } 
