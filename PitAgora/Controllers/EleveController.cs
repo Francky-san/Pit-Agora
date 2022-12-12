@@ -66,8 +66,9 @@ namespace PitAgora.Controllers
             return View();
 
         }
+        /*
         [HttpPost]
-
+        
         public IActionResult CreerReservation(int eleve1Id, int professeurId, MatiereEnum matiere, NiveauEnum niveau, DateTime horaire, 
             List<Creneau> creneaux, bool binome, bool presentiel, int eleve2Id=0)
 
@@ -78,6 +79,6 @@ namespace PitAgora.Controllers
             return View(resa);
 
         }
-
+        */
     }
 }
