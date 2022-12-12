@@ -9,10 +9,14 @@ namespace PitAgora.Models
     {
         public int Id { get; set; }
         public int Eleve1Id { get; set; }
+        public virtual Eleve Eleve1 { get; set; }
         public int Eleve2Id { get; set; }
+        public virtual Eleve Eleve2 { get; set; }
         public int ProfesseurId { get; set; }
+
         public MatiereEnum Matiere { get; set; }
         public NiveauEnum Niveau { get; set; }
+
         public DateTime Horaire { get; set; }
         public List<Creneau> Creneaux { get; set; }
         public float Prix { get; set; }

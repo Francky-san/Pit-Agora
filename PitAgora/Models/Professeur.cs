@@ -7,7 +7,7 @@ namespace PitAgora.Models
     {
         public int Id { get; set; }
         public int UtilisateurId { get; set; }
-        public Utilisateur Utilisateur { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
         public string Matiere1 { get; set; }
         public string Matiere2 { get; set; }
         public int CreditProf { get; set; }
