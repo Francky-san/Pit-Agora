@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Models
 {
@@ -18,24 +19,6 @@ namespace PitAgora.Models
 
         public virtual Reservation Reservation { get; set; }
 
-
-        // ************ Constructeurs **************
-
-        public Creneau()
-        {
-        }
-
-        // crée un créneau à partir des infos de la BDD
-        public Creneau(int id)  
-        {
-            BddContext ctx = new BddContext;
-            var query = from c in ctx.Creneaux
-                        where c.Id == id
-                        select c;
-            this.Id = id;
-            this.Debut = query;
-            this.
-        }
 
 
 

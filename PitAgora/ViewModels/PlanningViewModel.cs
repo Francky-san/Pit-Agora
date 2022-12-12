@@ -22,7 +22,7 @@ namespace PitAgora.ViewModels
             Dispos = new bool[Creneau.NB_CRENEAUX_PAR_JOUR];
             foreach (int creneauId in creneaux)
             {
-                Creneau creneau = new Creneau(creneauId);
+                Creneau creneau = DalCreneaux.GetCreneau(creneauId);
                 Dispos[creneau.Rang()] = true;
             }
             PrenomProf = prenomProf;

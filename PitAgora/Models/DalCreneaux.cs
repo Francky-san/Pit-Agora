@@ -22,5 +22,12 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
             return creneau.Id;
         }
+
+        public static Creneau GetCreneau(int id)
+        {
+            return _bddContext.Creneaux.Find(id);
+        }
+
+        
     }
 }

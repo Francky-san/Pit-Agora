@@ -53,21 +53,21 @@ namespace PitAgora.Controllers
                 int tempProfId = 0;
                 DateTime horairePrecedent = debutJournee;
                 List<List<int>> tempPlages = new List<List<int>>();
-                List<int> plageEncours = new List<int>();
-                List<Creneau> creneauxEnCours= new List<Creneau>();
+                List<int> plageEnCours = new List<int>();
+                List<int> creneauxEnCours= new List<int>();
 
-                foreach (var item in query.ToList()) {
+                foreach (var item in query.Take(50).ToList()) {
                     if (item.ProfesseurId == tempProfId)   // Le créneau concerne encore le même professeur
                     {
                         if (!horairePrecedent.AddMinutes(30).Equals(item.Debut))  // le créneau ne suit pas le précédent
                         {
-                            plageEncours = new List<int>();   // on crée une nouvelle plage
-                            tempPlages.Add(plageEncours);
+                            plageEnCours = new List<int>();   // on crée une nouvelle plage
+                            tempPlages.Add(plageEnCours);
                         }
-                        plageEncours.Add(item.Id);
+                        plageEnCours.Add(item.Id);
                         horairePrecedent = item.Debut;
                     }
-                    else    // Le créneau concerne encore un autre professeur
+                    else    // Le créneau concerne un autre professeur
                     {
                         if (planningValable(tempPlages, estEnPresentiel))
                         {
