@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace PitAgora.Models
 {
@@ -8,19 +10,20 @@ namespace PitAgora.Models
     {
         public static readonly List<string> lesNiveaux = new List<string>() { "scq", "ts", "pt" };
 
-        public static readonly Dictionary<string, string> dictNiveaux = new Dictionary<string, string>()
+        public static readonly Dictionary<NiveauEnum, string> dictNiveaux = new Dictionary<NiveauEnum, string>()
         {
-            {"6","scq"},
-            {"5","scq"},
-            {"4","scq"},
-            {"3","ts"},
-            {"2","ts"},
-            {"1G","pt"},
-            {"1T","pt"},
-            {"TG","pt"},
-            {"TT","pt"},
+            {NiveauEnum.sixieme,"scq"},
+            {NiveauEnum.cinquieme,"scq"},
+            {NiveauEnum.quatrieme,"scq"},
+            {NiveauEnum.troisieme,"ts"},
+            {NiveauEnum.seconde,"ts"},
+            {NiveauEnum.premiereGenerale,"pt"},
+            {NiveauEnum.premiereTechno,"pt"},
+            {NiveauEnum.terminaleGenerale,"pt"},
+            {NiveauEnum.terminaleTechno,"pt"}
+            ,
         };
-
+            
         public int Id { get; set; }
         public string Intitule { get; set; }
 

@@ -32,7 +32,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChercherCours(string matiere, string niveau, DateTime horaire)
+        public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime horaire)
         {
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             using (BddContext ctx = new BddContext())
@@ -67,9 +67,10 @@ namespace PitAgora.Controllers
 
         }
         [HttpPost]
-        public IActionResult CreerReservation(int eleve1Id, int professeurId, string matiere, string niveau, DateTime horaire,
-            List<Creneau> creneaux, bool binome, bool presentiel, int eleve2Id = 0)
-        {
+
+        public IActionResult CreerReservation(int eleve1Id, int professeurId, MatiereEnum matiere, NiveauEnum niveau, DateTime horaire, 
+            List<Creneau> creneaux, bool binome, bool presentiel, int eleve2Id=0)
+
             BddContext ctx = new BddContext();
             Reservation resa = new Reservation() { Eleve1Id = eleve1Id, Eleve2Id = eleve2Id, ProfesseurId = professeurId,
                 Matiere = matiere, Niveau = niveau, Horaire = horaire, Binome = binome, Presentiel = presentiel };
