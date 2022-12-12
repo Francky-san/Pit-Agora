@@ -1,0 +1,34 @@
+﻿@model PitAgora.ViewModels.HomeViewModel
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Accueil Pit'Agora";
+}
+
+<li>@Html.ActionLink("Connexion", "Index", "Login")</li>
+
+<li>@Html.ActionLink("S'inscrire", "Inscrire","Home")</li>
+
+<li>@Html.ActionLink("Postuler", "CreerPersonne","Professeur")</li>
+<li>@Html.ActionLink("Nos Professeurs", "ListeProfesseur","Home")</li>
+<li>@Html.ActionLink("Contact", "ListeEleve","Home")</li>
+
+
+
+@section Fieldset{
+        Découvrez Pit'Agora
+    }
+@section Champ1{
+       Pour Pit'Agora, l'élève est le centre du projet. Tout est fait du point de vue de l'élève, il est maître
+       de son apprentissage et la plateforme devient son outil de prédilection.
+       Ainsi, en utilisant Pit'Agora, nous vous garantissons un enseignement de qualité grâce à un recrutement rigoureux
+       des professeurs basé sur une évaluation de leurs compétences mais aussi en s'assurant que leur philosophie et leur
+       pédagogie s'accorde parfaitement avec ceux de Pit'Agora.
+       Au delà d'une simple plateforme de mise en relation commme il en existe plusieurs dizaines, Pit'Agora à pour vocation
+       d'être un lieu de vie, adapté à l'image et aux envies de chaque élève. Un forum permet vous permettra de créer des liens
+       et décompresser après avoir révisé ou aidé la communauté en proposant du contenu pédagogique pour tous.
+       Nous pensons que tout travail mérite un salaire juste, vous pourrez consulter nos tarifs de cours en toute
+       transparence mais en tant qu'élèves votre travail sera aussi récompensé! De nombreux moyens de déclencher l'attribution
+       de Pythos vous attendent, vous pourrez alors les dépenser auprès de nos partenaires, eux aussi triés sur le volet
+       pour vous proposer des récompenses au plus près de vos goûts.
+       Notre atout, le cours en binôme, vous permetttra de progresser plus rapidement mais aussi à moindre coût.
+   }

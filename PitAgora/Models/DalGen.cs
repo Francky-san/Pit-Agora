@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace PitAgora
 {
@@ -43,7 +45,8 @@ namespace PitAgora
         }
         public int CreerUtilisateur(int id, string mail, string motDePasse, string adresse)
         {
-            Utilisateur utilisateur = new Utilisateur() {PersonneId=id,Mail = mail, MotDePasse = motDePasse, Adresse = adresse };
+            string password = EncodeMD5(motDePasse);
+            Utilisateur utilisateur = new Utilisateur() { PersonneId = id, Mail = mail, MotDePasse = password, Adresse = adresse };
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
             return utilisateur.Id;
@@ -59,7 +62,34 @@ namespace PitAgora
             _bddContext.Personnes.Update(personne);
             _bddContext.SaveChanges();
         }
+        //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
+        public Utilisateur Authentifier(string mail, string motDePasse)
+        {
+            string password = EncodeMD5(motDePasse);
+            Utilisateur user = this._bddContext.Utilisateurs.FirstOrDefault(u => u.Mail == mail && u.MotDePasse == password);
+            return user;
+        }
 
+        public Utilisateur ObtenirUtilisateur(int id)
+        {
+            return this._bddContext.Utilisateurs.Find(id);
+        }
+
+        public Utilisateur ObtenirUtilisateur(string idStr)
+        {
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                return this.ObtenirUtilisateur(id);
+            }
+            return null;
+        }
+
+        public static string EncodeMD5(string motDePasse)
+        {
+            string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
+        }
 
         public void CreerTableNiveaux()
         {
