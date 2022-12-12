@@ -12,11 +12,30 @@ namespace PitAgora.Models
 
         public DateTime Debut { get; set; }
 
-        public int ProfId { get; set; }
+        public int ProfesseurId { get; set; }
 
         public int? ReservationId { get; set; }
 
-        public virtual Reservation reservation { get; set; }
+        public virtual Reservation Reservation { get; set; }
+
+
+        // ************ Constructeurs **************
+
+        public Creneau()
+        {
+        }
+
+        // crée un créneau à partir des infos de la BDD
+        public Creneau(int id)  
+        {
+            BddContext ctx = new BddContext;
+            var query = from c in ctx.Creneaux
+                        where c.Id == id
+                        select c;
+            this.Id = id;
+            this.Debut = query;
+            this.
+        }
 
 
 

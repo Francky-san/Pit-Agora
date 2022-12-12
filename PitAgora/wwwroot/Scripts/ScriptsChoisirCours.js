@@ -16,7 +16,7 @@
     }
     statutModifie = true;
     statut = obj.className;
-    calculerPrix(selectionnes.length);
+    calculerPrix(selectionnes.length,0,false,false);  // test avec niveau scq, à domicile, en solo
 }
 
 function mOver(obj) {
