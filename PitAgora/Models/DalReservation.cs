@@ -5,7 +5,7 @@ namespace PitAgora.Models
     public class DalReservation : IDisposable
     {
         private BddContext _bddContext;
-        public DalCreneaux()
+        public DalReservation()
         {
             _bddContext = new BddContext();
         }

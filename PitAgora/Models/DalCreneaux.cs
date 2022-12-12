@@ -23,7 +23,7 @@ namespace PitAgora.Models
             return creneau.Id;
         }
 
-        public static Creneau GetCreneau(int id)
+        public Creneau GetCreneau(int id)
         {
             return _bddContext.Creneaux.Find(id);
         }

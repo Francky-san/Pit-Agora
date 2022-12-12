@@ -1,4 +1,5 @@
-﻿using PitAgora.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PitAgora.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,10 @@ namespace PitAgora
         public DalProf()
         {
             _bddContext = new BddContext();
+        }
+        public void Dispose()
+        {
+            _bddContext.Dispose();
         }
 
         public List<Professeur> ObtientTousLesProfesseurs()
@@ -29,16 +34,14 @@ namespace PitAgora
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges(); /*A ne pas oublier, enregistre la modif*/
             return professeur.Id;
-
         }
 
-
-
-
-        public void Dispose()
+        public string GetPrenomNom(int profId)
         {
-            _bddContext.Dispose();
+            Personne p = _bddContext.Professeurs.Find(profId).Utilisateur.Personne;
+            return p.Prenom + " " + p.Nom;
         }
+
 
     }
 }

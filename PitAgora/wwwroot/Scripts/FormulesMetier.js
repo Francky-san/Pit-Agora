@@ -17,7 +17,7 @@ estDistanciel
 enBinome */
 
 function calculerPrix(n, niv, estDist, enBin) {    // niv = rang du groupe de niveaux dans l'énumération
-    let prixHoraire;
+    let prixHoraire=0;
     if (estDist) {
         if (enBin) {
             prixHoraire = binomeVisio[niv];
@@ -34,6 +34,5 @@ function calculerPrix(n, niv, estDist, enBin) {    // niv = rang du groupe de ni
             prixHoraire = soloDom[niv];
         }
     }
-    document.getElementById("prixCours").innerHTML = n * prixHoraire / 2;
-
+    return n * prixHoraire / 2;
 }

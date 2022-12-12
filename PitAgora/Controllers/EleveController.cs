@@ -5,6 +5,7 @@ using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace PitAgora.Controllers
 {
@@ -69,49 +70,47 @@ namespace PitAgora.Controllers
                     }
                     else    // Le créneau concerne un autre professeur
                     {
-                        if (planningValable(tempPlages, estEnPresentiel))
+                        if (PlanningValable(tempPlages, estEnPresentiel))
                         {
-                            PlanningViewModel nouveauPlanning = new PlanningViewModel();
+                            PlanningViewModel nouveauPlanning = new PlanningViewModel(plageEnCours, tempProfId, horaire, matiere, niveau, estEnBinome, estEnPresentiel);
                         }
-                    }
-                    {
-
                     }
                     {
 
                     }
                 }
                 
-                
                 // test de la gestion du planning dans la page web
                 List<PlanningViewModel> laListe = new List<PlanningViewModel>();
-                laListe.Add(new PlanningViewModel("Tata", "Tata", new bool[] { true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Tata", "Tété", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Tata", "Titi", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Tata", "Toto", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
-                laListe.Add(new PlanningViewModel("Tata", "Tutu", new bool[] { true, true, false, false, true, true, true, false, false, true, true, true, false, false, true, true, true, false, false, true }));
+                laListe.Add(new PlanningViewModel(1, "Tata", "Tata", new int[] { 14, 15, 16, 0, 0, 0, 0, 0, 28, 29, 30, 31, 42, 43, 44, 45, 0, 0, 0, 0 }));
+                laListe.Add(new PlanningViewModel(2, "Tata", "Tété", new int[] { 0, 0, 0, 0, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 0, 0, 0, 0 }));
+                laListe.Add(new PlanningViewModel(3, "Tata", "Titi", new int[] { 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 }));
+                laListe.Add(new PlanningViewModel(4, "Tata", "Toto", new int[] { 17, 18, 19, 20, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 23, 24, 25, 26, 27 }));
+                laListe.Add(new PlanningViewModel(5, "Tata", "Tutu", new int[] { 32, 33, 34, 0, 0, 0, 0, 35, 36, 37, 38, 0, 0, 0, 0, 0, 39, 40, 41, 0 }));
                 return View("ChoisirCours", laListe);
             }
         }
 
 
-        [HttpGet]
-        public IActionResult CreerReservation()
-        {
-            return View();
-
-        }/*
+        
         [HttpPost]
-        public IActionResult CreerReservation(int eleve1Id, int professeurId, string matiere, string niveau, DateTime horaire,
-            List<Creneau> creneaux, bool binome, bool presentiel, int eleve2Id = 0)
+        public IActionResult CreerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix, 
+            bool estEnBinome, bool estEnPresentiel)
         {
-            BddContext ctx = new BddContext();
-            Reservation resa = new Reservation() { Eleve1Id = eleve1Id, Eleve2Id = eleve2Id, ProfesseurId = professeurId,
-                Matiere = matiere, Niveau = niveau, Horaire = horaire, Binome = binome, Presentiel = presentiel };
-            ctx.Add(resa);
-            return View(resa);
-
+            Console.WriteLine("créneaux : " + creneaux);
+            Console.WriteLine("prof : " + professeurId);
+            /*
+            A FAIRE :
+            - calculer l'horaire de départ à partir de la liste des créneaux, non triée (méthode dans dalCreneaux ?)
+            - Si BINOME, demander le nom du second élève et en déduire son Id
+            - utiliser CreerReservation pour creer la nouvelle reservation
+            */
+            return View("Index");
         }
-        */
+
+        public bool PlanningValable(List<List<int>> listePlages, bool estEnPresentiel)
+        {
+            return true;
+        }
     }
 }
