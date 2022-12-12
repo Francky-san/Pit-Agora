@@ -8,8 +8,11 @@ namespace PitAgora.Models
     {
         public int Id { get; set; }
         public int Eleve1Id { get; set; }
+        public virtual Eleve Eleve1 { get; set; }
         public int Eleve2Id { get; set; }
+        public virtual Eleve Eleve2 { get; set; }
         public int ProfesseurId { get; set; }
+        public virtual Professeur Professeur { get; set; }
         public string Matiere { get; set; }
         public string Niveau { get; set; }
         public DateTime Horaire { get; set; }
