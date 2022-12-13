@@ -95,13 +95,6 @@ namespace PitAgora.Models
         //        return product;
         //    }
 
-
-
-
-        }
-
-
-
         // Calcul distance entre élève et prof avec latitude et longitude de chacun
         public float CalculerDistance (float eleveLat, float eleveLong, float profLat, float profLong)
         {
@@ -120,8 +113,7 @@ namespace PitAgora.Models
 
             Console.WriteLine ("La distance élève/prof est : " + distance + " km");
 
-
-            return Math.Abs(eleveLat - profLat) + Math.Abs(eleveLong - profLong);  // pour Tests
+            return distance;  // pour Tests
         }
 
         // ************************ TESTS **********************
