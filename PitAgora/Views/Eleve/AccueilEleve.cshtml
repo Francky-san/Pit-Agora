@@ -1,14 +1,10 @@
-﻿@model PitAgora.Models.Eleve
-    Layout = "_Layout";
+﻿@model PitAgora.Models.Eleve;
+@{   Layout = "_Layout";
     ViewBag.Title = "Accueil Espace Elève";
 }
 
-<h1>Bienvenue sur ton espace @Model.Id</h1>
-<p>Bla bla</p>
+@section Fieldset{<h1>Bienvenue sur ton espace</h1>}
 
-<a href="../Eleve/ChercherCours">Réserver un cours</a>
+@section Champ1 {Salut bla bla bla @Model.Id}
 
-
-        <li class="selectionne">@Html.ActionLink("Accueil", "Index","Home")</li>
-        <li>@Html.ActionLink("Modifier une personne", "ModifierPersonne", "Personne")</li>
-        <li>@Html.ActionLink("Ajouter une personne", "CreerPersonne", "Personne")</li>
+Salut
