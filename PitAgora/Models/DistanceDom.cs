@@ -11,7 +11,7 @@ namespace PitAgora.Models
 {
     // Table de toutes les distances Eleve/Prof inférieures à DIST_MAX
     // A mettre à jour lors de toute création/modification d'adresse d'un élève ou d'un prof
-    public class DistanceDom   
+    public class DistanceDom
     {
         public static readonly int DIST_MAX = 30;
         public int Id { get; set; }
@@ -22,14 +22,15 @@ namespace PitAgora.Models
         public virtual Professeur Professeur { get; set; }
 
         // Constructeur
-        public DistanceDom(int eleveId, int professeurId) {
+        public DistanceDom(int eleveId, int professeurId)
+        {
             EleveId = eleveId;
             ProfesseurId = professeurId;
 
             using (BddContext ctx = new BddContext())
-            {   
+            {
                 Random random = new Random();   // pour Tests
-                float profLong=random.Next(80), profLat= random.Next(80), eleveLong= random.Next(80), eleveLat= random.Next(80);  // initialistions : pour tests
+                float eleveLat = random.Next(80), eleveLong = random.Next(80), profLat = random.Next(80), profLong = random.Next(80) ;  // initialistions : pour tests
                 // Recherche des coordonnées du Professeur
                 /*var query = from u in ctx.Utilisateurs   // !!! A décommenter quand les utilisateurs auront leurs coordonnées !!!
                             join prof in ctx.Professeurs on u.Id equals prof.UtilisateurId
@@ -62,16 +63,65 @@ namespace PitAgora.Models
                         eleveLat = item.Latitude;
                     }
                 }*/
+
                 // Calcul et affectation de la distance
-                Distance = CalculerDistance(profLong, profLat, eleveLong, eleveLat);
+                Distance = CalculerDistance(eleveLat, eleveLong, profLat, profLong);
+
+
             }
         }
 
         // ********************** Méthodes *********************
-        public float CalculerDistance(float lo1, float la1, float lo2, float la2)
+
+        // Récupération latitude et longitude à partir d'une adresse postale
+        //public float ObtenirLatitudeEtLongitude (string adresse, float Latitude, float Longitude)
+        //{
+        //    adresse = "1 + square + Jacques + Chirac & postcode = 87000 & city = Limoges";
+        //    double = href
+
+
+
+        //    static async Task<Product> GetProductAsync(string path)
+        //    {
+
+        //        var AdresseDataGouv = new HttpAdresseDataGouv;
+
+        //            Product product = null;
+        //        HttpResponseMessage response = await client.GetAsync(https://api-adresse.data.gouv.fr/search/);
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            product = await response.Content.ReadAsAsync<Product>();
+        //        }
+        //        return product;
+        //    }
+
+
+
+
+        }
+
+
+
+        // Calcul distance entre élève et prof avec latitude et longitude de chacun
+        public float CalculerDistance (float eleveLat, float eleveLong, float profLat, float profLong)
         {
-            //mettre la formule de Joseph
-            return Math.Abs(lo1-lo1) + Math.Abs(la1 -la2);  // pour Tests
+            // Calcul de l'angle en radian de l'arc de cercle entre élève et prof
+            float angleEnRadian = (float)Math.Sin(Math.PI / 180 * eleveLat) *
+                    (float)Math.Sin(Math.PI / 180 * profLat) +
+                    (float)Math.Cos(Math.PI / 180 * eleveLat) *
+                    (float)Math.Cos(Math.PI / 180 * profLat) *
+                    (float)Math.Cos(Math.PI / 180 * (eleveLong - profLong));
+
+            // Distance entre A et B = longueur de l'arc multiplié par le rayon de la terre exprimé en km (source IGN)
+            float distance = ((float)Math.Acos(angleEnRadian)) * 6378.137f;
+
+            // Résulat arrondi à un chiffre après la virgule
+            distance = (float)Math.Round(distance, 1);
+
+            Console.WriteLine ("La distance élève/prof est : " + distance + " km");
+
+
+            return Math.Abs(eleveLat - profLat) + Math.Abs(eleveLong - profLong);  // pour Tests
         }
 
         // ************************ TESTS **********************

@@ -2,8 +2,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using PitAgora.Models;
 using System;
 using System.Collections.Generic;
@@ -23,9 +27,34 @@ namespace PitAgora
             .AddCookie(options =>
             {
                 options.LoginPath = "/Login/Index";
-
             });
-            services.AddControllersWithViews();
+
+            // Ajout controleurs de vues et Newtonsoftjson pour travailler sur fichiers JSON
+            services.AddControllersWithViews().AddNewtonsoftJson();
+
+            // Ajout options de configuration avec gestion des input et output 
+            services.AddControllersWithViews(options =>
+            {
+                options.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
+            });
+
+        }
+
+        // Méthode gérant les input et ouput des fichiers JSON
+        private static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
+        {
+            var builder = new ServiceCollection()
+                .AddLogging()
+                .AddMvc()
+                .AddNewtonsoftJson()
+                .Services.BuildServiceProvider();
+
+            return builder
+                .GetRequiredService<IOptions<MvcOptions>>()
+                .Value
+                .InputFormatters
+                .OfType<NewtonsoftJsonPatchInputFormatter>()
+                .First();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
