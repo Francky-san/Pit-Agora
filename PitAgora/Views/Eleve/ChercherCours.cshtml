@@ -14,21 +14,11 @@
     <fieldset>
         <legend>Formulaire de réservation : </legend>
         @Html.LabelFor(m => Model.Matiere)
-        @Html.TextBoxFor(m => Model.Matiere)
+        @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
         @Html.ValidationMessageFor(m => Model.Matiere)
         <br />
         <label for="niveau">Niveau :</label>
-        <select id="niveau" name="niveau">
-            <option value="6">Sixième</option>
-            <option value="5">Cinquième</option>
-            <option value="4">Quatrième</option>
-            <option value="3">Troisième</option>
-            <option value="2">Seconde</option>
-            <option value="1G">Première générale</option>
-            <option value="1T">Première techno</option>
-            <option value="TG">Terminale générale</option>
-            <option value="TT">Terminale techno</option>
-        </select>
+        @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
         <br />
         @Html.LabelFor(m => Model.Horaire)
         <input type="datetime-local" name="horaire">

@@ -19,7 +19,7 @@ namespace PitAgora.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult AccueilEleve()
         {
             return View();
         }
@@ -33,7 +33,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChercherCours(string matiere, string niveau, DateTime horaire, bool estEnBinome, bool estEnPresentiel)
+        public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime horaire,bool estEnBinome, bool estEnPresentiel)
         {
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime debutJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 0,0,0);
@@ -91,7 +91,6 @@ namespace PitAgora.Controllers
             }
         }
 
-
         
         [HttpPost]
         public IActionResult CreerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix, 
@@ -112,5 +111,6 @@ namespace PitAgora.Controllers
         {
             return true;
         }
+
     }
 }

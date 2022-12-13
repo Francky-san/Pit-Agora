@@ -1,30 +1,47 @@
 ﻿<!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link href="~/css/Site.css" rel="stylesheet" />
-    @RenderSection("Css", required: false)
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil Pit'Agora</title>
+    <link rel="stylesheet" href="/css/Sheet.css">
 </head>
 <body>
-    <div id="entete">
-        <h1>Pit'Agora</h1>
-    </div>
 
-    <div id="main">
-        <div id="menu">
-            @RenderSection("Menu", required: false)
+    <div class="container">
+
+        <div class="logo">
+            <a href="https://localhost:5001"> <img src="./Images/LogoEfecto.png" alt="logo Pit'Agora" style="display: block;" border="0"></a>
         </div>
 
-        <div id="contenu">
-            @RenderBody()
+        <div class="slogan">
+            <strong>
+                Pit'Agora N°1 du soutien scolaire dans les matieres scientifiques
+            </strong>
         </div>
+
+        <div class="navigation">
+            <ul class="liste-menu">
+                @RenderBody()
+            </ul>
+        </div>
+        <div class="content">
+            <ul>
+                <fieldset>
+                    <legend class="fieldset"><strong>@RenderSection("Fieldset",required:true)</strong></legend>
+                    @RenderSection("Champ1", required:true)
+                </fieldset>
+
+                @RenderSection("Champ2", required:false)
+
+            </ul>
+        </div>
+
+
     </div>
 
-    <div id="footer">
-        &copy; @DateTime.Now.Year - Le site n°1 de soutien scolaire en matières scientifiques -
-    </div>
-    @RenderSection("Scripts", required: false)
+    <div class="footer">&copy; @DateTime.Now.Year - Pit'Agora, entreprise créée en 2022</div>
+
 </body>
 </html>
