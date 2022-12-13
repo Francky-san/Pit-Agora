@@ -60,7 +60,7 @@ namespace PitAgora.Models
                 dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", "Physique-Chimie");
                 dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", "SVT");
                 dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON", "Maths", "SVT");
-                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", "SVT");
+                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", "Maths");
             }
 
             using (DalCreneaux dal = new DalCreneaux())
@@ -80,14 +80,14 @@ namespace PitAgora.Models
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 5);
             }
 
 

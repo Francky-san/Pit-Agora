@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Models
 {
@@ -12,11 +13,12 @@ namespace PitAgora.Models
 
         public DateTime Debut { get; set; }
 
-        public int ProfId { get; set; }
+        public int ProfesseurId { get; set; }
 
         public int? ReservationId { get; set; }
 
-        public virtual Reservation reservation { get; set; }
+        public virtual Reservation Reservation { get; set; }
+
 
 
 

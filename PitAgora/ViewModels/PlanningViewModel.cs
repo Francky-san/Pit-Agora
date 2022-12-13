@@ -6,35 +6,53 @@ namespace PitAgora.ViewModels
 {
     public class PlanningViewModel
     {
-        public bool[] Dispos { get; set; }
-        public string PrenomProf { get; set; }
-        public string NomProf { get; set; }
-        public string Jour { get; set; }
+        public int[] Dispos { get; set; }  // représente tous les créneaux de la journée. Une cellule contient l'Id du créneau
+                                           // si celui-ci est disponible, 0 sinon
+        public List<int> CreneauxDispos { get; set; }  // liste des Id des créneaux disponibles
+        public int ProfesseurId { get; set; }
+        public string PrenomNomProf { get; set; }
+        public DateTime Horaire { get; set; }
+        public string Jour { get; set; }   // pour afficher le jour en français
         public string Matiere { get; set; }
+        public string Niveau { get; set; }
+        public bool EstEnBinom { get; set; }
+        public bool EstEnPresentiel { get; set; }
 
-        public PlanningViewModel(string prenomProf, string nomProf, List<Creneau> l, string matiere)
+        public PlanningViewModel(List<int> creneaux, int professeurId, DateTime horaire, string matiere, string niveau, bool estEnBinome, 
+            bool estEnPresentiel)
         {
-            Dispos = new bool[Creneau.NB_CRENEAUX_PAR_JOUR];
-            foreach (Creneau c in l)
+            DalCreneaux dalC = new DalCreneaux();
+            Dispos = new int[Creneau.NB_CRENEAUX_PAR_JOUR];
+            foreach (int creneauId in creneaux)
             {
-                Dispos[c.Rang()] = true;
+                Creneau creneau = dalC.GetCreneau(creneauId);
+                Dispos[creneau.Rang()] = creneau.Id;
             }
-            PrenomProf = prenomProf;
-            NomProf = nomProf;
-            DateTime debut = l[0].Debut;
-            Jour = Creneau.Jour(debut.DayOfWeek.ToString()) + " " + debut.Day + " " + debut.Month;
+            CreneauxDispos = creneaux;
+
+            DalProf dalP = new DalProf();
+            ProfesseurId = professeurId;
+            PrenomNomProf = dalP.GetPrenomNom(professeurId);
+
+            DateTime Horaire = horaire;
+            Jour = Creneau.Jour(horaire.DayOfWeek.ToString()) + " " + horaire.Day + " " + horaire.Month;
             Matiere = matiere;
+            Niveau = niveau;
+            EstEnBinom = estEnBinome;
+            EstEnPresentiel = estEnPresentiel;
         }
 
         // Pour tests
-        public PlanningViewModel(string prenomProf, string nomProf, bool[] b)
+        public PlanningViewModel(int id, string prenomProf, string nomProf, int[] dispos)
         {
-            Dispos = b;
-            PrenomProf = prenomProf;
-            NomProf = nomProf;
+            ProfesseurId = id;
+            Dispos = dispos;
+            PrenomNomProf = prenomProf + " " + nomProf;
             DateTime debut = new DateTime(2023, 01, 15);
             Jour = Creneau.Jour(debut.DayOfWeek.ToString()) + " " + debut.Day + " " + Creneau.Mois(debut.Month);
             Matiere = "Maths";
+            Niveau = "Terminale_generale";
+
         }
 
     }
