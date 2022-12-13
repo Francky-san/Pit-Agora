@@ -1,4 +1,5 @@
-﻿using PitAgora.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PitAgora.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,15 @@ namespace PitAgora
         {
             _bddContext.Dispose();
         }
+
+        //Méthode récupérer liste complète des professeurs avec jointures utilisateur et personne pour accèder à tous les attributs
+        public List<Parent> ObtientTousLesParents()
+        {
+            
+            List<Parent> ParentComplet = _bddContext.Parents.Include(pa => pa.Utilisateur).ThenInclude(u => u.Personne).ToList();
+            return  ParentComplet;
+        }
+
 
         public int CreerParent(string nom, string prenom, string mail, string motDePasse, string adresse)
         {

@@ -47,7 +47,7 @@ namespace PitAgora.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("/");
+                    return Redirect("/Home/AfficherInfosPerso/" + utilisateur.Id.ToString());
                 }
                 ModelState.AddModelError("Utilisateur.Mail", "Mail et/ou mot de passe incorrect(s)");
             }
