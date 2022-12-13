@@ -1,4 +1,5 @@
-﻿using PitAgora.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PitAgora.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,7 +23,7 @@ namespace PitAgora
 
         public List<Eleve> ObtientTousLesELeves()
         {
-            return _bddContext.Eleves.ToList();
+            return _bddContext.Eleves.Include(e=>e.Utilisateur).ThenInclude(u=>u.Personne).ToList();
         }
        
 

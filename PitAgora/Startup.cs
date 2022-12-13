@@ -44,6 +44,7 @@ namespace PitAgora
 
             app.UseRouting();
             app.UseStaticFiles();
+          
 
             //Utilise authentification et autorisation
             app.UseAuthentication();
@@ -55,6 +56,7 @@ namespace PitAgora
           name: "default",
                   pattern: "{controller=Home}/{action=AccueilGeneral}/{id?}");
             });
+
         }
     }
 }

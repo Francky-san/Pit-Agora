@@ -2,6 +2,7 @@
 using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
+using System.Linq;
 
 namespace PitAgora.Controllers
 {
@@ -13,5 +14,6 @@ namespace PitAgora.Controllers
 
             return View();
         }
+
     }
 }

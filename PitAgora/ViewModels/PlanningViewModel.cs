@@ -13,12 +13,12 @@ namespace PitAgora.ViewModels
         public string PrenomNomProf { get; set; }
         public DateTime Horaire { get; set; }
         public string Jour { get; set; }   // pour afficher le jour en français
-        public string Matiere { get; set; }
-        public string Niveau { get; set; }
+        public MatiereEnum Matiere { get; set; }
+        public NiveauEnum Niveau { get; set; }
         public bool EstEnBinom { get; set; }
         public bool EstEnPresentiel { get; set; }
 
-        public PlanningViewModel(List<int> creneaux, int professeurId, DateTime horaire, string matiere, string niveau, bool estEnBinome, 
+        public PlanningViewModel(List<int> creneaux, int professeurId, DateTime horaire, MatiereEnum matiere, NiveauEnum niveau, bool estEnBinome, 
             bool estEnPresentiel)
         {
             DalCreneaux dalC = new DalCreneaux();
@@ -50,8 +50,8 @@ namespace PitAgora.ViewModels
             PrenomNomProf = prenomProf + " " + nomProf;
             DateTime debut = new DateTime(2023, 01, 15);
             Jour = Creneau.Jour(debut.DayOfWeek.ToString()) + " " + debut.Day + " " + Creneau.Mois(debut.Month);
-            Matiere = "Maths";
-            Niveau = "Terminale_generale";
+            Matiere = MatiereEnum.maths;
+            Niveau = NiveauEnum.terminaleTechno;
 
         }
 
