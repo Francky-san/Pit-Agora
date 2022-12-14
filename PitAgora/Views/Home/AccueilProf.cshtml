@@ -1,14 +1,17 @@
 ﻿@model PitAgora.Models.Professeur
 @{
     Layout = "_Layout";
-    ViewBag.Title = "Accueil infos eleve";
+    ViewBag.Title = "Accueil Prof";
 }
 
-@section Fieldset{
+@section Main{
+    <div>
     Vue Prof :
-}
-@section Champ1{
+
+
                     prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom .
                     J'enseigne @Model.Matiere1 
-}
+
 <li>Salut @Model.Utilisateur.Personne.Prenom</li>
+    </div>
+}

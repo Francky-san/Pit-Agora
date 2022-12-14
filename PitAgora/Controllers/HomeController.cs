@@ -13,14 +13,6 @@ namespace PitAgora.Controllers
 
             return View();
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-        public IActionResult Connexion()
-        {
-            return View();
-        }
 
         public IActionResult Inscription()
         {
@@ -32,25 +24,12 @@ namespace PitAgora.Controllers
             return View();
         }
 
-        public IActionResult Profs()
-        {
-            return View();
-        }
         public IActionResult Contact()
         {
             return View();
         }
 
-=======
-=======
-        public IActionResult AfficherInfosEleve(Eleve eleve)
-        {
-            return View();
-        }
->>>>>>> da68669 (Commit avant intégration layout MK)
-=======
-
->>>>>>> fe12a3f (Commit avant récup master Layout)
+        //Méthodes Franck pour renvoyer infos
         public IActionResult AfficherInfosPerso(int Id)
         {
             DalEleve dal = new DalEleve();
@@ -61,7 +40,7 @@ namespace PitAgora.Controllers
             Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
             if (eleve != null)
             {
-                return View("AcceuilEleve", eleve) ;
+                return View("AccueilEleve", eleve) ;
             }
             else if (prof != null)
             {
@@ -71,8 +50,7 @@ namespace PitAgora.Controllers
             {
                 return View("AccueilParent", eleve1);
             }
-            return View();
+            return View("ERROR");
         }
->>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
     }
 }

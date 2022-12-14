@@ -1,21 +1,10 @@
 ﻿@model PitAgora.ViewModels.UtilisateurViewModel
 @{
     Layout = "_Layout";
-    ViewBag.Title = "Page Login";
+    ViewBag.Title = "Accueil Pit'Agora";
 }
 
-<li>@Html.ActionLink("Accueil", "AccueilGeneral", "Home")</li>
-
-<li>@Html.ActionLink("S'inscrire", "Inscrire","Home")</li>
-
-<li>@Html.ActionLink("Postuler", "CreerPersonne","Home")</li>
-<li>@Html.ActionLink("Nos Professeurs", "ListeProfesseur","Home")</li>
-<li>@Html.ActionLink("Contact", "ListeEleve","Home")</li>
-
-@section Fieldset{
-    Connexion :
-}
-@section Champ1{
+@section Main{
     @if (Model.Authentifie)
     {
         <h3>

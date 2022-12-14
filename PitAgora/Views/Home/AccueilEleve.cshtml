@@ -4,10 +4,12 @@
     ViewBag.Title = "Accueil infos eleve";
 }
 
-@section Fieldset{
+@section Main{
+    <div>
     Vue élève : 
-}
-@section Champ1{
-                prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
-}
+
+Je suis l'élève prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
+
  <li>Salut @Model.Utilisateur.Personne.Prenom</li>
+    </div>
+}
