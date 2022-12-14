@@ -14,6 +14,7 @@ namespace PitAgora.Controllers
 
             return View();
         }
+<<<<<<< HEAD
         public IActionResult Inscription()
         {
             return View();
@@ -30,6 +31,9 @@ namespace PitAgora.Controllers
         }
 
         //Méthodes Franck pour renvoyer infos
+=======
+
+>>>>>>> 40cc4a8292f80e17da7a77b8071c5bed7dffa03a
         public IActionResult AfficherInfosPerso(int Id)
         {
             DalEleve dal = new DalEleve();
@@ -44,7 +48,11 @@ namespace PitAgora.Controllers
             ParentViewModel pvm = new ParentViewModel { Eleve=eleve1, Parent=parent, Reservations=resaEleve1};
             if (eleve != null)
             {
+<<<<<<< HEAD
                 return View("AccueilEleve", eleve) ;
+=======
+                return View("AcceuilEleve", eleve) ;
+>>>>>>> 40cc4a8292f80e17da7a77b8071c5bed7dffa03a
             }
             else if (prof != null)
             {
