@@ -43,32 +43,7 @@ namespace PitAgora.Models
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
-        public Utilisateur Authentifier(string mail, string motDePasse)
-        {
-            string password = EncodeMD5(motDePasse);
-            Utilisateur user = Utilisateurs.FirstOrDefault(u => u.Mail == mail && u.MotDePasse == password);
-            return user;
-        }
-        public string EncodeMD5(string motDePasse)
-        {
-            string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
 
-            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
-        }
-
-        //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
-        public Utilisateur Authentifier(string mail, string motDePasse)
-        {
-            string password = EncodeMD5(motDePasse);
-            Utilisateur user = Utilisateurs.FirstOrDefault(u => u.Mail == mail && u.MotDePasse == password);
-            return user;
-        }
-        public string EncodeMD5(string motDePasse)
-        {
-            string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
-
-            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
-        }
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();

@@ -26,19 +26,6 @@ namespace PitAgora
             return _bddContext.Eleves.Include(e=>e.Utilisateur).ThenInclude(u=>u.Personne).Include(e=>e.Parent).ToList();
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        //Méthode création d'élève, pourquoi 2?
-=======
-
->>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
-=======
-        //Méthode création d'élève, pourquoi 2?
->>>>>>> da68669 (Commit avant intégration layout MK)
-=======
-        //Méthode création d'élève, pourquoi 2?
->>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
         public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
         {
             DalGen dal = new DalGen();

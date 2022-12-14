@@ -41,40 +41,15 @@ namespace PitAgora.Controllers
 
             using (BddContext ctx = new BddContext())
             {   // rajouter : critère distance pour Présentiel, critère ancienneté pour Distanciel
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                 var query = from c in ctx.Creneaux
-<<<<<<< HEAD
-=======
-                var query = (from c in ctx.Creneaux
->>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
-=======
-                var query = from c in ctx.Creneaux
->>>>>>> da68669 (Commit avant intégration layout MK)
-=======
->>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
                              join p in ctx.Professeurs on c.ProfesseurId equals p.Id
                              join np in ctx.NiveauxProfs on p.Id equals np.ProfesseurId
                              join n in ctx.Niveaux on np.NiveauId equals n.Id
                              where n.Intitule.Equals(gpeNiveau) && c.Debut.CompareTo(debutJournee) >= 0 && c.Debut.CompareTo(finJournee) < 0 && (p.Matiere1.Equals(matiere) || p.Matiere2.Equals(matiere))
-                             orderby p.Id, c.Debut
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
                              select new { c.ProfesseurId, c.Debut, c.Id };
-=======
-                             select new { c.ProfesseurId, c.Debut, c.Id }).Take(2);   //  comment limiter à 50 ?
-                                                                                       //  FT/En englobant ta query dans des parenthères et en utilisant la méthode "Take(nb_de_resultats_voulus)"
->>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
-=======
-
-                             select new { c.ProfesseurId, c.Debut, c.Id };
->>>>>>> da68669 (Commit avant intégration layout MK)
-=======
-
-                             select new { c.ProfesseurId, c.Debut, c.Id };
->>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
 
                 List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();
 
