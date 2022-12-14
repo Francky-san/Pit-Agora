@@ -8,20 +8,33 @@ namespace PitAgora.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult AccueilGeneral()
+        public IActionResult Index()
         {
-<<<<<<< HEAD
-          
-
-=======
-
 
             return View();
         }
 
         public IActionResult Connexion()
         {
->>>>>>> 75c1ae7 (mk/LayoutV1)
+            return View();
+        }
+
+        public IActionResult Inscription()
+        {
+            return View();
+        }
+
+        public IActionResult Postuler()
+        {
+            return View();
+        }
+
+        public IActionResult Profs()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
             return View();
         }
 
