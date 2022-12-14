@@ -1,5 +1,5 @@
 ﻿@model PitAgora.ViewModels.HomeViewModel
-@{ Layout = "_Layout";
+@{ Layout = "LayoutGen";
     ViewBag.Title = "Accueil Pit'Agora"; }
 
 
@@ -18,7 +18,7 @@
                     </p>
                     <div class="d-grid gap-2 d-sm-block">
                         <a href="#" class="btn btn-primary me-sm-2">Inscription</a>
-                        <a href="#" class="btn btn-outline-light">Connexion</a>
+                        <a href="https://localhost:5001/Login/Connexion" class="btn btn-outline-light">Connexion</a>
                     </div>
                 </div>
             </div>
@@ -139,5 +139,9 @@
         </div>
 
     </section>
+}
+@section Scripts{
+
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 }
     <!--FIN PROJETS-->

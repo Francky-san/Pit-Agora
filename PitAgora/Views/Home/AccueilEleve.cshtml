@@ -1,0 +1,17 @@
+﻿@model PitAgora.Models.Eleve
+@{
+    Layout = "LayoutPrive";
+    ViewBag.Title = "Accueil infos eleve";
+}
+
+@section Main{
+    <div>
+    Vue élève : 
+
+Je suis l'élève prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
+
+ <li>Salut @Model.Utilisateur.Personne.Prenom</li>
+
+ <li>@Html.ActionLink("Reserver un cours", "ChercherCours","Eleve")</li>
+    </div>
+}

@@ -1,0 +1,19 @@
+﻿@model PitAgora.Models.Parent
+@{
+    Layout = "LayoutPrive";
+
+    ViewBag.Title = "Accueil Parent";
+}
+
+@section Main{
+    <div>
+    Vue parent : 
+
+
+        Parent de :  @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
+         
+
+
+
+     </div>
+}

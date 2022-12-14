@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace PitAgora.Controllers
@@ -14,7 +15,7 @@ namespace PitAgora.Controllers
         {
             dal = new DalGen();
         }
-        public IActionResult Index()
+        public IActionResult Connexion()
         {
             UtilisateurViewModel viewModel = new UtilisateurViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
             if (viewModel.Authentifie)
@@ -26,7 +27,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(UtilisateurViewModel viewModel, string returnUrl)
+        public IActionResult Connexion(UtilisateurViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -47,7 +48,7 @@ namespace PitAgora.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("/");
+                    return Redirect("/Home/AfficherInfosPerso/" + utilisateur.Id.ToString());
                 }
                 ModelState.AddModelError("Utilisateur.Mail", "Mail et/ou mot de passe incorrect(s)");
             }

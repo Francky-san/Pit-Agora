@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/libs/bootstrap-icons/bootstrap-icons.css">
     <link href="~/css/estilos.css" rel="stylesheet">
+    @RenderSection("css" , required:false)
 </head>
 
 <body>
@@ -38,66 +39,67 @@
 
                 <a class="navbar-brand" href=@Url.Action("Index", "Home")>
                     <img src="~/images/LogoPitAgora.svg" alt="Logo del sitio" width="600" height="auto">
-                   
-                    </a>
 
-                    <a href="#" class="inicioSesion ms-auto me-2 mt-n1 d-md-none">
-                        <i class="bi bi-person-fill text-white display-4"></i>
-                    </a>
+                </a>
 
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#enlacesMenuPrincipal" aria-controls="enlacesMenuPrincipal" aria-expanded="false"
-                            aria-label="Conmutar navegación">
-                        <i class="bi bi-list display-1"></i>
-                    </button>
+                <a href="#" class="inicioSesion ms-auto me-2 mt-n1 d-md-none">
+                    <i class="bi bi-person-fill text-white display-4"></i>
+                </a>
 
-                    <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
-                        <ul class="navbar-nav">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#enlacesMenuPrincipal" aria-controls="enlacesMenuPrincipal" aria-expanded="false"
+                        aria-label="Conmutar navegación">
+                    <i class="bi bi-list display-1"></i>
+                </button>
 
-                            <li class="nav-item">
-                                <a class="nav-link active" href=@Url.Action("Index", "Home")>
-                                    Accueil
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=@Url.Action("Connexion", "Home")>
-                                    Connexion
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=@Url.Action("Inscription", "Home")>
-                                    Inscription
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=@Url.Action("Postuler", "Home")>
-                                    Postuler
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=@Url.Action("Profs", "Home")>
-                                    Profs
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=@Url.Action("Contact", "Home")>
-                                    Contact
-                                </a>
-                            </li>
+                <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
+                    <ul class="navbar-nav">
 
-                        </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" href=@Url.Action("Index", "Home")>
+                                Accueil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Connexion", "Login")>
+                                Connexion
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Inscription", "Home")>
+                                Inscription
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Postuler", "Home")>
+                                Postuler
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Profs", "Home")>
+                                Profs
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                                Contact
+                            </a>
+                        </li>
 
-                    </div>
+                    </ul>
+
+                </div>
 
 
-</div>
+            </div>
         </nav>
         <!-- Fin NavBar -->
+        <div class="container" style="border:215px solid black">
+            @RenderSection("Main")
+        </div>
 
-        @RenderSection("Main")
     </header>
     <!-- FIN ENCABEZADO -->
-
     <!-- INICIO PLAN DE ACCIÓN -->
     <main class="planDeAccion py-5">
         <div class="container">
@@ -152,8 +154,6 @@
         </div>
     </main>
     <!-- FIN PLAN DE ACCIÓN -->
-
-
     @RenderSection("Aide", required:false)
     <!-- INICIO TE AYUDAMOS -->
     <!-- FIN TE AYUDAMOS -->
@@ -174,7 +174,7 @@
                         <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
                         <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
                     </ul>
-             
+
 
                 </div>
                 <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0 ms-lg-auto">
@@ -192,7 +192,7 @@
                         <li><a href="#">Qui</a></li>
                         <li><a href="#">Pourquoi</a></li>
                         <li><a href="#">Comment</a></li>
-                        
+
                     </ul>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-2 mb-5 mb-lg-0">
@@ -212,7 +212,7 @@
 
         </div>
     </footer>
-    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required:false)
 </body>
 
 </html>

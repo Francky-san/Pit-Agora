@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace PitAgora.Models
 {
     public class Personne
-    {
+    {   
         public int Id { get; set; }
         [Required(ErrorMessage = "Le Nom doit être renseigné.")]
         public string Nom { get; set; }

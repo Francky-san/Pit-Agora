@@ -19,7 +19,7 @@ namespace PitAgora.Controllers
         }
 
 
-        public IActionResult AccueilEleve(int id)
+        public IActionResult AccueilEleve(Eleve eleve)
         {
             return View();
         }
@@ -41,13 +41,15 @@ namespace PitAgora.Controllers
 
             using (BddContext ctx = new BddContext())
             {   // rajouter : critère distance pour Présentiel, critère ancienneté pour Distanciel
+
                 var query = from c in ctx.Creneaux
-                            join p in ctx.Professeurs on c.ProfesseurId equals p.Id
-                            join np in ctx.NiveauxProfs on p.Id equals np.ProfesseurId
-                            join n in ctx.Niveaux on np.NiveauId equals n.Id
-                            where n.Intitule.Equals(gpeNiveau) && c.Debut.CompareTo(debutJournee) >= 0 && c.Debut.CompareTo(finJournee) < 0 && (p.Matiere1.Equals(matiere) || p.Matiere2.Equals(matiere))
-                            orderby p.Id, c.Debut
-                            select new { c.ProfesseurId, c.Debut, c.Id };   //  comment limiter à 50 ?
+                             join p in ctx.Professeurs on c.ProfesseurId equals p.Id
+                             join np in ctx.NiveauxProfs on p.Id equals np.ProfesseurId
+                             join n in ctx.Niveaux on np.NiveauId equals n.Id
+                             where n.Intitule.Equals(gpeNiveau) && c.Debut.CompareTo(debutJournee) >= 0 && c.Debut.CompareTo(finJournee) < 0 && (p.Matiere1.Equals(matiere) || p.Matiere2.Equals(matiere))
+
+
+                             select new { c.ProfesseurId, c.Debut, c.Id };
 
                 List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();
 
