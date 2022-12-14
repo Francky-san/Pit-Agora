@@ -1,0 +1,14 @@
+﻿@model PitAgora.Models.Eleve
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Accueil Parent";
+}
+
+@section Fieldset{
+    Vue parent : 
+}
+@section Champ1{
+        Parent de :  @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
+            Je suis @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
+}
+ <li>Salut @Model.Parent.Utilisateur.Personne.Prenom</li>

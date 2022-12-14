@@ -14,6 +14,7 @@ namespace PitAgora.Controllers
             return View();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         public IActionResult Connexion()
@@ -47,6 +48,9 @@ namespace PitAgora.Controllers
             return View();
         }
 >>>>>>> da68669 (Commit avant intégration layout MK)
+=======
+
+>>>>>>> fe12a3f (Commit avant récup master Layout)
         public IActionResult AfficherInfosPerso(int Id)
         {
             DalEleve dal = new DalEleve();
@@ -57,15 +61,15 @@ namespace PitAgora.Controllers
             Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
             if (eleve != null)
             {
-                return View("AfficherInfosPerso", eleve) ;
+                return View("AcceuilEleve", eleve) ;
             }
             else if (prof != null)
             {
-                return View("InfosProf", prof);
+                return View("AccueilProf", prof);
             }
             else if (eleve1 != null)
             {
-                return View("InfosParent", eleve1);
+                return View("AccueilParent", eleve1);
             }
             return View();
         }

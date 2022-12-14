@@ -22,7 +22,7 @@ namespace PitAgora
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = "/Login/Index";
+                options.LoginPath = "/Login/Connexion";
 
             });
             services.AddControllersWithViews();
