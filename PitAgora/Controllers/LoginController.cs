@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace PitAgora.Controllers

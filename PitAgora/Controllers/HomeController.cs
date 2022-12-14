@@ -13,6 +13,7 @@ namespace PitAgora.Controllers
 
             return View();
         }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         public IActionResult Connexion()
@@ -40,25 +41,31 @@ namespace PitAgora.Controllers
         }
 
 =======
+=======
+        public IActionResult AfficherInfosEleve(Eleve eleve)
+        {
+            return View();
+        }
+>>>>>>> da68669 (Commit avant intégration layout MK)
         public IActionResult AfficherInfosPerso(int Id)
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();
             DalProf dalProf = new DalProf();
             Professeur prof = dalProf.ObtientTousLesProfesseurs().Where(e => e.UtilisateurId == Id).FirstOrDefault();
-            DalParent dalParent= new DalParent();
-            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e=>e.ParentId == Id).FirstOrDefault();
+            DalParent dalParent = new DalParent();
+            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
             if (eleve != null)
             {
-                return View("AccueilEleve", eleve);
+                return View("AfficherInfosPerso", eleve) ;
             }
             else if (prof != null)
             {
-                return View("AccueilProfesseur", prof);
+                return View("InfosProf", prof);
             }
-            else if(eleve1 != null)
+            else if (eleve1 != null)
             {
-                return View("AccueilParent", eleve1);
+                return View("InfosParent", eleve1);
             }
             return View();
         }
