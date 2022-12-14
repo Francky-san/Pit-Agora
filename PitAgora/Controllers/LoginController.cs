@@ -15,7 +15,7 @@ namespace PitAgora.Controllers
         {
             dal = new DalGen();
         }
-        public IActionResult Index()
+        public IActionResult Connexion()
         {
             UtilisateurViewModel viewModel = new UtilisateurViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
             if (viewModel.Authentifie)
@@ -27,7 +27,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(UtilisateurViewModel viewModel, string returnUrl)
+        public IActionResult Connexion(UtilisateurViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {

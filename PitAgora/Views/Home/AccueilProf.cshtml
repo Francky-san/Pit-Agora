@@ -1,0 +1,14 @@
+﻿@model PitAgora.Models.Professeur
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Accueil infos eleve";
+}
+
+@section Fieldset{
+    Vue Prof :
+}
+@section Champ1{
+                    prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom .
+                    J'enseigne @Model.Matiere1 
+}
+<li>Salut @Model.Utilisateur.Personne.Prenom</li>
