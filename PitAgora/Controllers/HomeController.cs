@@ -14,6 +14,7 @@ namespace PitAgora.Controllers
             return View();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         public IActionResult Inscription()
@@ -35,11 +36,16 @@ namespace PitAgora.Controllers
 =======
 >>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
 =======
+=======
+>>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
         public IActionResult AfficherInfosEleve(Eleve eleve)
         {
             return View();
         }
+<<<<<<< HEAD
 >>>>>>> da68669 (Commit avant intégration layout MK)
+=======
+>>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
         public IActionResult AfficherInfosPerso(int Id)
         {
             DalEleve dal = new DalEleve();
@@ -48,10 +54,14 @@ namespace PitAgora.Controllers
             Professeur prof = dalProf.ObtientTousLesProfesseurs().Where(e => e.UtilisateurId == Id).FirstOrDefault();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
             DalParent dalParent = new DalParent();
             Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
             if (eleve != null)
             {
+<<<<<<< HEAD
                 return View("AccueilEleve", eleve) ;
             }
             else if (prof != null)
@@ -72,6 +82,8 @@ namespace PitAgora.Controllers
 >>>>>>> da68669 (Commit avant intégration layout MK)
             if (eleve != null)
             {
+=======
+>>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
                 return View("AfficherInfosPerso", eleve) ;
             }
             else if (prof != null)
@@ -83,7 +95,10 @@ namespace PitAgora.Controllers
                 return View("InfosParent", eleve1);
             }
             return View();
+<<<<<<< HEAD
 >>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
+=======
+>>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
         }
     }
 }

@@ -28,6 +28,7 @@ namespace PitAgora
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Méthode création d'élève, pourquoi 2?
 =======
 
@@ -35,6 +36,9 @@ namespace PitAgora
 =======
         //Méthode création d'élève, pourquoi 2?
 >>>>>>> da68669 (Commit avant intégration layout MK)
+=======
+        //Méthode création d'élève, pourquoi 2?
+>>>>>>> da68669f75ba9138d8fe2df4863f76cb4badb97f
         public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
         {
             DalGen dal = new DalGen();
