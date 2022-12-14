@@ -1,47 +1,218 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+
+<html lang="fr">
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil Pit'Agora</title>
-    <link rel="stylesheet" href="/css/Sheet.css">
+    <title>PIT'AGORA | Prépare ton avenir</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="~/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="~/images/favicon/ico.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/images/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="~/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/libs/bootstrap-icons/bootstrap-icons.css">
+    <link href="~/css/estilos.css" rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="container">
+    <!-- INICIO entete -->
+    <header class="encabezado bg-dark vh-100 position-left py-md-4 fondoCover">
 
-        <div class="logo">
-            <a href="https://localhost:5001"> <img src="./Images/LogoEfecto.png" alt="logo Pit'Agora" style="display: block;" border="0"></a>
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-md navbar-dark  z-index-1">
+            <div class="container">
+
+                <a class="navbar-brand" href=@Url.Action("Index", "Home")>
+                    <img src="~/images/LogoPitAgora.svg" alt="Logo del sitio" width="600" height="auto">
+                   
+                    </a>
+
+                    <a href="#" class="inicioSesion ms-auto me-2 mt-n1 d-md-none">
+                        <i class="bi bi-person-fill text-white display-4"></i>
+                    </a>
+
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#enlacesMenuPrincipal" aria-controls="enlacesMenuPrincipal" aria-expanded="false"
+                            aria-label="Conmutar navegación">
+                        <i class="bi bi-list display-1"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href=@Url.Action("Index", "Home")>
+                                    Accueil
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Connexion", "Home")>
+                                    Connexion
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Inscription", "Home")>
+                                    Inscription
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Postuler", "Home")>
+                                    Postuler
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Profs", "Home")>
+                                    Profs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                                    Contact
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+</div>
+        </nav>
+        <!-- Fin NavBar -->
+
+        @RenderSection("Main")
+    </header>
+    <!-- FIN ENCABEZADO -->
+
+    <!-- INICIO PLAN DE ACCIÓN -->
+    <main class="planDeAccion py-5">
+        <div class="container">
+
+            <header class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-secondary tituloconLinea">Concept Pit'Agora</h1>
+
+                <p class=" fw-light my-0 text-muted">
+                    Dessinons ensemble ton plan d'action
+                </p>
+
+            </header>
+            <div class="row row-cols-1 row-cols-md-3  text-center">
+                <div class="col mb-3">
+                    <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
+                        <img src="~/images/accionBranding.svg" alt="Brading" width="auto" height="70">
+                        <h2 class="h3 text-secondary fw-bold my-3">Nos Profs</h2>
+                        <p>
+                            Recrutés avec soin,
+                            nos professeurs sont hautement qualifiés
+                            et toujours à l'écoute
+                        </p>
+                        <a href="#" class="fw-bold">Info</a>
+
+                    </article>
+
+                </div>
+                <div class="col mb-3">
+                    <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
+                        <img src="~/images/accionDisenoUX.svg" alt="Diseño UX" width="auto" height="70">
+                        <h2 class="h3 text-secondary fw-bold my-3">Pythos</h2>
+                        <p>
+                            Pit'Agora recompense ta participation avec des Pythos échangeables chez nos partenaires
+                        </p>
+                        <a href="#" class="fw-bold">Info</a>
+
+                    </article>
+
+                </div>
+                <div class="col mb-3">
+                    <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
+                        <img src="~/images/accionExtrategia360.svg" alt="Extratégia 360" width="auto" height="70">
+                        <h2 class="h3 text-secondary fw-bold my-3">Binôme</h2>
+                        <p>
+                            Concept binôme ou Apprendre à deux
+                        </p>
+                        <a href="#" class="fw-bold">Info</a>
+
+                    </article>
+                </div>
+            </div>
         </div>
+    </main>
+    <!-- FIN PLAN DE ACCIÓN -->
 
-        <div class="slogan">
-            <strong>
-                Pit'Agora N°1 du soutien scolaire dans les matieres scientifiques
-            </strong>
+
+    @RenderSection("Aide", required:false)
+    <!-- INICIO TE AYUDAMOS -->
+    <!-- FIN TE AYUDAMOS -->
+    @RenderSection("Projets", required: false)
+    <!-- INICIO PROYECTOS -->
+    <!-- FIN DE PROYECTOS -->
+    @RenderSection("Manolito",required:false)
+
+    <!-- INICIO PIE DE PÁGINA -->
+    <footer class="pieDePagina bg-dark text-white pt-5">
+        <div class="container">
+            <div class="row text-center text-lg-start">
+
+                <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
+                    <img src="~/images/LogoPitAgora.svg" width="200" height="auto" alt="Logo
+                del sitio">
+                    <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
+                        <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
+                        <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
+                    </ul>
+             
+
+                </div>
+                <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0 ms-lg-auto">
+                    <h5 class=" fw-bold mb-4">Partenaires</h5>
+                    <ul class="list-unstyled d-grid gap-2">
+                        <li><a href="#">Micromania</a></li>
+                        <li><a href="#">FNAC</a></li>
+                        <li><a href="#">.....</a></li>
+                        <li><a href="#">.......</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0">
+                    <h5 class=" fw-bold mb-4">A propos</h5>
+                    <ul class="list-unstyled d-grid gap-2">
+                        <li><a href="#">Qui</a></li>
+                        <li><a href="#">Pourquoi</a></li>
+                        <li><a href="#">Comment</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-2 mb-5 mb-lg-0">
+                    <h5 class=" fw-bold mb-4">Contact</h5>
+                    <ul class="list-unstyled d-grid gap-2">
+                        <li><a href="#">Pédagogie</a></li>
+                        <li><a href="#">Agora</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="creditos mt-lg-4 mb-0 py-4 text-center text-muted small">
+                Copyright © 2022 Pit'Agora.fr Tous droits réservés.
+            </p>
+
+
         </div>
-
-        <div class="navigation">
-            <ul class="liste-menu">
-                @RenderBody()
-            </ul>
-        </div>
-        <div class="content">
-            <ul>
-                <fieldset>
-                    <legend class="fieldset"><strong>@RenderSection("Fieldset",required:true)</strong></legend>
-                    @RenderSection("Champ1", required:true)
-                </fieldset>
-
-                @RenderSection("Champ2", required:false)
-
-            </ul>
-        </div>
-
-
-    </div>
-
-    <div class="footer">&copy; @DateTime.Now.Year - Pit'Agora, entreprise créée en 2022</div>
-
+    </footer>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
