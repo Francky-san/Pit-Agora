@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Security.Cryptography;
+
 
 namespace PitAgora.Models
 {
@@ -25,6 +28,20 @@ namespace PitAgora.Models
             optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
 
         }
+
+        //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
+        public Utilisateur Authentifier(string mail, string motDePasse)
+        {
+            string password = EncodeMD5(motDePasse);
+            Utilisateur user = Utilisateurs.FirstOrDefault(u => u.Mail == mail && u.MotDePasse == password);
+            return user;
+        }
+        public string EncodeMD5(string motDePasse)
+        {
+            string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
+
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
+        }
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();
@@ -35,6 +52,7 @@ namespace PitAgora.Models
             {
                 dal.CreerTableNiveaux();
             }
+
 
             // Création de parents, d'élèves, de profs et de créneaux avec les méthodes dédiées
             using (DalParent dal = new DalParent()) { 

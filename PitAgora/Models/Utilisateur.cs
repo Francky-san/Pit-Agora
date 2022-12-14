@@ -1,4 +1,7 @@
-﻿namespace PitAgora.Models
+﻿using System.Text;
+using System;
+
+namespace PitAgora.Models
 {
     public class Utilisateur
     { 
@@ -10,5 +13,6 @@
         public string Adresse { get; set; }
         public float Longitude { get; set; }
         public float Latitude { get; set; }
+
     }
 }
