@@ -27,10 +27,14 @@ namespace PitAgora
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Méthode création d'élève, pourquoi 2?
 =======
 
 >>>>>>> 3f8da31 (Ajout méthode AfficherInfos HomeController)
+=======
+        //Méthode création d'élève, pourquoi 2?
+>>>>>>> da68669 (Commit avant intégration layout MK)
         public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
         {
             DalGen dal = new DalGen();
