@@ -10,7 +10,6 @@ namespace PitAgora.Controllers
     {
         public IActionResult AccueilGeneral()
         {
-          
 
             return View();
         }

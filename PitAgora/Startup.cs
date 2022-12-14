@@ -54,7 +54,7 @@ namespace PitAgora
             {
                 endpoints.MapControllerRoute(
           name: "default",
-                  pattern: "{controller=Home}/{action=AccueilGeneral}/{id?}");
+                  pattern: "{controller=Eleve}/{action=ChercherCours}/{id?}");
             });
 
         }

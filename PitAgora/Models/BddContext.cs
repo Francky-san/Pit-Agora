@@ -22,7 +22,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
 
         }
         public void InitializeDb()

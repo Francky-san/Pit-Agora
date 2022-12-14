@@ -14,9 +14,9 @@ namespace PitAgora.Models
         public DateTime Debut { get; set; }
 
         public int ProfesseurId { get; set; }
+        public virtual Professeur Professeur { get; set;}
 
         public int? ReservationId { get; set; }
-
         public virtual Reservation Reservation { get; set; }
 
 

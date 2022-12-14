@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil Pit'Agora</title>
     <link rel="stylesheet" href="/css/Sheet.css">
+    @RenderSection("Css", required:false)
+
 </head>
 <body>
 
@@ -29,8 +31,8 @@
         <div class="content">
             <ul>
                 <fieldset>
-                    <legend class="fieldset"><strong>@RenderSection("Fieldset",required:true)</strong></legend>
-                    @RenderSection("Champ1", required:true)
+                    <legend class="fieldset"><strong>@RenderSection("Fieldset",required:false)</strong></legend>
+                    @RenderSection("Champ1", required:false)
                 </fieldset>
 
                 @RenderSection("Champ2", required:false)
@@ -43,5 +45,6 @@
 
     <div class="footer">&copy; @DateTime.Now.Year - Pit'Agora, entreprise créée en 2022</div>
 
+    @RenderSection("Scripts", required:false)
 </body>
 </html>
