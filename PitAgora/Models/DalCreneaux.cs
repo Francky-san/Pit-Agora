@@ -15,9 +15,9 @@ namespace PitAgora.Models
             _bddContext.Dispose();
         }
 
-        public int CreerCreneau(DateTime debut, int profId)
+        public int CreerCreneau(DateTime debut)
         {
-            Creneau creneau = new Creneau() { Debut=debut, ProfesseurId=profId};
+            Creneau creneau = new Creneau() { Debut = debut};
             _bddContext.Creneaux.Add(creneau);
             _bddContext.SaveChanges();
             return creneau.Id;
@@ -28,6 +28,6 @@ namespace PitAgora.Models
             return _bddContext.Creneaux.Find(id);
         }
 
-        
+
     }
 }

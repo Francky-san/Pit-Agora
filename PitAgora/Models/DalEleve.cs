@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PitAgora.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
 
-namespace PitAgora
+namespace PitAgora.Models
 {
     public class DalEleve : IDisposable
     {
@@ -23,9 +22,20 @@ namespace PitAgora
         //Méthode de récupération des élèves, jointures utilisateur personne et parent. Sert aussi à construire vue parent
         public List<Eleve> ObtientTousLesELeves()
         {
-            return _bddContext.Eleves.Include(e=>e.Utilisateur).ThenInclude(u=>u.Personne).Include(e=>e.Parent).ToList();
+            return _bddContext.Eleves.Include(e => e.Utilisateur).ThenInclude(u => u.Personne).Include(e => e.Parent).ToList();
         }
 
+        public Eleve ObtiensUnEleve(int id)
+        {
+            Eleve unEleve = _bddContext.Eleves.Find(id);
+            return unEleve;
+        }
+
+        public List<Reservation> ObtenirReservations(int eleveId)
+        {
+            //Comment retourner une liste de type Reservation????
+            return _bddContext.AReserves.Where(a=>a.EleveId == eleveId).Include(a=>a.Reservation).ToList();
+        }
         public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
         {
             DalGen dal = new DalGen();

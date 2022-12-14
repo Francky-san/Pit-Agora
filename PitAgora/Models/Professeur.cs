@@ -11,6 +11,7 @@ namespace PitAgora.Models
         public string Matiere1 { get; set; }
         public string Matiere2 { get; set; }
         public int CreditProf { get; set; }
-        public int ReservationId { get; set; }
+        //suppression FK reservation creneau = table intermediaire prof/reservation
+      
     }
 }

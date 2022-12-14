@@ -1,4 +1,4 @@
-﻿@model PitAgora.Models.Parent
+﻿@model PitAgora.ViewModels.ParentViewModel
 @{
     Layout = "LayoutPrive";
 
@@ -10,10 +10,30 @@
     Vue parent : 
 
 
-        Parent de :  @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
-         
+        Parent de :  @Model.Eleve.Utilisateur.Personne.Prenom nom : @Model.Eleve.Utilisateur.Personne.Nom
+
+        Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
+
+        Les réservations de mon enfant :
+           <table>
+                <thead>
+                    <th>Horaire</th>
+                    <th>Matiere</th>
+            <th>Niveau</th>
+            <th>Prix</th>
+
+            </thead>
+        @foreach(var items in Model.Reservations)
+        {
+                <tr> @items.Horaire </tr>
+                <tr> @items.Matiere </tr>
+                <tr> @items.Niveau </tr>
+                <tr> @items.Prix </tr>
 
 
+           
+        }
+    </table>
 
-     </div>
+    </div>
 }

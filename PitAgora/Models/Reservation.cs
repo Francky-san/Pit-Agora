@@ -8,17 +8,12 @@ namespace PitAgora.Models
     public class Reservation
     {
         public int Id { get; set; }
-        public int Eleve1Id { get; set; }
-        public virtual Eleve Eleve1 { get; set; }
-        public int? Eleve2Id { get; set; }
-        public virtual Eleve Eleve2 { get; set; }
-        public int ProfesseurId { get; set; }
+        //Suppression FK Eleve, la table intermediaire pointe vers Eleve et pointe vers Reservation, relation plsrs à plsrs
 
+        //Suppression FK prof, prof pointe créneau qui pointe réservation, relation un à plsrs.
         public MatiereEnum Matiere { get; set; }
         public NiveauEnum Niveau { get; set; }
-
         public DateTime Horaire { get; set; }
-        public List<Creneau> Creneaux { get; set; }
         public float Prix { get; set; }
         public bool EstEnBinome { get; set; }
         public bool EstEnPresentiel { get; set; }

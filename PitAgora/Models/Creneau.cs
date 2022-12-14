@@ -13,10 +13,12 @@ namespace PitAgora.Models
 
         public DateTime Debut { get; set; }
 
-        public int ProfesseurId { get; set; }
+       //FK vers professeur, relation plsrs creneaux appartiennent à un prof
+       public int? ProfesseurId { get; set; }
+        public Professeur Professeur { get; set; }
 
+        //FK vers reservation, relation plsrs à un. Un créneaux peut appartenir à une seule résa
         public int? ReservationId { get; set; }
-
         public virtual Reservation Reservation { get; set; }
 
 

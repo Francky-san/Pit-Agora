@@ -2,6 +2,7 @@
 using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PitAgora.Controllers
@@ -33,10 +34,14 @@ namespace PitAgora.Controllers
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();
+            dal.ObtenirReservations(eleve.Id);
             DalProf dalProf = new DalProf();
             Professeur prof = dalProf.ObtientTousLesProfesseurs().Where(e => e.UtilisateurId == Id).FirstOrDefault();
             DalParent dalParent = new DalParent();
             Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
+            Parent parent = dalParent.ObtientTousLesParents().Where(p => p.UtilisateurId == Id).FirstOrDefault();
+            List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
+            ParentViewModel pvm = new ParentViewModel { Eleve=eleve1, Parent=parent, Reservations=resaEleve1};
             if (eleve != null)
             {
                 return View("AccueilEleve", eleve) ;

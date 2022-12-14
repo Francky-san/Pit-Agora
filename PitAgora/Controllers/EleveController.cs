@@ -40,8 +40,7 @@ namespace PitAgora.Controllers
             DateTime finJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 23, 59, 59);
 
             using (BddContext ctx = new BddContext())
-            {   // rajouter : critère distance pour Présentiel, critère ancienneté pour Distanciel
-
+            {   // rajouter : critère distance pour Présentiel, critère ancienneté pour Distanciel         
                 var query = from c in ctx.Creneaux
                              join p in ctx.Professeurs on c.ProfesseurId equals p.Id
                              join np in ctx.NiveauxProfs on p.Id equals np.ProfesseurId

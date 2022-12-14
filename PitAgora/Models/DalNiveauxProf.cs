@@ -17,7 +17,7 @@ namespace PitAgora.Models
 
         public void CreerNiveauxProf(int profId, int niveauId)
         {
-            NiveauxProf niveauxProf = new NiveauxProf() { ProfesseurId=profId, NiveauId=niveauId };
+            NiveauxProf niveauxProf = new NiveauxProf() { ProfesseurId = profId, NiveauId = niveauId };
             _bddContext.NiveauxProfs.Add(niveauxProf);
             _bddContext.SaveChanges();
         }

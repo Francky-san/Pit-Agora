@@ -8,10 +8,12 @@
 
         public int ParentId { get; set; }
         public Parent Parent { get; set; }
+        //Suppression FK reservation, table AReserve = table intermediaire eleve/reservation
 
-       public int CreditPythos { get; set; }
-       public int CreditCours { get; set; }
 
-       
+        public int CreditPythos { get; set; }
+        public int CreditCours { get; set; }
+
+
     }
 }

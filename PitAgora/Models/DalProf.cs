@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PitAgora.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
 
-namespace PitAgora
+namespace PitAgora.Models
 {
     public class DalProf : IDisposable
     {
@@ -24,20 +23,20 @@ namespace PitAgora
         //Méthode récupérer liste complète des professeurs avec jointures utilisateur et personne pour accèder à tous les attributs
         public List<Professeur> ObtientTousLesProfesseurs()
         {
-            return _bddContext.Professeurs.Include(p=>p.Utilisateur).ThenInclude(u=>u.Personne).ToList();
+            return _bddContext.Professeurs.Include(p => p.Utilisateur).ThenInclude(u => u.Personne).ToList();
         }
 
         //Méthode création d'un profeseur
-        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere1, string matiere2="")
+        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere1, string matiere2 = "")
         {
             string mdp = _bddContext.EncodeMD5(motDePasse);
             Personne personne = new Personne { Nom = nom, Prenom = prenom };
             _bddContext.Personnes.Add(personne);
             _bddContext.SaveChanges();
-            Utilisateur utilisateur = new Utilisateur {PersonneId=personne.Id,Mail= mail,MotDePasse= mdp, Adresse = adresse };
+            Utilisateur utilisateur = new Utilisateur { PersonneId = personne.Id, Mail = mail, MotDePasse = mdp, Adresse = adresse };
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
-            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id, Matiere1 = matiere1, Matiere2 = matiere2 };
+            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id, Matiere1 = matiere1, Matiere2 = matiere2};
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges();
             return professeur.Id;
@@ -50,6 +49,10 @@ namespace PitAgora
             return p.Prenom + " " + p.Nom;
         }
 
+        public List<Creneau> ListCreneaux(int profId) 
+        { 
+            return _bddContext.Creneaux.Where(c=>c.ProfesseurId== profId).ToList();
+        }
 
     }
 }
