@@ -10,8 +10,18 @@ namespace PitAgora.Controllers
     {
         public IActionResult AccueilGeneral()
         {
+<<<<<<< HEAD
           
 
+=======
+
+
+            return View();
+        }
+
+        public IActionResult Connexion()
+        {
+>>>>>>> 75c1ae7 (mk/LayoutV1)
             return View();
         }
 

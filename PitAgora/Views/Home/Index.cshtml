@@ -1,0 +1,143 @@
+﻿@model PitAgora.ViewModels.HomeViewModel
+@{ Layout = "_Layout";
+    ViewBag.Title = "Accueil Pit'Agora"; }
+
+
+@section Main{
+    <section class="bienvenidos position-absolute w-100 top-50 start-50 translate-middle">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-9 text-center text-white">
+                    <h1 class="display-3 fw-bold mb-0">
+                        Affirme tes forces
+                        Construisons ton avenir
+                    </h1>
+                    <p class="fs-5 my-4">
+                        Pit'Agora N°1 en soutien scolaire dans les matières scientifiques
+
+                    </p>
+                    <div class="d-grid gap-2 d-sm-block">
+                        <a href="#" class="btn btn-primary me-sm-2">Inscription</a>
+                        <a href="#" class="btn btn-outline-light">Connexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
+<!--DEBUT AIDE -->
+
+@section Aide{
+    <section class="teAyudamos py-5 text-white text-center fondoCover">
+        <div class="container py-lg-4">
+
+            <header class=" mb-5">
+                <h1 class="display-5 fw-bold tituloconLinea">
+                    Profite du réseau Agora et gagne des Pythos
+                </h1>
+
+            </header>
+            <div class="row justify-content-md-center">
+
+                <div class="col-12 col-md-8 col-xl-7 col-xxl-6 mb-4">
+                    <p class="lead">
+                        Prêt à démarrer votre projet mais quelques doutes subsistent ?
+                        Laisse-nous ton e-mail. Un membre de notre équipe pédagogique te contactera
+                        dans les plus brefs délais
+                    </p>
+
+                </div>
+                <div class="col-12 col-md-8 col-xl-7">
+                    <form action="#" class="formTeAyudamos">
+
+                        <div class="input-group mb-3">
+
+                            <input type="email" name="miEmail" id="miEmail" class="form-control"
+                                   placeholder="Votre E-mail..." aria-label="Ingrese su correo email..."
+                                   aria-describedby="enviarSuscripcion">
+
+                            <button class="btn btn-primary px-4 py-2 px-lg-5 py-lg-3" type="button"
+                                    id="enviarSuscripcion">
+                                <i class="bi bi-hand-thumbs-up-fill fs-1 d-lg-none"></i>
+                                <span class="d-none d-lg-block">Envoyer</span>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+    <!--FIN AIDE-->
+}
+<!--DEBUT PROJETS-->
+@section Projets{
+    <section class="proyectos text-center pt-5">
+        <div class="container">
+            <header class="mb-5">
+                <h1 class="display-5 text-secondary fw-bold tituloconLinea">
+                    Quelques créations de nos étudiants
+                </h1>
+
+            </header>
+        </div>
+        <div class="container-fluid p-0 bg-danger">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-0">
+                <div class="col">
+                    <a href="#" class="itemProyecto">
+                        <img src="images/proyectos/proyecto-1.jpg" alt="Proyecto
+                        1" width="100%" height="auto">
+                        <h3>Proyecto 1</h3>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="itemProyecto">
+
+                        <img src="images/proyectos/proyecto-2.jpg" alt="Proyecto
+                        2" width="100%" height="auto">
+                        <h3>Proyecto 2</h3>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="itemProyecto">
+                        <img src="images/proyectos/proyecto-3.jpg" alt="Proyecto
+                        3" width="100%" height="auto">
+                        <h3>Proyecto 3</h3>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <a href="#" class="itemProyecto">
+                        <img src="images/proyectos/proyecto-4.jpg" alt="Proyecto
+                        4" width="100%" height="auto">
+                        <h3>Proyecto 4</h3>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <a href="#" class="itemProyecto">
+                        <img src="images/proyectos/proyecto-5.jpg" alt="Proyecto
+                        5" width="100%" height="auto">
+                        <h3>Proyecto 5</h3>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <a href="#" class="itemProyecto">
+                        <img src="images/proyectos/proyecto-6.jpg" alt="Proyecto
+                        6" width="100%" height="auto">
+                        <h3>Proyecto 6</h3>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+}
+    <!--FIN PROJETS-->
