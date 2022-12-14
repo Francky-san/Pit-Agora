@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/libs/bootstrap-icons/bootstrap-icons.css">
     <link href="~/css/estilos.css" rel="stylesheet">
+    @RenderSection("css" , required:false)
 </head>
 
 <body>
@@ -93,7 +94,10 @@
             </div>
         </nav>
         <!-- Fin NavBar -->
-        @RenderSection("Main")
+        <div class="container" style="border:215px solid black">
+            @RenderSection("Main")
+        </div>
+
     </header>
     <!-- FIN ENCABEZADO -->
     <!-- INICIO PLAN DE ACCIÓN -->
@@ -208,7 +212,7 @@
 
         </div>
     </footer>
-    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required:false)
 </body>
 
 </html>

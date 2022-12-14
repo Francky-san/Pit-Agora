@@ -1,12 +1,13 @@
 ﻿@model PitAgora.Models.Reservation
 @{
-    Layout = "_Layout";
+    Layout = "LayoutPrive";
+
 
     ViewBag.Title = "Reservation d'un cours";
 }
 
 
-
+@section Main{
 
 @using (Html.BeginForm())
 {
@@ -25,4 +26,5 @@
         <input type="submit" value="ChercherCours" />
     </fieldset>
 
+}
 }

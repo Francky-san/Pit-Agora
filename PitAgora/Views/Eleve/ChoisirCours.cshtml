@@ -1,15 +1,16 @@
 ﻿@using PitAgora.Models;
 @model List<PitAgora.ViewModels.PlanningViewModel>
 @{
-    Layout = "_Layout";
+    Layout = "LayoutPrive";
+
 
     ViewBag.Title = "Reserver un cours";
 }
 
-@section Css {
+@section css {
     <link href="~/css/Planning.css" rel="stylesheet" />
 }
-
+@section Main{}
 <script>
     const selectionnes = [];
     var retour = "";
@@ -70,6 +71,7 @@
     <br />
 }
 <br />
+}
 
 @section Scripts {
     <script src="~/Scripts/ScriptsChoisirCours.js"></script>
