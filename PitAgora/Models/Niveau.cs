@@ -8,7 +8,34 @@ namespace PitAgora.Models
 {
     public class Niveau
     {
+          
+        public int Id { get; set; }
+        public string Intitule { get; set; }
+
+
         public static readonly List<string> lesNiveaux = new List<string>() { "scq", "ts", "pt" };
+        public enum NiveauEnum
+        {
+            [Display(Name = "6ème")]
+            sixieme,
+            [Display(Name = "5ème")]
+            cinquieme,
+            [Display(Name = "4ème")]
+            quatrieme,
+            [Display(Name = "3ème")]
+            troisieme,
+            [Display(Name = "2nde")]
+            seconde,
+            [Display(Name = "1ère Générale")]
+            premiereGenerale,
+            [Display(Name = "1ère Techno")]
+            premiereTechno,
+            [Display(Name = "Terminale Générale")]
+            terminaleGenerale,
+            [Display(Name = "Terminale Techno")]
+            terminaleTechno
+
+        }
 
         public static readonly Dictionary<NiveauEnum, string> dictNiveaux = new Dictionary<NiveauEnum, string>()
         {
@@ -23,10 +50,5 @@ namespace PitAgora.Models
             {NiveauEnum.terminaleTechno,"pt"}
             ,
         };
-            
-        public int Id { get; set; }
-        public string Intitule { get; set; }
-
-      
     }
 }

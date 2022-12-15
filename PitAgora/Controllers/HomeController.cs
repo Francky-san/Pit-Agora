@@ -39,11 +39,10 @@ namespace PitAgora.Controllers
             DalProf dalProf = new DalProf();
             Professeur prof = dalProf.ObtientTousLesProfesseurs().Where(e => e.UtilisateurId == Id).FirstOrDefault();
 
-            DalParent dalParent = new DalParent();
-            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
-            Parent parent = dalParent.ObtientTousLesParents().Where(p => p.UtilisateurId == Id).FirstOrDefault();
-            List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
-            ParentViewModel pvm = new ParentViewModel { Eleve=eleve1, Parent=parent, Reservations=resaEleve1};
+            //DalParent dalParent = new DalParent();
+            //Parent parent = dalParent.ObtientTousLesParents().Where(p => p.UtilisateurId == Id).FirstOrDefault();
+            //List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
+            //ParentViewModel pvm = new ParentViewModel { Eleve=eleve1, Parent=parent, Reservations=resaEleve1};
             if (eleve != null)
             {
                 return View("AccueilEleve", eleve) ;
@@ -52,10 +51,10 @@ namespace PitAgora.Controllers
             {
                 return View("AccueilProf", prof);
             }
-            else if (eleve1 != null)
-            {
-                return View("AccueilParent", pvm);
-            }
+            //else if (eleve1 != null)
+            //{
+            //    return View("AccueilParent", pvm);
+            //}
             return View("ERROR");
 
         }

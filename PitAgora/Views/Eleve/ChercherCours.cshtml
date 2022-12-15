@@ -1,4 +1,4 @@
-﻿@model PitAgora.Models.Reservation
+﻿@model PitAgora.Models.FormulaireRechercheCours
 @{
     Layout = "LayoutPrive";
 
@@ -9,22 +9,44 @@
 
 @section Main{
 
-@using (Html.BeginForm())
-{
+    @using (Html.BeginForm())
+    {
 
-    <fieldset>
-        <legend>Formulaire de réservation : </legend>
-        @Html.LabelFor(m => Model.Matiere)
-        @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
-        @Html.ValidationMessageFor(m => Model.Matiere)
-        <br />
-        <label for="niveau">Niveau :</label>
-        @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
-        <br />
-        @Html.LabelFor(m => Model.Horaire)
-        <input type="datetime-local" name="horaire">
-        <input type="submit" value="ChercherCours" />
-    </fieldset>
+        <fieldset>
+            <legend>Formulaire de réservation : </legend>
+            @Html.LabelFor(m => Model.Matiere)
+            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.Matiere.MatiereEnum>())
+            @Html.ValidationMessageFor(m => Model.Matiere)
+            <br />
+            <label for="niveau">Niveau :</label>
+            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.Niveau.NiveauEnum>())
+            <br />
+            @Html.LabelFor(m => Model.Horaire)
+            <br />
+            @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
+            @Html.LabelFor(m => Model.EstEnPresentiel)
+            <br />
+            <input type="checkbox" id="EstEnBinome" onselect="afficherContainerBinome">
+            <label>Binome</label>
+            <br />
+            <div id="ContainerBinome">
+                @Html.LabelFor(m => Model.PrenomBinome)
+                @Html.TextBoxFor(m =>Model.PrenomBinome)
+                @Html.LabelFor(m => Model.NomBinome)
+                @Html.TextBoxFor(m =>Model.NomBinome)
 
-}
+            </div>
+            <script>
+                function afficherContainerBinome() {
+                    const ContainerBinome = document.createElement("div");
+                }
+
+
+
+            </script>
+            <input type="datetime-local" name="horaire">
+            <input type="submit" value="ChercherCours" />
+        </fieldset>
+
+    }
 }

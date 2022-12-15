@@ -1,6 +1,8 @@
 ﻿using PitAgora.Models;
 using System;
 using System.Collections.Generic;
+using static PitAgora.Models.Matiere;
+using static PitAgora.Models.Niveau;
 
 namespace PitAgora.ViewModels
 {

@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-
+using static PitAgora.Models.Matiere;
+using static PitAgora.Models.Niveau;
 
 namespace PitAgora.Models
 {
@@ -139,8 +140,6 @@ namespace PitAgora.Models
                new Reservation
                {
                    Id = 1,
-                   Matiere = MatiereEnum.maths,
-                   Niveau = NiveauEnum.terminaleGenerale,
                    Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
                    Prix = 90,
                    EstEnBinome = false,
@@ -150,8 +149,6 @@ namespace PitAgora.Models
                new Reservation
                {
                    Id = 2,
-                   Matiere = MatiereEnum.svt,
-                   Niveau = NiveauEnum.terminaleTechno,
                    Horaire = new DateTime(2023, 01, 08, 17, 00, 00),
                    Prix = 90,
                    EstEnBinome = true,
