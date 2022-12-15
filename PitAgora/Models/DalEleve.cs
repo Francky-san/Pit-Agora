@@ -33,7 +33,7 @@ namespace PitAgora.Models
         {
             //Comment retourner une liste de type Reservation????
             var query = from r in _bddContext.Reservations
-                        join ar in _bddContext.AReserves on r.Id equals ar.ReservationId
+                        join ar in _bddContext.AReserve on r.Id equals ar.ReservationId
                         join e in _bddContext.Eleves on ar.EleveId equals e.Id
                         where ar.EleveId == eleveId
 

@@ -19,7 +19,9 @@ namespace PitAgora.Models
         public DbSet<Niveau> Niveaux { get; set; }
         public DbSet<NiveauxProf> NiveauxProfs { get; set; }
         public DbSet<DistanceDom> DistanceDoms { get; set; }
-        public DbSet<AReserve> AReserves { get; set; }
+        public DbSet<AReserve> AReserve { get; set; }
+        public DbSet<Matiere> Matieres { get; set; }
+        public DbSet<MatiereProf> MatiereProf { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -86,33 +88,48 @@ namespace PitAgora.Models
 
             using (DalCreneaux dal = new DalCreneaux())
             {
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00),1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00),1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00),2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00),2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00),3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00),3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00),4);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00),4);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00),4);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00),5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00),5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00),5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00),1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00),1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00),2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00),2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00),3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00),3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00),4);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00),4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 4);
             }
 
 
             // Création d'instances à la main
+            this.AReserve.AddRange(
+                new AReserve { EleveId = 1, ReservationId = 1 },
+                new AReserve { EleveId = 2, ReservationId = 2 },
+                new AReserve { EleveId = 3, ReservationId = 2 }
+                );
+
+            this.MatiereProf.AddRange(
+                new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
+                new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
+                new MatiereProf { MatiereId = 3, ProfesseurId = 3 },
+                new MatiereProf { MatiereId = 0, ProfesseurId = 4 },
+                new MatiereProf { MatiereId = 1, ProfesseurId = 2 },
+                new MatiereProf { MatiereId = 2, ProfesseurId = 1 },
+                new MatiereProf { MatiereId = 3, ProfesseurId = 5 }
+                );
 
             this.NiveauxProfs.AddRange(
                 new NiveauxProf() { ProfesseurId = 1, NiveauId = 1 },
@@ -155,11 +172,7 @@ namespace PitAgora.Models
                    EstValide = true
                }); ;
 
-            this.AReserves.AddRange(
-                new AReserve { EleveId = 1, ReservationId = 1 },
-            new AReserve { EleveId = 2, ReservationId = 2 },
-            new AReserve { EleveId = 3, ReservationId = 2 }
-            );
+
 
             this.SaveChanges();
 

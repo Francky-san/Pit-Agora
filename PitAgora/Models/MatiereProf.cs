@@ -7,6 +7,6 @@
         public int ProfesseurId { get; set; }
         public Professeur Professeur { get; set; }
         public int MatiereId { get; set; }
-        public Matiere Matiere { get; set; }
+        public MatiereEnum Matiere { get; set; }
     }
 }

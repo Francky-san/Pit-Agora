@@ -10,6 +10,6 @@ namespace PitAgora.ViewModels
         public Parent Parent { get; set; }
         public List<Reservation> Reservations { get; set; }
         //Constructeur
-        public ParentViewModel() { Eleve eleve; Parent parent; List<Reservation> resas; }
+        public ParentViewModel() { Eleve eleve; Parent parent; }
     }
 }
