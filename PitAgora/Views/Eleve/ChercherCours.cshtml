@@ -6,23 +6,43 @@
     ViewBag.Title = "Reservation d'un cours";
 }
 
+<<<<<<< HEAD
+<div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
+=======
 
 @section Main{
+>>>>>>> master
 
 @using (Html.BeginForm())
 {
 
     <fieldset>
-        <legend>Formulaire de réservation : </legend>
+        <legend>Formulaire de réservation</legend>
         @Html.LabelFor(m => Model.Matiere)
-        @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
+        @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
         @Html.ValidationMessageFor(m => Model.Matiere)
         <br />
-        <label for="niveau">Niveau :</label>
+        @Html.LabelFor(m => Model.Niveau)
         @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
         <br />
         @Html.LabelFor(m => Model.Horaire)
         <input type="datetime-local" name="horaire">
+
+        <table>
+            <tr>
+                <td>Chez toi ou par visio ?</td><td>Seul ou en binôme ?</td>
+            </tr>
+            <tr>
+                <td><input id="domicile" type="radio" name="lieu" value="domicile" /><label for="domicile">A domicile</label></td>
+                <td><input id="solo" type="radio" name="mode" value="solo" /><label for="solo">En solo</label></td>
+            </tr>
+            <tr>
+                <td><input id="visio" type="radio" name="lieu" value="visio" /><label for="visio">En visio</label></td>
+                <td><input id="binome" type="radio" name="mode" value="binome" /><label for="binome">En binôme</label></td>
+            </tr>
+        </table>
+        <br>
+
         <input type="submit" value="ChercherCours" />
     </fieldset>
 

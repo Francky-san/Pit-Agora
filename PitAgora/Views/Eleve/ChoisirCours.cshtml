@@ -10,7 +10,11 @@
 @section css {
     <link href="~/css/Planning.css" rel="stylesheet" />
 }
+<<<<<<< HEAD
+<!-- Variables de la page -->"
+=======
 @section Main{}
+>>>>>>> master
 <script>
     const selectionnes = [];
     var retour = "";
@@ -19,17 +23,18 @@
 </script>
 
 <!-- Formulaire caché, pour transmettre certaines informations-->
-<form id="choixCours" action="Eleve/CreerReservation" method="post">
+<form id="choixCours" action="Eleve/ConfirmerReservation" method="post">
     <input type="hidden" id="retourProf" name="professeurId" />
     <input type="hidden" name="matiere" value=@Model[0].Matiere />
     <input type="hidden" name="niveau" value=@Model[0].Niveau />
     <input type="hidden" id="retourCreneaux" name="creneaux" />
     <input type="hidden" id="retourPrix" name="prix" />
-    <input type="hidden" name="estEnBinome" value=@Model[0].EstEnBinom />
+    <input type="hidden" name="estEnBinome" value=@Model[0].EstEnBinom />           <!-- les deux booléens ne passent pas !-->
     <input type="hidden" name="estEnPresentiel" value=@Model[0].EstEnPresentiel />
 </form>
 
 <h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le @Model.First().Jour</h3>
+
 
 <div style="height:70px">
     <div style="float:left; width: 65%; padding:20px; font-size: large">Choisis au moins deux créneaux disponibles consécutifs</div>

@@ -43,11 +43,18 @@ namespace PitAgora
             return professeur.Id;
         }
 
+<<<<<<< HEAD
+        //Retourne une string contenant prenom + nom
+=======
         //Méthode de récupération de l'attribut prenom et nom d'un professeur 
+>>>>>>> master
         public string GetPrenomNom(int profId)
         {
-            Personne p = _bddContext.Professeurs.Find(profId).Utilisateur.Personne;
-            return p.Prenom + " " + p.Nom;
+            int utilisateurId = _bddContext.Professeurs.Find(profId).UtilisateurId;
+            int personneId = _bddContext.Utilisateurs.Find(utilisateurId).PersonneId;
+            Personne laPersonne = _bddContext.Personnes.Find(personneId);
+
+            return laPersonne.Prenom + " " + laPersonne.Nom;
         }
 
 
