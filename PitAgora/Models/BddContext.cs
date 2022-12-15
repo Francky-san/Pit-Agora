@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-using static PitAgora.Models.Matiere;
-using static PitAgora.Models.Niveau;
 
 namespace PitAgora.Models
 {
@@ -27,7 +24,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -59,7 +56,8 @@ namespace PitAgora.Models
 
 
             // Création de parents, d'élèves, de profs et de créneaux avec les méthodes dédiées
-            using (DalParent dal = new DalParent()) { 
+            using (DalParent dal = new DalParent())
+            {
                 dal.CreerParent("Terrieur", "Marc", "mterrieur@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.CreerParent("Vaudage", "Annie", "avaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
                 dal.CreerParent("Potter", "Mary", "avaudage@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
@@ -67,7 +65,8 @@ namespace PitAgora.Models
                 dal.CreerParent("Blueberry", "Jean", "avaudage@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
             }
 
-            using (DalEleve dal = new DalEleve()) {
+            using (DalEleve dal = new DalEleve())
+            {
                 dal.CreerEleve(1, "Terrieur", "Alain", "aterrieur1@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.CreerEleve(1, "Terrieur", "Alex", "aterrieur2@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.CreerEleve(2, "Vaudage", "Marie", "mvaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
@@ -87,29 +86,29 @@ namespace PitAgora.Models
 
             using (DalCreneaux dal = new DalCreneaux())
             {
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00));
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00));
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00),1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00),1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00),2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00),2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00),3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00),3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00),3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00),4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00),4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00),4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00),5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00),5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00),5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00),1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00),1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00),2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00),2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00),3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00),3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00),4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00),4);
             }
 
 

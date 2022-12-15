@@ -14,11 +14,11 @@
         <fieldset>
             <legend>Formulaire de réservation : </legend>
             @Html.LabelFor(m => Model.Matiere)
-            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.Matiere.MatiereEnum>())
+            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
             @Html.ValidationMessageFor(m => Model.Matiere)
             <br />
             <label for="niveau">Niveau :</label>
-            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.Niveau.NiveauEnum>())
+            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
             <br />
             @Html.LabelFor(m => Model.Horaire)
             <br />

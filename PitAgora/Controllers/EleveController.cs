@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using static PitAgora.Models.Matiere;
-using static PitAgora.Models.Niveau;
 
 namespace PitAgora.Controllers
 {
