@@ -1,4 +1,4 @@
-﻿@model PitAgora.Models.Parent
+@model PitAgora.ViewModels.ParentViewModel
 @{
     Layout = "LayoutPrive";
 
@@ -7,13 +7,15 @@
 
 @section Main{
     <div>
-    Vue parent : 
+        Vue parent :
 
 
-        Parent de :  @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
-         
+        Parent de :  @Model.Eleve.Utilisateur.Personne.Prenom nom : @Model.Eleve.Utilisateur.Personne.Nom
+
+        Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
+        <br/>
+        Les réservations de mon enfant :
 
 
-
-     </div>
+    </div>
 }

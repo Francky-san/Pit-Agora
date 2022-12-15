@@ -1,0 +1,34 @@
+﻿@model PitAgora.Models.Reservation
+@{
+    Layout = "_Layout";
+
+    ViewBag.Title = "Reservation d'un cours";
+}
+
+<h4>Confirmation de réservation</h4>
+
+<p>Tu souhaites pendre un cours de le @Model.Jour avec @Model.PrenomNomProf.</p>
+
+@if (Model.EstEnBinome)
+{
+    <p>Tu souhaites un cours en binôme, merci de préciser avec qui :</p>
+
+<form id="confirmerResa" action="CreerReservation" method="post">
+    <label for="prenom">Prénom : </label>
+    <input id ="prenom" type="text" />
+    <br/>
+    <label for="nom">Nom : </label>
+    <input id ="nom" type="text" required />
+    <br/>
+    <label for="mail">Mail : </label>
+    <input id="mail" type="email" required />
+    <br/>
+    <br/>
+</form>
+ <p>un message lui sera envoyé, la réservation nécessite son approbation</p>
+}
+
+<br />
+Rappel : si tu annules cette réservation moins de 48h à l'avance, son montant sera facturé
+<br />
+<button form="confirmerResa" type="submit">Confirmer la réservation</button>

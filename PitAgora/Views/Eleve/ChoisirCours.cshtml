@@ -10,6 +10,7 @@
 @section css {
     <link href="~/css/Planning.css" rel="stylesheet" />
 }
+<<<<<<< HEAD
 @section Main{
 <script>
     const selectionnes = [];
@@ -17,60 +18,75 @@
     var statutModifie = false;
     var statut, prof;
 </script>
+=======
+>>>>>>> d376cd768e6638cbd8db71e6b937e78286042bf8
 
-<!-- Formulaire caché, pour transmettre certaines informations-->
-<form id="choixCours" action="Eleve/CreerReservation" method="post">
-    <input type="hidden" id="retourProf" name="professeurId" />
-    <input type="hidden" name="matiere" value=@Model[0].Matiere />
-    <input type="hidden" name="niveau" value=@Model[0].Niveau />
-    <input type="hidden" id="retourCreneaux" name="creneaux" />
-    <input type="hidden" id="retourPrix" name="prix" />
-    <input type="hidden" name="estEnBinome" value=@Model[0].EstEnBinom />
-    <input type="hidden" name="estEnPresentiel" value=@Model[0].EstEnPresentiel />
-</form>
+<!-- Variables de la page -->"
 
-<h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le @Model.First().Jour</h3>
+@section Main{
 
-<div style="height:70px">
-    <div style="float:left; width: 65%; padding:20px; font-size: large">Choisis au moins deux créneaux disponibles consécutifs</div>
-    <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled>Valider</button>
-    <div style="float:right; width: 25%; padding:25px; font-size: larger">Prix du cours : <span id="prixCours"> 0</span> euros</div>
-</div>
+    <script>
+        const selectionnes = [];
+        var retour = "";
+        var statutModifie = false;
+        var statut, prof;
+    </script>
 
-<br />
+    <!-- Formulaire caché, pour transmettre certaines informations-->
+    <form id="choixCours" action="Eleve/ConfirmerReservation" method="post">
+        <input type="hidden" id="retourProf" name="professeurId" />
+        <input type="hidden" name="matiere" value=@Model[0].Matiere />
+        <input type="hidden" name="niveau" value=@Model[0].Niveau />
+        <input type="hidden" id="retourCreneaux" name="creneaux" />
+        <input type="hidden" id="retourPrix" name="prix" />
+        <input type="hidden" name="estEnBinome" value=@Model[0].EstEnBinom />           <!-- les deux booléens ne passent pas !-->
+        <input type="hidden" name="estEnPresentiel" value=@Model[0].EstEnPresentiel />
+    </form>
 
-@foreach (var item in @Model)
-{
-    <em class="enTetePlanning">Disponibilités de @item.PrenomNomProf :</em>
-    <div class="conteneurHeures">
-        <span class="heure">09:00</span>
-        @for (int k = 2; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
-        {
-            if (k % 2 == 0)
-            {
-                <span class="heure">@(9 + k / 2):00</span>
-            }
-        }
-        <span class="heure derniereHeure">19:00</span>
+    <h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le @Model.First().Jour</h3>
+
+
+    <div style="height:70px">
+        <div style="float:left; width: 65%; padding:20px; font-size: large">Choisis au moins deux créneaux disponibles consécutifs</div>
+        <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled>Valider</button>
+        <div style="float:right; width: 25%; padding:25px; font-size: larger">Prix du cours : <span id="prixCours"> 0</span> euros</div>
     </div>
-    <div class="ConteneurPlanning" id=@("P"+item.ProfesseurId)>
-        @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
-        {
-            if (item.Dispos[k]!=0)
-            {
-                <div id=@item.Dispos[k] class="cellulePlanning dispo" onclick="changerStatut(this)" 
-                onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
-            }
-            else
-            {
-                <div class="cellulePlanning nonDispo"></div>
-            }
-        }
-    </div>
+
     <br />
+
+
+    @foreach (var item in @Model)
+    {
+        <em class="enTetePlanning">Disponibilités de @item.PrenomNomProf :</em>
+        <div class="conteneurHeures">
+            <span class="heure">09:00</span>
+            @for (int k = 2; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            {
+                if (k % 2 == 0)
+                {
+                    <span class="heure">@(9 + k / 2):00</span>
+                }
+            }
+            <span class="heure derniereHeure">19:00</span>
+        </div>
+        <div class="ConteneurPlanning" id=@("P"+item.ProfesseurId)>
+            @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            {
+                if (item.Dispos[k] != 0)
+                {
+                    <div id=@item.Dispos[k] class="cellulePlanning dispo" onclick="changerStatut(this)"
+         onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                }
+                else
+                {
+                    <div class="cellulePlanning nonDispo"></div>
+                }
+            }
+        </div>
+        <br />
+        <br />
+    }
     <br />
-}
-<br />
 }
 
 

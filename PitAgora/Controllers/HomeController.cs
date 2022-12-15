@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
-using System;
 using System.Linq;
 
 namespace PitAgora.Controllers
@@ -36,7 +35,8 @@ namespace PitAgora.Controllers
             DalProf dalProf = new DalProf();
             Professeur prof = dalProf.ObtientTousLesProfesseurs().Where(e => e.UtilisateurId == Id).FirstOrDefault();
             DalParent dalParent = new DalParent();
-            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == Id).FirstOrDefault();
+            Parent parent = dalParent.ObtientTousLesParents().Where(p => p.UtilisateurId == Id).FirstOrDefault();
+     
             if (eleve != null)
             {
                 return View("AccueilEleve", eleve) ;
@@ -45,9 +45,11 @@ namespace PitAgora.Controllers
             {
                 return View("AccueilProf", prof);
             }
-            else if (eleve1 != null)
+            else if (parent != null)
             {
-                return View("AccueilParent", eleve1);
+                Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
+                ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent };
+                return View("AccueilParent", pvm);
             }
             return View("ERROR");
 

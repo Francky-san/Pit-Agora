@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PitAgora.Models;
-using PitAgora.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 
 
 namespace PitAgora.Models

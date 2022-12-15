@@ -1,14 +1,11 @@
-﻿using PitAgora.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
 
-namespace PitAgora
+namespace PitAgora.Models
 {
     public class DalGen : IDisposable
     {
@@ -29,7 +26,7 @@ namespace PitAgora
             _bddContext.Dispose();
         }
 
-        
+
         public int CreerPersonne(string nom, string prenom)
         {
             Personne personne = new Personne() { Nom = nom, Prenom = prenom };
@@ -46,7 +43,7 @@ namespace PitAgora
         }
         public int CreerUtilisateur(int id, string mail, string motDePasse, string adresse)
         {
-            string mdp=_bddContext.EncodeMD5(motDePasse);
+            string mdp = _bddContext.EncodeMD5(motDePasse);
             Utilisateur utilisateur = new Utilisateur() { PersonneId = id, Mail = mail, MotDePasse = mdp, Adresse = adresse };
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
@@ -66,7 +63,7 @@ namespace PitAgora
 
         public Utilisateur ObtenirUtilisateur(int id)
         {
-            return this._bddContext.Utilisateurs.Find(id);
+            return _bddContext.Utilisateurs.Find(id);
         }
 
         public Utilisateur ObtenirUtilisateur(string idStr)
@@ -74,7 +71,7 @@ namespace PitAgora
             int id;
             if (int.TryParse(idStr, out id))
             {
-                return this.ObtenirUtilisateur(id);
+                return ObtenirUtilisateur(id);
             }
             return null;
         }
@@ -90,7 +87,7 @@ namespace PitAgora
         {
             string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
 
-            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
+            return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(Encoding.Default.GetBytes(motDePasseSel)));
         }
         public void CreerTableNiveaux()
         {
