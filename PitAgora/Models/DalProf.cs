@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
 
+
 namespace PitAgora.Models
 {
     public class DalProf : IDisposable
@@ -36,7 +37,7 @@ namespace PitAgora.Models
             Utilisateur utilisateur = new Utilisateur { PersonneId = personne.Id, Mail = mail, MotDePasse = mdp, Adresse = adresse };
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
-            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id, Matiere1 = matiere1, Matiere2 = matiere2};
+            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id};
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges();
             return professeur.Id;
