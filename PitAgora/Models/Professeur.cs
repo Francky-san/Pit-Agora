@@ -12,5 +12,16 @@ namespace PitAgora.Models
         public string Matiere2 { get; set; }
         public int CreditProf { get; set; }
         public int ReservationId { get; set; }
+        //public int Id { get; set; }
+        //public int UtilisateurId { get; set; }
+        //public virtual Utilisateur Utilisateur { get; set; }
+        //public int Matiere1Id { get; set; }
+        //public virtual string Matiere1 { get; set; }
+        //public int Matiere2Id { get; set; }
+        //public virtual string Matiere2 { get; set; }
+        //public int CreditProf { get; set; }
+        //public int ReservationId { get; set; }
+        //public virtual Reservation Reservation { get; set; }
+
     }
 }

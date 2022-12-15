@@ -36,10 +36,14 @@ namespace PitAgora
             return professeur.Id;
         }
 
+        //Retourne une string contenant prenom + nom
         public string GetPrenomNom(int profId)
         {
-            Personne p = _bddContext.Professeurs.Find(profId).Utilisateur.Personne;
-            return p.Prenom + " " + p.Nom;
+            int utilisateurId = _bddContext.Professeurs.Find(profId).UtilisateurId;
+            int personneId = _bddContext.Utilisateurs.Find(utilisateurId).PersonneId;
+            Personne laPersonne = _bddContext.Personnes.Find(personneId);
+
+            return laPersonne.Prenom + " " + laPersonne.Nom;
         }
 
 

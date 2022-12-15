@@ -13,11 +13,13 @@ namespace PitAgora.Models
         public int? Eleve2Id { get; set; }
         public virtual Eleve Eleve2 { get; set; }
         public int ProfesseurId { get; set; }
+        public string PrenomNomProf { get; set; }
 
         public MatiereEnum Matiere { get; set; }
         public NiveauEnum Niveau { get; set; }
 
         public DateTime Horaire { get; set; }
+        public string Jour { get; set; }   // pour afficher le jour en français
         public List<Creneau> Creneaux { get; set; }
         public float Prix { get; set; }
         public bool EstEnBinome { get; set; }
