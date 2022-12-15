@@ -4,9 +4,14 @@ namespace PitAgora.Models
 {
     public class NiveauxProf
     {
+        //Table intermediaire niveaux et prof
         public int Id { get; set; }
+        //FK vers professeur
         public int ProfesseurId { get; set; }
+        public Professeur Professeur { get; set; }
+        //FK vers niveau
         public int NiveauId { get; set; }
+        public Niveau Niveau { get; set; }
 
     }
 }

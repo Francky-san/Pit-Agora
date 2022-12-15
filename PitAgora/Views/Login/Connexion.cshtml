@@ -16,36 +16,33 @@
     }
 
     else
+    {
+        <p>
+            Veuillez vous authentifier :
+        </p>
+        using (@Html.BeginForm())
         {
-            <p>
-                Veuillez vous authentifier :
-            </p>
-            using (Html.BeginForm())
-            {
-                <div>
-                    @Html.LabelFor(m => m.Utilisateur.Mail)
-                    <span style="float:right">@Html.TextBoxFor(m => m.Utilisateur.Mail)</span>
-                    @Html.ValidationMessageFor(m => m.Utilisateur.Mail)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Utilisateur.MotDePasse)
-                    <span style="float:right">
-                        @Html.PasswordFor(m => m.Utilisateur.MotDePasse)
-                    </span>
-                    @Html.ValidationMessageFor(m => m.Utilisateur.MotDePasse)
-                </div>
-                <ul style="list-style-type:none">
-                    <li>
-                        <input type="submit" value="Se connecter" class="myButton" />
-                    </li>
-                    <li>
-                        <button action="(" Créer un compte","CreerCompte") class="myButton">Creer un compte</button>
-                    </li>
-                </ul>
-
-
-
-            }
+            <div>
+                @Html.LabelFor(m => m.Utilisateur.Mail)
+                <span style="float:right">@Html.TextBoxFor(m => m.Utilisateur.Mail)</span>
+                @Html.ValidationMessageFor(m => m.Utilisateur.Mail)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Utilisateur.MotDePasse)
+                <span style="float:right">
+                    @Html.PasswordFor(m => m.Utilisateur.MotDePasse)
+                </span>
+                @Html.ValidationMessageFor(m => m.Utilisateur.MotDePasse)
+            </div>
+            <ul style="list-style-type:none">
+                <li>
+                    <input type="submit" value="Se connecter" class="myButton" />
+                </li>
+                <li>
+                    <button action="(" Créer un compte","CreerCompte") class="myButton">Creer un compte</button>
+                </li>
+            </ul>
         }
     }
+      
 }

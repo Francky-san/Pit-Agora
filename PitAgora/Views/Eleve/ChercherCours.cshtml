@@ -1,4 +1,4 @@
-﻿@model PitAgora.Models.Reservation
+﻿@model PitAgora.Models.FormulaireRechercheCours
 @{
     Layout = "LayoutPrive";
 
@@ -6,44 +6,45 @@
     ViewBag.Title = "Reservation d'un cours";
 }
 
-
-
-
-
 @section Main{
     <div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
 @using (Html.BeginForm())
 {
 
-    <fieldset>
-        <legend>Formulaire de réservation</legend>
-        @Html.LabelFor(m => Model.Matiere)
-        @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
-        @Html.ValidationMessageFor(m => Model.Matiere)
-        <br />
-        @Html.LabelFor(m => Model.Niveau)
-        @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
-        <br />
-        @Html.LabelFor(m => Model.Horaire)
-        <input type="datetime-local" name="horaire">
+        <fieldset>
+            <legend>Formulaire de réservation : </legend>
+            @Html.LabelFor(m => Model.Matiere)
+            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.Matiere.MatiereEnum>())
+            @Html.ValidationMessageFor(m => Model.Matiere)
+            <br />
+            <label for="niveau">Niveau :</label>
+            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.Niveau.NiveauEnum>())
+            <br />
+            @Html.LabelFor(m => Model.Horaire)
+            <br />
+            @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
+            @Html.LabelFor(m => Model.EstEnPresentiel)
+            <br />
+            <input type="checkbox" id="EstEnBinome" onclick="afficherContainerBinome()" >
+            <label>Binome</label>
+            <br />
+            <div id="ContainerBinome" hidden>
+                @Html.LabelFor(m => Model.PrenomBinome)
+                @Html.TextBoxFor(m =>Model.PrenomBinome)
+                @Html.LabelFor(m => Model.NomBinome)
+                @Html.TextBoxFor(m =>Model.NomBinome)
 
-        <table>
-            <tr>
-                <td>Chez toi ou par visio ?</td><td>Seul ou en binôme ?</td>
-            </tr>
-            <tr>
-                <td><input id="domicile" type="radio" name="lieu" value="domicile" /><label for="domicile">A domicile</label></td>
-                <td><input id="solo" type="radio" name="mode" value="solo" /><label for="solo">En solo</label></td>
-            </tr>
-            <tr>
-                <td><input id="visio" type="radio" name="lieu" value="visio" /><label for="visio">En visio</label></td>
-                <td><input id="binome" type="radio" name="mode" value="binome" /><label for="binome">En binôme</label></td>
-            </tr>
-        </table>
-        <br>
+            </div>
 
-        <input type="submit" value="ChercherCours" />
-    </fieldset>
-
-}
+            <input type="datetime-local" name="horaire">
+            <input type="submit" value="ChercherCours" />
+        </fieldset>
+       
+        <script>
+            function afficherContainerBinome() 
+            {
+               document.getElementById("ContainerBinome").hidden = false;
+            }
+        </script>
+    }
 }

@@ -14,7 +14,5 @@ namespace PitAgora.Models
         {
             _bddContext.Dispose();
         }
-
-
     }
 }

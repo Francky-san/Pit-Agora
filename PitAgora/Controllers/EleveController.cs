@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
+using static PitAgora.Models.Matiere;
+using static PitAgora.Models.Niveau;
 
 namespace PitAgora.Controllers
 {
@@ -40,14 +42,8 @@ namespace PitAgora.Controllers
             DateTime finJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 23, 59, 59);
             List<Creneau> query = dal.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
 
-
             List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les 5 plannings sélectionnés
             
-            foreach (var item in query)
-            { 
-                Console.WriteLine(item.Id+" "+item.ProfesseurId+" "+item.Professeur+" "+item.Debut);
-            }
-
             int nbCreneaux = query.Count;
 
             if (query.Count>0)
