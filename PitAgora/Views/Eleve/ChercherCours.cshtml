@@ -26,27 +26,26 @@
             @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
             @Html.LabelFor(m => Model.EstEnPresentiel)
             <br />
-            <input type="checkbox" id="EstEnBinome" onselect="afficherContainerBinome">
+            <input type="checkbox" id="EstEnBinome" onclick="afficherContainerBinome()" >
             <label>Binome</label>
             <br />
-            <div id="ContainerBinome">
+            <div id="ContainerBinome" hidden>
                 @Html.LabelFor(m => Model.PrenomBinome)
                 @Html.TextBoxFor(m =>Model.PrenomBinome)
                 @Html.LabelFor(m => Model.NomBinome)
                 @Html.TextBoxFor(m =>Model.NomBinome)
 
             </div>
-            <script>
-                function afficherContainerBinome() {
-                    const ContainerBinome = document.createElement("div");
-                }
 
-
-
-            </script>
             <input type="datetime-local" name="horaire">
             <input type="submit" value="ChercherCours" />
         </fieldset>
-
+       
+        <script>
+            function afficherContainerBinome() 
+            {
+               document.getElementById("ContainerBinome").hidden = false;
+            }
+        </script>
     }
 }
