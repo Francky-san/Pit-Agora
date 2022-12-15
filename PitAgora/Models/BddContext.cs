@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-using static PitAgora.Models.Matiere;
-using static PitAgora.Models.Niveau;
 
 namespace PitAgora.Models
 {

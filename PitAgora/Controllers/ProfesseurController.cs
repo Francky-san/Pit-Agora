@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using PitAgora.Models;
-using System.Linq;
 
 namespace PitAgora.Controllers
 {

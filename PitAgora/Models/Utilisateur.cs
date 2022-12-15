@@ -1,6 +1,4 @@
-﻿using System.Text;
-using System;
-
+﻿
 namespace PitAgora.Models
 {
     public class Utilisateur
