@@ -20,24 +20,23 @@ namespace PitAgora.ViewModels
         public bool EstEnBinom { get; set; }
         public bool EstEnPresentiel { get; set; }
 
-        public PlanningViewModel(List<int> creneaux, int professeurId, DateTime horaire, MatiereEnum matiere, NiveauEnum niveau, bool estEnBinome, 
+        public PlanningViewModel(List<Creneau> creneaux, int professeurId, DateTime horaire, MatiereEnum matiere, NiveauEnum niveau, bool estEnBinome, 
             bool estEnPresentiel)
         {
-            DalCreneaux dalC = new DalCreneaux();
             Dispos = new int[Creneau.NB_CRENEAUX_PAR_JOUR];
-            foreach (int creneauId in creneaux)
+            CreneauxDispos = new List<int>();
+            foreach (Creneau creneau in creneaux)
             {
-                Creneau creneau = dalC.GetCreneau(creneauId);
                 Dispos[creneau.Rang()] = creneau.Id;
+                CreneauxDispos.Add(creneau.Id);
             }
-            CreneauxDispos = creneaux;
 
             DalProf dalP = new DalProf();
             ProfesseurId = professeurId;
             PrenomNomProf = dalP.GetPrenomNom(professeurId);
 
             DateTime Horaire = horaire;
-            Jour = Creneau.Jour(horaire.DayOfWeek.ToString()) + " " + horaire.Day + " " + horaire.Month;
+            Jour = Creneau.Jour(horaire.DayOfWeek.ToString()) + " " + horaire.Day + " " + Creneau.Mois(horaire.Month);
             Matiere = matiere;
             Niveau = niveau;
             EstEnBinom = estEnBinome;

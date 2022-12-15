@@ -4,6 +4,7 @@ using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using static PitAgora.Models.Matiere;
@@ -29,8 +30,7 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult ChercherCours()
         {
-            // Test de la méthode TestCalculerDistance()
-            DistanceDom.TestCalculerDistance();
+            ViewData["messageChercherCours"] = "";
             return View();
         }
 
@@ -40,79 +40,85 @@ namespace PitAgora.Controllers
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime debutJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 0,0,0);
             DateTime finJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 23, 59, 59);
+            List<Creneau> query = dal.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
 
-            using (BddContext ctx = new BddContext())
-            {   // rajouter : critère distance pour Présentiel, critère ancienneté pour Distanciel         
-                var query = from c in ctx.Creneaux
-                             join p in ctx.Professeurs on c.ProfesseurId equals p.Id
-                             join np in ctx.NiveauxProfs on p.Id equals np.ProfesseurId
-                             join n in ctx.Niveaux on np.NiveauId equals n.Id
-                             where n.Intitule.Equals(gpeNiveau) && c.Debut.CompareTo(debutJournee) >= 0 && c.Debut.CompareTo(finJournee) < 0 && (p.Matiere1.Equals(matiere) || p.Matiere2.Equals(matiere))
+            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les 5 plannings sélectionnés
+            
+            int nbCreneaux = query.Count;
 
+            if (query.Count>0)
+            {
+                int tempProfId = query[0].ProfesseurId;
+                List<Creneau> tempPlanning = new List<Creneau>();
+                tempPlanning.Add(query[0]);
+                DateTime horairePrecedent = query[0].Debut;
+                bool planningValide = false;
 
-                             select new { c.ProfesseurId, c.Debut, c.Id };
-
-                List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();
-
-                int tempProfId = 0;
-                DateTime horairePrecedent = debutJournee;
-                List<List<int>> tempPlages = new List<List<int>>();
-                List<int> plageEnCours = new List<int>();
-                List<int> creneauxEnCours= new List<int>();
-
-                foreach (var item in query.Take(50).ToList()) {
-                    if (item.ProfesseurId == tempProfId)   // Le créneau concerne encore le même professeur
+                int k = 1;
+                while (k < nbCreneaux)
+                {
+                    while (k < nbCreneaux && query[k].ProfesseurId == tempProfId)
                     {
-                        if (!horairePrecedent.AddMinutes(30).Equals(item.Debut))  // le créneau ne suit pas le précédent
+                        if (horairePrecedent.AddMinutes(30).Equals(query[k].Debut))  // le créneau suit le précédent
                         {
-                            plageEnCours = new List<int>();   // on crée une nouvelle plage
-                            tempPlages.Add(plageEnCours);
+                            planningValide = true;
                         }
-                        plageEnCours.Add(item.Id);
-                        horairePrecedent = item.Debut;
+                        tempPlanning.Add(query[k]);
+                        horairePrecedent = query[k].Debut;
+                        k++;
                     }
-                    else    // Le créneau concerne un autre professeur
+                    if (planningValide)
                     {
-                        if (PlanningValable(tempPlages, estEnPresentiel))
-                        {
-                            PlanningViewModel nouveauPlanning = new PlanningViewModel(plageEnCours, tempProfId, horaire, matiere, niveau, estEnBinome, estEnPresentiel);
-                        }
+                        lesPlannings.Add(new PlanningViewModel(tempPlanning, tempProfId, horairePrecedent, matiere, niveau, estEnBinome, estEnPresentiel));
                     }
+                    if (lesPlannings.Count == 5)
                     {
-
+                        break;
+                    }
+                    if (k < nbCreneaux)
+                    {
+                        tempProfId = query[k].ProfesseurId;
+                        tempPlanning = new List<Creneau>();
+                        tempPlanning.Add(query[k]);
+                        horairePrecedent = query[k].Debut;
+                        planningValide = false;
                     }
                 }
-                
-                // test de la gestion du planning dans la page web
-                List<PlanningViewModel> laListe = new List<PlanningViewModel>();
-                laListe.Add(new PlanningViewModel(1, "Tata", "Tata", new int[] { 14, 15, 16, 0, 0, 0, 0, 0, 28, 29, 30, 31, 42, 43, 44, 45, 0, 0, 0, 0 }));
-                laListe.Add(new PlanningViewModel(2, "Tata", "Tété", new int[] { 0, 0, 0, 0, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 0, 0, 0, 0 }));
-                laListe.Add(new PlanningViewModel(3, "Tata", "Titi", new int[] { 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 }));
-                laListe.Add(new PlanningViewModel(4, "Tata", "Toto", new int[] { 17, 18, 19, 20, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 23, 24, 25, 26, 27 }));
-                laListe.Add(new PlanningViewModel(5, "Tata", "Tutu", new int[] { 32, 33, 34, 0, 0, 0, 0, 35, 36, 37, 38, 0, 0, 0, 0, 0, 39, 40, 41, 0 }));
-                return View("ChoisirCours", laListe);
+                return View("ChoisirCours", lesPlannings);
+            }
+            else
+            {
+                ViewData["messageChercherCours"] = "Désolé, pas de disponibilité ce jour-là.";
+                return View("ChercherCours");
             }
         }
-
         
-        [HttpPost]
-        public IActionResult CreerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix, 
+        [HttpPost]  //pour demander confirmation : nouvelle vue ou simple fenêtre pop-up ??
+        public IActionResult ConfirmerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix, 
             bool estEnBinome, bool estEnPresentiel)
         {
-            Console.WriteLine("créneaux : " + creneaux);
-            Console.WriteLine("prof : " + professeurId);
             /*
             A FAIRE :
-            - calculer l'horaire de départ à partir de la liste des créneaux, non triée (méthode dans dalCreneaux ?)
+            - calculer l'horaire de départ et la durée, à partir de la liste des id des créneaux (méthode dans dalCreneaux)
+            - créer l'objet réservation
+            View :
+            - afficher la réservation
             - Si BINOME, demander le nom du second élève et en déduire son Id
-            - utiliser CreerReservation pour creer la nouvelle reservation
+            - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
             */
-            return View("Index");
+            return View();
         }
 
-        public bool PlanningValable(List<List<int>> listePlages, bool estEnPresentiel)
+        [HttpPost]
+        public IActionResult CreerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix,
+            bool estEnBinome, bool estEnPresentiel)
         {
-            return true;
+            /*
+            A FAIRE :
+            - utiliser CreerReservation pour creer la nouvelle reservation
+            */
+            Console.WriteLine("Bien arrivé dans la méthode CreerReservation");
+            return View("AccueilEleve");
         }
 
     }

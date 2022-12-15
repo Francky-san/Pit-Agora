@@ -6,11 +6,10 @@
     ViewBag.Title = "Reservation d'un cours";
 }
 
-
 @section Main{
-
-    @using (Html.BeginForm())
-    {
+    <div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
+@using (Html.BeginForm())
+{
 
         <fieldset>
             <legend>Formulaire de réservation : </legend>
