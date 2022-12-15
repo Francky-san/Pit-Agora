@@ -34,8 +34,16 @@ namespace PitAgora.Models
         public List<Reservation> ObtenirReservations(int eleveId)
         {
             //Comment retourner une liste de type Reservation????
-            return _bddContext.AReserves.Where(a=>a.EleveId == eleveId).Include(a=>a.Reservation).ToList();
+            var query = from r in _bddContext.Reservations
+                        join ar in _bddContext.AReserves on r.Id equals ar.ReservationId
+                        join e in _bddContext.Eleves on ar.EleveId equals e.Id
+                        where ar.EleveId == eleveId
+
+
+                        select r;
+            return query.ToList();
         }
+            
         public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
         {
             DalGen dal = new DalGen();

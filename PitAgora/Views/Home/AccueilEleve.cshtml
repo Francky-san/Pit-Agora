@@ -1,6 +1,5 @@
 ﻿@model PitAgora.Models.Eleve
 @{
-<<<<<<< HEAD
     Layout = "LayoutPrive";
     ViewBag.Title = "Accueil infos eleve";
 }
@@ -20,16 +19,3 @@ Je suis l'élève prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilis
  <li>@Html.ActionLink("Reserver un cours", "ChercherCours","Eleve")</li>
     </div>
 }
-=======
-    Layout = "_Layout";
-    ViewBag.Title = "Accueil infos eleve";
-}
-
-@section Fieldset{
-    Vue élève : 
-}
-@section Champ1{
-                prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom
-}
- <li>Salut @Model.Utilisateur.Personne.Prenom</li>
->>>>>>> 40cc4a8292f80e17da7a77b8071c5bed7dffa03a

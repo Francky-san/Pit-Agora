@@ -1,29 +1,10 @@
 ﻿@model PitAgora.ViewModels.UtilisateurViewModel
 @{
-<<<<<<< HEAD
     Layout = "LayoutGen";
     ViewBag.Title = "Accueil Pit'Agora";
 }
 
 @section Main{
-=======
-    Layout = "_Layout";
-    ViewBag.Title = "Page Login";
-}
-
-<li>@Html.ActionLink("Accueil", "AccueilGeneral", "Home")</li>
-
-<li>@Html.ActionLink("S'inscrire", "Inscrire","Home")</li>
-
-<li>@Html.ActionLink("Postuler", "CreerPersonne","Home")</li>
-<li>@Html.ActionLink("Nos Professeurs", "ListeProfesseur","Home")</li>
-<li>@Html.ActionLink("Contact", "ListeEleve","Home")</li>
-
-@section Fieldset{
-    Connexion :
-}
-@section Champ1{
->>>>>>> 40cc4a8292f80e17da7a77b8071c5bed7dffa03a
     @if (Model.Authentifie)
     {
         <h3>
@@ -31,51 +12,15 @@
             @Model.Utilisateur.Mail
         </h3>
         @Html.ActionLink("Deconnexion", "Deconnexion")
-<<<<<<< HEAD
         <p> @Html.ActionLink("Accueil","AccueilGeneral","Home") </p>
     }
 
-    else
-        {
-            <p>
-                Veuillez vous authentifier :
-            </p>
-            using (Html.BeginForm())
-            {
-                <div>
-                    @Html.LabelFor(m => m.Utilisateur.Mail)
-                    <span style="float:right">@Html.TextBoxFor(m => m.Utilisateur.Mail)</span>
-                    @Html.ValidationMessageFor(m => m.Utilisateur.Mail)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Utilisateur.MotDePasse)
-                    <span style="float:right">
-                        @Html.PasswordFor(m => m.Utilisateur.MotDePasse)
-                    </span>
-                    @Html.ValidationMessageFor(m => m.Utilisateur.MotDePasse)
-                </div>
-                <ul style="list-style-type:none">
-                    <li>
-                        <input type="submit" value="Se connecter" class="myButton" />
-                    </li>
-                    <li>
-                        <button action="(" Créer un compte","CreerCompte") class="myButton">Creer un compte</button>
-                    </li>
-                </ul>
-
-
-
-            }
-=======
-        <p>@Html.ActionLink("Accueil","AccueilGeneral","Home")</p>
-        <p>@Html.ActionLink("Accueil Eleve", "AccueilEleve","Eleve")</p>
-    }
     else
     {
         <p>
             Veuillez vous authentifier :
         </p>
-        using (Html.BeginForm())
+        using (@Html.BeginForm())
         {
             <div>
                 @Html.LabelFor(m => m.Utilisateur.Mail)
@@ -97,10 +42,7 @@
                     <button action="(" Créer un compte","CreerCompte") class="myButton">Creer un compte</button>
                 </li>
             </ul>
-
-
-
->>>>>>> 40cc4a8292f80e17da7a77b8071c5bed7dffa03a
         }
     }
+      
 }
