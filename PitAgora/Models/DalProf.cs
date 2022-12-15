@@ -11,6 +11,7 @@ namespace PitAgora
     public class DalProf : IDisposable
     {
         private BddContext _bddContext;
+        //Constructeur 
         public DalProf()
         {
             _bddContext = new BddContext();
@@ -20,23 +21,33 @@ namespace PitAgora
             _bddContext.Dispose();
         }
 
+        //Méthode récupérer liste complète des professeurs avec jointures utilisateur et personne pour accèder à tous les attributs
         public List<Professeur> ObtientTousLesProfesseurs()
         {
-            return _bddContext.Professeurs.ToList();
+            return _bddContext.Professeurs.Include(p=>p.Utilisateur).ThenInclude(u=>u.Personne).ToList();
         }
 
+        //Méthode création d'un profeseur
         public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere1, string matiere2="")
         {
-            DalGen dal = new DalGen();
-            int personneId = dal.CreerPersonne(nom, prenom);
-            int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
-            Professeur professeur = new Professeur { UtilisateurId = utilisateurId, Matiere1 = matiere1, Matiere2 = matiere2 };
+            string mdp = _bddContext.EncodeMD5(motDePasse);
+            Personne personne = new Personne { Nom = nom, Prenom = prenom };
+            _bddContext.Personnes.Add(personne);
+            _bddContext.SaveChanges();
+            Utilisateur utilisateur = new Utilisateur {PersonneId=personne.Id,Mail= mail,MotDePasse= mdp, Adresse = adresse };
+            _bddContext.Utilisateurs.Add(utilisateur);
+            _bddContext.SaveChanges();
+            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id, Matiere1 = matiere1, Matiere2 = matiere2 };
             _bddContext.Professeurs.Add(professeur);
-            _bddContext.SaveChanges(); /*A ne pas oublier, enregistre la modif*/
+            _bddContext.SaveChanges();
             return professeur.Id;
         }
 
+<<<<<<< HEAD
         //Retourne une string contenant prenom + nom
+=======
+        //Méthode de récupération de l'attribut prenom et nom d'un professeur 
+>>>>>>> master
         public string GetPrenomNom(int profId)
         {
             int utilisateurId = _bddContext.Professeurs.Find(profId).UtilisateurId;

@@ -22,7 +22,7 @@ namespace PitAgora
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = "/Login/Index";
+                options.LoginPath = "/Login/Connexion";
 
             });
             services.AddControllersWithViews();
@@ -54,7 +54,8 @@ namespace PitAgora
             {
                 endpoints.MapControllerRoute(
           name: "default",
-                  pattern: "{controller=Eleve}/{action=ChercherCours}/{id?}");
+
+                  pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
         }

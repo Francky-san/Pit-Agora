@@ -1,0 +1,18 @@
+﻿@model PitAgora.Models.Professeur
+@{
+    Layout = "LayoutPrive";
+
+    ViewBag.Title = "Accueil Prof";
+}
+
+@section Main{
+    <div>
+    Vue Prof :
+
+
+                    prénom @Model.Utilisateur.Personne.Prenom nom : @Model.Utilisateur.Personne.Nom .
+                    J'enseigne @Model.Matiere1 
+
+<li>Salut @Model.Utilisateur.Personne.Prenom</li>
+    </div>
+}
