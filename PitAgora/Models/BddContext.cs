@@ -26,7 +26,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -60,30 +60,30 @@ namespace PitAgora.Models
             // Création de parents, d'élèves, de profs et de créneaux avec les méthodes dédiées
             using (DalParent dal = new DalParent())
             {
-                dal.CreerParent("Terrieur", "Marc", "mterrieur@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
-                dal.CreerParent("Vaudage", "Annie", "avaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
-                dal.CreerParent("Potter", "Mary", "avaudage@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
-                dal.CreerParent("Skywalker", "Leia", "avaudage@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
-                dal.CreerParent("Blueberry", "Jean", "avaudage@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
+                dal.CreerParent("Terrieur", "Marc", "mterrieur@gmail.com", "ttttt", "64 rue Velpeau 92160 ANTONY");
+                dal.CreerParent("Vaudage", "Annie", "avaudage@gmail.com", "vvvvv", "11 rue Roli 75014 PARIS");
+                dal.CreerParent("Potter", "Mary", "avaudage@gmail.com", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
+                dal.CreerParent("Skywalker", "Leia", "avaudage@gmail.com", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
+                dal.CreerParent("Blueberry", "Jean", "avaudage@gmail.com", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
             }
 
             using (DalEleve dal = new DalEleve())
             {
-                dal.CreerEleve(1, "Terrieur", "Alain", "aterrieur1@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
-                dal.CreerEleve(1, "Terrieur", "Alex", "aterrieur2@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
-                dal.CreerEleve(2, "Vaudage", "Marie", "mvaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
-                dal.CreerEleve(3, "Potter", "Harry", "hpotter@monmel.fr", "ppppp", "32 rue Delmer 59242 TEMPLEUVE");
-                dal.CreerEleve(4, "Skywalker", "Luke", "lskywalker@monmel.fr", "sssss", "33 bd Marius Vivier Merle 69003 LYON");
-                dal.CreerEleve(5, "Blueberry", "Mike", "mbluberry@monmel.fr", "bbbbb", "78 bd de Souville 84200 CARPENTRAS");
+                dal.CreerEleve(1, "Terrieur", "Alain", "aterrieur1@gmail.com", "ttttt", "64 rue Velpeau 92160 ANTONY");
+                dal.CreerEleve(1, "Terrieur", "Alex", "aterrieur2@gmail.com", "ttttt", "64 rue Velpeau 92160 ANTONY");
+                dal.CreerEleve(2, "Vaudage", "Marie", "mvaudage@gmail.com", "vvvvv", "11 rue Roli 75014 PARIS");
+                dal.CreerEleve(3, "Potter", "Harry", "hpotter@gmail.com", "ppppp", "32 rue Delmer 59242 TEMPLEUVE");
+                dal.CreerEleve(4, "Skywalker", "Luke", "lskywalker@gmail.com", "sssss", "33 bd Marius Vivier Merle 69003 LYON");
+                dal.CreerEleve(5, "Blueberry", "Mike", "mbluberry@gmail.com", "bbbbb", "78 bd de Souville 84200 CARPENTRAS");
             }
 
             using (DalProf dal = new DalProf())
             {
-                dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "2 rue Mozart 92160 ANTONY", "Maths", "Physique-Chimie");
-                dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", "Physique-Chimie");
-                dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", "SVT");
-                dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON", "Maths", "SVT");
-                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", "Maths");
+                dal.CreerProfesseur("Euler", "Leonhard", "leuler@gmail.com", "eeeee", "2 rue Mozart 92160 ANTONY", "Maths", "Physique-Chimie");
+                dal.CreerProfesseur("Einstein", "Albert", "aeinstein@gmail.com", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", "Physique-Chimie");
+                dal.CreerProfesseur("Darwin", "Charles", "cdarwin@gmail.com", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", "SVT");
+                dal.CreerProfesseur("Descartes", "René", "rdescartes@gmail.com", "ddddd", "32 rue Boileau 69006 LYON", "Maths", "SVT");
+                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@gmail.com", "lllll", "22 rue Roger Salengro 69009 LYON", "Maths");
             }
 
             using (DalCreneaux dal = new DalCreneaux())
