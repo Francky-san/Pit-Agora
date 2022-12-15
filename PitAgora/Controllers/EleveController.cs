@@ -40,26 +40,13 @@ namespace PitAgora.Controllers
             DateTime finJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 23, 59, 59);
             List<Creneau> query = dal.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
 
-<<<<<<< HEAD
+
             List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les 5 plannings sélectionnés
             
             foreach (var item in query)
             { 
                 Console.WriteLine(item.Id+" "+item.ProfesseurId+" "+item.Professeur+" "+item.Debut);
             }
-=======
-            using (BddContext ctx = new BddContext())
-            {   // rajouter : critère distance pour Présentiel, critère ancienneté pour Distanciel
-
-                var query = from c in ctx.Creneaux
-                             join p in ctx.Professeurs on c.ProfesseurId equals p.Id
-                             join np in ctx.NiveauxProfs on p.Id equals np.ProfesseurId
-                             join n in ctx.Niveaux on np.NiveauId equals n.Id
-                             where n.Intitule.Equals(gpeNiveau) && c.Debut.CompareTo(debutJournee) >= 0 && c.Debut.CompareTo(finJournee) < 0 && (p.Matiere1.Equals(matiere) || p.Matiere2.Equals(matiere))
-
-
-                             select new { c.ProfesseurId, c.Debut, c.Id };
->>>>>>> master
 
             int nbCreneaux = query.Count;
 
