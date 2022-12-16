@@ -1,10 +1,39 @@
-﻿
+﻿@model PitAgora.ViewModels.InscriptionViewModel
 @{
     Layout = "LayoutGen";
 }
 @section Main{
-    <h2>Inscription</h2>
     <form class="row g-3">
-       
+        <div style="float:right">
+            <h2>Inscription</h2>
+
+            Infos Parent :
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Personne.Nom)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Personne.Nom)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Personne.Prenom)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Personne.Prenom)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Mail)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Mail)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.MotDePasse)
+            <span>@Html.PasswordFor(m=>m.Parent.Utilisateur.MotDePasse)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Adresse)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Adresse)</span>
+        </div>
+        <div>
+            Infos Eleve :
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Personne.Nom)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Personne.Nom)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Personne.Prenom)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Personne.Prenom)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Mail)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Mail)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.MotDePasse)
+            <span>@Html.PasswordFor(m=>m.Eleve.Utilisateur.MotDePasse)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Adresse)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Adresse)</span>
+
+            <input type="submit" value="Valider et payer" />
+        </div>
     </form>
+
 }

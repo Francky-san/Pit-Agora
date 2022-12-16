@@ -12,10 +12,6 @@ namespace PitAgora.Controllers
 
             return View();
         }
-        public IActionResult Inscription()
-        {
-            return View();
-        }
 
         public IActionResult Postuler()
         {
@@ -26,6 +22,26 @@ namespace PitAgora.Controllers
         {
             return View();
         }
+        public IActionResult Inscription()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Inscription(InscriptionViewModel ivm)
+        {
+            if (ModelState.IsValid)
+            {
+                DalParent dalP = new DalParent();
+                DalEleve dalE = new DalEleve();
+                int newParent = dalP.CreerParent(ivm.Parent.Utilisateur.Personne.Nom, ivm.Parent.Utilisateur.Personne.Prenom, ivm.Parent.Utilisateur.Mail,
+                    ivm.Parent.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
+                int newEleve = dalE.CreerEleve(ivm.Eleve.Utilisateur.Personne.Nom, ivm.Eleve.Utilisateur.Personne.Prenom, ivm.Eleve.Utilisateur.Mail,
+                    newParent, ivm.Eleve.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
+            }
+            return View();
+        }
+
 
         //Méthodes Franck pour renvoyer infos
         public IActionResult AfficherInfosPerso(int Id)

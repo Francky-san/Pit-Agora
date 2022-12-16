@@ -42,12 +42,12 @@ namespace PitAgora.Models
             return query.ToList();
         }
             
-        public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
+        public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse)
         {
             DalGen dal = new DalGen();
             int personneId = dal.CreerPersonne(nom, prenom);
             int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
-            Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, CreditCours = creditCours };
+            Eleve eleve = new Eleve() { UtilisateurId = utilisateurId};
             _bddContext.Eleves.Add(eleve);
             _bddContext.SaveChanges();
             return eleve.Id;
