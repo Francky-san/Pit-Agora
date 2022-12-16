@@ -1,170 +1,39 @@
-﻿
+﻿@model PitAgora.ViewModels.InscriptionViewModel
 @{
     Layout = "LayoutGen";
 }
 @section Main{
-    <div class="container">
-        <h2>Inscription</h2>
-        <form>
+    <form class="row g-3">
+        <div style="float:right">
+            <h2>Inscription</h2>
 
-            <div class="col-4">
-                <h3>Identité du responsable légal</h3>
+            Infos Parent :
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Personne.Nom)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Personne.Nom)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Personne.Prenom)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Personne.Prenom)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Mail)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Mail)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.MotDePasse)
+            <span>@Html.PasswordFor(m=>m.Parent.Utilisateur.MotDePasse)</span>
+            @Html.LabelFor(m=>m.Parent.Utilisateur.Adresse)
+            <span>@Html.TextBoxFor(m=>m.Parent.Utilisateur.Adresse)</span>
+        </div>
+        <div>
+            Infos Eleve :
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Personne.Nom)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Personne.Nom)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Personne.Prenom)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Personne.Prenom)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Mail)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Mail)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.MotDePasse)
+            <span>@Html.PasswordFor(m=>m.Eleve.Utilisateur.MotDePasse)</span>
+            @Html.LabelFor(m=>m.Eleve.Utilisateur.Adresse)
+            <span>@Html.TextBoxFor(m=>m.Eleve.Utilisateur.Adresse)</span>
 
-                <div class="form-row">
-                    <div class="form-group col-1">
-                        <label for="exampleFormControlSelect1">Civilité </label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>M.</option>
-                            <option>Mme.</option>
-                            <option>Mlle.</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputName">Nom</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="votre nom">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputName">Prénom</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="votre prénom">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputAddress">Adresse</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Adresse">
-                    </div>
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="inputZip">Code postal</label>
-                    <input type="text" class="form-control" id="inputZip" placeholder="Code postal">
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCity">Ville</label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="Ville">
-                    </div>
-                </div>
-
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemple@exemple.com">
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputPassword1" class="form-label">Choissisez un Mot de passe</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputPassword1" class="form-label">Confirmez votre Mot de passe</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmation du mot de passe">
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Mémoriser</label>
-                                </div>
-
-
-                                <div class="form-row">
-                                    <label for="exampleFormControlFile1">Votre pièce d'indentité</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div>
-                            </div>
-                                <div class="col-4">
-                                    <h3>Identité de l'étudiant</h3>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-1">
-                                            <label for="exampleFormControlSelect1">Civilité </label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>M.</option>
-                                                <option>Mme.</option>
-                                                <option>Mlle.</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputName">Nom</label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Nom de l'étudiant">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputName">Prénom</label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Prénom de l'étudiant">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputAddress">Adresse pour les cours présentiels</label>
-                                            <input type="text" class="form-control" id="inputAddress" placeholder="Adresse pour les cours présentiels">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">Code postal</label>
-                                        <input type="text" class="form-control" id="inputZip" placeholder="Code postal">
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputCity">Ville</label>
-                                            <input type="text" class="form-control" id="inputCity" placeholder="Ville">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1" class="form-label">Email de l'étudiant</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="exemple@exemple.com">
-                                        </div>
-
-
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="exampleFormControlFile1">Pièce d'indentité de l'étudiant</label>
-                                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                            </div>
-                                        </form>
-
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <button type="submit" class="btn btn-primary">Envoyer</button>
-                                            </div>
-                                            <p>Voulez-vous inscrire un autre étudiant à votre charge ?</p>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Oui">
-                                                <label class="form-check-label" for="inlineCheckbox1">Oui</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Non">
-                                                <label class="form-check-label" for="inlineCheckbox2">Non</label>
-                                            </div>
-</form>
-    </div>
-
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+            <input type="submit" value="Valider et payer" />
+        </div>
+    </form>
 
 }
