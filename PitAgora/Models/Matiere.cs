@@ -5,8 +5,9 @@ namespace PitAgora.Models
     public class Matiere
     {
         public int Id { get; set; }
-        public MatiereEnum Intitule { get; set; }
+        public string Intitule { get; set; }
     }
+
     public enum MatiereEnum
     {
         [Display(Name = "Maths")]

@@ -26,7 +26,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = Triqui24+ ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -50,10 +50,11 @@ namespace PitAgora.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
 
-            // Création de la table Niveaux
+            // Création des tables Niveaux et Matieres
             using (DalGen dal = new DalGen())
             {
                 dal.CreerTableNiveaux();
+                dal.CreerTableNMatieres();
             }
 
 
@@ -119,13 +120,13 @@ namespace PitAgora.Models
                 new AReserve { EleveId = 1, ReservationId = 1 },
                 new AReserve { EleveId = 2, ReservationId = 2 },
                 new AReserve { EleveId = 3, ReservationId = 2 }
-                );
+                );  
 
             this.MatiereProf.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
                 new MatiereProf { MatiereId = 3, ProfesseurId = 3 },
-                new MatiereProf { MatiereId = 0, ProfesseurId = 4 },
+                new MatiereProf { MatiereId = 1, ProfesseurId = 4 },
                 new MatiereProf { MatiereId = 1, ProfesseurId = 2 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 3, ProfesseurId = 5 }
