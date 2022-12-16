@@ -99,5 +99,15 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
         }
 
+        public void CreerTableNMatieres()
+        {
+            foreach (string m in Enum.GetNames(typeof(MatiereEnum)))
+            {
+                Matiere matiere = new Matiere() { Intitule = m };
+                _bddContext.Matieres.Add(matiere);
+            }
+            _bddContext.SaveChanges();
+        }
+
     }
 }
