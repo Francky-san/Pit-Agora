@@ -9,7 +9,10 @@
     <div>
         Vue parent :
         Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
+<<<<<<< HEAD
 
+=======
+>>>>>>> dfc0f98 (Commit avant demo pierre)
 
     Parent de :
 
@@ -49,19 +52,20 @@
             </thead>
             <tbody>
                 @foreach (var resa in Model.Reservations)
-                {
+            {
 
-                    <tr>
-                        <td>
-                            @resa.Jour
-                        </td>
-                        <td>
-                            @resa.Evaluation
+                <tr>
+                    <td>
+                        @resa.Jour
+                    </td>
+                    <td>
+                        @resa.Evaluation
 
-                        </td>
-                        <td>
-                            @resa.PrenomNomProf
+                    </td>
+                    <td>
+                        @resa.PrenomNomProf
 
+<<<<<<< HEAD
                         </td>
                         <td>
                             @resa.Prix
@@ -74,4 +78,17 @@
         </table>
     </div>
 
+=======
+                    </td>
+                    <td>
+                        @resa.Prix
+
+                    </td>
+                </tr>
+            }<
+        </tbody>
+        <br />
+    </table>
+</div>
+>>>>>>> dfc0f98 (Commit avant demo pierre)
 }
