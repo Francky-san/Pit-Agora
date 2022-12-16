@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Controllers
 {
@@ -11,16 +12,21 @@ namespace PitAgora.Controllers
             return View();
         }
 
-        public IActionResult AccueilProf(Professeur prof)
-        {
-            return View(prof);
-        }
-        public IActionResult AfficherPlanning(Professeur professeur)
+        public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();
-
-            List<Creneau> mesCreneaux = dalProf.ListCreneaux(professeur.Id);
+            Professeur professeur = dalProf.ObtientTousLesProfesseurs().FirstOrDefault(p => p.Id == id); 
+            return View(professeur);
+        }
+        public IActionResult AfficherPlanning(int id)
+        {
+            DalProf dalProf = new DalProf();
+            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
             return View(mesCreneaux);
+
+            DalReservation dalReservation = new DalReservation();    
+           // List<Reservation> mesReservations = dalReservation. ;
+          
 
         }
 

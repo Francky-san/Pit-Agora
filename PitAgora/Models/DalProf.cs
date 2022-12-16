@@ -54,7 +54,7 @@ namespace PitAgora.Models
 
         public List<Creneau> ListCreneaux(int profId) 
         { 
-            return _bddContext.Creneaux.Where(c=>c.ProfesseurId== profId).ToList();
+            return _bddContext.Creneaux.Include(c=>c.Professeur).ThenInclude(p=> p.Utilisateur).ThenInclude(u=>u.Personne).Include(c=> c.Reservation).Where(c=>c.ProfesseurId== profId).ToList();
         }
 
     }

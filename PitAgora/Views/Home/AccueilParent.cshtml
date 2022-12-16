@@ -74,57 +74,56 @@
         </table>
     </div>
 
+    <div>
         Parent de :
-<table>
-    <thead>
-        <tr>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Credit Cours</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Credit Cours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
 
 
-            <td>
-                @Model.Eleve.Utilisateur.Personne.Prenom
-            </td>
-            <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
-            <td> @Model.Eleve.CreditCours </td>
+                    <td>
+                        @Model.Eleve.Utilisateur.Personne.Prenom
+                    </td>
+                    <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
+                    <td> @Model.Eleve.CreditCours </td>
 
 
-        </tr>
+                </tr>
 
-    </tbody>
-</table>
+            </tbody>
+        </table>
 
         Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :
-<table>
-    <thead>
-        <tr>
-            <th>Datetime reservation</th>
-            <th>Matiere</th>
-            <th>Prix</th>
-            <th>Evaluation</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var resa in Model.Reservations)
-        {
-            <tr>
-                <td>@resa.Jour</td>
-                <td>@resa.</td>
-                <td>@resa.Jour</td>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Datetime reservation</th>
+                    <th>Matiere</th>
+                    <th>Prix</th>
+                    <th>Evaluation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var resa in Model.Reservations)
+                {
+                    <tr>
+                        <td>@resa.Jour</td>
+                        <td>@resa.</td>
+                        <td>@resa.Jour</td>
+                    </tr>
                 }
-            </tr>
-
-        </tbody>
-        <br />
+            </tbody>
+            <br />
 
 
-    </table>
-        </div>
-        }
+        </table>
+    </div>
+
 }

@@ -10,7 +10,7 @@
              
         <li>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</li>
         <br>  <br>
-        @Html.ActionLink("Mon planning", "AfficherPlanning","Professeur" )
+        @Html.ActionLink("Mon planning", "AfficherPlanning","Professeur", new {id=Model.Id} )
         <br>  <br>
         @Html.ActionLink("Mes élèves", "Professeur" )
         <br>  <br>

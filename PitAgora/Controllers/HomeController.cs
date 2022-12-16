@@ -57,11 +57,11 @@ namespace PitAgora.Controllers
      
             if (eleve != null)
             {
-                return Redirect("/Eleve/AccueilEleve/"+ eleve.ToString()) ;
+                return Redirect("/Eleve/AccueilEleve/"+ eleve.Id.ToString()) ;
             }
             else if (prof != null)
             {
-                return Redirect("/Professeur/AccueilProf/"+ prof.ToString());
+                return Redirect("/Professeur/AccueilProf/"+ prof.Id.ToString());
             }
             else if (parent != null)
             {

@@ -11,29 +11,26 @@
 @section Main
     {
 
-    <div> essai planning affichage</div>
-    <div> 
-        @foreach(var creneau in @Model)
-        {
 
-            @creneau.Debut
+        <div>  Créneaux disponibles :   </div>
 
-            @creneau.Professeur.Utilisateur.Personne.Prenom
+    @foreach (var creneau in @Model)
+    {
 
-           
-        }
-
-      
+            <div> @creneau.Debut </div>
 
 
-
-    </div>
     }
 
 
 
 
-   
+    }
+
+
+
+
+
 
 
 
