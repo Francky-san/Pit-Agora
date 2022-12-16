@@ -49,22 +49,23 @@ namespace PitAgora.Models
 
         public List<Creneau> RequeteDistanciel2(MatiereEnum matiere, string niveau, DateTime debut, DateTime fin)
         {
-            // une requête par le bddContext est-elle possible quand elle implique une relation 'plusieurs à plusieurs' ?
-            var query = _bddContext.Creneaux.FromSqlRaw("select c.*, n.intitule, p.matiere1, p.matiere2  from creneaux as c" +
+            var query = _bddContext.Creneaux.FromSqlRaw("select c.* from creneaux as c" +
                 " inner join professeurs as p on p.id=c.professeurId" +
                 " inner join niveauxprofs as np on np.ProfesseurId=p.id" +
                 " inner join niveaux as n on n.id=np.niveauid" +
-            " where n.intitule='" + niveau + "' and c.debut between '" + FormateDate(debut) + "' and '" + FormateDate(fin) + "'" +
-            " and (p.matiere1 = '" + matiere + "' or p.matiere2 = '" + matiere + "')" +
-                " order by c.professeurid desc, c.debut"
+                " inner join matieresprofs as mp on mp.ProfesseurId=p.id" +
+                " inner join matieres as m on m.id=mp.matiereid" +
+                " where n.intitule='" + niveau + "' and c.debut between '" + FormateDate(debut) + "' and '" + FormateDate(fin) + "'" +
+                " and m.intitule = '" + matiere + "'" +
+                " order by p.id desc, c.debut"
                 );
             return query.Take(1000).ToList();
         } 
 
         // Mise au format YYYY-MM-DD HH:MM:SS d'une DateTime
-        public string FormateDate(DateTime d)
+        public static string FormateDate(DateTime d)
         {
-            return d.Year+"-"+d.Month+"-"+d.Day+" "+d.Hour+":"+d.Minute+":"+d.Second;
+            return d.ToString("u").Replace("Z","");
         }
     }
 }

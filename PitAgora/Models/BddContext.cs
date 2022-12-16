@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace PitAgora.Models
 {
@@ -17,11 +18,11 @@ namespace PitAgora.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Creneau> Creneaux { get; set; }
         public DbSet<Niveau> Niveaux { get; set; }
-        public DbSet<NiveauxProf> NiveauxProfs { get; set; }
+        public DbSet<NiveauProf> NiveauxProfs { get; set; }
         public DbSet<DistanceDom> DistanceDoms { get; set; }
         public DbSet<AReserve> AReserve { get; set; }
         public DbSet<Matiere> Matieres { get; set; }
-        public DbSet<MatiereProf> MatiereProf { get; set; }
+        public DbSet<MatiereProf> MatieresProfs { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -56,6 +57,21 @@ namespace PitAgora.Models
                 dal.CreerTableNiveaux();
                 dal.CreerTableNMatieres();
             }
+
+            //Test
+            DateTime debut = new DateTime(2023,01,05);
+            DateTime fin = new DateTime(2023, 01, 06);
+            string matiere = "maths";
+            string niveau = "scq";
+            Console.WriteLine("select c.* from creneaux as c" +
+                " inner join professeurs as p on p.id=c.professeurId" +
+                " inner join niveauxprofs as np on np.ProfesseurId=p.id" +
+                " inner join niveaux as n on n.id=np.niveauid" +
+                " inner join matieresprofs as mp on mp.ProfesseurId=p.id" +
+                " inner join matieres as m on m.id=mp.matiereid" +
+                " where n.intitule='" + niveau + "' and c.debut between '" + DalCreneaux.FormateDate(debut) + "' and '" + DalCreneaux.FormateDate(fin) + "'" +
+                " and m.intitule = '" + matiere + "'" +
+                " order by p.id desc, c.debut");
 
 
             // Création de parents, d'élèves, de profs et de créneaux avec les méthodes dédiées
@@ -122,7 +138,7 @@ namespace PitAgora.Models
                 new AReserve { EleveId = 3, ReservationId = 2 }
                 );  
 
-            this.MatiereProf.AddRange(
+            this.MatieresProfs.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
                 new MatiereProf { MatiereId = 3, ProfesseurId = 3 },
@@ -133,14 +149,14 @@ namespace PitAgora.Models
                 );
 
             this.NiveauxProfs.AddRange(
-                new NiveauxProf() { ProfesseurId = 1, NiveauId = 1 },
-                new NiveauxProf() { ProfesseurId = 1, NiveauId = 2 },
-                new NiveauxProf() { ProfesseurId = 1, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 2, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 3, NiveauId = 2 },
-                new NiveauxProf() { ProfesseurId = 3, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 4, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 5, NiveauId = 3 }
+                new NiveauProf() { ProfesseurId = 1, NiveauId = 1 },
+                new NiveauProf() { ProfesseurId = 1, NiveauId = 2 },
+                new NiveauProf() { ProfesseurId = 1, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 2, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 3, NiveauId = 2 },
+                new NiveauProf() { ProfesseurId = 3, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 4, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 5, NiveauId = 3 }
                 );
 
             List<Creneau> CreneauxResa1 = new List<Creneau>();

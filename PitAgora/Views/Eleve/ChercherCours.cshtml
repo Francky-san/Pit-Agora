@@ -17,10 +17,11 @@
             @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
             @Html.ValidationMessageFor(m => Model.Matiere)
             <br />
-            <label for="niveau">Niveau :</label>
+            @Html.LabelFor(m => Model.Niveau)
             @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
             <br />
-            @Html.LabelFor(m => Model.Horaire)
+            @Html.LabelFor(m => Model.DebutJournee)
+            <input type="date" name="debutJournee">
             <br />
             @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
             @Html.LabelFor(m => Model.EstEnPresentiel)
@@ -36,7 +37,6 @@
 
             </div>
 
-            <input type="datetime-local" name="horaire">
             <input type="submit" value="ChercherCours" />
         </fieldset>
        

@@ -29,14 +29,13 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime horaire,bool estEnBinome, bool estEnPresentiel)
+        public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel)
         {
             string gpeNiveau = Niveau.dictNiveaux[niveau];
-            DateTime debutJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 0,0,0);
-            DateTime finJournee = new DateTime(horaire.Year, horaire.Month, horaire.Day, 23, 59, 59);
+            DateTime finJournee = debutJournee.AddDays(1);
             List<Creneau> query = dal.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
 
-            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les 5 plannings sélectionnés
+            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les plannings sélectionnés
             
             int nbCreneaux = query.Count;
 
