@@ -251,8 +251,15 @@ $utilities: ( "Orden de capas": ( property: z-index, responsive: false, class: z
         border-top: 1px solid black;
     }
 
-    .container-fluid{
+    .container-fluid {
+        margin: inherit;
+    }
 
-        margin:inherit;
+    #fond {
+        margin-top: 215px;
+        width: 100%;
+        height: auto;
+        background-color: white;
+        opacity: 0.60;
     }
 }

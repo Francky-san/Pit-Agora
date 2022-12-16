@@ -1,19 +1,15 @@
 @model PitAgora.ViewModels.ParentViewModel
 @{
     Layout = "LayoutPrive";
-
     ViewBag.Title = "Accueil Parent";
 }
-
 @section Main{
     <div>
         Vue parent :
         Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
         <<<<<<< HEAD
-
-    Parent de :
-
-    <table>
+        Parent de :
+        <table>
             <thead>
                 <tr>
                     <th>Prenom</th>
@@ -23,20 +19,14 @@
             </thead>
             <tbody>
                 <tr>
-
-
                     <td>
                         @Model.Eleve.Utilisateur.Personne.Prenom
                     </td>
                     <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
                     <td> @Model.Eleve.CreditCours </td>
-
-
                 </tr>
-
             </tbody>
         </table>
-
         Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :
         <table>
             <thead>
@@ -50,81 +40,81 @@
             <tbody>
                 @foreach (var resa in Model.Reservations)
                 {
-
                     <tr>
                         <td>
                             @resa.Jour
                         </td>
                         <td>
                             @resa.Evaluation
-
                         </td>
                         <td>
                             @resa.PrenomNomProf
-
                         </td>
                         <td>
                             @resa.Prix
-
                         </td>
                     </tr>
                 }<
-        </tbody>
+            </tbody>
             <br />
         </table>
     </div>
-
+    <div>
         Parent de :
-<table>
-    <thead>
-        <tr>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Credit Cours</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-
-
-            <td>
-                @Model.Eleve.Utilisateur.Personne.Prenom
-            </td>
-            <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
-            <td> @Model.Eleve.CreditCours </td>
-
-
-        </tr>
-
-    </tbody>
-</table>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Credit Cours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Model.Eleve.Utilisateur.Personne.Prenom
+                    </td>
+                    <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
+                    <td> @Model.Eleve.CreditCours </td>
+                </tr>
+            </tbody>
+        </table>
         Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :
-<table>
-    <thead>
-        <tr>
-            <th>Datetime reservation</th>
-            <th>Matiere</th>
-            <th>Prix</th>
-            <th>Evaluation</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var resa in Model.Reservations)
-        {
-            <tr>
-                <td>@resa.Jour</td>
-                <td>@resa.</td>
-                <td>@resa.Jour</td>
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Datetime reservation</th>
+                    <th>Matiere</th>
+                    <th>Prix</th>
+                    <th>Evaluation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var resa in Model.Reservations)
+                {
+                    <tr>
+                        <td>@resa.Jour</td>
+                        <td>@resa.</td>
+                        <td>@resa.Jour</td>
+                    </tr>
                 }
-            </tr>
-
-        </tbody>
-        <br />
-
-
-    </table>
-        </div>
-        }
+            </tbody>
+            <br />
+        </table>
+    </div>
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
