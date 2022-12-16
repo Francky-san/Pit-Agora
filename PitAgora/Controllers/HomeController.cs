@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PitAgora.Controllers
@@ -22,6 +23,7 @@ namespace PitAgora.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Inscription()
         {
             return View();
@@ -36,8 +38,8 @@ namespace PitAgora.Controllers
                 DalEleve dalE = new DalEleve();
                 int newParent = dalP.CreerParent(ivm.Parent.Utilisateur.Personne.Nom, ivm.Parent.Utilisateur.Personne.Prenom, ivm.Parent.Utilisateur.Mail,
                     ivm.Parent.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
-                int newEleve = dalE.CreerEleve(ivm.Eleve.Utilisateur.Personne.Nom, ivm.Eleve.Utilisateur.Personne.Prenom, ivm.Eleve.Utilisateur.Mail,
-                    newParent, ivm.Eleve.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
+                int newEleve = dalE.CreerEleve(newParent, ivm.Eleve.Utilisateur.Personne.Nom, ivm.Eleve.Utilisateur.Personne.Prenom, ivm.Eleve.Utilisateur.Mail,
+                     ivm.Eleve.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
             }
             return View();
         }
@@ -64,7 +66,7 @@ namespace PitAgora.Controllers
             else if (parent != null)
             {
                 Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
-                ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent };
+                ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, };
                 return View("AccueilParent", pvm);
             }
             return View("ERROR");

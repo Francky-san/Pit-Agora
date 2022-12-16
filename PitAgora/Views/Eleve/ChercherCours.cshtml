@@ -21,6 +21,7 @@
             @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
             <br />
             @Html.LabelFor(m => Model.Horaire)
+            <input type="date" name="horaire">
             <br />
             @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
             @Html.LabelFor(m => Model.EstEnPresentiel)
@@ -36,7 +37,7 @@
 
             </div>
 
-            <input type="date" name="horaire">
+           
             <input type="submit" value="ChercherCours" />
         </fieldset>
        
