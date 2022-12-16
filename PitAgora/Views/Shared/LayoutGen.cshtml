@@ -8,18 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIT'AGORA | Prépare ton avenir</title>
+    <!-- Icône Pit'Agora -->
     <link rel="apple-touch-icon" sizes="180x180" href="~/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="~/images/favicon/site.webmanifest">
     <link rel="mask-icon" href="~/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="~/images/favicon/ico.ico">
+    <!-- Couleur de fond, taille de la tuile -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="~/images/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="~/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-
-
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
@@ -30,16 +30,15 @@
 
 <body>
 
-    <!-- INICIO entete -->
+    <!-- DEBUT ENTETE -->
     <header class="encabezado bg-dark vh-100 position-left py-md-4 fondoCover">
 
-        <!-- NavBar -->
+        <!-- DEBUT NAVBAR -->
         <nav class="navbar navbar-expand-md navbar-dark  z-index-1">
             <div class="container">
 
                 <a class="navbar-brand" href=@Url.Action("Index", "Home")>
                     <img src="~/images/LogoPitAgora.svg" alt="Logo del sitio" width="600" height="auto">
-
                 </a>
 
                 <a href="#" class="inicioSesion ms-auto me-2 mt-n1 d-md-none">
@@ -54,35 +53,38 @@
 
                 <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href=@Url.Action("Index", "Home")>
+                                <h4>  Accueil </h4>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href=@Url.Action("Index", "Home")>
-                                Accueil
-                            </a>
-                        </li>
-                        <li class="nav-item">
+
                             <a class="nav-link" href=@Url.Action("Connexion", "Login")>
-                                Connexion
+                                <h4> Connexion </h4>
                             </a>
+
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Inscription", "Home")>
-                                Inscription
+                                <h4>  Inscription </h4>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Postuler", "Home")>
-                                Postuler
+                                <h4>  Postuler </h4>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Profs", "Home")>
-                                Profs
+                                <h4>  Profs </h4>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Contact", "Home")>
-                                Contact
+                                <h4> Contact </h4>
                             </a>
                         </li>
 
@@ -90,76 +92,81 @@
 
                 </div>
 
-
             </div>
         </nav>
-        <!-- Fin NavBar -->
+        <!-- FIN NAVBAR -->
         @RenderSection("Main")
     </header>
-    <!-- FIN ENCABEZADO -->
-    <!-- INICIO PLAN DE ACCIÓN -->
+    <!-- FIN ENTETE -->
+    <!-- DEBUT PLAN D'ACTION -->
     <main class="planDeAccion py-5">
         <div class="container">
 
             <header class="text-center mb-5">
-                <h1 class="display-5 fw-bold text-secondary tituloconLinea">Concept Pit'Agora</h1>
+                <h1 class="display-5 fw-bold text-secondary tituloconLineagit">Concept Pit'Agora</h1>
 
-                <p class=" fw-light my-0 text-muted">
+                <p class=" fw-normal my-0 text-muted">
                     Dessinons ensemble ton plan d'action
                 </p>
 
             </header>
             <div class="row row-cols-1 row-cols-md-3  text-center">
+
                 <div class="col mb-3">
                     <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
                         <img src="~/images/accionBranding.svg" alt="Brading" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Nos Profs</h2>
                         <p>
-                            Recrutés avec soin,
-                            nos professeurs sont hautement qualifiés
-                            et toujours à l'écoute
+                            Recrutés avec soin, nos professeurs sont hautement qualifiés
+                            et à ton écoute pour t'aider à progresser
                         </p>
-                        <a href="#" class="fw-bold">Info</a>
-
+                        <a href="#" class="fw-bold">Infos</a>
                     </article>
-
                 </div>
+
                 <div class="col mb-3">
                     <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
                         <img src="~/images/accionDisenoUX.svg" alt="Diseño UX" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Pythos</h2>
                         <p>
-                            Pit'Agora recompense ta participation avec des Pythos échangeables chez nos partenaires
+                            Pit'Agora récompense ta participation avec des "Pythos" échangeables chez nos partenaires
                         </p>
-                        <a href="#" class="fw-bold">Info</a>
-
+                        <a href="#" class="fw-bold">Infos</a>
                     </article>
-
                 </div>
+
                 <div class="col mb-3">
                     <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
                         <img src="~/images/accionExtrategia360.svg" alt="Extratégia 360" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Binôme</h2>
                         <p>
-                            Concept binôme ou Apprendre à deux
+                            Concept travail en binôme ou
+                            l'apprentissage à deux
+                            <br>
+                            <br>
+                            <br>
                         </p>
-                        <a href="#" class="fw-bold">Info</a>
+                        <a href="#" class="fw-bold">Infos</a>
 
                     </article>
                 </div>
-            </div>
-        </div>
-    </main>
-    <!-- FIN PLAN DE ACCIÓN -->
-    @RenderSection("Aide", required:false)
-    <!-- INICIO TE AYUDAMOS -->
-    <!-- FIN TE AYUDAMOS -->
-    @RenderSection("Projets", required: false)
-    <!-- INICIO PROYECTOS -->
-    <!-- FIN DE PROYECTOS -->
-    @RenderSection("Manolito",required:false)
 
-    <!-- INICIO PIE DE PÁGINA -->
+            </div>
+    </main>
+    <!-- FIN PLAN D'ACTION -->
+    @RenderSection("Aide", required:false)
+    <!-- DEBUT AIDE -->
+    <!-- FIN AIDE -->
+    @RenderSection("Projets", required: false)
+    <!-- DEBUT PROJETS -->
+    <!-- FIN PROJETS -->
+    @RenderSection("Manolito",required:false)
+    <!-- DEBUT -->
+    <!-- FIN -->
+    @RenderSection("Glossaire",required:false)
+    <!-- DEBUT -->
+    <!-- FIN -->
+    <!-- DEBUT PIED DE PAGE -->
     <footer class="pieDePagina bg-dark text-white pt-5">
         <div class="container">
             <div class="row text-center text-lg-start">
@@ -209,6 +216,7 @@
 
         </div>
     </footer>
+    <!-- FIN PIED DE PAGE -->
     @RenderSection("Scripts", required:false)
 </body>
 

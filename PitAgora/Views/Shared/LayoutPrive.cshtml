@@ -19,8 +19,6 @@
     <meta name="msapplication-config" content="~/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/libs/bootstrap-icons/bootstrap-icons.css">
@@ -56,33 +54,37 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href=@Url.Action("Index", "Home")>
-                                Accueil
+                            <a class="nav-link" href=@Url.Action("Index", "Home")>
+                                <h4>  Accueil </h4>
                             </a>
                         </li>
+
                         <li class="nav-item">
+
                             <a class="nav-link" href=@Url.Action("Connexion", "Login")>
-                                Connexion
+                                <h4> Connexion </h4>
                             </a>
+
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Inscription", "Home")>
-                                Inscription
+                                <h4>  Inscription </h4>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Postuler", "Home")>
-                                Postuler
+                                <h4>  Postuler </h4>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Profs", "Home")>
-                                Profs
+                                <h4>  Profs </h4>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href=@Url.Action("Contact", "Home")>
-                                Contact
+                                <h4> Contact </h4>
                             </a>
                         </li>
 
@@ -94,7 +96,7 @@
             </div>
         </nav>
         <!-- Fin NavBar -->
-        <div class="container" style="border:215px solid black">
+        <div class="container" style="border:300px solid white">
             @RenderSection("Main")
         </div>
 
@@ -107,7 +109,7 @@
             <header class="text-center mb-5">
                 <h1 class="display-5 fw-bold text-secondary tituloconLinea">Concept Pit'Agora</h1>
 
-                <p class=" fw-light my-0 text-muted">
+                <p class=" fw-bormal my-0 text-muted">
                     Dessinons ensemble ton plan d'action
                 </p>
 
@@ -118,11 +120,10 @@
                         <img src="~/images/accionBranding.svg" alt="Brading" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Nos Profs</h2>
                         <p>
-                            Recrutés avec soin,
-                            nos professeurs sont hautement qualifiés
-                            et toujours à l'écoute
+                            Recrutés avec soin, nos professeurs sont hautement qualifiés
+                            et à ton écoute pour t'aider à progresser
                         </p>
-                        <a href="#" class="fw-bold">Info</a>
+                        <a href="#" class="fw-bold">Infos</a>
 
                     </article>
 
@@ -132,24 +133,30 @@
                         <img src="~/images/accionDisenoUX.svg" alt="Diseño UX" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Pythos</h2>
                         <p>
-                            Pit'Agora recompense ta participation avec des Pythos échangeables chez nos partenaires
+                            Pit'Agora récompense ta participation avec des "Pythos" échangeables chez nos partenaires
+                            <br>
                         </p>
-                        <a href="#" class="fw-bold">Info</a>
+                        <a href="#" class="fw-bold">Infos</a>
 
                     </article>
 
                 </div>
+
                 <div class="col mb-3">
                     <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
                         <img src="~/images/accionExtrategia360.svg" alt="Extratégia 360" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Binôme</h2>
                         <p>
-                            Concept binôme ou Apprendre à deux
+                            Concept travail en binôme ou
+                            l'apprentissage à deux
+                            <br>
+                            <br>
                         </p>
-                        <a href="#" class="fw-bold">Info</a>
+                        <a href="#" class="fw-bold">Infos</a>
 
                     </article>
                 </div>
+
             </div>
         </div>
     </main>
