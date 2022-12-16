@@ -27,4 +27,5 @@
   <ItemGroup>
     <None Remove="AspNetCore.SassCompiler" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties libs_4bootstrap_4dist_4css_4bootstrap_1css_1map__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>
