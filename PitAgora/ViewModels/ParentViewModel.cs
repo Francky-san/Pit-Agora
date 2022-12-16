@@ -8,8 +8,11 @@ namespace PitAgora.ViewModels
 
         public Eleve Eleve { get; set; }
         public Parent Parent { get; set; }
+        public Creneau Creneau { get; set; }
         public List<Reservation> Reservations { get; set; }
-        //Constructeur
+        public List<Evaluation> Evaluations { get; set; }
+
+        //Constructeur pour redirection depuis homecontroller
         public ParentViewModel() { Eleve eleve; Parent parent; }
     }
 }
