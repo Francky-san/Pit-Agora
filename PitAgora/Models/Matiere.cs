@@ -10,7 +10,7 @@ namespace PitAgora.Models
     public enum MatiereEnum
     {
         [Display(Name = "Maths")]
-        maths = 1,
+        maths,
         [Display(Name = "Physiques-Chimie")]
         physique,
         [Display(Name = "SVT")]
