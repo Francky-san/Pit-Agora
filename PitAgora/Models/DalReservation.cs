@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Models
 {
@@ -14,5 +16,11 @@ namespace PitAgora.Models
         {
             _bddContext.Dispose();
         }
+
+        public List<Creneau> GetCreneaux(int ResaId)
+        {
+            return _bddContext.Creneaux.Where(c => c.ReservationId == ResaId).ToList();
+        }
+
     }
 }

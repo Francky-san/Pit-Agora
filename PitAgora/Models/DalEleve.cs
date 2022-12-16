@@ -29,9 +29,9 @@ namespace PitAgora.Models
             return unEleve;
         }
 
+        //Méthode pour obtenir la liste des résa d'un élève.
         public List<Reservation> ObtenirReservations(int eleveId)
         {
-            //Comment retourner une liste de type Reservation????
             var query = from r in _bddContext.Reservations
                         join ar in _bddContext.AReserve on r.Id equals ar.ReservationId
                         join e in _bddContext.Eleves on ar.EleveId equals e.Id
@@ -41,18 +41,21 @@ namespace PitAgora.Models
                         select r;
             return query.ToList();
         }
-            
-        public int CreerEleve(string nom, string prenom, string mail, int parentId, string motDePasse, string adresse, int creditCours)
-        {
-            DalGen dal = new DalGen();
-            int personneId = dal.CreerPersonne(nom, prenom);
-            int utilisateurId = dal.CreerUtilisateur(personneId, mail, motDePasse, adresse);
-            Eleve eleve = new Eleve() { UtilisateurId = utilisateurId, CreditCours = creditCours };
-            _bddContext.Eleves.Add(eleve);
-            _bddContext.SaveChanges();
-            return eleve.Id;
-        }
 
+        //Méthode pour obtenir la liste des évaluations d'un élève
+        public List<Evaluation> ObtenirEvaluations(int eleveId)
+        {
+            var query = from r in _bddContext.Reservations
+                        join ev in _bddContext.Evaluations on r.EvaluationId equals ev.Id
+                        join ar in _bddContext.AReserve on r.Id equals ar.ReservationId
+                        join e in _bddContext.Eleves on ar.EleveId equals e.Id
+                        where ar.EleveId == eleveId
+
+
+                        select ev;
+            return query.ToList();
+        }
+        //FT - suppression méthde crééer élève. Doublon inutilisé.
         public int CreerEleve(int parentId, string nom, string prenom, string mail, string motDePasse, string adresse)
         {
             DalGen dal = new DalGen();

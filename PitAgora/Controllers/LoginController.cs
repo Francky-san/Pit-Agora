@@ -54,32 +54,6 @@ namespace PitAgora.Controllers
             return View(viewModel);
         }
 
-        public IActionResult CreerCompte()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreerCompte(Utilisateur utilisateur)
-        {
-            if (ModelState.IsValid)
-            {
-                int id = dal.CreerUtilisateur(utilisateur.PersonneId, utilisateur.Mail, utilisateur.MotDePasse, utilisateur.Adresse);
-
-                var userClaims = new List<Claim>()
-                {
-                    new Claim(ClaimTypes.Name, id.ToString()),
-                };
-
-                var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
-
-                var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
-                HttpContext.SignInAsync(userPrincipal);
-
-                return Redirect("/");
-            }
-            return View(utilisateur);
-        }
 
         public ActionResult Deconnexion()
         {

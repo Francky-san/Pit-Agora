@@ -15,6 +15,10 @@ namespace PitAgora.Models
         public bool EstEnPresentiel { get; set; }
         public bool EstValide { get; set; }
         public int DureeMinutes {get; set;}
+
+        //FT - Ajout FK vers évaluation, évaluation relative à la réservation.
+        public int? EvaluationId { get; set; }
+        public Evaluation Evaluation { get; set; }
     }
     
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace PitAgora.Models
 {
@@ -18,13 +19,44 @@ namespace PitAgora.Models
             _bddContext.Dispose();
         }
 
+        public string GetMatiere(int IdCreneau)
+        {
+            var query = from c in _bddContext.Creneaux
+                        join p in _bddContext.Professeurs on c.ProfesseurId equals p.Id
+                        join mp in _bddContext.MatiereProf on p.Id equals mp.ProfesseurId
+                        join m in _bddContext.Matieres on mp.MatiereId equals m.Id
+                        where c.Id == IdCreneau
+                        select m;
+            return query.ToString();
+        }
+
         public int CreerCreneau(DateTime debut, int professeurId)
         {
-            Creneau creneau = new Creneau() { Debut = debut, ProfesseurId=professeurId};
+            Creneau creneau = new Creneau() { Debut = debut, ProfesseurId = professeurId };
             _bddContext.Creneaux.Add(creneau);
             _bddContext.SaveChanges();
             return creneau.Id;
         }
+        //Creer résa
+        //public int CreerResa(List<Creneau> creneaux)
+        //{
+        //    string prof =
+        //        if (creneaux.Count % 2 == 0)
+        //    {
+        //        int prix = (creneaux.Count);
+        //    }
+        //    Reservation newResa = new Reservation()
+        //    {
+
+        //        DureeMinutes = creneaux.Count() * 30,
+        //        Evaluation = null,
+        //        PrenomNomProf = (creneaux[0].Professeur.Utilisateur.Personne.Prenom) + " " + (creneaux[0].Professeur.Utilisateur.Personne.Nom),
+        //        Prix = creneaux[0].,
+        //        Horaire = creneaux[0].Debut,
+
+
+        //    }
+        //}
 
         public Creneau GetCreneau(int id)
         {
@@ -42,7 +74,7 @@ namespace PitAgora.Models
                         where n.Intitule.Equals(niveau) && c.Debut.CompareTo(debut) >= 0 && c.Debut.CompareTo(fin) < 0 //&& (p.Matiere1.Equals(matiere) || p.Matiere2.Equals(matiere))
                         orderby p.Id, c.Debut
                         select c;
-                        //select new { c.ProfesseurId, c.Debut, c.Id };
+            //select new { c.ProfesseurId, c.Debut, c.Id };
             //var query = _bddContext.Creneaux.Where(c => c.Id >= 8);
             return query.Take(50).ToList();
         }
@@ -59,12 +91,12 @@ namespace PitAgora.Models
                 " order by c.professeurid desc, c.debut"
                 );
             return query.Take(1000).ToList();
-        } 
+        }
 
         // Mise au format YYYY-MM-DD HH:MM:SS d'une DateTime
         public string FormateDate(DateTime d)
         {
-            return d.Year+"-"+d.Month+"-"+d.Day+" "+d.Hour+":"+d.Minute+":"+d.Second;
+            return d.Year + "-" + d.Month + "-" + d.Day + " " + d.Hour + ":" + d.Minute + ":" + d.Second;
         }
     }
 }
