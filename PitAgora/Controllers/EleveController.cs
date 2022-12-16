@@ -3,6 +3,7 @@ using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Controllers
 {
@@ -87,32 +88,44 @@ namespace PitAgora.Controllers
         }
         
         [HttpPost]  //pour demander confirmation : nouvelle vue ou simple fenêtre pop-up ??
-        public IActionResult ConfirmerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix, 
-            bool estEnBinome, bool estEnPresentiel)
+        public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix)
         {
-            /*
-            A FAIRE :
-            - calculer l'horaire de départ et la durée, à partir de la liste des id des créneaux (méthode dans dalCreneaux)
-            - créer l'objet réservation
-            View :
-            - afficher la réservation
-            - Si BINOME, demander le nom du second élève et en déduire son Id
-            - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
-            */
-            return View();
-        }
+            DalProf dalP = new DalProf();
+            string prenomNomProf = dalP.GetPrenomNom(professeurId);
 
-        [HttpPost]
-        public IActionResult CreerReservation(int professeurId, string matiere, string niveau, string creneaux, float prix,
-            bool estEnBinome, bool estEnPresentiel)
-        {
+            List<int> creneauxId = new List<int>();
+            int i = 0;
+            foreach (string s in creneaux.Split(","))
+            {
+                if (int.TryParse(s, out i)) {
+                    creneauxId.Add(i);
+                }
+            }
+            List<Creneau> lesCreneaux = dal.listeCreneauxDepuisId(creneauxId).OrderBy(c => c.Debut).ToList();
+            DateTime horaire = lesCreneaux[0].Debut;
+
+            string jour = Creneau.JourEnFrancais(horaire);
+            int dureeMinutes = 30*lesCreneaux.Count;
+            bool estValide = true;
+            if (pvm.EstEnBinome) { estValide = false; }
+
+            Reservation laReservation = new Reservation() { PrenomNomProf = prenomNomProf, Horaire = horaire, Jour = jour, DureeMinutes = dureeMinutes, 
+                Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
+                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
+
+            DalReservation dalR = new DalReservation();
+            dalR.creerReservation(laReservation);
             /*
             A FAIRE :
+            - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
+            - calculer l'horaire de départ et la durée, à partir de la liste des id des créneaux (méthode dans dalCreneaux)
+            - créer l'objet réservation en BDD
+            - affecter cette réservation aux crenaux nomncernés, au prof concerné, à l'élève concerné
             - utiliser CreerReservation pour creer la nouvelle reservation
             */
-            Console.WriteLine("Bien arrivé dans la méthode CreerReservation");
-            return View("AccueilEleve");
+            return View("~Home/AccueilEleve");
         }
 
+      
     }
 }

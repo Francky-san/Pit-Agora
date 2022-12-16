@@ -31,6 +31,19 @@ namespace PitAgora.Models
             return _bddContext.Creneaux.Find(id);
         }
 
+
+        // Renvoie une liste de créneaux à partir d'une liste d'Id
+        public List<Creneau> listeCreneauxDepuisId(List<int> listeId)
+        {
+            List<Creneau> lesCreneaux = new List<Creneau>();
+            foreach (int id in listeId)
+            {
+                lesCreneaux.Add(_bddContext.Creneaux.Where(c => c.Id == id).FirstOrDefault());
+            }
+            return lesCreneaux;
+        }
+
+
         public List<Creneau> RequeteDistanciel(MatiereEnum matiere, string niveau, DateTime debut, DateTime fin)
         {
             // une requête par le bddContext est-elle possible quand elle implique une relation 'plusieurs à plusieurs' ?

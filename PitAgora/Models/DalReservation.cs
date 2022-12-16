@@ -14,5 +14,12 @@ namespace PitAgora.Models
         {
             _bddContext.Dispose();
         }
+
+        public int creerReservation(Reservation reservation)
+        {
+            _bddContext.Reservations.Add(reservation);
+            _bddContext.SaveChanges();
+            return reservation.Id;
+        }
     }
 }
