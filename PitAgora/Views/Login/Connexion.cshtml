@@ -23,7 +23,7 @@
         using (@Html.BeginForm())
         {
             <div>
-                @Html.LabelFor(m => m.Utilisateur.Mail)
+                @Html.LabelFor(m => m.Utilisateur.Mail) class=“form-label”
                 <span style="float:right">@Html.TextBoxFor(m => m.Utilisateur.Mail)</span>
                 @Html.ValidationMessageFor(m => m.Utilisateur.Mail)
             </div>
@@ -44,7 +44,13 @@
                    @Html.ActionLink("S'inscrire", "Inscription","Home")
                 </li>
             </ul>
+
+
         }
 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8414d97e5255da3b33f376c4465e2a9a41b9991
 }

@@ -20,10 +20,15 @@
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Views\Professeur\" />
+=======
+    <Folder Include="Views\Parent\" />
+>>>>>>> e8414d97e5255da3b33f376c4465e2a9a41b9991
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AspNetCore.SassCompiler" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties libs_4bootstrap_4dist_4css_4bootstrap_1css_1map__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>

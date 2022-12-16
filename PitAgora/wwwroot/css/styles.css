@@ -27,8 +27,8 @@ html {
 body {
     margin: 0;
     font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 500;
     line-height: 1.5;
     color: #494949;
     background-color: #fff;
@@ -9351,7 +9351,7 @@ textarea.form-control-lg {
         top: 0;
         right: 0;
         bottom: 0;
-        opacity: 0.6;
+        opacity: 0.4;
     }
 
     .fondoCover > * {
