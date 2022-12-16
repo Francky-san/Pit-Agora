@@ -8,7 +8,9 @@ namespace PitAgora.ViewModels
 
         public Eleve Eleve { get; set; }
         public Parent Parent { get; set; }
+
         public List<Creneau> Creneaux { get; set; }
+
         public List<Reservation> Reservations { get; set; }
         public List<Evaluation> Evaluations { get; set; }
 
