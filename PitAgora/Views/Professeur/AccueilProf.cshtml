@@ -1,0 +1,28 @@
+﻿@model PitAgora.Models.Professeur
+@{
+    Layout = "LayoutPrive";
+
+    ViewBag.Title = "Accueil Prof";
+}
+
+@section Main{
+    <div>
+             
+        <li>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</li>
+        <br>  <br>
+        @Html.ActionLink("Mon planning", "AfficherPlanning","Professeur" )
+        <br>  <br>
+        @Html.ActionLink("Mes élèves", "Professeur" )
+        <br>  <br>
+        @Html.ActionLink("Mes ressources", "Professeur" )
+        <br>  <br>
+        @Html.ActionLink("Mon Crédit Prof", "Professeur" )
+        <br>  <br>
+        @Html.ActionLink("Mon profil", "Professeur" )
+        <br>  <br>
+
+
+
+    </div>
+
+}

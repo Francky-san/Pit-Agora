@@ -21,7 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Parent\" />
-    <Folder Include="Views\Professeur\" />
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
   <ItemGroup>
