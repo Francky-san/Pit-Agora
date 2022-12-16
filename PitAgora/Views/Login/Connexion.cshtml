@@ -41,5 +41,25 @@
                 crossorigin="anonymous"></script>
 
     </content>
-}
+
+            <div>
+                @Html.LabelFor(m => m.Utilisateur.MotDePasse)
+                <span style="float:right">
+                    @Html.PasswordFor(m => m.Utilisateur.MotDePasse)
+                </span>
+                @Html.ValidationMessageFor(m => m.Utilisateur.MotDePasse)
+            </div>
+            <ul style="list-style-type:none">
+                <li>
+                    <input type="submit" value="Se connecter" class="myButton" />
+                </li>
+
+
+                <li>
+                   @Html.ActionLink("S'inscrire", "Inscription","Home")
+                </li>
+            </ul>
+        }
+
+
 

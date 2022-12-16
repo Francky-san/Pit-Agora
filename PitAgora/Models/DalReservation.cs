@@ -43,7 +43,7 @@ namespace PitAgora.Models
         // Retourne la liste des créneaux d'une réservation
         public List<Creneau> GetCreneaux(int ResaId)
         {
-            return _bddContext.Creneaux.Where(c => c.ReservationId == ResaId).ToList();
+            return _bddContext.Creneaux.Include(c=>c.Professeur).Include(c=>c.Reservation).Where(c=>c.ReservationId== ResaId).ToList();
         }
 
         // Retourne la liste des réservation d'un élève dont la date n'est pas passée
