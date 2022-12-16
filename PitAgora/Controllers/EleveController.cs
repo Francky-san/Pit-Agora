@@ -100,6 +100,7 @@ namespace PitAgora.Controllers
             - Si BINOME, demander le nom du second élève et en déduire son Id
             - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
             */
+
             return View();
         }
 

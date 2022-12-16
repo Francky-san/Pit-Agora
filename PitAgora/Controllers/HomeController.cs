@@ -65,12 +65,27 @@ namespace PitAgora.Controllers
             }
             else if (parent != null)
             {
-                Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
-                ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, };
-                return View("AccueilParent", pvm);
+                return View("AccueilParent", GetPVM(parent));
             }
             return View("ERROR");
 
+        }
+
+        //Méthode à part pour constituer ParentViewModel
+        public ParentViewModel GetPVM(Parent parent)
+        {
+            DalEleve dal = new DalEleve();
+            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
+            List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
+            DalReservation dalr = new DalReservation();
+            List<Creneau> creneauxResa = new List<Creneau>();
+            foreach (Reservation resa in resaEleve1)
+            {
+                creneauxResa = dalr.GetCreneaux(resa.Id);
+            }
+
+            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent,Reservations=resaEleve1,Creneaux=creneauxResa };
+            return pvm;
         }
     }
 }
