@@ -20,7 +20,6 @@
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Parent\" />
     <Folder Include="Views\Professeur\" />
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>

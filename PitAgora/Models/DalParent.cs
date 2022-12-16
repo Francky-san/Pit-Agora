@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using System.Collections.Generic;
@@ -43,5 +44,18 @@ namespace PitAgora.Models
             return parent.Id;
         }
 
+        //Méthode crediter porte monnaie eleve
+        public void CrediterEleve(int parentId, int montant, int eleveId)
+        {
+            DalEleve dal = new DalEleve();
+            Eleve monEleve = dal.ObtientTousLesELeves().Where(e => e.Id == eleveId).FirstOrDefault();
+            monEleve.CreditCours += montant;
+           _bddContext.SaveChanges();
+        }
+        //Méthode récupérer un élève à partir de l'id du parent // Pb pour un parent qui a deux élèves.
+        public Eleve GetEleve(int parentId)
+        {
+            return _bddContext.Eleves.Where(e=>e.ParentId == parentId).FirstOrDefault();
+        }
     }
 }

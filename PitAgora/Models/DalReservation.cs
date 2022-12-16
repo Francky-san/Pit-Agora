@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +20,7 @@ namespace PitAgora.Models
 
         public List<Creneau> GetCreneaux(int ResaId)
         {
-            return _bddContext.Creneaux.Where(c => c.ReservationId == ResaId).ToList();
+            return _bddContext.Creneaux.Include(c=>c.Professeur).Include(c=>c.Reservation).Where(c=>c.ReservationId== ResaId).ToList();
         }
 
     }

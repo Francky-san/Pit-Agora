@@ -6,6 +6,7 @@
 }
 
 @section Main{
+    
     <div>
         Vue parent :
         Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
@@ -28,13 +29,15 @@
                         @Model.Eleve.Utilisateur.Personne.Prenom
                     </td>
                     <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
-                    <td> @Model.Eleve.CreditCours </td>
+                    <td>@Model.Eleve.CreditCours </td>
 
 
                 </tr>
 
             </tbody>
         </table>
+        @Html.ActionLink("Alimenter crédit cours ", "CrediterEleve")
+        <li>@Html.ActionLink("Reserver un cours", "ChercherCours","Eleve")</li>
 
         Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :
         <table>
@@ -71,5 +74,7 @@
         </tbody>
         <br />
     </table>
+
+    <h1></h1>
 </div>
 }
