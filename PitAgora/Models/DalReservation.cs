@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace PitAgora.Models
 {
@@ -20,6 +21,21 @@ namespace PitAgora.Models
             _bddContext.Reservations.Add(reservation);
             _bddContext.SaveChanges();
             return reservation.Id;
+        }
+
+        // Affecte une réservation nouvellement créée à un créneau (le créneau devient indisponible)
+        public void AffecterACreneau(int reservationId, Creneau c)
+        {
+            _bddContext.Creneaux.Find(c.Id).ReservationId = reservationId;
+            _bddContext.SaveChanges();
+        }
+
+        // Affecte une réservation nouvellement créée à un élève (via la table d'association)
+        public void AffecterAEleve(int reservationId, Eleve e)
+        {
+            AReserve ar = new AReserve() { ReservationId = reservationId, Eleve = e };
+            _bddContext.AReserve.Add(ar);
+            _bddContext.SaveChanges();
         }
     }
 }

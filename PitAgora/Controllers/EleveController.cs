@@ -114,14 +114,22 @@ namespace PitAgora.Controllers
                 EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
 
             DalReservation dalR = new DalReservation();
-            dalR.creerReservation(laReservation);
+            int reservationId = dalR.creerReservation(laReservation);
+
+            // Affecter cette réservation aux créneaux concernés
+            foreach (Creneau c in lesCreneaux)
+            {
+                dalR.AffecterACreneau(reservationId, c);
+            }
+
+            // Affecter cette réservation à l'élève concerné
+            //Eleve utilisateurConnecte = ??
+            //dalR.AffecterAEleve(reservationId, utilisateurConnecte);
+            
             /*
             A FAIRE :
             - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
-            - calculer l'horaire de départ et la durée, à partir de la liste des id des créneaux (méthode dans dalCreneaux)
-            - créer l'objet réservation en BDD
-            - affecter cette réservation aux crenaux nomncernés, au prof concerné, à l'élève concerné
-            - utiliser CreerReservation pour creer la nouvelle reservation
+            - affecter cette réservation à l'élève concerné
             */
             return View("~Home/AccueilEleve");
         }
