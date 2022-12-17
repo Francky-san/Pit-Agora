@@ -30,7 +30,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel)
+        public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel, int eleveId)
         {
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime finJournee = debutJournee.AddDays(1);
@@ -122,16 +122,18 @@ namespace PitAgora.Controllers
                 dalR.AffecterACreneau(reservationId, c);
             }
 
+            DalGen dalG = new DalGen();
             // Affecter cette réservation à l'élève concerné
+            Utilisateur utilisateur = dalG.ObtenirUtilisateur(HttpContext.User.Identity.Name);
             //Eleve utilisateurConnecte = ??
             //dalR.AffecterAEleve(reservationId, utilisateurConnecte);
-            
+
             /*
             A FAIRE :
             - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
             - affecter cette réservation à l'élève concerné
             */
-            return View("~Home/AccueilEleve");
+            return View("AccueilEleve");
         }
 
       

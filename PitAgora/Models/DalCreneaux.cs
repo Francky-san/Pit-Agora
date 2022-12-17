@@ -69,7 +69,7 @@ namespace PitAgora.Models
                 " inner join matieresprofs as mp on mp.ProfesseurId=p.id" +
                 " inner join matieres as m on m.id=mp.matiereid" +
                 " where n.intitule='" + niveau + "' and c.debut between '" + FormateDate(debut) + "' and '" + FormateDate(fin) + "'" +
-                " and m.intitule = '" + matiere + "'" +
+                " and m.intitule = '" + matiere + "' and c.reservationId is null" +
                 " order by p.id desc, c.debut"
                 );
             return query.Take(1000).ToList();
