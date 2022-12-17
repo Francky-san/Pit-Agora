@@ -9,17 +9,29 @@ namespace PitAgora.Controllers
 {
     public class EleveController : Controller
     {
-        private readonly DalCreneaux dal;
+        private readonly DalEleve dalE;
+        private readonly DalCreneaux dalC;
+        private readonly DalGen dalG;
+        private readonly DalProf dalP;
+        private readonly DalReservation dalR;
 
         public EleveController()
         {
-            dal = new DalCreneaux();
+            dalE = new DalEleve();
+            dalC = new DalCreneaux();
+            dalG = new DalGen();
+            dalP = new DalProf();
+            dalR = new DalReservation();
         }
 
 
         public IActionResult AccueilEleve(Eleve eleve)
         {
-            return View();
+            eleve = dalE.ObtenirUnEleve(1);    // POUR TESTS !!!!!!!!!!!!!!!!!!!!
+            EleveViewModel evm = new EleveViewModel() { Eleve = eleve};
+            evm.CoursFuturs = dalR.ObtenirCoursFuturs(eleve.Id);
+            evm.CoursPasses = dalR.ObtenirCoursPasses(eleve.Id);
+            return View(evm);
         }
 
         [HttpGet]
@@ -36,7 +48,7 @@ namespace PitAgora.Controllers
         {
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime finJournee = debutJournee.AddDays(1);
-            List<Creneau> query = dal.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
+            List<Creneau> query = dalC.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
 
             List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les plannings sélectionnés
             
@@ -92,7 +104,6 @@ namespace PitAgora.Controllers
         [HttpPost]  //pour demander confirmation : nouvelle vue ou simple fenêtre pop-up ??
         public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix)
         {
-            DalProf dalP = new DalProf();
             string prenomNomProf = dalP.GetPrenomNom(professeurId);
 
             List<int> creneauxId = new List<int>();
@@ -103,7 +114,7 @@ namespace PitAgora.Controllers
                     creneauxId.Add(i);
                 }
             }
-            List<Creneau> lesCreneaux = dal.listeCreneauxDepuisId(creneauxId).OrderBy(c => c.Debut).ToList();
+            List<Creneau> lesCreneaux = dalC.listeCreneauxDepuisId(creneauxId).OrderBy(c => c.Debut).ToList();
             DateTime horaire = lesCreneaux[0].Debut;
 
             string jour = Creneau.JourEnFrancais(horaire);
@@ -115,7 +126,6 @@ namespace PitAgora.Controllers
                 Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
                 EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
 
-            DalReservation dalR = new DalReservation();
             int reservationId = dalR.creerReservation(laReservation);
 
             // Affecter cette réservation aux créneaux concernés
@@ -124,7 +134,6 @@ namespace PitAgora.Controllers
                 dalR.AffecterACreneau(reservationId, c);
             }
 
-            DalGen dalG = new DalGen();
             // Affecter cette réservation à l'élève concerné
             Utilisateur utilisateur = dalG.ObtenirUtilisateur(HttpContext.User.Identity.Name);
             //Eleve utilisateurConnecte = ??

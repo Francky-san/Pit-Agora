@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,11 +40,35 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
         }
 
+        // Retourne la liste des créneaux d'une réservation
         public List<Creneau> GetCreneaux(int ResaId)
         {
             return _bddContext.Creneaux.Where(c => c.ReservationId == ResaId).ToList();
         }
 
+        // Retourne la liste des réservation d'un élève dont la date n'est pas passée
+        public List<Reservation> ObtenirCoursFuturs(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
+                .Where(ar => ar.Reservation.Horaire > DateTime.Now).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
 
+        public List<Reservation> ObtenirCoursPasses(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
+                .Where(ar => ar.Reservation.Horaire < DateTime.Now).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
     }
 }
