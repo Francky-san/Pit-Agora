@@ -42,8 +42,13 @@ namespace PitAgora.Controllers
         }
 
 
+<<<<<<< HEAD
         //Méthodes Franck pour renvoyer infos   JV : nommer la méthode ObtenirTypeDUtilisateur ?
         public IActionResult AfficherInfosPerso(int Id)  // JV : id ?
+=======
+        //Méthodes Franck pour renvoyer infos
+        public IActionResult AfficherAccueil(int Id)
+>>>>>>> 9d95920 (Commit avant try profile pic)
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();
