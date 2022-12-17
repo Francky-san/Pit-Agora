@@ -92,38 +92,128 @@ namespace PitAgora.Models
 
             using (DalCreneaux dal = new DalCreneaux())
             {
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 00, 00), 1);    // cours de maths du 14/12
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 30, 00), 1);
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 17, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 00, 00), 2);    // cours de PC du 17/12
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 17, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 00, 00), 1);    // cours de maths du 21/12
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 30, 00), 1);
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 17, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 2);    // Cours de PC prévu le 04/01
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 09, 00, 00), 1);    // créneaux maths dispos le 07/01
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 09, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 09, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 3);    // créneaux sans maths
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 3);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 4);
             }
 
 
-            // Création d'instances à la main
-            this.AReserve.AddRange(
-                new AReserve { EleveId = 1, ReservationId = 1 },
-                new AReserve { EleveId = 2, ReservationId = 2 },
-                new AReserve { EleveId = 3, ReservationId = 2 }
-                );  
+            using (DalReservation dal = new DalReservation())
+            {
+                // Cours de maths du 14/12
+                int id = dal.creerReservation(new Reservation() {
+                    PrenomNomProf = "Leonhard Euler",
+                    Horaire = new DateTime(2022, 12, 14, 16, 00, 00),
+                    Jour = "Mercredi 14 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.maths,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(1));
+                dal.AffecterACreneau(id, this.Creneaux.Find(2));
+                dal.AffecterACreneau(id, this.Creneaux.Find(3));
+                this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
+
+                // Cours de PC du 17/12  en binôme
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 17, 16, 00, 00),
+                    Jour = "Samedi 17 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = true,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(4));
+                dal.AffecterACreneau(id, this.Creneaux.Find(5));
+                dal.AffecterACreneau(id, this.Creneaux.Find(6));
+                this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
+
+                // Cours de maths du 21/12
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Leonhard Euler",
+                    Horaire = new DateTime(2022, 12, 21, 16, 00, 00),
+                    Jour = "Mercredi 21 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.maths,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(7));
+                dal.AffecterACreneau(id, this.Creneaux.Find(8));
+                dal.AffecterACreneau(id, this.Creneaux.Find(9));
+                this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
+
+                // Cours de PC prévu le 05/01  en binôme
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2023, 01, 05, 16, 00, 00),
+                    Jour = "Mercredi 5 janvier",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = true,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(10));
+                dal.AffecterACreneau(id, this.Creneaux.Find(11));
+                dal.AffecterACreneau(id, this.Creneaux.Find(12));
+                this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
+
+            }
+
 
             this.MatieresProfs.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
@@ -146,37 +236,6 @@ namespace PitAgora.Models
                 new NiveauProf() { ProfesseurId = 5, NiveauId = 3 }
                 );
 
-            List<Creneau> CreneauxResa1 = new List<Creneau>();
-            CreneauxResa1.Add(this.Creneaux.Find(1));
-            CreneauxResa1.Add(this.Creneaux.Find(2));
-            CreneauxResa1.Add(this.Creneaux.Find(3));
-
-            List<Creneau> CreneauxResa2 = new List<Creneau>();
-            CreneauxResa2.Add(this.Creneaux.Find(4));
-            CreneauxResa2.Add(this.Creneaux.Find(5));
-            CreneauxResa2.Add(this.Creneaux.Find(6));
-
-            this.Reservations.AddRange(
-               new Reservation
-               {
-                   Id= 1,
-                   Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
-                   Prix = 90,
-                   EvaluationId=1,
-                   EstEnBinome = false,
-                   EstEnPresentiel = false,
-                   EstValide = true
-               },
-               new Reservation
-               {
-                   Id= 2,
-                   Horaire = new DateTime(2023, 01, 08, 17, 00, 00),
-                   Prix = 90,
-                   EvaluationId=2,
-                   EstEnBinome = true,
-                   EstEnPresentiel = false,
-                   EstValide = true
-               }); ;
 
             this.Evaluations.AddRange(
                 new Evaluation { Contenu = "Nous avons abordé les sujets suivants blablabla. Untel a eu des difficultés sur l'exercice 3." },

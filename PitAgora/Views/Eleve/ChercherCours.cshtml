@@ -106,8 +106,10 @@
        
         <script>
             function changerStatutBinome() {
-                console.log(@Model.EstEnBinome);
+                console.log("je rentre");
                 alert("Bouh");
+                console.log(@Model.EstEnBinome);
+                console.log("je suis encore là")
                 if (@Model.EstEnBinome) {
                     document.getElementById("ContainerBinome").hidden = true;
                     @Model.EstEnBinome = false;
@@ -116,6 +118,7 @@
                     document.getElementById("ContainerBinome").hidden = false;
                     @Model.EstEnBinome = true;
                 }
+                console.log("je sors");
             }
         </script>
     }
