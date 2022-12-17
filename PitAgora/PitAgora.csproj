@@ -20,16 +20,10 @@
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <Folder Include="Views\Professeur\" />
->>>>>>> f32d99f (Details front)
-=======
->>>>>>> 9d95920 (Commit avant try profile pic)
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AspNetCore.SassCompiler" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties libs_4bootstrap_4dist_4css_4bootstrap_1css_1map__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>

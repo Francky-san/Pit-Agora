@@ -27,7 +27,7 @@ namespace PitAgora.Controllers
                 int newProf = dal.CreerProfesseur(cvm.Professeur.Utilisateur.Personne.Nom, cvm.Professeur.Utilisateur.Personne.Prenom, cvm.Professeur.Utilisateur.Mail,
                     cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse, cvm.MatiereProf.MatiereId) ;
             }
-            return View("/");
+            return Redirect("/Home/Index");
 
         }
         public IActionResult AccueilProf(int id)

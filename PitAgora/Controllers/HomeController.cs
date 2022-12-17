@@ -2,8 +2,11 @@
 using Newtonsoft.Json.Linq;
 using PitAgora.Models;
 using PitAgora.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 
 namespace PitAgora.Controllers
 {
@@ -42,13 +45,9 @@ namespace PitAgora.Controllers
         }
 
 
-<<<<<<< HEAD
-        //Méthodes Franck pour renvoyer infos   JV : nommer la méthode ObtenirTypeDUtilisateur ?
-        public IActionResult AfficherInfosPerso(int Id)  // JV : id ?
-=======
+
         //Méthodes Franck pour renvoyer infos
         public IActionResult AfficherAccueil(int Id)
->>>>>>> 9d95920 (Commit avant try profile pic)
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();
@@ -59,19 +58,11 @@ namespace PitAgora.Controllers
      
             if (eleve != null)
             {
-<<<<<<< HEAD
-                return Redirect("/Eleve/AccueilEleve/" + eleve.Id);
-            }
-            else if (prof != null)
-            {
-                return Redirect("/Professeur/AccueilProf/"+ prof.Id);
-=======
                 return Redirect("/Eleve/AccueilEleve/"+eleve.Id.ToString()) ;
             }
             else if (prof != null)
             {
                 return Redirect("/Professeur/AccueilProf"+prof.Id.ToString());
->>>>>>> f32d99f (Details front)
             }
             else if (parent != null)
             {
@@ -80,5 +71,6 @@ namespace PitAgora.Controllers
             return View("ERROR");
 
         }
+
     }
 }
