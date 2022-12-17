@@ -1,87 +1,91 @@
-﻿@model PitAgora.Models.Professeur
+﻿@model PitAgora.ViewModels.ProfViewModel
 @{
     Layout = "LayoutPrive";
 
     ViewBag.Title = "Accueil Prof";
 }
 
+@section css {
+    <link href="~/css/Accueils.css" rel="stylesheet" />
+}
+
+
 @section Main{
     <div>
-             
-        <div>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</div>
-        <br>  <br>
-       
-        
-     <div> Cours à venir : </div>
 
-           Reservations de @Model..Utilisateur.Personne.Prenom :
-           @* <table>
-                <thead>
-                    <tr>
-                        <th>Datetime reservation</th>
-                        <th>Evaluation</th>
-                        <th>Prof</th>
-                        <th>Prix</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var resa in Model.Reservations)
+        <h4>Espace prof</h4>
+        <br />
+        <div>Bonjour @Model.Professeur.Utilisateur.Personne.Prenom @Model.Professeur.Utilisateur.Personne.Nom</div>
+        <br>  <br>
+
+        <div class="container -fluid">
+            <!-- Cours futurs-->
+            <div>
+                @if (Model.CoursFuturs.Count > 0)
+                {
+                    <div style="margin-bottom: 5px">Mes prochains cours :</div>
+                    @foreach (var item in @Model.CoursFuturs)
                     {
+                        <div class="celluleCours">
+                            <table>
+                                <tr><td>@item.Jour</td></tr>
+                              @*  <tr><td>@item.Matiere avec</td></tr>
+                                <tr><td>@item.PrenomNomEleve</td></tr>*@
+                            </table>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>Pas de cours programmé pour le moment.</div>
+                }
+            </div>
 
-                        <tr>
-                            <td>
-                                @resa.Jour
-                            </td>
-                            <td>
-                                @resa.Evaluation
+            <br />
+            <br />
+            <br />
 
-                            </td>
-                            <td>
-                                @resa.PrenomNomProf
+            <!-- Cours passés-->
+            <div>
+                @if (Model.CoursPasses.Count > 0)
+                {
+                    <div style="margin-bottom: 5px">Mes cours récents :</div>
+                    @foreach (var item in @Model.CoursPasses)
+                    {
+                        <div class="celluleCours">
+                            <table>
+                                <tr><td>@item.Jour</td></tr>
+                                @*<tr><td>@item.Matiere avec</td></tr>
+                                <tr><td>@item.PrenomNomProf</td></tr>*@
+                            </table>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>Vous n'avez pas encore donné de cours avec l'un de nos chers élèves !'</div>
+                }
+            </div>
 
-                            </td>
-                            <td>
-                                @resa.Prix
-
-                            </td>
-                        </tr>
-                    }<
-            </tbody>
-                <br />
-            </table>
         </div>
-*@
-       
-
-    @*@foreach (var creneau in @Model)
-    {
-        <div> @creneau.Debut </div>
-
-    }*@
 
 
-   @* <div> <h3>Cours à venir : </h3></div>
+        <div>
+            <!-- Crédit cours-->
+            Mon crédit cours : @Model.Professeur.CreditProf <span> € </span>
+        </div>
+        <br />
 
-    @foreach (var creneau in @Model)
-    {
-        <div> @creneau.Debut </div>
+       @* <div> Gérer mon plannning du : </div>
+        @Html.LabelFor(m => Model.Horaire)
+        <input type="date" name="horaire">
+        <br />
 
-    }*@
+        <input type="submit" value="" />*@
 
-
-        @Html.ActionLink("Gérer mon planning du ", "Professeur" )
-        <br>  <br>
-        @Html.ActionLink("Mes élèves", "Professeur" )
-        <br>  <br>
-        @Html.ActionLink("Mes ressources", "Professeur" )
-        <br>  <br>
-        @Html.ActionLink("Mon Crédit Prof", "Professeur" )
-        <br>  <br>
-        @Html.ActionLink("Mon profil", "Professeur" )
-        <br>  <br>
 
 
 
     </div>
 
-}
+        }

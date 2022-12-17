@@ -48,31 +48,14 @@ namespace PitAgora.Models
             }
         }
 
-
-        //Creer résa
-        //public int CreerResa(List<Creneau> creneaux)
-        //{
-        //    string prof =
-        //        if (creneaux.Count % 2 == 0)
-        //    {
-        //        int prix = (creneaux.Count);
-        //    }
-        //    Reservation newResa = new Reservation()
-        //    {
-
-        //        DureeMinutes = creneaux.Count() * 30,
-        //        Evaluation = null,
-        //        PrenomNomProf = (creneaux[0].Professeur.Utilisateur.Personne.Prenom) + " " + (creneaux[0].Professeur.Utilisateur.Personne.Nom),
-        //        Prix = creneaux[0].,
-        //        Horaire = creneaux[0].Debut,
-
-
-        //    }
-        //}
-
         public Creneau GetCreneau(int id)
         {
             return _bddContext.Creneaux.Find(id);
+        }
+
+        public List<Creneau> GetCreneauxDisponibles(int professeurId)
+        {
+           return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c=>c.ReservationId==null).ToList();
         }
 
         public List<Creneau> RequeteDistanciel(MatiereEnum matiere, string niveau, DateTime debut, DateTime fin)
