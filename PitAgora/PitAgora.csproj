@@ -26,5 +26,11 @@
   <ItemGroup>
     <None Remove="AspNetCore.SassCompiler" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Controllers\HomeController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInPackage>true</IncludeInPackage>
+    </Compile>
+  </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties libs_4bootstrap_4dist_4css_4bootstrap_1css_1map__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>

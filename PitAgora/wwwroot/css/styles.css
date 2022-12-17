@@ -9478,4 +9478,13 @@ textarea.form-control-lg {
 .pieDePagina .creditos {
     border-top: 1px solid #f15a24;
 }
+
+#fond {
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    opacity: 0.60;
+    padding: 50px;
+}
 /*# sourceMappingURL=estilos.css.map */

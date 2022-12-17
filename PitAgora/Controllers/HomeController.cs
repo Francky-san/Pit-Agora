@@ -26,7 +26,8 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult Inscription()
         {
-            return View();
+            InscriptionViewModel ivm = new InscriptionViewModel();
+            return View(ivm);
         }
 
         [HttpPost]

@@ -1,52 +1,109 @@
 ﻿@model PitAgora.ViewModels.InscriptionViewModel
+
 @{
     Layout = "LayoutGen";
 }
+
 @section css {
     <link href="~/css/stylesMain.css" rel="stylesheet" />
 }
 
+
+
 @section Main{
-    <div id="fond">
 
-        <form action="~/Home/Inscription" method="post" class="row g-3">
+    <form action="~/Home/Inscription" method="post">
+        <div class="container-fluid">
+         
+            <div class="row col-5 m-5" style="float:left">
+                <p>Infos Parent</p>
+                @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Prenom,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Prenom,
+                    new { @class = "form-control" })
 
-            <div>
-                <h2>Inscription</h2>
+                @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Nom,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Nom,
+                    new { @class = "form-control" })
 
-                Infos Parent :
-                @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Nom)
-                <span>@Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Nom)</span>
-                @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Prenom)
-                <span>@Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Prenom)</span>
-                @Html.LabelFor(m => m.Parent.Utilisateur.Mail)
-                <span>@Html.TextBoxFor(m => m.Parent.Utilisateur.Mail)</span>
-                @Html.LabelFor(m => m.Parent.Utilisateur.MotDePasse)
-                <span>@Html.PasswordFor(m => m.Parent.Utilisateur.MotDePasse)</span>
-                @Html.LabelFor(m => m.Parent.Utilisateur.Adresse)
-                <span>@Html.TextBoxFor(m => m.Parent.Utilisateur.Adresse)</span>
+                @Html.LabelFor(m => m.Utilisateur.Adresse,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Utilisateur.Adresse,
+                    new { @class = "form-control" })
+
+                @Html.LabelFor(m => m.Utilisateur.Mail,
+                new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Utilisateur.Mail,
+                    new { @class = "form-control" })
+
+                @Html.LabelFor(m => m.Utilisateur.MotDePasse,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Utilisateur.MotDePasse,
+                    new { @class = "form-control" })
+
+
+                <label for="formFile" class="form-label">Téléchargez votre pièce d'identité</label>
+                <input class="form-control" type="file" id="formFile">
+
+
             </div>
-            <div>
-                Infos Eleve :
-                @Html.LabelFor(m => m.Eleve.Utilisateur.Personne.Nom)
-                <span>@Html.TextBoxFor(m => m.Eleve.Utilisateur.Personne.Nom)</span>
-                @Html.LabelFor(m => m.Eleve.Utilisateur.Personne.Prenom)
-                <span>@Html.TextBoxFor(m => m.Eleve.Utilisateur.Personne.Prenom)</span>
-                @Html.LabelFor(m => m.Eleve.Utilisateur.Mail)
-                <span>@Html.TextBoxFor(m => m.Eleve.Utilisateur.Mail)</span>
-                @Html.LabelFor(m => m.Eleve.Utilisateur.MotDePasse)
-                <span>@Html.PasswordFor(m => m.Eleve.Utilisateur.MotDePasse)</span>
-                @Html.LabelFor(m => m.Eleve.Utilisateur.Adresse)
-                <span>@Html.TextBoxFor(m => m.Eleve.Utilisateur.Adresse)</span>
+           
 
-                <input type="submit" value="Valider et payer" />
+           
+            <div class="row col-5 m-5" style="float:right">
+
+                <p>Infos Elève</p>
+
+                @Html.LabelFor(m => m.Eleve.Utilisateur.Personne.Prenom,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Eleve.Utilisateur.Personne.Prenom,
+                    new { @class = "form-control" })
+
+                @Html.LabelFor(m => m.Eleve.Utilisateur.Personne.Nom,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Eleve.Utilisateur.Personne.Nom,
+                    new { @class = "form-control" })
+
+
+                @Html.LabelFor(m => m.Utilisateur.Adresse,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Utilisateur.Adresse,
+                    new { @class = "form-control" })
+
+                @Html.LabelFor(m => m.Utilisateur.Mail,
+                new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Utilisateur.Mail,
+                    new { @class = "form-control" })
+
+                @Html.LabelFor(m => m.Utilisateur.MotDePasse,
+                    new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Utilisateur.MotDePasse,
+                    new { @class = "form-control" })
+
+                <span>
+                    <label for="checkbox" class="form-check form-check-inline">Voulez-vous inscrire un autre élève ?</label>
+                    <input type="checkbox" class="form-check-input" value="Oui" />
+                </span>
+
+
+                <button type="submit" class="btn btn-primary">Valider et payer</button>
+
             </div>
-        </form>
-    </div>
-}
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////                      Version de Joseph                 ////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+           
+
+        </div>
+
+    </form>
+            <!--Script Bootstrap-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                    crossorigin="anonymous"></script>
+    }
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////                      Version de Joseph                 ////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
