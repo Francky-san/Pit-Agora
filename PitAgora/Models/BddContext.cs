@@ -66,9 +66,9 @@ namespace PitAgora.Models
             {
                 dal.CreerParent("Terrieur", "Marc", "mterrieur@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.CreerParent("Vaudage", "Annie", "avaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
-                dal.CreerParent("Potter", "Mary", "avaudage@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
-                dal.CreerParent("Skywalker", "Leia", "avaudage@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
-                dal.CreerParent("Blueberry", "Jean", "avaudage@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
+                dal.CreerParent("Potter", "Mary", "avaudage1@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
+                dal.CreerParent("Skywalker", "Leia", "avaudage2@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
+                dal.CreerParent("Blueberry", "Jean", "avaudage3@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
             }
 
             using (DalEleve dal = new DalEleve())

@@ -16,7 +16,7 @@ namespace PitAgora.Controllers
         }
         public IActionResult Connexion()
         {
-            UtilisateurViewModel viewModel = new UtilisateurViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
+            UtilisateurViewModel viewModel = new UtilisateurViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated , Name= HttpContext.User.Identity.Name };
             if (viewModel.Authentifie)
             {
                 viewModel.Utilisateur = dal.ObtenirUtilisateur(HttpContext.User.Identity.Name);

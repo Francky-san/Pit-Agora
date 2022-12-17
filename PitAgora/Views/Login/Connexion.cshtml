@@ -3,6 +3,7 @@
     Layout = "LayoutGen";
 }
 
+<<<<<<< HEAD
 
 }
 @section Main{
@@ -32,6 +33,29 @@
 
 
                 </form>
+=======
+@section Main{
+    @if (Model.Authentifie)
+    {
+        <h3>
+            Vous êtes déjà authentifié avec le login :
+            @Model.Utilisateur.Mail
+        </h3>
+        @Html.ActionLink("Deconnexion", "Deconnexion")
+        <p> @Html.ActionLink("Accueil","AccueilGeneral","Home") </p>
+    }
+    else
+    {
+        <p>
+            Veuillez vous authentifier :
+        </p>
+        using (@Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(m => m.Utilisateur.Mail)
+                <span style="float:right">@Html.TextBoxFor(m => m.Utilisateur.Mail)</span>
+                @Html.ValidationMessageFor(m => m.Utilisateur.Mail)
+>>>>>>> f32d99f (Details front)
             </div>
 
         </div>
@@ -61,5 +85,10 @@
             </ul>
         }
 
+<<<<<<< HEAD
 
 
+=======
+    }
+}
+>>>>>>> f32d99f (Details front)

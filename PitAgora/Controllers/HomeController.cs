@@ -14,16 +14,12 @@ namespace PitAgora.Controllers
 
             return View();
         }
-
-        public IActionResult Postuler()
+        //Contenu en dur, présentation Pit'Agora
+        public IActionResult Presentation()
         {
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            return View();
-        }
         [HttpGet]
         public IActionResult Inscription()
         {
@@ -58,11 +54,19 @@ namespace PitAgora.Controllers
      
             if (eleve != null)
             {
+<<<<<<< HEAD
                 return Redirect("/Eleve/AccueilEleve/" + eleve.Id);
             }
             else if (prof != null)
             {
                 return Redirect("/Professeur/AccueilProf/"+ prof.Id);
+=======
+                return Redirect("/Eleve/AccueilEleve/"+eleve.Id.ToString()) ;
+            }
+            else if (prof != null)
+            {
+                return Redirect("/Professeur/AccueilProf"+prof.Id.ToString());
+>>>>>>> f32d99f (Details front)
             }
             else if (parent != null)
             {

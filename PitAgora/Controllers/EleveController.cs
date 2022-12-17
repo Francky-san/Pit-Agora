@@ -23,6 +23,10 @@ namespace PitAgora.Controllers
             dalP = new DalProf();
             dalR = new DalReservation();
         }
+        public IActionResult Agora()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult AccueilEleve(int id)
