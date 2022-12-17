@@ -20,6 +20,10 @@ namespace PitAgora.Controllers
         {
             return View();
         }
+        public IActionResult Agora()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult ChercherCours()
