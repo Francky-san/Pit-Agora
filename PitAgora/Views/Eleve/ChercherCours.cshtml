@@ -14,14 +14,13 @@
         <fieldset>
             <legend>Formulaire de réservation : </legend>
             @Html.LabelFor(m => Model.Matiere)
-            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>())
-            @Html.ValidationMessageFor(m => Model.Matiere)
+            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true})
+             <br />
+            @Html.LabelFor(m => Model.Niveau)
+            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true})
             <br />
-            <label for="niveau">Niveau :</label>
-            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>())
-            <br />
-            @Html.LabelFor(m => Model.Horaire)
-            <input type="date" name="horaire">
+            @Html.LabelFor(m => Model.DebutJournee)
+            <input type="date" name="debutJournee", required>
             <br />
             @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
             @Html.LabelFor(m => Model.EstEnPresentiel)
@@ -37,7 +36,6 @@
 
             </div>
 
-           
             <input type="submit" value="ChercherCours" />
         </fieldset>
        

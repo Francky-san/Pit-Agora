@@ -2,7 +2,7 @@
 
 namespace PitAgora.Models
 {
-    public class NiveauxProf
+    public class NiveauProf
     {
         //Table intermediaire niveaux et prof
         public int Id { get; set; }
