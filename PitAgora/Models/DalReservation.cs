@@ -59,11 +59,12 @@ namespace PitAgora.Models
             return res;
         }
 
+        // Retourne la liste des réservation d'un élève dont la date n'est pas passée (maximum 5)
         public List<Reservation> ObtenirCoursPasses(int eleveId)
         {
             List<Reservation> res = new List<Reservation>();
             List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
-                .Where(ar => ar.Reservation.Horaire < DateTime.Now).ToList();
+                .Where(ar => ar.Reservation.Horaire < DateTime.Now).Take(5).ToList();
             foreach (AReserve ar in l)
             {
                 res.Add(ar.Reservation);

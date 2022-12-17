@@ -1,0 +1,9 @@
+﻿.celluleCours {
+    width: 250px;
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 80%;
+    float: left;
+}

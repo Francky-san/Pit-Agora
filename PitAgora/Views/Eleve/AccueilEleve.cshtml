@@ -1,18 +1,70 @@
-﻿@model PitAgora.Models.Eleve
+﻿@model PitAgora.ViewModels.EleveViewModel
 @{
     Layout = "LayoutPrive";
     ViewBag.Title = "Accueil infos eleve";
+}
+
+@section css {
+    <link href="~/css/Accueils.css" rel="stylesheet" />
 }
 
 @section Main{
     <div class="container -fluid">
 
      
-            <p>Bonjour</p>
+        <h4>Mon espace perso</h4>
+ 
+        <div>
+            @if (Model.CoursFuturs.Count>0)
+            {
+                <div style="margin-bottom: 5px">Mes prochains cours :</div>
+                @foreach (var item in @Model.CoursFuturs)
+                {
+                    <div class="celluleCours">
+                        <table>
+                            <tr><td>@item.Jour</td></tr>
+                            <tr><td>@item.Matiere avec</td></tr>
+                            <tr><td>@item.PrenomNomProf</td></tr>
+                        </table>
+                    </div>
+                }
+            }
+            else {
+                <div>Pas de cours programmé pour le moment.</div>
+            }
+        </div>
+        
+        <br />
+        <br />
+        <br />
+
+        <div>
+            @if (Model.CoursPasses.Count > 0)
+            {
+                <div style ="margin-bottom: 5px">Mes cours récents :</div>
+                @foreach (var item in @Model.CoursPasses)
+                {
+                    <div class="celluleCours">
+                        <table>
+                            <tr><td>@item.Jour</td></tr>
+                            <tr><td>@item.Matiere avec</td></tr>
+                            <tr><td>@item.PrenomNomProf</td></tr>
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>Tu n'as pas encore pris de cours avec nos super professeurs !'</div>
+            }
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <div>@Html.ActionLink("Réserver un cours", "ChercherCours","Eleve")</div>
 
 
-        <li>@Html.ActionLink("Reserver un cours", "ChercherCours","Eleve")</li>
     </div>
 
-    <div>
     }
