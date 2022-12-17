@@ -23,11 +23,13 @@ namespace PitAgora.Models
         public DbSet<AReserve> AReserve { get; set; }
         public DbSet<Matiere> Matieres { get; set; }
         public DbSet<MatiereProf> MatieresProfs { get; set; }
+        public DbSet<Evaluation> Evaluations { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -172,22 +174,29 @@ namespace PitAgora.Models
             this.Reservations.AddRange(
                new Reservation
                {
-                   Id = 1,
+                   Id= 1,
                    Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
                    Prix = 90,
+                   EvaluationId=1,
                    EstEnBinome = false,
                    EstEnPresentiel = false,
                    EstValide = true
                },
                new Reservation
                {
-                   Id = 2,
+                   Id= 2,
                    Horaire = new DateTime(2023, 01, 08, 17, 00, 00),
                    Prix = 90,
+                   EvaluationId=2,
                    EstEnBinome = true,
                    EstEnPresentiel = false,
                    EstValide = true
                }); ;
+
+            this.Evaluations.AddRange(
+                new Evaluation { Contenu = "Nous avons abordé les sujets suivants blablabla. Untel a eu des difficultés sur l'exercice 3." },
+                new Evaluation { Contenu = "Eleve à l'aise sur tel sujets, necessite d'approfondir tel aspect." }
+                );
 
 
 

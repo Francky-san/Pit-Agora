@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PitAgora
 {
-    public class Program
+    public class Programgit
     {
         public static void Main(string[] args)
         {

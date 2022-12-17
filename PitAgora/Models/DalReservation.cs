@@ -37,5 +37,12 @@ namespace PitAgora.Models
             _bddContext.AReserve.Add(ar);
             _bddContext.SaveChanges();
         }
+
+        public List<Creneau> GetCreneaux(int ResaId)
+        {
+            return _bddContext.Creneaux.Where(c => c.ReservationId == ResaId).ToList();
+        }
+
+
     }
 }

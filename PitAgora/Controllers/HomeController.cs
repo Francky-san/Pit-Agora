@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PitAgora.Controllers
@@ -10,10 +11,6 @@ namespace PitAgora.Controllers
         public IActionResult Index()
         {
 
-            return View();
-        }
-        public IActionResult Inscription()
-        {
             return View();
         }
 
@@ -26,6 +23,27 @@ namespace PitAgora.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Inscription()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Inscription(InscriptionViewModel ivm)
+        {
+            if (ModelState.IsValid)
+            {
+                DalParent dalP = new DalParent();
+                DalEleve dalE = new DalEleve();
+                int newParent = dalP.CreerParent(ivm.Parent.Utilisateur.Personne.Nom, ivm.Parent.Utilisateur.Personne.Prenom, ivm.Parent.Utilisateur.Mail,
+                    ivm.Parent.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
+                int newEleve = dalE.CreerEleve(newParent, ivm.Eleve.Utilisateur.Personne.Nom, ivm.Eleve.Utilisateur.Personne.Prenom, ivm.Eleve.Utilisateur.Mail,
+                     ivm.Eleve.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
+            }
+            return View();
+        }
+
 
         //Méthodes Franck pour renvoyer infos
         public IActionResult AfficherInfosPerso(int Id)
@@ -39,20 +57,35 @@ namespace PitAgora.Controllers
      
             if (eleve != null)
             {
-                return View("AccueilEleve", eleve) ;
+                return Redirect("/Eleve/AccueilEleve/"+ eleve.ToString()) ;
             }
             else if (prof != null)
             {
-                return View("AccueilProf", prof);
+                return Redirect("/Professeur/AccueilProf/"+ prof.ToString());
             }
             else if (parent != null)
             {
-                Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
-                ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent };
-                return View("AccueilParent", pvm);
+                return View("AccueilParent", GetPVM(parent));
             }
             return View("ERROR");
 
+        }
+
+        //Méthode à part pour constituer ParentViewModel
+        public ParentViewModel GetPVM(Parent parent)
+        {
+            DalEleve dal = new DalEleve();
+            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
+            List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
+            DalReservation dalr = new DalReservation();
+            List<Creneau> creneauxResa = new List<Creneau>();
+            foreach (Reservation resa in resaEleve1)
+            {
+                creneauxResa = dalr.GetCreneaux(resa.Id);
+            }
+
+            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent,Reservations=resaEleve1,Creneaux=creneauxResa };
+            return pvm;
         }
     }
 }
