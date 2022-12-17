@@ -25,8 +25,10 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult ChercherCours()
         {
+            ChercherCoursViewModel ccvm = new ChercherCoursViewModel();
+            ccvm.EstEnBinome = false;
             ViewData["messageChercherCours"] = "";
-            return View();
+            return View(ccvm);
         }
 
         [HttpPost]

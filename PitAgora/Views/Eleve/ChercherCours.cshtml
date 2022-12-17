@@ -1,4 +1,4 @@
-﻿@model PitAgora.Models.FormulaireRechercheCours
+﻿@model PitAgora.ViewModels.ChercherCoursViewModel
 @{
     Layout = "LayoutPrive";
 
@@ -6,43 +6,119 @@
     ViewBag.Title = "Reservation d'un cours";
 }
 
+@section css {
+    <link href="~/css/ChercherCours.css" rel="stylesheet" />
+}
+
 @section Main{
     <div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
 @using (Html.BeginForm())
 {
 
-        <fieldset>
+        <fieldset id="fieldset">
             <legend>Formulaire de réservation : </legend>
-            @Html.LabelFor(m => Model.Matiere)
-            @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true})
-             <br />
-            @Html.LabelFor(m => Model.Niveau)
-            @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true})
-            <br />
-            @Html.LabelFor(m => Model.DebutJournee)
-            <input type="date" name="debutJournee", required>
-            <br />
-            @Html.CheckBoxFor(m=> Model.EstEnPresentiel)
-            @Html.LabelFor(m => Model.EstEnPresentiel)
-            <br />
-            <input type="checkbox" id="EstEnBinome" onclick="afficherContainerBinome()" >
-            <label>Binome</label>
-            <br />
-            <div id="ContainerBinome" hidden>
-                @Html.LabelFor(m => Model.PrenomBinome)
-                @Html.TextBoxFor(m =>Model.PrenomBinome)
-                @Html.LabelFor(m => Model.NomBinome)
-                @Html.TextBoxFor(m =>Model.NomBinome)
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        <table class="table1"> 
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(m => Model.Matiere)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true})
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    @Html.LabelFor(m => Model.Niveau)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true})
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(m => Model.DebutJournee)
+                                </td>
+                                <td>
+                                    <input type="date" name="debutJournee" , required>
+                                </td>
+                            </tr>
+                        </table>
 
-            </div>
-
-            <input type="submit" value="ChercherCours" />
+                        <table class="table2">
+                            <tr>
+                                <td rowspan="2">
+                                    <label>Je souhaite un cours </label>
+                                </td>
+                                <td>
+                                    <input type="radio" id="EnPresentiel" name="EstEnPresentiel" value="true">
+                                    <label> à domicile</label>
+                                </td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <td>
+                                    <input type="radio" id="EnVisio" name="EstEnPresentiel" value="false">
+                                    <label> en visio</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                                <input type="submit" value="Valider" style="margin-left: 200px" />
+                    </td>
+                </tr>
+                    <br>    
+                <tr>
+                    <td>
+                        <label style="width: 400px; padding: 15px 0px">Je souhaite un cours en binôme </label>
+                        <input type="checkbox" id="EstEnBinome" onclick="changerStatutBinome()">
+                        <br />
+                        <div id="ContainerBinome" hidden>
+                            <p>Mon binôme :</p>
+                            <table class="table1">
+                                <tr>
+                                    <td>
+                                        @Html.LabelFor(m => Model.PrenomBinome)
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m =>Model.PrenomBinome)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.LabelFor(m => Model.NomBinome)
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m =>Model.NomBinome)
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
         </fieldset>
        
         <script>
-            function afficherContainerBinome() 
-            {
-               document.getElementById("ContainerBinome").hidden = false;
+            function changerStatutBinome() {
+                console.log("je rentre");
+                alert("Bouh");
+                console.log(@Model.EstEnBinome);
+                console.log("je suis encore là")
+                if (@Model.EstEnBinome) {
+                    document.getElementById("ContainerBinome").hidden = true;
+                    @Model.EstEnBinome = false;
+                }
+               else {
+                    document.getElementById("ContainerBinome").hidden = false;
+                    @Model.EstEnBinome = true;
+                }
+                console.log("je sors");
             }
         </script>
     }
