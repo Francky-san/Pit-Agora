@@ -42,7 +42,7 @@ namespace PitAgora.Controllers
 
 
         //Méthodes Franck pour renvoyer infos
-        public IActionResult AfficherInfosPerso(int Id)
+        public IActionResult AfficherAccueil(int Id)
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();

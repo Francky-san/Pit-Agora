@@ -19,15 +19,17 @@ namespace PitAgora.Controllers
             return View();
         }
         [HttpPost]
-        //public IActionResult Postuler(CandidatViewModel cvm)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        DalProf dal = new DalProf();
-        //        int newProf = dal.CreerProfesseur(cvm.)
-        //    }
+        public IActionResult Postuler(CandidatViewModel cvm)
+        {
+            if (ModelState.IsValid)
+            {
+                DalProf dal = new DalProf();
+                int newProf = dal.CreerProfesseur(cvm.Professeur.Utilisateur.Personne.Nom, cvm.Professeur.Utilisateur.Personne.Prenom, cvm.Professeur.Utilisateur.Mail,
+                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse, cvm.MatiereProf.MatiereId) ;
+            }
+            return View("/");
 
-        //}
+        }
         public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();

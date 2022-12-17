@@ -8,5 +8,6 @@ namespace PitAgora.ViewModels
         public Personne Personne { get; set; }
         public Professeur Professeur { get; set; }
         public MatiereProf MatiereProf { get; set; }
+        public MatiereEnum Matiere { get; set; }
     }
 }
