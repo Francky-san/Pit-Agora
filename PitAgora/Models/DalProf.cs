@@ -38,9 +38,9 @@ namespace PitAgora.Models
             Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id};
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges();
-            MatiereProf matiereProf = new MatiereProf() { ProfesseurId = professeur.Id, MatiereId=matiere };
-            _bddContext.MatiereProf.Add(matiereProf);
-            _bddContext.SaveChanges();
+            //MatiereProf matiereProf = new MatiereProf() { ProfesseurId = professeur.Id, MatiereId=matiere };
+            //_bddContext.MatiereProf.Add(matiereProf);
+            //_bddContext.SaveChanges();
             return professeur.Id;
         }
 

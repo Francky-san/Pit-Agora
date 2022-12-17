@@ -71,7 +71,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Postuler", "Home")>
+                            <a class="nav-link" href=@Url.Action("Postuler", "Professeur")>
                                 Postuler
                             </a>
                         </li>
@@ -81,7 +81,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                            <a class="nav-link" href="#footer">
                                 Contact
                             </a>
                         </li>
@@ -160,13 +160,14 @@
     @RenderSection("Manolito",required:false)
 
     <!-- INICIO PIE DE PÁGINA -->
-    <footer class="pieDePagina bg-dark text-white pt-5">
+    <footer class="pieDePagina bg-dark text-white pt-5" id="footer">
         <div class="container">
             <div class="row text-center text-lg-start">
 
                 <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
-                    <img src="~/images/LogoPitAgora.svg" width="200" height="auto" alt="Logo
+                    <a href=@Url.Action("Index", "Home")><img src="~/images/LogoPitAgora.svg" width="200" height="auto" alt="Logo
                 del sitio">
+                    </a>
                     <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
                         <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
                         <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>

@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 
 namespace PitAgora.Controllers
 {
@@ -66,7 +69,6 @@ namespace PitAgora.Controllers
             return View("ERROR");
 
         }
-
 
     }
 }

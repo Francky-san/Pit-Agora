@@ -1,10 +1,45 @@
-﻿
+﻿@model PitAgora.ViewModels.CandidatViewModel
 @{
     Layout = "LayoutGen";
-
 }
+
 @section Main{
     <content class="container-lg">
         <h1>Postuler</h1>
     </content>
+
+    <form action="~/Professeur/Postuler" method="post" class="row g-3">
+
+        <div style="float:right">
+            <h2>Infos personnelles : </h2>
+
+            Compte et contact :
+            @Html.LabelFor(m=>m.Professeur.Utilisateur.Personne.Nom)
+            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Personne.Nom)</span>
+            @Html.LabelFor(m=>m.Professeur.Utilisateur.Personne.Prenom)
+            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Personne.Prenom)</span>
+            @Html.LabelFor(m=>m.Professeur.Utilisateur.Mail)
+            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Mail)</span>
+            @Html.LabelFor(m=>m.Professeur.Utilisateur.MotDePasse)
+            <span>@Html.PasswordFor(m=>m.Professeur.Utilisateur.MotDePasse)</span>
+            @Html.LabelFor(m=>m.Professeur.Utilisateur.Adresse)
+            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Adresse)</span>
+            @Html.LabelFor(m=>m.Professeur.Motivation)
+        </div>
+
+        <div>
+            <input type="submit" value="Postuler" id="Postuler" onclick="recu()" />
+        </div>
+    </form>
+
 }
+@section Scripts{
+
+    function recu(){
+        alert("Merci pour votre candidature.
+         Nous nous engageons à vous faire un retour 
+         au plus vite.")
+    }
+}
+
+
