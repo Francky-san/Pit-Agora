@@ -24,9 +24,9 @@ namespace PitAgora.Controllers
             List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
             return View(mesCreneaux);
 
-            DalReservation dalReservation = new DalReservation();    
-           // List<Reservation> mesReservations = dalReservation. ;
-          
+
+
+                     
 
         }
 

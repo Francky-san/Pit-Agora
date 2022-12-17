@@ -1,7 +1,6 @@
 ﻿@using PitAgora.Models;
 @model List<PitAgora.Models.Creneau>
 
-
 @{
     Layout = "LayoutPrive";
 
@@ -11,18 +10,37 @@
 @section Main
     {
 
-
-        <div>  Créneaux disponibles :   </div>
+    <div> <h3>Cours effectués : </h3></div>
 
     @foreach (var creneau in @Model)
     {
-
-            <div> @creneau.Debut </div>
-
+        <div> @creneau.Debut </div>
 
     }
 
 
+    <div> <h3>Cours à venir : </h3></div>
+
+    @foreach (var creneau in @Model)
+    {
+        <div> @creneau.Debut </div>
+
+    }
+
+
+
+    <div> <h3> Créneaux réservés : </h3> </div>
+    @foreach (var reservation in @Model)
+       
+        {
+            <div> @reservation.Debut </div>
+            @*<div> @creneau.Reservation.DureeMinutes </div>
+            <div> @creneau.Reservation.EstEnPresentiel </div>
+            <div> @creneau.Reservation.EstEnBinome </div>*@
+
+
+
+        }
 
 
     }

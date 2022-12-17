@@ -35,7 +35,7 @@ namespace PitAgora.Models
             Utilisateur utilisateur = new Utilisateur { PersonneId = personne.Id, Mail = mail, MotDePasse = mdp, Adresse = adresse };
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
-            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id};
+            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id };
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges();
             return professeur.Id;
@@ -52,10 +52,39 @@ namespace PitAgora.Models
             return laPersonne.Prenom + " " + laPersonne.Nom;
         }
 
-        public List<Creneau> ListCreneaux(int profId) 
-        { 
-            return _bddContext.Creneaux.Include(c=>c.Professeur).ThenInclude(p=> p.Utilisateur).ThenInclude(u=>u.Personne).Include(c=> c.Reservation).Where(c=>c.ProfesseurId== profId).ToList();
+        //Méthode pour obtenir la liste des créneaux disponibles d'un prof
+        public List<Creneau> ListCreneaux(int profId)
+        {
+            return _bddContext.Creneaux.Include(c => c.Professeur).ThenInclude(p => p.Utilisateur).ThenInclude(u => u.Personne).Include(c => c.Reservation).Where(c => c.ProfesseurId == profId).ToList();
         }
 
+        //Méthode pour obtenir la liste des créneaux réservés d'un prof
+        public List<Reservation> ObtenirReservations(int profId)
+        {
+            var query = from r in _bddContext.Reservations
+                        join c in _bddContext.Creneaux on r.Id equals c.ReservationId
+                        join p in _bddContext.Professeurs on c.Id equals p.Id
+                        where c.ProfesseurId == p.Id
+                        select r
+                               ;
+            return query.ToList();
+        }
+
+        
+
+        //public int CreneauAAjouter(Creneau creneau)
+        //{
+        //    if Id !==.    Where(c => c.ReservationId !== 0)
+
+        //     int personneId = dal.CreerPersonne(nom, prenom);
+        //int creneauId =  { Debut = debut, ProfesseurId = professeurId };
+        //_bddContext.Creneaux.Add(creneau);
+        //_bddContext.SaveChanges();
+        //return creneau.Id;
     }
+
+      
+   
+
 }
+

@@ -37,6 +37,18 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
             return creneau.Id;
         }
+
+        public void SupprimerCreneau(int id)
+        {
+            Creneau creneauASupprimer = this._bddContext.Creneaux.Find(id);
+            if (creneauASupprimer != null)
+            {
+                this._bddContext.Creneaux.Remove(creneauASupprimer);
+                this._bddContext.SaveChanges();
+            }
+        }
+
+
         //Creer résa
         //public int CreerResa(List<Creneau> creneaux)
         //{

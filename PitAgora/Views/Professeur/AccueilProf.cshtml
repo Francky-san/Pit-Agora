@@ -8,9 +8,68 @@
 @section Main{
     <div>
              
-        <li>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</li>
+        <div>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</div>
         <br>  <br>
-        @Html.ActionLink("Mon planning", "AfficherPlanning","Professeur", new {id=Model.Id} )
+       
+        
+     <div> Cours à venir : </div>
+
+           Reservations de @Model..Utilisateur.Personne.Prenom :
+           @* <table>
+                <thead>
+                    <tr>
+                        <th>Datetime reservation</th>
+                        <th>Evaluation</th>
+                        <th>Prof</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var resa in Model.Reservations)
+                    {
+
+                        <tr>
+                            <td>
+                                @resa.Jour
+                            </td>
+                            <td>
+                                @resa.Evaluation
+
+                            </td>
+                            <td>
+                                @resa.PrenomNomProf
+
+                            </td>
+                            <td>
+                                @resa.Prix
+
+                            </td>
+                        </tr>
+                    }<
+            </tbody>
+                <br />
+            </table>
+        </div>
+*@
+       
+
+    @*@foreach (var creneau in @Model)
+    {
+        <div> @creneau.Debut </div>
+
+    }*@
+
+
+   @* <div> <h3>Cours à venir : </h3></div>
+
+    @foreach (var creneau in @Model)
+    {
+        <div> @creneau.Debut </div>
+
+    }*@
+
+
+        @Html.ActionLink("Gérer mon planning du ", "Professeur" )
         <br>  <br>
         @Html.ActionLink("Mes élèves", "Professeur" )
         <br>  <br>
