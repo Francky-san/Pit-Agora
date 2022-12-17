@@ -29,7 +29,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -59,21 +59,6 @@ namespace PitAgora.Models
                 dal.CreerTableNiveaux();
                 dal.CreerTableNMatieres();
             }
-
-            //Test
-            DateTime debut = new DateTime(2023,01,05);
-            DateTime fin = new DateTime(2023, 01, 06);
-            string matiere = "maths";
-            string niveau = "scq";
-            Console.WriteLine("select c.* from creneaux as c" +
-                " inner join professeurs as p on p.id=c.professeurId" +
-                " inner join niveauxprofs as np on np.ProfesseurId=p.id" +
-                " inner join niveaux as n on n.id=np.niveauid" +
-                " inner join matieresprofs as mp on mp.ProfesseurId=p.id" +
-                " inner join matieres as m on m.id=mp.matiereid" +
-                " where n.intitule='" + niveau + "' and c.debut between '" + DalCreneaux.FormateDate(debut) + "' and '" + DalCreneaux.FormateDate(fin) + "'" +
-                " and m.intitule = '" + matiere + "'" +
-                " order by p.id desc, c.debut");
 
 
             // Création de parents, d'élèves, de profs et de créneaux avec les méthodes dédiées
