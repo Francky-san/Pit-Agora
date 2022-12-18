@@ -57,6 +57,10 @@
                 <div>Pas de cours programmé pour le moment.</div>
             }
         </div>
+
+        <div style="float:right">
+            Mon Crédit Cours : @Model.Eleve.CreditCours euros
+        </div>
         
         <br />
         <br />
@@ -85,11 +89,15 @@
             }
         </div>
 
+        <div style="float:right">
+            Mon Solde de Pythos : @Model.Eleve.CreditPythos
+        </div>
+
         <br />
         <br />
         <br />
         <br />
-        <a class="btnReserverCours" href="ChercherCours/@Model.Eleve.Id">Réserver un cours</a>
+        <a class="btnReserverCours" href="../ChercherCours/@Model.Eleve.Id">Réserver un cours</a>
 
         <br />
         <br />
