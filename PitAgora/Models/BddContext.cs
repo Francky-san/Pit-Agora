@@ -22,7 +22,8 @@ namespace PitAgora.Models
         public DbSet<DistanceDom> DistanceDoms { get; set; }
         public DbSet<AReserve> AReserve { get; set; }
         public DbSet<Matiere> Matieres { get; set; }
-        public DbSet<MatiereProf> MatieresProfs { get; set; }
+
+        public DbSet<MatiereProf> MatiereProfs { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
 
 
@@ -215,7 +216,7 @@ namespace PitAgora.Models
             }
 
 
-            this.MatieresProfs.AddRange(
+            this.MatiereProfs.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
                 new MatiereProf { MatiereId = 3, ProfesseurId = 3 },

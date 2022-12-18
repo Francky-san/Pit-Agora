@@ -17,6 +17,7 @@ namespace PitAgora.Controllers
 
             return View();
         }
+
         //Contenu en dur, présentation Pit'Agora
         public IActionResult Presentation()
         {

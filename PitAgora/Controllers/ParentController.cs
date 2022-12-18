@@ -12,6 +12,7 @@ namespace PitAgora.Controllers
         {
             return View();
         }
+        //Méthode renvoyant la vue accueil du parent avec le ParentViewModel comme model(parent, eleve)
         public IActionResult AccueilParent(int Id)
         {
             DalParent dal = new DalParent();
@@ -19,33 +20,35 @@ namespace PitAgora.Controllers
             return View(GetPVM(parent));
         }
 
-        //Méthode à part pour constituer ParentViewModel
+        //Méthode à part pour constituer ParentViewModel à passer
         public ParentViewModel GetPVM(Parent parent)
         {
             DalEleve dal = new DalEleve();
             Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
-            List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
+            List<AReserve> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
             DalReservation dalr = new DalReservation();
             List<Creneau> creneauxResa = new List<Creneau>();
-            foreach (Reservation resa in resaEleve1)
+            foreach (AReserve resa in resaEleve1)
             {
-                creneauxResa = dalr.GetCreneaux(resa.Id);
+                creneauxResa = dalr.GetCreneaux(resa.ReservationId);
             }
 
             ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, Reservations = resaEleve1, Creneaux = creneauxResa };
             return pvm;
         }
 
+        //Méthode get créditer porte monnaie élève
         [HttpGet]
-        public IActionResult CrediterEleve()
+        public IActionResult CrediterEleve(int Id)
         {
-            return View();
+            return View(new CrediterViewController { EleveId = Id, Montant = 0 }) ;
         }
+        //Méthode post créditer porte monnaire élève
         [HttpPost]
-        public IActionResult CrediterEleve(int parentId, int montant,int eleveId)
+        public IActionResult CrediterEleve(int montant,int EleveId)
         {
             DalParent dal = new DalParent();
-            dal.CrediterEleve(parentId, montant, eleveId);
+            dal.CrediterEleve( montant, EleveId);
             return View();
         }
     }

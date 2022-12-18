@@ -1,4 +1,4 @@
-﻿@model PitAgora.ViewModels.ParentViewModel
+﻿@model PitAgora.ViewModels.CrediterViewController
 @{
     Layout = "LayoutPrive";
     ViewBag.Title = "Versement credit cours";
@@ -7,45 +7,43 @@
     <link href="~/css/Paiement.css" rel="stylesheet" />
 }
 
+@section navbar{
+    <ul class="navbar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " href=@Url.Action("AccueilParent", "Parent")>
+                Accueil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+                Déconnexion
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href=@Url.Action("CrediterEleve", "Parent")>
+                Alimenter Crédit Cours
+            </a>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                Contact
+            </a>
+        </li>
+
+    </ul>
+}
+
 @section Main{
-    <form method="post" action="~/Parent/CrediterEleve/">
+    <form method="post" action="~/Parent/CrediterEleve">
         <div class="container p-0">
             <div class="card px-4">
                 <p class="h8 py-3">Alimenter Crédit Cours</p>
-                <p class="h8 py-3"> de @Model.Eleve.Utilisateur.Personne.Prenom</p>
 
-                <div class="row gx-3">
-                    <div class="col-12">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">Person Name</p>
-                            <input class="form-control mb-3" type="text" placeholder="Titulaire de la carte">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">Numéro de la carte<p>
-                                <input class="form-control mb-3" type="text" placeholder="4909 3456 5478 9392">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">Date d'expiration</p>
-                            <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">CVV/CVC</p>
-                            <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="btn btn-primary mb-3">
-                            <span class="ps-3">Alimenter</span>
-                            <span class="fas fa-arrow-right"></span>
-                        </div>
-                    </div>
-                </div>
+                 @Html.LabelFor(m=>m.Montant)
+                 @Html.TextBoxFor(m=>m.Montant)
+                 @Html.LabelFor(m=>m.EleveId)
+                 @Html.TextBoxFor(m=>m.EleveId)
+                 <input type="submit" value="Valider le paiement"/>
             </div>
         </div>
     </form>

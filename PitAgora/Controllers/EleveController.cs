@@ -23,11 +23,20 @@ namespace PitAgora.Controllers
             dalP = new DalProf();
             dalR = new DalReservation();
         }
+
+
+        public IActionResult AccueilEleve(int Id)
+        {
+            DalEleve dal = new DalEleve();
+            Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.Id == Id).FirstOrDefault();
+            return View(eleve);
+        }
         public IActionResult Agora()
         {
             return View();
         }
 
+        //Méthode get recherche d'un cours
         [HttpGet]
         public IActionResult AccueilEleve(int id)
         {
@@ -47,6 +56,7 @@ namespace PitAgora.Controllers
             return View(ccvm);
         }
 
+        //Méthode post recherche d'un cours, prends les critères de recherche en arguments
         [HttpPost]
         public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel, int eleveId)
         {

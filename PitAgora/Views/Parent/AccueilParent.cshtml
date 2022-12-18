@@ -4,26 +4,55 @@
 
     ViewBag.Title = "Accueil Parent";
 }
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+<<<<<<< HEAD
 @section Main{
     <div>
         Vue parent :
         Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
+=======
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+>>>>>>> 089f803 (Redirection ok liste prof ok methode crediter cassÃ©e)
 
-    Parent de :
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 
-    <table>
-            <thead>
-                <tr>
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>Credit Cours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
+@section navbar{
+<ul class="navbar-nav">
 
+    <li class="nav-item">
+        <a class="nav-link active" href=@Url.Action("AccueilParent", "Parent")>
+            Accueil
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+            Déconnexion
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href=@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Eleve.Id})>
+            Alimenter Crédit Cours
+        </a>
+    <li class="nav-item">
+        <a class="nav-link" href=@Url.Action("Contact", "Home")>
+            Contact
+        </a>
+    </li>
 
+<<<<<<< HEAD
                     <td>
                         @Model.Eleve.Utilisateur.Personne.Prenom
                     </td>
@@ -71,4 +100,73 @@
             <br />
         </table>
     </div>
+=======
+</ul>
+>>>>>>> 089f803 (Redirection ok liste prof ok methode crediter cassÃ©e)
+}
+@section Main{
+    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+
+        <legend style="text-decoration:underline">Bonjour @Model.Parent.Utilisateur.Personne.Prenom </legend>
+        <table>
+            <tr>
+                <th>Eleve</th>
+                <th>Credit Cours</th>
+            </tr>
+
+
+            <tr>
+                <td>@Model.Eleve.Utilisateur.Personne.Prenom</td>
+                <td>@Model.Eleve.CreditCours</td>
+                <td><input type="button" value="Alimenter" action="~/Parent/CrediterEleve/@Model.Eleve.Id" style="width:100%;height:100%" /></td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+
+        <legend style ="text-decoration:underline">
+            Les réservations de @Model.Eleve.Utilisateur.Personne.Prenom
+        </legend>
+        <table>
+            <tr>
+                <th>Reservations</th>
+            </tr>
+
+            @foreach (var resa in Model.Reservations)
+            {
+                <tr>
+                    <td>@resa.Reservation.Prix</td>
+                    <td>@resa.Reservation.DureeMinutes</td>
+                    <td>@resa.Reservation.Jour</td>
+                    <td>@resa.Reservation.PrenomNomProf</td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+
+    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+        <legend style="text-decoration:underline">
+            Les évaluations de @Model.Eleve.Utilisateur.Personne.Prenom
+        </legend>
+        <table>
+            <tr>
+                <th>Evaluations</th>
+            </tr>
+
+            @foreach (var reservation in Model.Reservations)
+            {
+                <tr>
+                    <td>@reservation.Reservation.Evaluation.Contenu</td>
+                </tr>
+            }
+            @foreach (var crenau in Model.Creneaux)
+            {
+                @crenau.Professeur.Utilisateur.Personne.Nom
+                @crenau.Professeur.Utilisateur.Personne.Prenom
+                <br />
+                @crenau.Reservation.PrenomNomProf
+            }
+        </table>
+    </fieldset>
+
 }
