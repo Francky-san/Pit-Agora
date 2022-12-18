@@ -12,34 +12,34 @@ namespace PitAgora.Controllers
         {
             return View();
         }
-
-        //Méthode renvoyant accueil professeur avec le professeur connecté comme model
-        public IActionResult AccueilProf(int id)
-        {
-            DalProf dalProf = new DalProf();
-            Professeur professeur = dalProf.ObtenirUnProf(id);
-            ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
-            DalCreneaux dalCreneau = new DalCreneaux();
-            pvm.CreneauxDisponibles = dalCreneau.GetCreneauxDisponibles(id);
-            pvm.CreneauxReserves = dalCreneau.GetCreneauxReserves(id);
-            DalReservation dalReservation = new DalReservation();
-            pvm.CoursFuturs = dalReservation.GetCoursFuturs(id);
-            pvm.CoursPasses = dalReservation.GetCoursPasses(id);
-
-
-            return View(pvm);
-        }
+        
+        //M�thode renvoyant accueil professeur avec le professeur connect� comme model
+        //public IActionResult AccueilProf(int id)
+        //{
+        //    DalProf dalProf = new DalProf();
+        //    Professeur professeur = dalProf.ObtenirUnProf(id);
+        //    ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
+        //    DalCreneaux dalCreneau = new DalCreneaux();
+        //    pvm.CreneauxDisponibles = dalCreneau.GetCreneauxDisponibles(id);
+        //    pvm.CreneauxReserves = dalCreneau.GetCreneauxReserves(id);
+        //    DalReservation dalReservation = new DalReservation();
+        //    pvm.CoursFuturs = dalReservation.GetCoursFuturs(id);
+        //    pvm.CoursPasses = dalReservation.GetCoursPasses(id);
+        //    return View(pvm);
+        //}
 
         //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
-        public IActionResult AfficherPlanning(int id)
-        {
-            DalProf dalProf = new DalProf();
-            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
-            return View(mesCreneaux);
+        //public IActionResult AfficherPlanning(int id)
+        //{
+        //    DalProf dalProf = new DalProf();
+        //    List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
+        //    return View(mesCreneaux);
 
-            DalReservation dalReservation = new DalReservation();
-            // List<Reservation> mesReservations = dalReservation. ;
-        }
+        //    DalReservation dalReservation = new DalReservation();
+        //    // List<Reservation> mesReservations = dalReservation. ;
+
+
+        //}
         
         //Postuler plus ou moins égal création d'un prof
         [HttpGet]

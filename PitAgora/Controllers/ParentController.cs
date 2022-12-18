@@ -41,7 +41,7 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult CrediterEleve(int Id)
         {
-            return View(new CrediterViewController { EleveId = Id, Montant = 0 }) ;
+            return View(new CrediterViewModel { EleveId = Id, Montant = 0 }) ;
         }
         //Méthode post créditer porte monnaire élève
         [HttpPost]
