@@ -87,5 +87,11 @@ namespace PitAgora.Controllers
             ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent,Reservations=resaEleve1,Creneaux=creneauxResa };
             return pvm;
         }
+
+        public IActionResult Profs()
+        {
+
+            return View();
+        }
     }
 }
