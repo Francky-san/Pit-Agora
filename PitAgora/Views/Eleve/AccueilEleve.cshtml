@@ -25,6 +25,7 @@
                             <tr><td>@item.Jour</td></tr>
                             <tr><td>@item.Matiere avec</td></tr>
                             <tr><td>@item.PrenomNomProf</td></tr>
+                            <tr><td class="lienAnnuler" onclick="annulerCours()">annuler le cours</td></tr>
                         </table>
                     </div>
                 }
@@ -34,6 +35,7 @@
             }
         </div>
         
+        <br />
         <br />
         <br />
         <br />
@@ -49,6 +51,7 @@
                             <tr><td>@item.Jour</td></tr>
                             <tr><td>@item.Matiere avec</td></tr>
                             <tr><td>@item.PrenomNomProf</td></tr>
+                            <tr><td class="lienEval" onclick="afficherEval()">voir l'évaluation</td></tr>
                         </table>
                     </div>
                 }
@@ -62,9 +65,25 @@
         <br />
         <br />
         <br />
-        <div>@Html.ActionLink("Réserver un cours", "ChercherCours","Eleve")</div>
+        <br />
+        <a class="btnReserverCours" href="../ChercherCours/@Model.Eleve.Id">Réserver un cours</a>
 
+        <br />
+        <br />
+
+        <div class="conteneurFacultatif" hidden>Test</div>
 
     </div>
+
+    <script>
+        function annulerCours() {
+            alert("On y travaille...")
+        }
+    </script>
+    <script>
+        function afficherEval() {
+            alert("On y travaille...")
+        }
+    </script>
 
     }

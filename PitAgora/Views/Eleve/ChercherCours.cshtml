@@ -27,7 +27,7 @@
                                     @Html.LabelFor(m => Model.Matiere)
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true})
+                                    @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true, style="width: 280px"})
                                 </td>
                             </tr>
                              <tr>
@@ -35,7 +35,7 @@
                                     @Html.LabelFor(m => Model.Niveau)
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true})
+                                    @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true, style="width: 280px"})
                                 </td>
                             </tr>
                             <tr>

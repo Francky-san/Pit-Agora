@@ -24,10 +24,10 @@ namespace PitAgora.Controllers
             dalR = new DalReservation();
         }
 
-
-        public IActionResult AccueilEleve(Eleve eleve)
+        [HttpGet]
+        public IActionResult AccueilEleve(int id)
         {
-            eleve = dalE.ObtenirUnEleve(1);    // POUR TESTS !!!!!!!!!!!!!!!!!!!!
+            Eleve eleve = dalE.ObtenirUnEleve(id);
             EleveViewModel evm = new EleveViewModel() { Eleve = eleve};
             evm.CoursFuturs = dalR.ObtenirCoursFuturs(eleve.Id);
             evm.CoursPasses = dalR.ObtenirCoursPasses(eleve.Id);
@@ -35,7 +35,7 @@ namespace PitAgora.Controllers
         }
 
         [HttpGet]
-        public IActionResult ChercherCours()
+        public IActionResult ChercherCours(int id)
         {
             ChercherCoursViewModel ccvm = new ChercherCoursViewModel();
             ccvm.EstEnBinome = false;

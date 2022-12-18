@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using PitAgora.Models;
 using PitAgora.ViewModels;
 using System.Collections.Generic;
@@ -45,8 +46,8 @@ namespace PitAgora.Controllers
         }
 
 
-        //Méthodes Franck pour renvoyer infos
-        public IActionResult AfficherInfosPerso(int Id)
+        //Méthodes Franck pour renvoyer infos   JV : nommer la méthode ObtenirTypeDUtilisateur ?
+        public IActionResult AfficherInfosPerso(int Id)  // JV : id ?
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();
@@ -57,15 +58,15 @@ namespace PitAgora.Controllers
      
             if (eleve != null)
             {
-                return Redirect("/Eleve/AccueilEleve/"+ eleve.ToString()) ;
+                return Redirect("/Eleve/AccueilEleve/" + eleve.Id);
             }
             else if (prof != null)
             {
-                return Redirect("/Professeur/AccueilProf/"+ prof.ToString());
+                return Redirect("/Professeur/AccueilProf/"+ prof.Id);
             }
             else if (parent != null)
             {
-                return View("AccueilParent", GetPVM(parent));
+                return View("AccueilParent", GetPVM(parent));   // JV : à présenter comme les autres pour homogénéiser ?
             }
             return View("ERROR");
 
