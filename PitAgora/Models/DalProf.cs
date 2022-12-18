@@ -26,7 +26,7 @@ namespace PitAgora.Models
         }
 
 
-        public Professeur ObtienirUnProf(int id)
+        public Professeur ObtenirUnProf(int id)
         {
             Professeur unProf = _bddContext.Professeurs.Find(id);
             return unProf;
