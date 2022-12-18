@@ -27,17 +27,18 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult AccueilEleve(int id)
         {
-            Eleve eleve = dalE.ObtenirUnEleve(id);
-            EleveViewModel evm = new EleveViewModel() { Eleve = eleve};
-            evm.CoursFuturs = dalR.ObtenirCoursFuturs(eleve.Id);
-            evm.CoursPasses = dalR.ObtenirCoursPasses(eleve.Id);
+            Eleve lEleve = dalE.ObtenirUnEleve(id);
+            EleveViewModel evm = new EleveViewModel() { Eleve = lEleve };
+            evm.CoursFuturs = dalR.ObtenirCoursFuturs(lEleve.Id);
+            evm.CoursPasses = dalR.ObtenirCoursPasses(lEleve.Id);
             return View(evm);
         }
 
         [HttpGet]
         public IActionResult ChercherCours(int id)
         {
-            ChercherCoursViewModel ccvm = new ChercherCoursViewModel();
+            Eleve lEleve = dalE.ObtenirUnEleve(id); 
+            ChercherCoursViewModel ccvm = new ChercherCoursViewModel() { Eleve = lEleve};
             ccvm.EstEnBinome = false;
             ViewData["messageChercherCours"] = "";
             return View(ccvm);
@@ -46,6 +47,8 @@ namespace PitAgora.Controllers
         [HttpPost]
         public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel, int eleveId)
         {
+            Eleve lEleve = dalE.ObtenirUnEleve(eleveId);
+            
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime finJournee = debutJournee.AddDays(1);
             List<Creneau> query = dalC.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
@@ -77,7 +80,7 @@ namespace PitAgora.Controllers
                     }
                     if (planningValide)
                     {
-                        lesPlannings.Add(new PlanningViewModel(tempPlanning, tempProfId, horairePrecedent, matiere, niveau, estEnBinome, estEnPresentiel));
+                        lesPlannings.Add(new PlanningViewModel(lEleve, tempPlanning, tempProfId, horairePrecedent, matiere, niveau, estEnBinome, estEnPresentiel));
                     }
                     if (lesPlannings.Count == 5)
                     {

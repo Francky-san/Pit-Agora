@@ -12,114 +12,118 @@
 
 @section Main{
     <div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
+
 @using (Html.BeginForm())
 {
+    <!-- items caché, pour transmettre certaines informations-->
+    <input type="hidden" id="retourEleve" name="eleveId" value="@Model.Eleve.Id"/>
 
-        <fieldset id="fieldset">
-            <legend>Formulaire de réservation : </legend>
-            <br>
-            <table>
-                <tr>
-                    <td>
-                        <table class="table1"> 
+    <fieldset id="fieldset">
+        <legend>Formulaire de réservation : </legend>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <table class="table1"> 
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => Model.Matiere)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true, style="width: 280px"})
+                            </td>
+                        </tr>
+                            <tr>
+                            <td>
+                                @Html.LabelFor(m => Model.Niveau)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true, style="width: 280px"})
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => Model.DebutJournee)
+                            </td>
+                            <td>
+                                <input type="date" name="debutJournee" , required>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table2">
+                        <tr>
+                            <td rowspan="2">
+                                <label>Je souhaite un cours </label>
+                            </td>
+                            <td>
+                                <input type="radio" id="EnPresentiel" name="EstEnPresentiel" value="true">
+                                <label> à domicile</label>
+                            </td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td>
+                                <input type="radio" id="EnVisio" name="EstEnPresentiel" value="false">
+                                <label> en visio</label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                            <input type="submit" value="Valider" style="margin-left: 200px" />
+                </td>
+            </tr>
+                <br>    
+            <tr>
+                <td>
+                    <label style="width: 400px; padding: 15px 0px">Je souhaite un cours en binôme </label>
+                    <input type="checkbox" id="boxBinome" class="decochee" onclick="changerStatutBinome()">
+                    <br />
+                    <div id="ContainerBinome" hidden>
+                        <p>Mon binôme :</p>
+                        <table class="table1">
                             <tr>
                                 <td>
-                                    @Html.LabelFor(m => Model.Matiere)
+                                    @Html.LabelFor(m => Model.PrenomBinome)
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true, style="width: 280px"})
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>
-                                    @Html.LabelFor(m => Model.Niveau)
-                                </td>
-                                <td>
-                                    @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true, style="width: 280px"})
+                                    @Html.TextBoxFor(m =>Model.PrenomBinome)
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.LabelFor(m => Model.DebutJournee)
+                                    @Html.LabelFor(m => Model.NomBinome)
                                 </td>
                                 <td>
-                                    <input type="date" name="debutJournee" , required>
+                                    @Html.TextBoxFor(m =>Model.NomBinome)
                                 </td>
                             </tr>
                         </table>
-
-                        <table class="table2">
-                            <tr>
-                                <td rowspan="2">
-                                    <label>Je souhaite un cours </label>
-                                </td>
-                                <td>
-                                    <input type="radio" id="EnPresentiel" name="EstEnPresentiel" value="true">
-                                    <label> à domicile</label>
-                                </td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td>
-                                    <input type="radio" id="EnVisio" name="EstEnPresentiel" value="false">
-                                    <label> en visio</label>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                                <input type="submit" value="Valider" style="margin-left: 200px" />
-                    </td>
-                </tr>
-                    <br>    
-                <tr>
-                    <td>
-                        <label style="width: 400px; padding: 15px 0px">Je souhaite un cours en binôme </label>
-                        <input type="checkbox" id="boxBinome" class="decochee" onclick="changerStatutBinome()">
-                        <br />
-                        <div id="ContainerBinome" hidden>
-                            <p>Mon binôme :</p>
-                            <table class="table1">
-                                <tr>
-                                    <td>
-                                        @Html.LabelFor(m => Model.PrenomBinome)
-                                    </td>
-                                    <td>
-                                        @Html.TextBoxFor(m =>Model.PrenomBinome)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        @Html.LabelFor(m => Model.NomBinome)
-                                    </td>
-                                    <td>
-                                        @Html.TextBoxFor(m =>Model.NomBinome)
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
             
-        </fieldset>
+    </fieldset>
        
-        <script>
-            function changerStatutBinome() {
-                console.log("je rentre");
-                let test = true;
-                console.log(test);
-                //console.log("je suis encore là")
-                if (document.getElementById("boxBinome").class == "decochee") {
-                    document.getElementById("ContainerBinome").hidden = true;
-                    document.getElementById("boxBinome").class = "cochee";
-                }
-               else {
-                    document.getElementById("ContainerBinome").hidden = false;
-                    document.getElementById("boxBinome").class = "decochee";
-                }
-                console.log("je sors");
+    <script>
+        function changerStatutBinome() {
+            console.log("je rentre");
+            let test = true;
+            console.log(test);
+            //console.log("je suis encore là")
+            if (document.getElementById("boxBinome").class == "decochee") {
+                document.getElementById("ContainerBinome").hidden = true;
+                document.getElementById("boxBinome").class = "cochee";
             }
-        </script>
-    }
+            else {
+                document.getElementById("ContainerBinome").hidden = false;
+                document.getElementById("boxBinome").class = "decochee";
+            }
+            console.log("je sors");
+        }
+    </script>
+}
+
 }

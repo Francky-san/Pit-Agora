@@ -8,6 +8,7 @@ namespace PitAgora.ViewModels
 {
     public class PlanningViewModel
     {
+        public Eleve Eleve { get; set; }   
         public int[] Dispos { get; set; }  // représente tous les créneaux de la journée. Une cellule contient l'Id du créneau
                                            // si celui-ci est disponible, 0 sinon
         public List<int> CreneauxDispos { get; set; }  // liste des Id des créneaux disponibles
@@ -25,9 +26,10 @@ namespace PitAgora.ViewModels
 
         }
 
-        public PlanningViewModel(List<Creneau> creneaux, int professeurId, DateTime horaire, MatiereEnum matiere, NiveauEnum niveau, bool estEnBinome, 
+        public PlanningViewModel(Eleve lEleve, List<Creneau> creneaux, int professeurId, DateTime horaire, MatiereEnum matiere, NiveauEnum niveau, bool estEnBinome, 
             bool estEnPresentiel)
-        {
+        {   
+            Eleve = lEleve;
             Dispos = new int[Creneau.NB_CRENEAUX_PAR_JOUR];
             CreneauxDispos = new List<int>();
             foreach (Creneau creneau in creneaux)

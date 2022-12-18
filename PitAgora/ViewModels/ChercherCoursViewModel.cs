@@ -6,6 +6,7 @@ namespace PitAgora.ViewModels
 {
     public class ChercherCoursViewModel
     {
+        public Eleve Eleve { get; set; }
         public Matiere Matiere { get; set; }
         public Niveau Niveau { get; set; }
         [Display(Name = "Jour")]
