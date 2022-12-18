@@ -92,19 +92,19 @@ namespace PitAgora.Models
 
             using (DalCreneaux dal = new DalCreneaux())
             {
-                dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 00, 00), 1);    // cours de maths du 14/12
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 00, 00), 1);    // 1-3 : cours de maths du 14/12
                 dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2022, 12, 14, 17, 00, 00), 1);
-                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 00, 00), 2);    // cours de PC du 17/12
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 00, 00), 2);    // 4-6 :cours de PC du 17/12
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 30, 00), 2);
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 17, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 00, 00), 1);    // cours de maths du 21/12
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 00, 00), 1);    // 7-9 : cours de maths du 21/12
                 dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2022, 12, 21, 17, 00, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 11, 16, 00, 00), 2);    // Cours de PC prévu le 04/01
+                dal.CreerCreneau(new DateTime(2023, 01, 11, 16, 00, 00), 2);    // 10-12 : Cours de PC prévu le 04/01
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 16, 30, 00), 2);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 17, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 11, 09, 00, 00), 1);    // créneaux maths dispos le 11/01
+                dal.CreerCreneau(new DateTime(2023, 01, 11, 09, 00, 00), 1);    // 13-31 :créneaux maths dispos le 11/01
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 09, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 10, 00, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 10, 30, 00), 1);
@@ -123,7 +123,7 @@ namespace PitAgora.Models
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 16, 30, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 17, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 17, 30, 00), 5);
-                dal.CreerCreneau(new DateTime(2023, 01, 11, 14, 00, 00), 3);    // créneaux sans maths
+                dal.CreerCreneau(new DateTime(2023, 01, 11, 14, 00, 00), 3);    // 32-39 : créneaux sans maths le 11/01
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 14, 30, 00), 3);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 15, 00, 00), 3);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 14, 00, 00), 4);
@@ -131,6 +131,20 @@ namespace PitAgora.Models
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 15, 00, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 15, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 11, 16, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 10, 00, 00), 2);    // 40-41 : cours de PC prévu le 22/12 avec Harry
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 10, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 14, 00, 00), 2);    // 42-43 : cours de PC prévu le 22/12 avec Luke
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 14, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 16, 00, 00), 2);    // 44-46 : cours de PC prévu le 22/12 avec Marie
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 16, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 17, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 00, 00), 2);    // 47-49 : cours de PC du 17/12 avec Marie
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 17, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 10, 00, 00), 2);    // 50-52 : cours de PC du 17/12 avec Harry
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 10, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 11, 00, 00), 2);
+
             }
 
 
@@ -211,9 +225,102 @@ namespace PitAgora.Models
                 dal.AffecterACreneau(id, this.Creneaux.Find(12));
                 this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
 
+                // Cours de PC prévu le 22/12  avec Harry
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 22, 10, 00, 00),
+                    Jour = "Jeudi 22 décembre",
+                    DureeMinutes = 60,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 45,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(40));
+                dal.AffecterACreneau(id, this.Creneaux.Find(41));
+                this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
+
+                // Cours de PC prévu le 22/12  avec Luke
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 22, 14, 00, 00),
+                    Jour = "Jeudi 22 décembre",
+                    DureeMinutes = 60,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 45,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(42));
+                dal.AffecterACreneau(id, this.Creneaux.Find(43));
+                this.AReserve.AddRange(new AReserve { EleveId = 5, ReservationId = id });
+
+                // Cours de PC prévu le 22/12  avec Marie
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 22, 16, 00, 00),
+                    Jour = "Jeudi 22 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(44));
+                dal.AffecterACreneau(id, this.Creneaux.Find(45));
+                dal.AffecterACreneau(id, this.Creneaux.Find(46));
+                this.AReserve.AddRange(new AReserve { EleveId = 5, ReservationId = id });
+
+                // Cours de PC du 17/12  avec Mary
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 17, 16, 00, 00),
+                    Jour = "Samedi 17 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(47));
+                dal.AffecterACreneau(id, this.Creneaux.Find(48));
+                dal.AffecterACreneau(id, this.Creneaux.Find(49));
+                this.AReserve.AddRange(new AReserve { EleveId = 3, ReservationId = id });
+
+                // Cours de PC du 17/12  avec Harry
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 17, 10, 00, 00),
+                    Jour = "Samedi 17 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(50));
+                dal.AffecterACreneau(id, this.Creneaux.Find(51));
+                dal.AffecterACreneau(id, this.Creneaux.Find(52));
+                this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
+
             }
 
-
+            // Matières enseignées par chaque professeur
             this.MatieresProfs.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
@@ -224,6 +331,7 @@ namespace PitAgora.Models
                 new MatiereProf { MatiereId = 3, ProfesseurId = 5 }
                 );
 
+            // Niveaux enseignées par chaque professeur
             this.NiveauxProfs.AddRange(
                 new NiveauProf() { ProfesseurId = 1, NiveauId = 1 },
                 new NiveauProf() { ProfesseurId = 1, NiveauId = 2 },
