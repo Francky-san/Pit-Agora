@@ -61,7 +61,7 @@
 
     <div style="height:70px">
         <div style="float:left; width: 50%; padding:20px; font-size: 90%">Choisis au moins deux créneaux disponibles consécutifs</div>
-        <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled>Valider</button>
+        <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled onclick="demanderConfirmation()">Valider</button>
         <br />
         <div style="float:left; width: 60%; padding:25px; font-size: larger">Prix du cours : 
             <span id="prixCours" value="0"> 0</span> euros
@@ -69,7 +69,7 @@
                 <span>par élève</span>
             }
         </div>
-        <div id="creditDispo" class="creditDispo">
+        <div id="creditDispo" class="creditDispo" onclick="demanderConfirmation()">
             Crédit disponible : @Model.First().Eleve.CreditCours euros
         </div>
     </div>
@@ -112,6 +112,12 @@
     <br />
 }
 
+<script>
+    function demanderConfirmation() {
+    alert("test)")
+    window.confirm("test1","test2")
+}
+</script>
 
 @section Scripts {
     <script src="~/Scripts/ScriptsChoisirCours.js"></script>

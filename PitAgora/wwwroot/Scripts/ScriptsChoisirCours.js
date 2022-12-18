@@ -68,3 +68,9 @@ function majRetour(selection) {
     }
     document.getElementById("retourCreneaux").value = res;
 }
+
+// Demander confirmation avant d'envoyer la requête
+function demanderConfirmation() {
+    alert("test)")
+    window.confirm("test1","test2")
+}

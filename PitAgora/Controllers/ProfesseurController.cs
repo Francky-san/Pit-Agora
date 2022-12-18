@@ -13,7 +13,7 @@ namespace PitAgora.Controllers
             return View();
         }
 
-        //MÈthode renvoyant accueil professeur avec le professeur connectÈ comme model
+        //M√©thode renvoyant accueil professeur avec le professeur connect√© comme model
         public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();
@@ -30,7 +30,7 @@ namespace PitAgora.Controllers
             return View(pvm);
         }
 
-        //MÈthode renvoyant la vue planning, rÈcupÈration de tous les crÈneaux liÈs au professeur
+        //M√©thode renvoyant la vue planning, r√©cup√©ration de tous les cr√©neaux li√©s au professeur
         public IActionResult AfficherPlanning(int id)
         {
             DalProf dalProf = new DalProf();
@@ -39,16 +39,15 @@ namespace PitAgora.Controllers
 
             DalReservation dalReservation = new DalReservation();
             // List<Reservation> mesReservations = dalReservation. ;
-
-
         }
-        //Postuler plus ou moins Ègal crÈation d'un prof
+        
+        //Postuler plus ou moins √©gal cr√©ation d'un prof
         [HttpGet]
         public IActionResult Postuler()
         {
             return View();
         }
-        //Inscription professeur = crÈation de l'objet professeur et intÈgration ‡ la bdd
+        //Inscription professeur = cr√©ation de l'objet professeur et int√©gration √† la bdd
         [HttpPost]
         public IActionResult Postuler(CandidatViewModel cvm)
         {
@@ -56,7 +55,7 @@ namespace PitAgora.Controllers
             {
                 DalProf dal = new DalProf();
                 int newProf = dal.CreerProfesseur(cvm.Professeur.Utilisateur.Personne.Nom, cvm.Professeur.Utilisateur.Personne.Prenom, cvm.Professeur.Utilisateur.Mail,
-                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse, cvm.MatiereProf.MatiereId) ;
+                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse) ;
             }
             return Redirect("/Home/Index");
 
@@ -70,6 +69,26 @@ namespace PitAgora.Controllers
             return View(nosProfs);
         }
 
+        //M√©thode renvoyant accueil professeur avec le professeur connect√© comme model
+        public IActionResult AccueilProf(int id)
+        {
+            DalProf dalProf = new DalProf();
+            Professeur professeur = dalProf.ObtientTousLesProfesseurs().FirstOrDefault(p => p.Id == id);
+            return View(professeur);
+        }
+
+        //M√©thode renvoyant la vue planning, r√©cup√©ration de tous les cr√©neaux li√©s au professeur
+        public IActionResult AfficherPlanning(int id)
+        {
+            DalProf dalProf = new DalProf();
+            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
+            return View(mesCreneaux);
+
+            DalReservation dalReservation = new DalReservation();
+            // List<Reservation> mesReservations = dalReservation. ;
+
+
+        }
 
 
 
