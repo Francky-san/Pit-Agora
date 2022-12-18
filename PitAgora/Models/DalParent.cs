@@ -47,10 +47,12 @@ namespace PitAgora.Models
         //Méthode crediter porte monnaie eleve
         public void CrediterEleve(int montant, int eleveId)
         {
-            DalEleve dal = new DalEleve();
-            Eleve monEleve = dal.ObtientTousLesELeves().Where(e => e.Id == eleveId).FirstOrDefault();
-            monEleve.CreditCours = monEleve.CreditCours+montant;
-           _bddContext.SaveChanges()
+            //DalEleve dal = new DalEleve();
+            //Eleve monEleve = dal.ObtientTousLesELeves().Where(e => e.Id == eleveId).FirstOrDefault();
+            //Console.WriteLine(monEleve.CreditCours+=montant);
+            _bddContext.Eleves.Where(e => e.Id == eleveId).FirstOrDefault().CreditCours+=montant;
+            _bddContext.SaveChanges();
+        
         }
         //Méthode récupérer un élève à partir de l'id du parent // Pb pour un parent qui a deux élèves.
         public Eleve GetEleve(int parentId)
