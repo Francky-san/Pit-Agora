@@ -59,11 +59,17 @@
 
             </div>
         </nav>
-        <!-- Fin NavBar -->
-        @RenderSection("Main")
+        <!-- FIN NAVBAR -->
+        
     </header>
-    <!-- FIN ENCABEZADO -->
-    <!-- INICIO PLAN DE ACCIÓN -->
+    
+    <section class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
+        @RenderSection("Main")
+        </section>
+
+    <!-- FIN ENTETE -->
+    <!-- DEBUT PLAN D'ACTION -->
+
     <main class="planDeAccion py-5">
         <div class="container">
 
@@ -118,11 +124,9 @@
     </main>
     <!-- FIN PLAN DE ACCIÓN -->
     @RenderSection("Aide", required:false)
-    <!-- INICIO TE AYUDAMOS -->
-    <!-- FIN TE AYUDAMOS -->
+
     @RenderSection("Projets", required: false)
-    <!-- INICIO PROYECTOS -->
-    <!-- FIN DE PROYECTOS -->
+ 
 
     <!-- INICIO PIE DE PÁGINA -->
     <footer class="pieDePagina bg-dark text-white pt-5" id="footer">
