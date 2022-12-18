@@ -14,13 +14,13 @@ namespace PitAgora.Controllers
         }
 
 
-        //Postuler plus ou moins égal création d'un prof
+        //Postuler plus ou moins ï¿½gal crï¿½ation d'un prof
         [HttpGet]
         public IActionResult Postuler()
         {
             return View();
         }
-        //Inscription professeur = création de l'objet professeur et intégration à la bdd
+        //Inscription professeur = crï¿½ation de l'objet professeur et intï¿½gration ï¿½ la bdd
         [HttpPost]
         public IActionResult Postuler(CandidatViewModel cvm)
         {
@@ -28,7 +28,7 @@ namespace PitAgora.Controllers
             {
                 DalProf dal = new DalProf();
                 int newProf = dal.CreerProfesseur(cvm.Professeur.Utilisateur.Personne.Nom, cvm.Professeur.Utilisateur.Personne.Prenom, cvm.Professeur.Utilisateur.Mail,
-                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse, cvm.MatiereProf.MatiereId) ;
+                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse) ;
             }
             return Redirect("/Home/Index");
 
@@ -42,7 +42,7 @@ namespace PitAgora.Controllers
             return View(nosProfs);
         }
 
-        //Méthode renvoyant accueil professeur avec le professeur connecté comme model
+        //Mï¿½thode renvoyant accueil professeur avec le professeur connectï¿½ comme model
         public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();
@@ -50,7 +50,7 @@ namespace PitAgora.Controllers
             return View(professeur);
         }
 
-        //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
+        //Mï¿½thode renvoyant la vue planning, rï¿½cupï¿½ration de tous les crï¿½neaux liï¿½s au professeur
         public IActionResult AfficherPlanning(int id)
         {
             DalProf dalProf = new DalProf();

@@ -17,7 +17,7 @@ namespace PitAgora.Models
         {
             _bddContext.Dispose();
         }
-
+        /*
         public void CreerMatiereProf(int profId, int matiereId)
         {
             MatiereProf matiereProf = new MatiereProf() { ProfesseurId = profId, MatiereId = matiereId };
@@ -33,6 +33,6 @@ namespace PitAgora.Models
                         select m;
 
             return query.ToList();
-        }
+        }*/
     }
 }
