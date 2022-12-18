@@ -29,6 +29,12 @@ namespace PitAgora.Models
             return unEleve;
         }
 
+        public void ModifierPythos(int id, int pythos)
+        {
+            _bddContext.Eleves.Find(id).CreditPythos += pythos;
+            _bddContext.SaveChanges();
+        }
+
         //Méthode pour obtenir la liste des résa d'un élève.
         public List<Reservation> ObtenirReservations(int eleveId)
         {
