@@ -13,14 +13,41 @@ namespace PitAgora.Controllers
             return View();
         }
 
+        //Méthode renvoyant accueil professeur avec le professeur connecté comme model
+        public IActionResult AccueilProf(int id)
+        {
+            DalProf dalProf = new DalProf();
+            Professeur professeur = dalProf.ObtenirUnProf(id);
+            ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
+            DalCreneaux dalCreneau = new DalCreneaux();
+            pvm.CreneauxDisponibles = dalCreneau.GetCreneauxDisponibles(id);
+            pvm.CreneauxReserves = dalCreneau.GetCreneauxReserves(id);
+            DalReservation dalReservation = new DalReservation();
+            pvm.CoursFuturs = dalReservation.GetCoursFuturs(id);
+            pvm.CoursPasses = dalReservation.GetCoursPasses(id);
 
-        //Postuler plus ou moins �gal cr�ation d'un prof
+
+            return View(pvm);
+        }
+
+        //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
+        public IActionResult AfficherPlanning(int id)
+        {
+            DalProf dalProf = new DalProf();
+            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
+            return View(mesCreneaux);
+
+            DalReservation dalReservation = new DalReservation();
+            // List<Reservation> mesReservations = dalReservation. ;
+        }
+        
+        //Postuler plus ou moins égal création d'un prof
         [HttpGet]
         public IActionResult Postuler()
         {
             return View();
         }
-        //Inscription professeur = cr�ation de l'objet professeur et int�gration � la bdd
+        //Inscription professeur = création de l'objet professeur et intégration à la bdd
         [HttpPost]
         public IActionResult Postuler(CandidatViewModel cvm)
         {
@@ -42,7 +69,7 @@ namespace PitAgora.Controllers
             return View(nosProfs);
         }
 
-        //M�thode renvoyant accueil professeur avec le professeur connect� comme model
+        //Méthode renvoyant accueil professeur avec le professeur connecté comme model
         public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();
@@ -50,7 +77,7 @@ namespace PitAgora.Controllers
             return View(professeur);
         }
 
-        //M�thode renvoyant la vue planning, r�cup�ration de tous les cr�neaux li�s au professeur
+        //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
         public IActionResult AfficherPlanning(int id)
         {
             DalProf dalProf = new DalProf();

@@ -25,6 +25,13 @@ namespace PitAgora.Models
             return _bddContext.Professeurs.Include(p=>p.Utilisateur).ThenInclude(u=>u.Personne).ToList();
         }
 
+
+        public Professeur ObtenirUnProf(int id)
+        {
+            Professeur unProf = _bddContext.Professeurs.Find(id);
+            return unProf;
+        }
+
         //Méthode création d'un profeseur
         public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse)
         {
@@ -35,7 +42,7 @@ namespace PitAgora.Models
             Utilisateur utilisateur = new Utilisateur { PersonneId = personne.Id, Mail = mail, MotDePasse = mdp, Adresse = adresse };
             _bddContext.Utilisateurs.Add(utilisateur);
             _bddContext.SaveChanges();
-            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id};
+            Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id };
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges();
             return professeur.Id;
@@ -52,10 +59,21 @@ namespace PitAgora.Models
             return laPersonne.Prenom + " " + laPersonne.Nom;
         }
 
-        public List<Creneau> ListCreneaux(int profId) 
-        { 
-            return _bddContext.Creneaux.Where(c=>c.ProfesseurId== profId).ToList();
-        }
+          
 
+        //public int CreneauAAjouter(Creneau creneau)
+        //{
+        //    if Id !==.    Where(c => c.ReservationId !== 0)
+
+        //     int personneId = dal.CreerPersonne(nom, prenom);
+        //int creneauId =  { Debut = debut, ProfesseurId = professeurId };
+        //_bddContext.Creneaux.Add(creneau);
+        //_bddContext.SaveChanges();
+        //return creneau.Id;
     }
+
+      
+   
+
 }
+
