@@ -16,25 +16,18 @@ namespace PitAgora.Controllers
         public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();
-            Professeur professeur = dalProf.ObtientTousLesProfesseurs().FirstOrDefault(p => p.Id == id);
-                       
-            
-            ProfViewModel pvm = new ProfViewModel() { Professeur=professeur };
+            Professeur professeur = dalProf.ObtenirUnProf(id);
+            ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
             DalCreneaux dalCreneau = new DalCreneaux();
             pvm.CreneauxDisponibles = dalCreneau.GetCreneauxDisponibles(id);
-            
+            pvm.CreneauxReserves = dalCreneau.GetCreneauxReserves(id);
+            DalReservation dalReservation = new DalReservation();
+            pvm.CoursFuturs = dalReservation.GetCoursFuturs(id);
+            pvm.CoursPasses = dalReservation.GetCoursPasses(id);
 
 
             return View(pvm);
         }
-        public IActionResult AfficherPlanning(int id)
-        {
-            DalProf dalProf = new DalProf();
-            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
-            return View(mesCreneaux);
-        }
-
-
 
     }
 }

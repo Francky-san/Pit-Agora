@@ -25,6 +25,13 @@ namespace PitAgora.Models
             return _bddContext.Professeurs.Include(p => p.Utilisateur).ThenInclude(u => u.Personne).ToList();
         }
 
+
+        public Professeur ObtienirUnProf(int id)
+        {
+            Professeur unProf = _bddContext.Professeurs.Find(id);
+            return unProf;
+        }
+
         //Méthode création d'un profeseur
         public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere1, string matiere2 = "")
         {
@@ -52,25 +59,7 @@ namespace PitAgora.Models
             return laPersonne.Prenom + " " + laPersonne.Nom;
         }
 
-        //Méthode pour obtenir la liste des créneaux disponibles d'un prof
-        public List<Creneau> ListCreneaux(int profId)
-        {
-            return _bddContext.Creneaux.Include(c => c.Professeur).ThenInclude(p => p.Utilisateur).ThenInclude(u => u.Personne).Include(c => c.Reservation).Where(c => c.ProfesseurId == profId).ToList();
-        }
-
-        //Méthode pour obtenir la liste des créneaux réservés d'un prof
-        public List<Reservation> ObtenirReservations(int profId)
-        {
-            var query = from r in _bddContext.Reservations
-                        join c in _bddContext.Creneaux on r.Id equals c.ReservationId
-                        join p in _bddContext.Professeurs on c.Id equals p.Id
-                        where c.ProfesseurId == p.Id
-                        select r
-                               ;
-            return query.ToList();
-        }
-
-        
+          
 
         //public int CreneauAAjouter(Creneau creneau)
         //{

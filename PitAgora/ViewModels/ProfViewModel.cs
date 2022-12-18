@@ -18,10 +18,10 @@ namespace PitAgora.ViewModels
 
         public ProfViewModel()
         {
-            CoursFuturs = new List<Reservation>();
-            CoursPasses = new List<Reservation>();
             CreneauxDisponibles = new List<Creneau>();
             CreneauxReserves = new List<Creneau>();
+            CoursFuturs = new List<Reservation>();
+            CoursPasses = new List<Reservation>();
         }
 
 

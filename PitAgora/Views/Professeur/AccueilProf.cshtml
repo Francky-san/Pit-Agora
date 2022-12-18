@@ -12,80 +12,103 @@
 
 @section Main{
     <div>
-
-        <h4>Espace prof</h4>
-        <br />
-        <div>Bonjour @Model.Professeur.Utilisateur.Personne.Prenom @Model.Professeur.Utilisateur.Personne.Nom</div>
-        <br>  <br>
-
         <div class="container -fluid">
-            <!-- Cours futurs-->
-            <div>
-                @if (Model.CoursFuturs.Count > 0)
-                {
-                    <div style="margin-bottom: 5px">Mes prochains cours :</div>
-                    @foreach (var item in @Model.CoursFuturs)
-                    {
-                        <div class="celluleCours">
-                            <table>
-                                <tr><td>@item.Jour</td></tr>
-                              @*  <tr><td>@item.Matiere avec</td></tr>
-                                <tr><td>@item.PrenomNomEleve</td></tr>*@
-                            </table>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <div>Pas de cours programmé pour le moment.</div>
-                }
-            </div>
-
             <br />
+            <h4>Espace prof</h4>
             <br />
-            <br />
-
-            <!-- Cours passés-->
-            <div>
-                @if (Model.CoursPasses.Count > 0)
-                {
-                    <div style="margin-bottom: 5px">Mes cours récents :</div>
-                    @foreach (var item in @Model.CoursPasses)
-                    {
-                        <div class="celluleCours">
-                            <table>
-                                <tr><td>@item.Jour</td></tr>
-                                @*<tr><td>@item.Matiere avec</td></tr>
-                                <tr><td>@item.PrenomNomProf</td></tr>*@
-                            </table>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <div>Vous n'avez pas encore donné de cours avec l'un de nos chers élèves !'</div>
-                }
-            </div>
-
+            <div>Bonjour @Model.Professeur.Utilisateur.Personne.Prenom @Model.Professeur.Utilisateur.Personne.Nom</div>
+            <br>  <br>
         </div>
-
 
         <div>
-            <!-- Crédit cours-->
-            Mon crédit cours : @Model.Professeur.CreditProf <span> € </span>
+            <h4> Planning du jour </h4>
+            @* @if (Model.CoursFuturs.Count > 0) && @item.Jour == date
+        {
+        <div style="margin-bottom: 5px">Mes prochains cours :</div>
+        @foreach (var item in @Model.CoursFuturs)
+        {
+        <div class="celluleCours">
+        <table>
+        <tr><td>@item.Jour</td></tr>
+        <tr><td>@item.Matiere avec</td></tr>
+        <tr><td>@item.PrenomNomEleve</td></tr>
+        </table>
+        </div>
+        }
+        }
+        else
+        {
+        <div>Pas de cours programmé pour aujourd'hui.</div>
+        }*@
         </div>
         <br />
 
-       @* <div> Gérer mon plannning du : </div>
-        @Html.LabelFor(m => Model.Horaire)
-        <input type="date" name="horaire">
+        <div>
+            <h4> Cours des prochains jours </h4>
+
+            @if (Model.CoursFuturs.Count > 0)
+            {
+                <div style="margin-bottom: 5px">Mes prochains cours :</div>
+                @foreach (var item in @Model.CoursFuturs)
+                {
+                    <div class="celluleCours">
+                        <table>
+                            <tr><td>@Model.Jour</td></tr>
+                            <tr><td>@Model.MatiereProf.Matiere avec</td></tr>
+                            <tr><td>@Model.AReserve.Eleve.Utilisateur.Personne.Prenom</td></tr>
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>Pas de cours programmé pour le moment.</div>
+            }
+        </div>
         <br />
 
-        <input type="submit" value="" />*@
+        <div>
+            <h4> Cours passés  </h4>
 
-
-
+            @if (Model.CoursPasses.Count > 0)
+            {
+                <div style="margin-bottom: 5px">Mes cours récents :</div>
+                @foreach (var item in @Model.CoursPasses)
+                {
+                    <div class="celluleCours">
+                        <table>
+                            <tr><td>@item.Jour</td></tr>
+                            <tr><td>@Model.MatiereProf.Matiere</td></tr>
+                            <tr><td>@Model.AReserve.Eleve.Utilisateur.Personne.Prenom</td></tr>
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>Vous n'avez pas encore donné de cours avec l'un de nos chers élèves !</div>
+            }
+        </div>
+        <br />
 
     </div>
 
-        }
+    <div>
+        <h4> Crédit cours : </h4>
+        Mon crédit cours est de : @Model.Professeur.CreditProf <span> € </span>
+    </div>
+    <br />
+
+    <span>
+        <div>
+            <h4> Gestion planning journalier </h4>
+        </div>
+        @Html.LabelFor(m => m.Horaire )
+        <input type="date" name="horaire">
+        <span>
+            <input type="submit" value="GererPlanning" />
+        </span>
+        <br />
+        <br />
+
+    }

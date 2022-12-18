@@ -55,8 +55,14 @@ namespace PitAgora.Models
 
         public List<Creneau> GetCreneauxDisponibles(int professeurId)
         {
-           return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c=>c.ReservationId==null).ToList();
+            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId == null).ToList();
         }
+
+        public List<Creneau> GetCreneauxReserves(int professeurId)
+        {
+            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).ToList();
+        }
+
 
         public List<Creneau> RequeteDistanciel(MatiereEnum matiere, string niveau, DateTime debut, DateTime fin)
         {
