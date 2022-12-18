@@ -57,7 +57,7 @@ namespace PitAgora.Models
                     return "Lundi";
                 case "Tuesday":
                     return "Mardi";
-                case "Wenensday":
+                case "Wednesday":
                     return "Mercredi";
                 case "Thursday":
                     return "Jeudi";

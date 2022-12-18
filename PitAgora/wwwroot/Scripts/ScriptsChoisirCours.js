@@ -23,7 +23,7 @@
     document.getElementById("prixCours").innerHTML = prix;
     document.getElementById("retourPrix").value = prix;
 
-    if (SelectionValide()) {
+    if (SelectionValide() && prix <= parseFloat(document.getElementById("creditDispo").innerHTML)) {
         document.getElementById("boutonValider").disabled = false;
         document.getElementById("boutonValider").class = "BoutonValiderActif";
     }

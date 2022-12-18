@@ -17,5 +17,14 @@ namespace PitAgora.ViewModels
 
         }
 
+        public EleveViewModel(int eleveId)
+        {
+            DalEleve dalE = new DalEleve();
+            Eleve = dalE.ObtenirUnEleve(eleveId);
+            DalReservation dalR = new DalReservation();
+            CoursFuturs = dalR.ObtenirCoursFuturs(Eleve.Id);
+            CoursPasses = dalR.ObtenirCoursPasses(Eleve.Id);
+        }
+
     }
 }
