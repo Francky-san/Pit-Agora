@@ -3,6 +3,43 @@
     Layout = "LayoutGen";
 
 }
+
+@section navbar{
+        <ul class="navbar-nav">
+      <li class="nav-item">
+            <a class="nav-link " href=@Url.Action("Index", "Home")>
+                    Accueil
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("Connexion", "Login")>
+                    Connexion
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("Inscription", "Home")>
+                    Inscription
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("Postuler", "Professeur")>
+                    Postuler
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("ListeProfs", "Professeur")>
+                    Profs
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#footer">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+}
+
 @section Main{
     <content class="container-lg">
         <h1>Contact</h1>

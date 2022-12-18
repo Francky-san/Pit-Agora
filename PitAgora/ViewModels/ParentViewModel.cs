@@ -11,8 +11,7 @@ namespace PitAgora.ViewModels
 
         public List<Creneau> Creneaux { get; set; }
 
-        public List<Reservation> Reservations { get; set; }
-        public List<Evaluation> Evaluations { get; set; }
+        public List<AReserve> Reservations { get; set; }
 
         //Constructeur pour redirection depuis homecontroller
         public ParentViewModel() { Eleve eleve; Parent parent; }

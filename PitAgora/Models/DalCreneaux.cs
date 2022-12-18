@@ -23,7 +23,7 @@ namespace PitAgora.Models
         {
             var query = from c in _bddContext.Creneaux
                         join p in _bddContext.Professeurs on c.ProfesseurId equals p.Id
-                        join mp in _bddContext.MatiereProf on p.Id equals mp.ProfesseurId
+                        join mp in _bddContext.MatiereProfs on p.Id equals mp.ProfesseurId
                         join m in _bddContext.Matieres on mp.MatiereId equals m.Id
                         where c.Id == IdCreneau
                         select m;

@@ -3,6 +3,7 @@ using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PitAgora.Controllers
 {
@@ -16,15 +17,18 @@ namespace PitAgora.Controllers
         }
 
 
-        public IActionResult AccueilEleve(Eleve eleve)
+        public IActionResult AccueilEleve(int Id)
         {
-            return View();
+            DalEleve dal = new DalEleve();
+            Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.Id == Id).FirstOrDefault();
+            return View(eleve);
         }
         public IActionResult Agora()
         {
             return View();
         }
 
+        //Méthode get recherche d'un cours
         [HttpGet]
         public IActionResult ChercherCours()
         {
@@ -32,6 +36,7 @@ namespace PitAgora.Controllers
             return View();
         }
 
+        //Méthode post recherche d'un cours, prends les critères de recherche en arguments
         [HttpPost]
         public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime horaire,bool estEnBinome, bool estEnPresentiel)
         {

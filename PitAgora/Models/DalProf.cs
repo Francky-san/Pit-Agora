@@ -22,7 +22,7 @@ namespace PitAgora.Models
         //Méthode récupérer liste complète des professeurs avec jointures utilisateur et personne pour accèder à tous les attributs
         public List<Professeur> ObtientTousLesProfesseurs()
         {
-            return _bddContext.Professeurs.Include(p => p.Utilisateur).ThenInclude(u => u.Personne).ToList();
+            return _bddContext.Professeurs.Include(p=>p.Utilisateur).ThenInclude(u=>u.Personne).ToList();
         }
 
         //Méthode création d'un profeseur

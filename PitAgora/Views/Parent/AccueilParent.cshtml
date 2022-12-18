@@ -4,77 +4,112 @@
 
     ViewBag.Title = "Accueil Parent";
 }
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+@section navbar{
+<ul class="navbar-nav">
+
+    <li class="nav-item">
+        <a class="nav-link active" href=@Url.Action("AccueilParent", "Parent")>
+            Accueil
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+            Déconnexion
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href=@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Eleve.Id})>
+            Alimenter Crédit Cours
+        </a>
+    <li class="nav-item">
+        <a class="nav-link" href=@Url.Action("Contact", "Home")>
+            Contact
+        </a>
+    </li>
+
+</ul>
+}
 @section Main{
-    
-    <div>
-        Vue parent :
-        Je m'appelle @Model.Parent.Utilisateur.Personne.Prenom @Model.Parent.Utilisateur.Personne.Nom
+    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
 
-    Parent de :
-
-    <table>
-            <thead>
-                <tr>
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>Credit Cours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-
-                    <td>
-                        @Model.Eleve.Utilisateur.Personne.Prenom
-                    </td>
-                    <td> @Model.Eleve.Utilisateur.Personne.Nom </td>
-                    <td>@Model.Eleve.CreditCours </td>
-
-
-                </tr>
-
-            </tbody>
-        </table>
-        @Html.ActionLink("Alimenter crédit cours ", "CrediterEleve")
-        <li>@Html.ActionLink("Reserver un cours", "ChercherCours","Eleve")</li>
-
-        Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :
+        <legend style="text-decoration:underline">Bonjour @Model.Parent.Utilisateur.Personne.Prenom </legend>
         <table>
-            <thead>
-                <tr>
-                    <th>Datetime reservation</th>
-                    <th>Evaluation</th>
-                    <th>Prof</th>
-                    <th>Prix</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var resa in Model.Reservations)
+            <tr>
+                <th>Eleve</th>
+                <th>Credit Cours</th>
+            </tr>
+
+
+            <tr>
+                <td>@Model.Eleve.Utilisateur.Personne.Prenom</td>
+                <td>@Model.Eleve.CreditCours</td>
+                <td><input type="button" value="Alimenter" action="~/Parent/CrediterEleve/@Model.Eleve.Id" style="width:100%;height:100%" /></td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+
+        <legend style ="text-decoration:underline">
+            Les réservations de @Model.Eleve.Utilisateur.Personne.Prenom
+        </legend>
+        <table>
+            <tr>
+                <th>Reservations</th>
+            </tr>
+
+            @foreach (var resa in Model.Reservations)
             {
-
                 <tr>
-                    <td>
-                        @resa.Jour
-                    </td>
-                    <td>
-                        @resa.Evaluation
-
-                    </td>
-                    <td>
-                        @resa.PrenomNomProf
-
-                    </td>
-                    <td>
-                        @resa.Prix
-
-                    </td>
+                    <td>@resa.Reservation.Prix</td>
+                    <td>@resa.Reservation.DureeMinutes</td>
+                    <td>@resa.Reservation.Jour</td>
+                    <td>@resa.Reservation.PrenomNomProf</td>
                 </tr>
-            }<
-        </tbody>
-        <br />
-    </table>
+            }
+        </table>
+    </fieldset>
 
-    <h1></h1>
-</div>
+    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+        <legend style="text-decoration:underline">
+            Les évaluations de @Model.Eleve.Utilisateur.Personne.Prenom
+        </legend>
+        <table>
+            <tr>
+                <th>Evaluations</th>
+            </tr>
+
+            @foreach (var reservation in Model.Reservations)
+            {
+                <tr>
+                    <td>@reservation.Reservation.Evaluation.Contenu</td>
+                </tr>
+            }
+            @foreach (var crenau in Model.Creneaux)
+            {
+                @crenau.Professeur.Utilisateur.Personne.Nom
+                @crenau.Professeur.Utilisateur.Personne.Prenom
+                <br />
+                @crenau.Reservation.PrenomNomProf
+            }
+        </table>
+    </fieldset>
+
 }
