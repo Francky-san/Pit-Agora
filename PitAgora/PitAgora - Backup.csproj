@@ -16,9 +16,15 @@
 
 
   <ItemGroup>
+    <Content Remove="wwwroot\scss\" />
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Folder Include="Views\Parent\" />
+=======
+    <Folder Include="Views\Professeur\" />
+>>>>>>> 9960799 (RAS)
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
   <ItemGroup>

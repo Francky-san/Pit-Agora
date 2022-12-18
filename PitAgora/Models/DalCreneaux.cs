@@ -23,7 +23,7 @@ namespace PitAgora.Models
         {
             var query = from c in _bddContext.Creneaux
                         join p in _bddContext.Professeurs on c.ProfesseurId equals p.Id
-                        join mp in _bddContext.MatieresProfs on p.Id equals mp.ProfesseurId
+                        join mp in _bddContext.MatiereProfs on p.Id equals mp.ProfesseurId
                         join m in _bddContext.Matieres on mp.MatiereId equals m.Id
                         where c.Id == IdCreneau
                         select m;
@@ -32,7 +32,7 @@ namespace PitAgora.Models
 
         public int CreerCreneau(DateTime debut, int professeurId)
         {
-            Creneau creneau = new Creneau() { Debut = debut, ProfesseurId = professeurId };
+            Creneau creneau = new Creneau() { Debut = debut, ProfesseurId = professeurId};
             _bddContext.Creneaux.Add(creneau);
             _bddContext.SaveChanges();
             return creneau.Id;
