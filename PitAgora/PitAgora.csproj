@@ -16,7 +16,6 @@
 
 
   <ItemGroup>
-    <Content Remove="wwwroot\scss\" />
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>

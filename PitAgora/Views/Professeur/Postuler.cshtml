@@ -4,14 +4,10 @@
     Layout = "LayoutGen";
 }
 
-<<<<<<< HEAD
 @section css {
     <link href="~/css/stylesMain.css" rel="stylesheet" />
 }
 
-
-
-=======
 @section navbar{
     <ul class="navbar-nav">
 
@@ -41,7 +37,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#footer">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
                 Contact
             </a>
         </li>
@@ -49,10 +45,9 @@
     </ul>
 }
 
->>>>>>> 089f803 (Redirection ok liste prof ok methode crediter cassée)
 @section Main{
 
-    <form action="~/Home/Postuler" method="post">
+    <form action="~/Professeur/Postuler" method="post">
         <div class="container-fluid">
 
             <div class="row col-5 m-5" style="float:left">
@@ -105,8 +100,12 @@
                 <label for="formFile" class="form-label">Téléchargez votre Lettre de motivation</label>
                 <input class="form-control" type="file" id="formFile">
 
-
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                    <content class="container-lg">
+        <h1><input type="submit" value="Envoyer" id="Postuler" class="btn btn-primary" /></h1>
+    </content>
+            
+        
+      
 
             </div>
 
@@ -119,42 +118,13 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-    <content class="container-lg">
-        <h1>Postuler</h1>
-    </content>
 
-    <form action="~/Professeur/Postuler" method="post" class="row g-3">
 
-        <div style="float:right">
-            <h2>Infos personnelles : </h2>
-
-            Compte et contact :
-            @Html.LabelFor(m=>m.Professeur.Utilisateur.Personne.Nom)
-            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Personne.Nom)</span>
-            @Html.LabelFor(m=>m.Professeur.Utilisateur.Personne.Prenom)
-            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Personne.Prenom)</span>
-            @Html.LabelFor(m=>m.Professeur.Utilisateur.Mail)
-            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Mail)</span>
-            @Html.LabelFor(m=>m.Professeur.Utilisateur.MotDePasse)
-            <span>@Html.PasswordFor(m=>m.Professeur.Utilisateur.MotDePasse)</span>
-            @Html.LabelFor(m=>m.Professeur.Utilisateur.Adresse)
-            <span>@Html.TextBoxFor(m=>m.Professeur.Utilisateur.Adresse)</span>
-            @Html.LabelFor(m=>m.Professeur.Motivation)
-        </div>
-
-        <div>
-            <input type="submit" value="Postuler" id="Postuler" />
-        </div>
-    </form>
-<<<<<<< HEAD
     <script>function recu(){
         alert("Merci pour votre candidature.
          Nous nous engageons à vous faire un retour 
          au plus vite.")
     </script>
-=======
-
->>>>>>> 089f803 (Redirection ok liste prof ok methode crediter cassée)
 }
 
 

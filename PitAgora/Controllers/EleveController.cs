@@ -25,12 +25,12 @@ namespace PitAgora.Controllers
         }
 
 
-        public IActionResult AccueilEleve(int Id)
-        {
-            DalEleve dal = new DalEleve();
-            Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.Id == Id).FirstOrDefault();
-            return View(eleve);
-        }
+        //public IActionResult AccueilEleve(int Id)
+        //{
+        //    DalEleve dal = new DalEleve();
+        //    Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.Id == Id).FirstOrDefault();
+        //    return View(eleve);
+        //}
         public IActionResult Agora()
         {
             return View();

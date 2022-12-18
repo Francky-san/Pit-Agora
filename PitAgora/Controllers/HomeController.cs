@@ -24,6 +24,10 @@ namespace PitAgora.Controllers
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult Inscription()
         {
