@@ -23,10 +23,16 @@ namespace PitAgora.Models
             return _bddContext.Eleves.Include(e => e.Utilisateur).ThenInclude(u => u.Personne).Include(e => e.Parent).ToList();
         }
 
-        public Eleve ObtiensUnEleve(int id)
+        public Eleve ObtenirUnEleve(int id)
         {
             Eleve unEleve = _bddContext.Eleves.Find(id);
             return unEleve;
+        }
+
+        public void ModifierPythos(int id, int pythos)
+        {
+            _bddContext.Eleves.Find(id).CreditPythos += pythos;
+            _bddContext.SaveChanges();
         }
 
         //Méthode pour obtenir la liste des résa d'un élève.

@@ -27,7 +27,7 @@
                                     @Html.LabelFor(m => Model.Matiere)
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true})
+                                    @Html.DropDownListFor(m => Model.Matiere,Html.GetEnumSelectList<PitAgora.Models.MatiereEnum>(), new {required=true, style="width: 280px"})
                                 </td>
                             </tr>
                              <tr>
@@ -35,7 +35,7 @@
                                     @Html.LabelFor(m => Model.Niveau)
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true})
+                                    @Html.DropDownListFor(m => Model.Niveau,Html.GetEnumSelectList<PitAgora.Models.NiveauEnum>(), new {required=true, style="width: 280px"})
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +75,7 @@
                 <tr>
                     <td>
                         <label style="width: 400px; padding: 15px 0px">Je souhaite un cours en binôme </label>
-                        <input type="checkbox" id="EstEnBinome" onclick="changerStatutBinome()">
+                        <input type="checkbox" id="boxBinome" class="decochee" onclick="changerStatutBinome()">
                         <br />
                         <div id="ContainerBinome" hidden>
                             <p>Mon binôme :</p>
@@ -107,16 +107,16 @@
         <script>
             function changerStatutBinome() {
                 console.log("je rentre");
-                alert("Bouh");
-                console.log(@Model.EstEnBinome);
-                console.log("je suis encore là")
-                if (@Model.EstEnBinome) {
+                let test = true;
+                console.log(test);
+                //console.log("je suis encore là")
+                if (document.getElementById("boxBinome").class == "decochee") {
                     document.getElementById("ContainerBinome").hidden = true;
-                    @Model.EstEnBinome = false;
+                    document.getElementById("boxBinome").class = "cochee";
                 }
                else {
                     document.getElementById("ContainerBinome").hidden = false;
-                    @Model.EstEnBinome = true;
+                    document.getElementById("boxBinome").class = "decochee";
                 }
                 console.log("je sors");
             }
