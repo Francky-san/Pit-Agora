@@ -67,5 +67,14 @@ namespace PitAgora.Models
 
         }
 
+        //Retourne une string contenant prenom + nom
+        public string GetPrenomNom(int eleveId)
+        {
+            int utilisateurId = _bddContext.Eleves.Find(eleveId).UtilisateurId;
+            int personneId = _bddContext.Utilisateurs.Find(utilisateurId).PersonneId;
+            Personne laPersonne = _bddContext.Personnes.Find(personneId);
+
+            return laPersonne.Prenom + " " + laPersonne.Nom;
+        }
     }
 }

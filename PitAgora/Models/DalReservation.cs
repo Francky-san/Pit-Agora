@@ -26,10 +26,10 @@ namespace PitAgora.Models
         }
 
         //Méthode d'obtention des cours à venir pour un professeur, List de creneaux
-        public List<Creneau> GetCoursFuturs(int professeurId)//FT - Type de list modifié en list<creneau>
-        {
-            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).Where(C => C.Debut > DateTime.Today).ToList();
-        }
+        //public List<Reservation> GetCoursFuturs(int professeurId)//FT - Type de list modifié en list<creneau>
+        //{
+        //    return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).Where(C => C.Debut > DateTime.Today).ToList();
+        //}
 
         //Méthode d'obtention des cours effectués pour un professeur, List de creneaux
         public List<Creneau> GetCoursPasses(int professeurId)//FT - Type de list modifié en list<creneau>

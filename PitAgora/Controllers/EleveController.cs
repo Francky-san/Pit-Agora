@@ -119,7 +119,7 @@ namespace PitAgora.Controllers
         public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix, int eleveId)
         {
             string prenomNomProf = dalP.GetPrenomNom(professeurId);
-
+            string prenomNomEleve = dalE.GetPrenomNom(eleveId);
             List<int> creneauxId = new List<int>();
             int i = 0;
             foreach (string s in creneaux.Split(","))
@@ -138,7 +138,7 @@ namespace PitAgora.Controllers
 
             Reservation laReservation = new Reservation() { PrenomNomProf = prenomNomProf, Horaire = horaire, Jour = jour, DureeMinutes = dureeMinutes, 
                 Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
-                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
+                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide, PrenomNomEleve = prenomNomEleve};
 
             int reservationId = dalR.creerReservation(laReservation);
 
