@@ -22,7 +22,8 @@ namespace PitAgora.Models
         public DbSet<DistanceDom> DistanceDoms { get; set; }
         public DbSet<AReserve> AReserve { get; set; }
         public DbSet<Matiere> Matieres { get; set; }
-        public DbSet<MatiereProf> MatieresProfs { get; set; }
+
+        public DbSet<MatiereProf> MatiereProfs { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
 
 
@@ -66,9 +67,9 @@ namespace PitAgora.Models
             {
                 dal.CreerParent("Terrieur", "Marc", "mterrieur@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.CreerParent("Vaudage", "Annie", "avaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
-                dal.CreerParent("Potter", "Mary", "avaudage@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
-                dal.CreerParent("Skywalker", "Leia", "avaudage@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
-                dal.CreerParent("Blueberry", "Jean", "avaudage@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
+                dal.CreerParent("Potter", "Mary", "avaudage1@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
+                dal.CreerParent("Skywalker", "Leia", "avaudage2@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
+                dal.CreerParent("Blueberry", "Jean", "avaudage3@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
             }
 
             using (DalEleve dal = new DalEleve())
@@ -83,11 +84,11 @@ namespace PitAgora.Models
 
             using (DalProf dal = new DalProf())
             {
-                dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "2 rue Mozart 92160 ANTONY", "Maths", "Physique-Chimie");
-                dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", "Physique-Chimie");
-                dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", "SVT");
-                dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON", "Maths", "SVT");
-                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", "Maths");
+                dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "2 rue Mozart 92160 ANTONY", 0);
+                dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", 0);
+                dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", 3);
+                dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON", 3);
+                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", 0);
             }
 
             using (DalCreneaux dal = new DalCreneaux())
@@ -214,7 +215,7 @@ namespace PitAgora.Models
             }
 
 
-            this.MatieresProfs.AddRange(
+            this.MatiereProfs.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
                 new MatiereProf { MatiereId = 3, ProfesseurId = 3 },
