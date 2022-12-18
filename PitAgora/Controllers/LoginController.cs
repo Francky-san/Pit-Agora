@@ -16,7 +16,7 @@ namespace PitAgora.Controllers
         }
         public IActionResult Connexion()
         {
-            UtilisateurViewModel viewModel = new UtilisateurViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
+            UtilisateurViewModel viewModel = new UtilisateurViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated , Name= HttpContext.User.Identity.Name };
             if (viewModel.Authentifie)
             {
                 viewModel.Utilisateur = dal.ObtenirUtilisateur(HttpContext.User.Identity.Name);
@@ -47,7 +47,7 @@ namespace PitAgora.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("/Home/AfficherInfosPerso/" + utilisateur.Id.ToString());
+                    return Redirect("/Home/AfficherAccueil/" + utilisateur.Id.ToString());
                 }
                 ModelState.AddModelError("Utilisateur.Mail", "Mail et/ou mot de passe incorrect(s)");
             }

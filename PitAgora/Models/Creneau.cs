@@ -24,7 +24,7 @@ namespace PitAgora.Models
 
 
         // ***************** Méthodes *********************
-
+        
         // Renvoie le rang du créneau dans un planing (9:00-9:30 -> 0)
         public int Rang()
         {
@@ -42,6 +42,13 @@ namespace PitAgora.Models
             return res;
         }
 
+        
+        // Donne l'intitule d'un jour sous forme 'Mercredi 1 janvier'
+        public static string JourEnFrancais(DateTime d) { 
+            return Jour(d.DayOfWeek.ToString()) + " " + d.Day + " " + Mois(d.Month);
+        }
+
+        // Traduit le nom du jour en français
         public static string Jour(String day)
         {
             switch (day)
@@ -64,6 +71,7 @@ namespace PitAgora.Models
                     return "Erreur";
             }
         }
+        // Traduit le nom du jour en français
         public static string Mois(int month)
         {
             switch (month)

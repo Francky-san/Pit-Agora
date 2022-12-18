@@ -16,11 +16,9 @@
 
 
   <ItemGroup>
-    <Content Remove="wwwroot\scss\" />
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Parent\" />
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
   <ItemGroup>

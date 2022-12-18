@@ -23,7 +23,7 @@ namespace PitAgora.Models
         {
             var query = from c in _bddContext.Creneaux
                         join p in _bddContext.Professeurs on c.ProfesseurId equals p.Id
-                        join mp in _bddContext.MatiereProf on p.Id equals mp.ProfesseurId
+                        join mp in _bddContext.MatiereProfs on p.Id equals mp.ProfesseurId
                         join m in _bddContext.Matieres on mp.MatiereId equals m.Id
                         where c.Id == IdCreneau
                         select m;
@@ -32,7 +32,7 @@ namespace PitAgora.Models
 
         public int CreerCreneau(DateTime debut, int professeurId)
         {
-            Creneau creneau = new Creneau() { Debut = debut, ProfesseurId = professeurId };
+            Creneau creneau = new Creneau() { Debut = debut, ProfesseurId = professeurId};
             _bddContext.Creneaux.Add(creneau);
             _bddContext.SaveChanges();
             return creneau.Id;
@@ -63,6 +63,17 @@ namespace PitAgora.Models
             return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).ToList();
         }
 
+        // Renvoie une liste de créneaux à partir d'une liste d'Id
+        public List<Creneau> listeCreneauxDepuisId(List<int> listeId)
+        {
+            List<Creneau> lesCreneaux = new List<Creneau>();
+            foreach (int id in listeId)
+            {
+                lesCreneaux.Add(_bddContext.Creneaux.Where(c => c.Id == id).FirstOrDefault());
+            }
+            return lesCreneaux;
+        }
+
 
         public List<Creneau> RequeteDistanciel(MatiereEnum matiere, string niveau, DateTime debut, DateTime fin)
         {
@@ -82,22 +93,23 @@ namespace PitAgora.Models
 
         public List<Creneau> RequeteDistanciel2(MatiereEnum matiere, string niveau, DateTime debut, DateTime fin)
         {
-            // une requête par le bddContext est-elle possible quand elle implique une relation 'plusieurs à plusieurs' ?
-            var query = _bddContext.Creneaux.FromSqlRaw("select c.*, n.intitule, p.matiere1, p.matiere2  from creneaux as c" +
+            var query = _bddContext.Creneaux.FromSqlRaw("select c.* from creneaux as c" +
                 " inner join professeurs as p on p.id=c.professeurId" +
                 " inner join niveauxprofs as np on np.ProfesseurId=p.id" +
                 " inner join niveaux as n on n.id=np.niveauid" +
-            " where n.intitule='" + niveau + "' and c.debut between '" + FormateDate(debut) + "' and '" + FormateDate(fin) + "'" +
-            " and (p.matiere1 = '" + matiere + "' or p.matiere2 = '" + matiere + "')" +
-                " order by c.professeurid desc, c.debut"
+                " inner join matieresprofs as mp on mp.ProfesseurId=p.id" +
+                " inner join matieres as m on m.id=mp.matiereid" +
+                " where n.intitule='" + niveau + "' and c.debut between '" + FormateDate(debut) + "' and '" + FormateDate(fin) + "'" +
+                " and m.intitule = '" + matiere + "' and c.reservationId is null" +
+                " order by p.id desc, c.debut"
                 );
             return query.Take(1000).ToList();
         }
 
         // Mise au format YYYY-MM-DD HH:MM:SS d'une DateTime
-        public string FormateDate(DateTime d)
+        public static string FormateDate(DateTime d)
         {
-            return d.Year + "-" + d.Month + "-" + d.Day + " " + d.Hour + ":" + d.Minute + ":" + d.Second;
+            return d.ToString("u").Replace("Z","");
         }
     }
 }

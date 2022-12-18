@@ -3794,7 +3794,7 @@ textarea.form-control-lg {
     color: #F15A24;
 }
 
-    .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+    .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:active {
         color: #F15A24;
     }
 
@@ -3824,11 +3824,13 @@ textarea.form-control-lg {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-.navbar-dark .navbar-text {
+.navbar-dark .navbar-text
+{
     color: #fff;
 }
 
     .navbar-dark .navbar-text a,
+    .navbar-dark .navbar-text a:active,
     .navbar-dark .navbar-text a:hover,
     .navbar-dark .navbar-text a:focus {
         color: #F15A24;
@@ -6738,10 +6740,10 @@ textarea.form-control-lg {
         padding-bottom: 1rem !important;
     }
 
-    .py-md-4 {
+   /* .py-md-4 {
         padding-top: 1.5rem !important;
         padding-bottom: 1.5rem !important;
-    }
+    }*/
 
     .py-md-5 {
         padding-top: 3rem !important;
@@ -9330,12 +9332,12 @@ textarea.form-control-lg {
 }
 
 .encabezado {
-    background: url("../images/FondAccueilHeader.jpg") center center/cover fixed;
+    background: url("../images/FondAccueilHeader.jpg") center center fixed;
 }
 
 @media (min-width: 992px) {
     .encabezado {
-        background: url("../images/FondAccueilHeader.jpg") center center/cover fixed;
+        background: url("../images/FondAccueilHeader.jpg") center center fixed;
     }
 }
 

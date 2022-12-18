@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace PitAgora.Models
 {
@@ -10,5 +11,6 @@ namespace PitAgora.Models
         public virtual Utilisateur Utilisateur { get; set; }
         public int CreditProf { get; set; }
      
+        public string Motivation { get; set; }
     }
 }

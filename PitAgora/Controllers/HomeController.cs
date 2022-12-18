@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using PitAgora.Models;
 using PitAgora.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 
 namespace PitAgora.Controllers
 {
@@ -14,7 +18,8 @@ namespace PitAgora.Controllers
             return View();
         }
 
-        public IActionResult Postuler()
+        //Contenu en dur, présentation Pit'Agora
+        public IActionResult Presentation()
         {
             return View();
         }
@@ -41,12 +46,13 @@ namespace PitAgora.Controllers
                 int newEleve = dalE.CreerEleve(newParent, ivm.Eleve.Utilisateur.Personne.Nom, ivm.Eleve.Utilisateur.Personne.Prenom, ivm.Eleve.Utilisateur.Mail,
                      ivm.Eleve.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
             }
-            return View();
+            return View("/");
         }
 
 
+
         //Méthodes Franck pour renvoyer infos
-        public IActionResult AfficherInfosPerso(int Id)
+        public IActionResult AfficherAccueil(int Id)
         {
             DalEleve dal = new DalEleve();
             Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.UtilisateurId == Id).FirstOrDefault();
@@ -62,30 +68,15 @@ namespace PitAgora.Controllers
             else if (prof != null)
             {
                 return Redirect("/Professeur/AccueilProf/"+ prof.Id.ToString());
+
             }
             else if (parent != null)
             {
-                return View("AccueilParent", GetPVM(parent));
+                return Redirect("/Parent/AccueilParent/"+parent.Id.ToString());
             }
             return View("ERROR");
 
         }
 
-        //Méthode à part pour constituer ParentViewModel
-        public ParentViewModel GetPVM(Parent parent)
-        {
-            DalEleve dal = new DalEleve();
-            Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
-            List<Reservation> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
-            DalReservation dalr = new DalReservation();
-            List<Creneau> creneauxResa = new List<Creneau>();
-            foreach (Reservation resa in resaEleve1)
-            {
-                creneauxResa = dalr.GetCreneaux(resa.Id);
-            }
-
-            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent,Reservations=resaEleve1,Creneaux=creneauxResa };
-            return pvm;
-        }
     }
 }

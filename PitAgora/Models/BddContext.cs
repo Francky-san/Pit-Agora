@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace PitAgora.Models
 {
@@ -17,12 +18,14 @@ namespace PitAgora.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Creneau> Creneaux { get; set; }
         public DbSet<Niveau> Niveaux { get; set; }
-        public DbSet<NiveauxProf> NiveauxProfs { get; set; }
+        public DbSet<NiveauProf> NiveauxProfs { get; set; }
         public DbSet<DistanceDom> DistanceDoms { get; set; }
         public DbSet<AReserve> AReserve { get; set; }
         public DbSet<Matiere> Matieres { get; set; }
-        public DbSet<MatiereProf> MatiereProf { get; set; }
+
+        public DbSet<MatiereProf> MatiereProfs { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -64,9 +67,9 @@ namespace PitAgora.Models
             {
                 dal.CreerParent("Terrieur", "Marc", "mterrieur@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.CreerParent("Vaudage", "Annie", "avaudage@monmel.fr", "vvvvv", "11 rue Roli 75014 PARIS");
-                dal.CreerParent("Potter", "Mary", "avaudage@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
-                dal.CreerParent("Skywalker", "Leia", "avaudage@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
-                dal.CreerParent("Blueberry", "Jean", "avaudage@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
+                dal.CreerParent("Potter", "Mary", "avaudage1@monmel.fr", "vvvvv", "32 rue Delmer 59242 TEMPLEUVE");
+                dal.CreerParent("Skywalker", "Leia", "avaudage2@monmel.fr", "vvvvv", "33 bd Marius Vivier Merle 69003 LYON");
+                dal.CreerParent("Blueberry", "Jean", "avaudage3@monmel.fr", "vvvvv", "78 bd de Souville 84200 CARPENTRAS");
             }
 
             using (DalEleve dal = new DalEleve())
@@ -81,49 +84,139 @@ namespace PitAgora.Models
 
             using (DalProf dal = new DalProf())
             {
-                dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "2 rue Mozart 92160 ANTONY", "Maths", "Physique-Chimie");
-                dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", "Physique-Chimie");
-                dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", "SVT");
-                dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON", "Maths", "SVT");
-                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", "Maths");
+                dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "2 rue Mozart 92160 ANTONY", 0);
+                dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS", 0);
+                dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY", 3);
+                dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON", 3);
+                dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON", 0);
             }
 
             using (DalCreneaux dal = new DalCreneaux())
             {
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 00, 00), 1);    // cours de maths du 14/12
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 16, 30, 00), 1);
+                dal.CreerCreneau(new DateTime(2022, 12, 14, 17, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 00, 00), 2);    // cours de PC du 17/12
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 16, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 17, 17, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 00, 00), 1);    // cours de maths du 21/12
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 16, 30, 00), 1);
+                dal.CreerCreneau(new DateTime(2022, 12, 21, 17, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 2);    // Cours de PC prévu le 04/01
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 09, 00, 00), 1);    // créneaux maths dispos le 07/01
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 09, 00, 00), 1);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 09, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 1);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 3);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 10, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 11, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 5);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 5);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 30, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 1);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 2);
-                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 00, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 17, 30, 00), 5);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 3);    // créneaux sans maths
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 3);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 3);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 00, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 14, 30, 00), 4);
+                dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 00, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 15, 30, 00), 4);
                 dal.CreerCreneau(new DateTime(2023, 01, 05, 16, 00, 00), 4);
             }
 
 
-            // Création d'instances à la main
-            this.AReserve.AddRange(
-                new AReserve { EleveId = 1, ReservationId = 1 },
-                new AReserve { EleveId = 2, ReservationId = 2 },
-                new AReserve { EleveId = 3, ReservationId = 2 }
-                );  
+            using (DalReservation dal = new DalReservation())
+            {
+                // Cours de maths du 14/12
+                int id = dal.creerReservation(new Reservation() {
+                    PrenomNomProf = "Leonhard Euler",
+                    Horaire = new DateTime(2022, 12, 14, 16, 00, 00),
+                    Jour = "Mercredi 14 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.maths,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(1));
+                dal.AffecterACreneau(id, this.Creneaux.Find(2));
+                dal.AffecterACreneau(id, this.Creneaux.Find(3));
+                this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
 
-            this.MatiereProf.AddRange(
+                // Cours de PC du 17/12  en binôme
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2022, 12, 17, 16, 00, 00),
+                    Jour = "Samedi 17 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = true,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(4));
+                dal.AffecterACreneau(id, this.Creneaux.Find(5));
+                dal.AffecterACreneau(id, this.Creneaux.Find(6));
+                this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
+
+                // Cours de maths du 21/12
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Leonhard Euler",
+                    Horaire = new DateTime(2022, 12, 21, 16, 00, 00),
+                    Jour = "Mercredi 21 décembre",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.maths,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = false,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(7));
+                dal.AffecterACreneau(id, this.Creneaux.Find(8));
+                dal.AffecterACreneau(id, this.Creneaux.Find(9));
+                this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
+
+                // Cours de PC prévu le 05/01  en binôme
+                id = dal.creerReservation(new Reservation()
+                {
+                    PrenomNomProf = "Albert Einstein",
+                    Horaire = new DateTime(2023, 01, 05, 16, 00, 00),
+                    Jour = "Mercredi 5 janvier",
+                    DureeMinutes = 90,
+                    Matiere = MatiereEnum.physique,
+                    Niveau = NiveauEnum.premiereGenerale,
+                    Prix = 67.5,
+                    EstEnBinome = true,
+                    EstEnPresentiel = false,
+                    EstValide = true
+                });
+                dal.AffecterACreneau(id, this.Creneaux.Find(10));
+                dal.AffecterACreneau(id, this.Creneaux.Find(11));
+                dal.AffecterACreneau(id, this.Creneaux.Find(12));
+                this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
+
+            }
+
+
+            this.MatiereProfs.AddRange(
                 new MatiereProf { MatiereId = 1, ProfesseurId = 1 },
                 new MatiereProf { MatiereId = 2, ProfesseurId = 2 },
                 new MatiereProf { MatiereId = 3, ProfesseurId = 3 },
@@ -134,47 +227,16 @@ namespace PitAgora.Models
                 );
 
             this.NiveauxProfs.AddRange(
-                new NiveauxProf() { ProfesseurId = 1, NiveauId = 1 },
-                new NiveauxProf() { ProfesseurId = 1, NiveauId = 2 },
-                new NiveauxProf() { ProfesseurId = 1, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 2, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 3, NiveauId = 2 },
-                new NiveauxProf() { ProfesseurId = 3, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 4, NiveauId = 3 },
-                new NiveauxProf() { ProfesseurId = 5, NiveauId = 3 }
+                new NiveauProf() { ProfesseurId = 1, NiveauId = 1 },
+                new NiveauProf() { ProfesseurId = 1, NiveauId = 2 },
+                new NiveauProf() { ProfesseurId = 1, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 2, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 3, NiveauId = 2 },
+                new NiveauProf() { ProfesseurId = 3, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 4, NiveauId = 3 },
+                new NiveauProf() { ProfesseurId = 5, NiveauId = 3 }
                 );
 
-            List<Creneau> CreneauxResa1 = new List<Creneau>();
-            CreneauxResa1.Add(this.Creneaux.Find(1));
-            CreneauxResa1.Add(this.Creneaux.Find(2));
-            CreneauxResa1.Add(this.Creneaux.Find(3));
-
-            List<Creneau> CreneauxResa2 = new List<Creneau>();
-            CreneauxResa2.Add(this.Creneaux.Find(4));
-            CreneauxResa2.Add(this.Creneaux.Find(5));
-            CreneauxResa2.Add(this.Creneaux.Find(6));
-
-            this.Reservations.AddRange(
-               new Reservation
-               {
-                   Id= 1,
-                   Horaire = new DateTime(2023, 01, 05, 10, 00, 00),
-                   Prix = 90,
-                   EvaluationId=1,
-                   EstEnBinome = false,
-                   EstEnPresentiel = false,
-                   EstValide = true
-               },
-               new Reservation
-               {
-                   Id= 2,
-                   Horaire = new DateTime(2023, 01, 08, 17, 00, 00),
-                   Prix = 90,
-                   EvaluationId=2,
-                   EstEnBinome = true,
-                   EstEnPresentiel = false,
-                   EstValide = true
-               }); ;
 
             this.Evaluations.AddRange(
                 new Evaluation { Contenu = "Nous avons abordé les sujets suivants blablabla. Untel a eu des difficultés sur l'exercice 3." },

@@ -22,7 +22,7 @@ namespace PitAgora.Models
         //Méthode récupérer liste complète des professeurs avec jointures utilisateur et personne pour accèder à tous les attributs
         public List<Professeur> ObtientTousLesProfesseurs()
         {
-            return _bddContext.Professeurs.Include(p => p.Utilisateur).ThenInclude(u => u.Personne).ToList();
+            return _bddContext.Professeurs.Include(p=>p.Utilisateur).ThenInclude(u=>u.Personne).ToList();
         }
 
 
@@ -33,7 +33,7 @@ namespace PitAgora.Models
         }
 
         //Méthode création d'un profeseur
-        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, string matiere1, string matiere2 = "")
+        public int CreerProfesseur(string nom, string prenom, string mail, string motDePasse, string adresse, int matiere)
         {
             string mdp = _bddContext.EncodeMD5(motDePasse);
             Personne personne = new Personne { Nom = nom, Prenom = prenom };
@@ -45,6 +45,9 @@ namespace PitAgora.Models
             Professeur professeur = new Professeur { UtilisateurId = utilisateur.Id };
             _bddContext.Professeurs.Add(professeur);
             _bddContext.SaveChanges();
+            //MatiereProf matiereProf = new MatiereProf() { ProfesseurId = professeur.Id, MatiereId=matiere };
+            //_bddContext.MatiereProf.Add(matiereProf);
+            //_bddContext.SaveChanges();
             return professeur.Id;
         }
 
