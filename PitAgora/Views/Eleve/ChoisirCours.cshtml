@@ -28,6 +28,7 @@
         <input type="hidden" id="retourProf" name="professeurId" />
         <input type="hidden" id="retourCreneaux" name="creneaux" />
         <input type="hidden" id="retourPrix" name="prix" />
+        <input type="hidden" id="retourEleve" name="eleveId" value=@Model.First().Eleve.Id />
     </form>
 
     <h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le @Model.First().Jour</h3>

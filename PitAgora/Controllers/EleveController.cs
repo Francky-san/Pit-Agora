@@ -27,10 +27,7 @@ namespace PitAgora.Controllers
         [HttpGet]
         public IActionResult AccueilEleve(int id)
         {
-            Eleve lEleve = dalE.ObtenirUnEleve(id);
-            EleveViewModel evm = new EleveViewModel() { Eleve = lEleve };
-            evm.CoursFuturs = dalR.ObtenirCoursFuturs(lEleve.Id);
-            evm.CoursPasses = dalR.ObtenirCoursPasses(lEleve.Id);
+            EleveViewModel evm = new EleveViewModel(id);
             return View(evm);
         }
 
@@ -39,7 +36,6 @@ namespace PitAgora.Controllers
         {
             Eleve lEleve = dalE.ObtenirUnEleve(id); 
             ChercherCoursViewModel ccvm = new ChercherCoursViewModel() { Eleve = lEleve};
-            ccvm.EstEnBinome = false;
             ViewData["messageChercherCours"] = "";
             return View(ccvm);
         }
@@ -51,9 +47,9 @@ namespace PitAgora.Controllers
             
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime finJournee = debutJournee.AddDays(1);
-            List<Creneau> query = dalC.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
+            List<Creneau> query = dalC.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);  // requête Bdd
 
-            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les plannings sélectionnés
+            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // pour stocker les plannings sélectionnés
             
             int nbCreneaux = query.Count;
 
@@ -99,13 +95,14 @@ namespace PitAgora.Controllers
             }
             else
             {
+                ChercherCoursViewModel ccvm = new ChercherCoursViewModel() { Eleve = lEleve };
                 ViewData["messageChercherCours"] = "Désolé, pas de disponibilité ce jour-là.";
-                return View("ChercherCours");
+                return View("ChercherCours",ccvm);
             }
         }
         
         [HttpPost]  //pour demander confirmation : nouvelle vue ou simple fenêtre pop-up ??
-        public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix)
+        public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix, int eleveId)
         {
             string prenomNomProf = dalP.GetPrenomNom(professeurId);
 
@@ -138,16 +135,15 @@ namespace PitAgora.Controllers
             }
 
             // Affecter cette réservation à l'élève concerné
-            Utilisateur utilisateur = dalG.ObtenirUtilisateur(HttpContext.User.Identity.Name);
-            //Eleve utilisateurConnecte = ??
-            //dalR.AffecterAEleve(reservationId, utilisateurConnecte);
+            dalR.AffecterAEleve(reservationId, eleveId);
+
+            EleveViewModel evm = new EleveViewModel(eleveId);
 
             /*
             A FAIRE :
             - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
-            - affecter cette réservation à l'élève concerné
             */
-            return View("AccueilEleve");
+            return View("AccueilEleve", evm);
         }
 
       

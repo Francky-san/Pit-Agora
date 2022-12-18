@@ -33,9 +33,9 @@ namespace PitAgora.Models
         }
 
         // Affecte une réservation nouvellement créée à un élève (via la table d'association)
-        public void AffecterAEleve(int reservationId, Eleve e)
+        public void AffecterAEleve(int reservationId, int eleveId)
         {
-            AReserve ar = new AReserve() { ReservationId = reservationId, Eleve = e };
+            AReserve ar = new AReserve() { ReservationId = reservationId, EleveId = eleveId };
             _bddContext.AReserve.Add(ar);
             _bddContext.SaveChanges();
         }
