@@ -4,32 +4,7 @@
 
     ViewBag.Title = "Accueil Parent";
 }
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
 
-    .absolute {
-        position: absolute;
-        top: 30px;
-        left: 360px;
-        width: 250px;
-        border: 2px solid blue;
-        text-align: center;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
 
 @section navbar{
     <ul class="navbar-nav">
@@ -56,11 +31,42 @@
     }
 
 @section Main{
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-        <div class="absolute">
+            .absolute {
+                position: absolute;
+                top: 30px;
+                left: 360px;
+                width: 250px;
+                border: 2px solid blue;
+                text-align: center;
+            }
+
+            th {
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+            }
+            td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+
+        <div>
 
         @*Mon Eleve*@
-            <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; width:50%; margin-inline-start:300px">
+            <fieldset style="margin-block:25px; text-align:center; width:50%; margin-inline-start:300px">
 
                 <legend style="text-decoration:underline; color:"> @Model.Eleve.Utilisateur.Personne.Prenom </legend>
                 <table>
@@ -83,7 +89,7 @@
             </fieldset>
 
         @*Reservations passées*@
-            <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center;width:49%; float:left">
+            <fieldset style="margin-block:25px; text-align:center;width:49%; float:left">
 
                 <legend style="text-decoration:underline">
                     Les derniers cours de @Model.Eleve.Utilisateur.Personne.Prenom
@@ -109,7 +115,7 @@
             </fieldset>
 
         @*Reservations futures*@
-            <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center;width:49%; float:right">
+            <fieldset style="margin-block:25px; text-align:center;width:49%; float:right">
 
                 <legend style="text-decoration:underline">
                     Les prochains cours de @Model.Eleve.Utilisateur.Personne.Prenom
@@ -136,7 +142,7 @@
             </fieldset>
 
         @*Evaluations*@
-            <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; width:99%">
+            <fieldset style="margin-block:25px; text-align:center; width:99%">
                 <legend style="text-decoration:underline">
                     Les evaluations d' @Model.Eleve.Utilisateur.Personne.Prenom
                 </legend>
@@ -164,75 +170,10 @@
                             @resa.Matiere
                             </td>
                             <td>
-                            @resa.Evaluation.Contenu
                             </td>
                         </tr>
                 }
-
-                @*            @foreach (var reservation in Model.Reservations)
-                {
-                <tr>
-                <td>@reservation.Reservation.Evaluation.Contenu</td>
-                </tr>
-                }
-                @foreach (var crenau in Model.Creneaux)
-                {
-                @crenau.Professeur.Utilisateur.Personne.Nom
-                @crenau.Professeur.Utilisateur.Personne.Prenom
-                <br />
-                @crenau.Reservation.PrenomNomProf
-                }*@
                 </table>
             </fieldset>
 
         }
-@*           <br />
-        <p>Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :</p>
-        <table>
-        <thead>
-        <tr>
-        <th>Jour</th>
-        <th>Duree</th>
-        <th>Niveau</th>
-        <th>Matiere</th>
-        <th>Prof</th>
-        <th>Prix</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var resa in Model.CoursPasses)
-        {
-
-
-        <tr>
-        <td>
-        @resa.Jour
-        </td>
-        <td>
-        @resa.DureeMinutes
-
-        </td>
-        <td>
-        @resa.Niveau
-        </td>
-        <td>
-        @resa.Matiere
-
-        </td>
-        <td>
-        @resa.PrenomNomProf
-
-        </td>
-        <td>
-        @resa.Prix
-
-        </td>
-        </tr>
-        }
-        </tbody>
-        <br />
-        </table>
-        </div>
-
-        </ul>*@
