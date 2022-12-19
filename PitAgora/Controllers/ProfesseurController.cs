@@ -61,7 +61,8 @@ namespace PitAgora.Controllers
             DalProf dalProf = new DalProf();
             Professeur professeur = dalProf.ObtenirUnProf(id);
 
-            ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
+            GererPlanningViewModel gpvm = new GererPlanningViewModel() { Professeur = professeur };
+            gpvm.PlanningSemaine.Add(dalProf.CreerPlanningProf(id, System.DateTime.Now));
 
    
             return View();
