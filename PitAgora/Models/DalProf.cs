@@ -60,7 +60,7 @@ namespace PitAgora.Models
         }
 
 
-        // Méthode d'obtention des cours à venir pour un professeur, List de creneaux
+        // Méthode d'obtention des cours à venir pour un professeur à partir de la liste des réservations
         public List<Reservation> GetCoursFuturs(int professeurId)
         {
             //var query = _bddContext.Reservations.FromSqlRaw("select * from reservations" +
@@ -76,15 +76,20 @@ namespace PitAgora.Models
                         where c.ProfesseurId == professeurId && r.Horaire > DateTime.Now
                         select r;
 
-            return query.Distinct().ToList() ;
-
-
+            // var List = query.Distinct().OrderBy(r => r.Horaire).ToList(); 
+            return query.Distinct().OrderBy(r => r.Horaire).ToList();
         }
 
-        //Méthode d'obtention des cours effectués pour un professeur, List de creneaux
-        public List<Creneau> GetCoursPasses(int professeurId)//FT - Type de list modifié en list<creneau>
+        // Méthode d'obtention des cours passés pour un professeur à partir de la liste des réservations
+        public List<Reservation> GetCoursPasses(int professeurId)
         {
-            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).Where(C => C.Debut < DateTime.Today).ToList();
+            var query = from r in _bddContext.Reservations
+                        join c in _bddContext.Creneaux
+                        on r.Id equals c.ReservationId
+                        where c.ProfesseurId == professeurId && r.Horaire < DateTime.Now
+                        select r;
+
+            return query.Distinct().ToList();
         }
 
         public void ModifierCreditProf(int id, double montant)
