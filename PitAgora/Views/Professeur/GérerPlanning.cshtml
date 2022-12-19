@@ -7,11 +7,13 @@
     ViewBag.Title = "Gérer Planning";
 }
 
-@section css {
+@section css 
+{
     <link href="~/css/Planning.css" rel="stylesheet" />
 }
 
-@section navbar{
+@section navbar
+{
     <ul class="navbar-nav">
 
         <li class="nav-item">
@@ -42,7 +44,8 @@
     </ul>
 }
 
-@section Main{
+@section Main
+{
 
     <div class="container -fluid">
 
@@ -67,7 +70,7 @@
 
         @foreach (var item in @Model.PlanningSemaine)
         {
-            <em class="enTetePlanning">Planning du  </em>
+            <em class="enTetePlanning">@System.DateTime.Now.AddDays(-3).ToString("d") </em>
 
             <div class="conteneurHeures">
                 <span class="heure">09:00</span>
@@ -103,8 +106,7 @@
                     }
                 }
             </div>
-            <br />
-            <br />
+                  
         }
 
     }
