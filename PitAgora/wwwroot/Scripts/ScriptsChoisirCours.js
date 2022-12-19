@@ -23,7 +23,7 @@
     document.getElementById("prixCours").innerHTML = prix;
     document.getElementById("retourPrix").value = prix;
 
-    if (SelectionValide()) {
+    if (SelectionValide() && prix <= parseFloat(document.getElementById("creditDispo").innerHTML)) {
         document.getElementById("boutonValider").disabled = false;
         document.getElementById("boutonValider").class = "BoutonValiderActif";
     }
@@ -67,4 +67,16 @@ function majRetour(selection) {
         res += id + ",";
     }
     document.getElementById("retourCreneaux").value = res;
+}
+
+// Demander confirmation avant d'envoyer la requête
+function demanderConfirmation() {
+    let confirm = window.confirm("Je confirme ma réservation\nle " + document.getElementById("jour").innerHTML
+        + "\n\nRappel : un cours annulé moins de 48h à l'avance ne sera pas remboursé");
+    if (confirm) {
+        document.getElementById("choixCours").action = "../CreerReservation"
+    }
+    else {
+        document.getElementById("choixCours").action = ""
+    }
 }

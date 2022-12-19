@@ -18,7 +18,7 @@ namespace PitAgora.Models
         {
             _bddContext.Dispose();
         }
-
+        /*
         public string GetMatiere(int IdCreneau)
         {
             var query = from c in _bddContext.Creneaux
@@ -28,7 +28,7 @@ namespace PitAgora.Models
                         where c.Id == IdCreneau
                         select m;
             return query.ToString();
-        }
+        }*/
 
         public int CreerCreneau(DateTime debut, int professeurId)
         {
@@ -37,32 +37,31 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
             return creneau.Id;
         }
-        //Creer résa
-        //public int CreerResa(List<Creneau> creneaux)
-        //{
-        //    string prof =
-        //        if (creneaux.Count % 2 == 0)
-        //    {
-        //        int prix = (creneaux.Count);
-        //    }
-        //    Reservation newResa = new Reservation()
-        //    {
 
-        //        DureeMinutes = creneaux.Count() * 30,
-        //        Evaluation = null,
-        //        PrenomNomProf = (creneaux[0].Professeur.Utilisateur.Personne.Prenom) + " " + (creneaux[0].Professeur.Utilisateur.Personne.Nom),
-        //        Prix = creneaux[0].,
-        //        Horaire = creneaux[0].Debut,
-
-
-        //    }
-        //}
+        public void SupprimerCreneau(int id)
+        {
+            Creneau creneauASupprimer = this._bddContext.Creneaux.Find(id);
+            if (creneauASupprimer != null)
+            {
+                this._bddContext.Creneaux.Remove(creneauASupprimer);
+                this._bddContext.SaveChanges();
+            }
+        }
 
         public Creneau GetCreneau(int id)
         {
             return _bddContext.Creneaux.Find(id);
         }
 
+        public List<Creneau> GetCreneauxDisponibles(int professeurId)
+        {
+            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId == null).ToList();
+        }
+
+        public List<Creneau> GetCreneauxReserves(int professeurId)
+        {
+            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).ToList();
+        }
 
         // Renvoie une liste de créneaux à partir d'une liste d'Id
         public List<Creneau> listeCreneauxDepuisId(List<int> listeId)

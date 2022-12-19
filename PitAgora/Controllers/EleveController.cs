@@ -9,36 +9,62 @@ namespace PitAgora.Controllers
 {
     public class EleveController : Controller
     {
-        private readonly DalCreneaux dal;
+        private readonly DalEleve dalE;
+        private readonly DalCreneaux dalC;
+        private readonly DalGen dalG;
+        private readonly DalProf dalP;
+        private readonly DalReservation dalR;
 
         public EleveController()
         {
-            dal = new DalCreneaux();
+            dalE = new DalEleve();
+            dalC = new DalCreneaux();
+            dalG = new DalGen();
+            dalP = new DalProf();
+            dalR = new DalReservation();
         }
 
 
-        public IActionResult AccueilEleve(Eleve eleve)
+        //public IActionResult AccueilEleve(int Id)
+        //{
+        //    DalEleve dal = new DalEleve();
+        //    Eleve eleve = dal.ObtientTousLesELeves().Where(e => e.Id == Id).FirstOrDefault();
+        //    return View(eleve);
+        //}
+        public IActionResult Agora()
         {
             return View();
         }
 
+        //Méthode get page d'accueil élève
         [HttpGet]
-        public IActionResult ChercherCours()
+        public IActionResult AccueilEleve(int id)
         {
-            ChercherCoursViewModel ccvm = new ChercherCoursViewModel();
-            ccvm.EstEnBinome = false;
+            EleveViewModel evm = new EleveViewModel(id);
+            return View(evm);
+        }
+
+        //Méthode get recherche d'un cours
+        [HttpGet]
+        public IActionResult ChercherCours(int id)
+        {
+            Eleve lEleve = dalE.ObtenirUnEleve(id); 
+            ChercherCoursViewModel ccvm = new ChercherCoursViewModel() { Eleve = lEleve};
             ViewData["messageChercherCours"] = "";
             return View(ccvm);
         }
 
+        //Méthode post recherche d'un cours, prends les critères de recherche en arguments
         [HttpPost]
         public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel, int eleveId)
         {
+            Eleve lEleve = dalE.ObtenirUnEleve(eleveId);
+            
             string gpeNiveau = Niveau.dictNiveaux[niveau];
             DateTime finJournee = debutJournee.AddDays(1);
-            List<Creneau> query = dal.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);
+            List<Creneau> query = dalC.RequeteDistanciel2(matiere, gpeNiveau, debutJournee, finJournee);  // requête Bdd
 
-            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // les plannings sélectionnés
+            List<PlanningViewModel> lesPlannings = new List<PlanningViewModel>();   // pour stocker les plannings sélectionnés
             
             int nbCreneaux = query.Count;
 
@@ -65,7 +91,7 @@ namespace PitAgora.Controllers
                     }
                     if (planningValide)
                     {
-                        lesPlannings.Add(new PlanningViewModel(tempPlanning, tempProfId, horairePrecedent, matiere, niveau, estEnBinome, estEnPresentiel));
+                        lesPlannings.Add(new PlanningViewModel(lEleve, tempPlanning, tempProfId, horairePrecedent, matiere, niveau, estEnBinome, estEnPresentiel));
                     }
                     if (lesPlannings.Count == 5)
                     {
@@ -84,17 +110,17 @@ namespace PitAgora.Controllers
             }
             else
             {
+                ChercherCoursViewModel ccvm = new ChercherCoursViewModel() { Eleve = lEleve };
                 ViewData["messageChercherCours"] = "Désolé, pas de disponibilité ce jour-là.";
-                return View("ChercherCours");
+                return View("ChercherCours",ccvm);
             }
         }
         
         [HttpPost]  //pour demander confirmation : nouvelle vue ou simple fenêtre pop-up ??
-        public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix)
+        public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix, int eleveId)
         {
-            DalProf dalP = new DalProf();
             string prenomNomProf = dalP.GetPrenomNom(professeurId);
-
+            string prenomNomEleve = dalE.GetPrenom(eleveId);
             List<int> creneauxId = new List<int>();
             int i = 0;
             foreach (string s in creneaux.Split(","))
@@ -103,7 +129,7 @@ namespace PitAgora.Controllers
                     creneauxId.Add(i);
                 }
             }
-            List<Creneau> lesCreneaux = dal.listeCreneauxDepuisId(creneauxId).OrderBy(c => c.Debut).ToList();
+            List<Creneau> lesCreneaux = dalC.listeCreneauxDepuisId(creneauxId).OrderBy(c => c.Debut).ToList();
             DateTime horaire = lesCreneaux[0].Debut;
 
             string jour = Creneau.JourEnFrancais(horaire);
@@ -113,9 +139,8 @@ namespace PitAgora.Controllers
 
             Reservation laReservation = new Reservation() { PrenomNomProf = prenomNomProf, Horaire = horaire, Jour = jour, DureeMinutes = dureeMinutes, 
                 Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
-                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
+                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide, PrenomEleve = prenomNomEleve};
 
-            DalReservation dalR = new DalReservation();
             int reservationId = dalR.creerReservation(laReservation);
 
             // Affecter cette réservation aux créneaux concernés
@@ -124,18 +149,15 @@ namespace PitAgora.Controllers
                 dalR.AffecterACreneau(reservationId, c);
             }
 
-            DalGen dalG = new DalGen();
             // Affecter cette réservation à l'élève concerné
-            Utilisateur utilisateur = dalG.ObtenirUtilisateur(HttpContext.User.Identity.Name);
-            //Eleve utilisateurConnecte = ??
-            //dalR.AffecterAEleve(reservationId, utilisateurConnecte);
+            dalR.AffecterAEleve(reservationId, eleveId);
 
             /*
             A FAIRE :
             - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
-            - affecter cette réservation à l'élève concerné
+            - MaJ  créditCours
             */
-            return View("AccueilEleve");
+            return Redirect("AccueilEleve/"+eleveId);
         }
 
       

@@ -9,15 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIT'AGORA | Prépare ton avenir</title>
     <link rel="apple-touch-icon" sizes="180x180" href="~/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
+  @*  <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="~/images/favicon/site.webmanifest">
     <link rel="mask-icon" href="~/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="~/images/favicon/ico.ico">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="~/images/favicon/mstile-144x144.png">
+    <meta nam*@e="msapplication-TileImage" content="~/images/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="~/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
@@ -51,44 +53,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
-                    <ul class="navbar-nav">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Index", "Home")>
-                                <h4>  Accueil </h4>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-
-                            <a class="nav-link" href=@Url.Action("Connexion", "Login")>
-                                <h4> Connexion </h4>
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Inscription", "Home")>
-                                <h4>  Inscription </h4>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Postuler", "Home")>
-                                <h4>  Postuler </h4>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Profs", "Home")>
-                                <h4>  Profs </h4>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=@Url.Action("Contact", "Home")>
-                                <h4> Contact </h4>
-                            </a>
-                        </li>
-
-                    </ul>
+@RenderSection("navbar")
 
                 </div>
 
@@ -103,80 +68,30 @@
     </header>
     <!-- FIN ENCABEZADO -->
     <!-- INICIO PLAN DE ACCIÓN -->
-    <main class="planDeAccion py-5">
-        <div class="container">
+    <div class="container" style="border:2px solid black">
 
-            <header class="text-center mb-5">
-                <h1 class="display-5 fw-bold text-secondary tituloconLinea">Concept Pit'Agora</h1>
-
-                <p class=" fw-bormal my-0 text-muted">
-                    Dessinons ensemble ton plan d'action
-                </p>
-
-            </header>
-            <div class="row row-cols-1 row-cols-md-3  text-center">
-                <div class="col mb-3">
-                    <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
-                        <img src="~/Images/accionBranding.svg" alt="Brading" width="auto" height="70">
-                        <h2 class="h3 text-secondary fw-bold my-3">Nos Profs</h2>
-                        <p>
-                            Recrutés avec soin, nos professeurs sont hautement qualifiés
-                            et à ton écoute pour t'aider à progresser
-                        </p>
-                        <a href="#" class="fw-bold">Infos</a>
-
-                    </article>
-
-                </div>
-                <div class="col mb-3">
-                    <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
-                        <img src="~/Images/accionDisenoUX.svg" alt="Diseño UX" width="auto" height="70">
-                        <h2 class="h3 text-secondary fw-bold my-3">Pythos</h2>
-                        <p>
-                            Pit'Agora récompense ta participation avec des "Pythos" échangeables chez nos partenaires
-                            <br>
-                        </p>
-                        <a href="#" class="fw-bold">Infos</a>
-
-                    </article>
-
-                </div>
-
-                <div class="col mb-3">
-                    <article class="planAccionItem border rounded-3 px-4 py-5 h-100">
-                        <img src="~/Images/accionExtrategia360.svg" alt="Extratégia 360" width="auto" height="70">
-                        <h2 class="h3 text-secondary fw-bold my-3">Binôme</h2>
-                        <p>
-                            Concept travail en binôme ou
-                            l'apprentissage à deux
-                            <br>
-                            <br>
-                        </p>
-                        <a href="#" class="fw-bold">Infos</a>
-
-                    </article>
-                </div>
-
-            </div>
-        </div>
-    </main>
-    <!-- FIN PLAN DE ACCIÓN -->
-    @RenderSection("Aide", required:false)
+        <!-- FIN PLAN DE ACCIÓN -->
+        @RenderSection("Aide", required:false)
+    </div>
     <!-- INICIO TE AYUDAMOS -->
     <!-- FIN TE AYUDAMOS -->
-    @RenderSection("Projets", required: false)
-    <!-- INICIO PROYECTOS -->
-    <!-- FIN DE PROYECTOS -->
-    @RenderSection("Manolito",required:false)
+    <div class="container" style="border:2px solid black">
 
+
+        @RenderSection("Projets", required: false)
+    </div>
+
+    <!-- INICIO PROYECTOS -->
     <!-- INICIO PIE DE PÁGINA -->
-    <footer class="pieDePagina bg-dark text-white pt-5">
+    <footer class="pieDePagina bg-dark text-white pt-5" id="footer">
         <div class="container">
             <div class="row text-center text-lg-start">
 
                 <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
-                    <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
+                    <a href=@Url.Action("Index", "Home")>
+                           <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
                 del sitio">
+                    </a>
                     <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
                         <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
                         <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
@@ -187,27 +102,27 @@
                 <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0 ms-lg-auto">
                     <h5 class=" fw-bold mb-4">Partenaires</h5>
                     <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="#">Micromania</a></li>
-                        <li><a href="#">FNAC</a></li>
-                        <li><a href="#">.....</a></li>
-                        <li><a href="#">.......</a></li>
+                        <li><a href="https://www.micromania.fr/">Micromania</a></li>
+                        <li><a href="https://www.fnac.com/">FNAC</a></li>
+                        <li><a href="https://www.ugc.fr/">UGC</a></li>
+                        <li><a href="https://www.zara.com/fr/">ZARA</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0">
                     <h5 class=" fw-bold mb-4">A propos</h5>
                     <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="#">Qui</a></li>
-                        <li><a href="#">Pourquoi</a></li>
-                        <li><a href="#">Comment</a></li>
+                        <li><a href="~/Home/Presentation">Qui</a></li>
+                        <li><a href="~/Home/Presentation">Pourquoi</a></li>
+                        <li><a href="~/Home/Presentation">Comment</a></li>
 
                     </ul>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-2 mb-5 mb-lg-0">
                     <h5 class=" fw-bold mb-4">Contact</h5>
                     <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="#">Pédagogie</a></li>
-                        <li><a href="#">Agora</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="~/Home/Presentation">Pédagogie</a></li>
+                        <li><a href="~/Eleve/Agora">Agora</a></li>
+                        <li><a href="~/Home/Presentation">FAQs</a></li>
                     </ul>
                 </div>
             </div>

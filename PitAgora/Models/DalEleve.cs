@@ -23,23 +23,28 @@ namespace PitAgora.Models
             return _bddContext.Eleves.Include(e => e.Utilisateur).ThenInclude(u => u.Personne).Include(e => e.Parent).ToList();
         }
 
-        public Eleve ObtiensUnEleve(int id)
+        public Eleve ObtenirUnEleve(int id)
         {
             Eleve unEleve = _bddContext.Eleves.Find(id);
             return unEleve;
         }
 
-        //Méthode pour obtenir la liste des résa d'un élève.
-        public List<Reservation> ObtenirReservations(int eleveId)
+        public void ModifierPythos(int id, int pythos)
         {
-            var query = from r in _bddContext.Reservations
-                        join ar in _bddContext.AReserve on r.Id equals ar.ReservationId
-                        join e in _bddContext.Eleves on ar.EleveId equals e.Id
-                        where ar.EleveId == eleveId
+            _bddContext.Eleves.Find(id).CreditPythos += pythos;
+            _bddContext.SaveChanges();
+        }
 
+        public void ModifierCreditCours(int id, double montant)
+        {
+            _bddContext.Eleves.Find(id).CreditCours += montant;
+            _bddContext.SaveChanges();
+        }
 
-                        select r;
-            return query.ToList();
+        //Méthode pour obtenir la liste des résa d'un élève.
+        public List<AReserve> ObtenirReservations(int eleveId)
+        {
+            return _bddContext.AReserve.Include(ar=>ar.Reservation).ThenInclude(r=>r.Evaluation).Where(ar=>ar.EleveId==eleveId).ToList();
         }
 
         //Méthode pour obtenir la liste des évaluations d'un élève
@@ -65,8 +70,42 @@ namespace PitAgora.Models
             _bddContext.Eleves.Add(eleve);
             _bddContext.SaveChanges();
             return eleve.Id;
-
         }
 
+        // Retourne la liste des réservation d'un élève dont la date n'est pas passée (maximum 5)
+        public List<Reservation> ObtenirCoursFuturs(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
+                .Where(ar => ar.Reservation.Horaire > DateTime.Now).Take(5).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
+
+        // Retourne la liste des réservation d'un élève dont la date est passée (maximum 5)
+        public List<Reservation> ObtenirCoursPasses(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
+                .Where(ar => ar.Reservation.Horaire < DateTime.Now).Take(5).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
+
+        //Retourne une string contenant prenom 
+        public string GetPrenom(int eleveId)
+        {
+            int utilisateurId = _bddContext.Eleves.Find(eleveId).UtilisateurId;
+            int personneId = _bddContext.Utilisateurs.Find(utilisateurId).PersonneId;
+            Personne laPersonne = _bddContext.Personnes.Find(personneId);
+
+            return laPersonne.Prenom ;
+        }
     }
 }

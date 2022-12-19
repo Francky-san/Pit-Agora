@@ -6,6 +6,7 @@ namespace PitAgora.ViewModels
     {
 
         public Utilisateur Utilisateur { get; set; }
+        public string Name { get; set; }
         public bool Authentifie { get; set; }
 
 

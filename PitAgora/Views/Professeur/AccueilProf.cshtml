@@ -1,9 +1,46 @@
-﻿@model PitAgora.Models.Professeur
+﻿@model PitAgora.ViewModels.ProfViewModel
 @{
     Layout = "LayoutPrive";
 
     ViewBag.Title = "Accueil Prof";
 }
+
+@section navbar{
+    <ul class="navbar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link active" href=@Url.Action("AccueilProf", "Professeur")>
+                Accueil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+                Déconnexion
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("GérerPlanning", "Professeur")>
+                Gérer mon planning
+            </a>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("ElevesDuProf", "Professeur")>
+                Mes élèves
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                Contact
+            </a>
+        </li>
+
+
+    </ul>
+}
+
+@section css {
+    <link href="~/css/Accueils.css" rel="stylesheet" />
+}
+
 
 @section Main{
     <div style="margin: 215px;padding:40px; place-items:center;">
@@ -29,6 +66,62 @@
                             </li>
                         </ul>
                     </div>
+    <div>
+        <div class="container -fluid">
+
+            <div>Bonjour @Model.Professeur.Utilisateur.Personne.Prenom @Model.Professeur.Utilisateur.Personne.Nom</div>
+            <br>  <br>
+        </div>
+
+        <div>
+            <h4> Mes prochains cours </h4>
+            <br />
+            @if (Model.CoursFuturs.Count > 0)
+            {
+                @foreach (var item in @Model.CoursFuturs)
+                {
+                    <div class="celluleCours">
+                        <table>
+                            <tr><td>@item.Jour</td></tr>
+                            <tr><td>@item.Matiere avec </td></tr>
+                            <tr><td>@item.PrenomEleve</td></tr>
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>Pas de cours programmé pour le moment.</div>
+            }
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div>
+
+            <h4> Mes cours passés  </h4>
+            <br />
+
+            @if (Model.CoursPasses.Count > 0)
+            {
+                @foreach (var item in @Model.CoursPasses)
+                {
+                    <div class="celluleCours">
+                        <table>
+                            <tr><td>@item.Jour</td></tr>
+                            <tr><td>@item.Matiere</td></tr>
+                            <tr><td>@item.PrenomEleve</td></tr>
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>Vous n'avez pas encore donné de cours avec l'un de nos chers élèves !</div>
+            }
+        </div>
+        <br />
 
                     <!--CENTRE SCENE-->
                     <div class="col-md-5">
@@ -84,3 +177,41 @@
 
 
         }
+    <br />
+    <br />
+    <br />
+
+    <div>
+        <h4> Récapitulatif rémunération à venir </h4>
+        En fin de semaine, vous percevrez : @Model.Professeur.CreditProf <span> € </span>
+    </div>
+    <br />
+
+    <div>
+        <h4>Cours à évaluer </h4>
+        <br />
+
+
+       @* @if (Model.CoursPasses.Count > 0) && (Model.Reservation.EvaluationId !==0)
+        {
+            @foreach (var item in @Model.CoursPasses)
+            {
+                <div class="celluleCours">
+                    <table>
+                        <tr><td>@item.Jour</td></tr>
+                        <tr><td>@item.Matiere</td></tr>
+                        <tr><td>@item.PrenomEleve</td></tr>
+                    </table>
+                </div>
+            }
+        }
+        else
+        {
+            <div>Vous êtes à jour : aucun cours à évaluer pour l'instant.</div>
+        }
+    </div>
+    <br />*@
+
+    <br />
+
+    }

@@ -16,14 +16,15 @@
 
 
   <ItemGroup>
+    <Content Remove="wwwroot\scss\" />
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
-    <Content Remove="ViewModels\PostulerViewModel.cshtml" />
-    <Content Remove="Views\Home\Profs.cshtml" />
-    <Content Remove="Views\Shared\PageEnConstruction.cshtml" />
-    <Content Remove="wwwroot\Images\LogoPitAgoraFOOTER.svg" />
-    <Content Remove="wwwroot\Images\enconstruction.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Folder Include="Views\Parent\" />
+=======
+    <Folder Include="Views\Professeur\" />
+>>>>>>> 9960799 (RAS)
     <Folder Include="wwwroot\scss\" />
   </ItemGroup>
   <ItemGroup>
