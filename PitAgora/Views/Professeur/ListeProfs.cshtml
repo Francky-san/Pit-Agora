@@ -1,4 +1,4 @@
-﻿@model List<PitAgora.Models.Professeur>
+﻿@model PitAgora.ViewModels.ListProfViewModel
 @{
     Layout = "LayoutGen";
     ViewBag.Title = " Liste des professeurs";
@@ -34,11 +34,11 @@
                 Profs
             </a>
         </li>
-      <li class="nav-item">
-        <a class="nav-link" href=@Url.Action("Contact", "Home")>
-            Contact
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                Contact
+            </a>
+        </li>
 
     </ul>
 }
@@ -61,31 +61,41 @@
             background-color: #dddddd;
         }
     </style>
-        <section class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
+    <section class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
         <h2>Nos Professeurs</h2>
-    <table>
-        <tr>
-            <th>Nom</th>
-            <th>Matières enseignées</th>
-            <th>Niveau</th>
-        </tr>
-        @foreach (var prof in @Model)
-    {
-        <tr>
-            <td>@prof.Utilisateur.Personne.Prenom <strong>@prof.Utilisateur.Personne.Nom</strong></td>
-            <td>@prof.</td>
-        </tr>
-    }
-</table>
-    </section>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Matières enseignées</th>
+            </tr>
+            <tr>
+
+                @foreach (var prof in @Model.profs)
+            {
+                <tr>@prof.Utilisateur.Personne.Prenom <strong>@prof.Utilisateur.Personne.Nom</strong></tr>
+            }
+
+                @foreach (var matiere in Model.matieres)
+                {
 
 
-    <!--Script Bootstrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+                    <td>@matiere.Intitule</td>
 
-    
-}
+
+                }
+            </tr>
+            
+    </table>
+</section>
+
+
+<!--Script Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+        }
+        }
 
 

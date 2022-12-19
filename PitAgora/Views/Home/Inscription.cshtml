@@ -47,10 +47,10 @@
 @section Main{
 
     <form action="~/Home/Inscription" method="post">
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top:150px">
 
             <div class="row col-5 m-5" style="float:left">
-                <p>Infos Parent</p>
+                <p style="font-size:larger; text-decoration:underline"><h2>Infos Parent</h2></p>
                 @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Prenom,
             new { @class = "form-label" })
                 @Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Prenom,
@@ -87,7 +87,7 @@
 
             <div class="row col-5 m-5" style="float:right">
 
-                <p>Infos Elève</p>
+                <p style="font-size:larger; text-decoration:underline"><h2>Infos Elève</h2></p>
 
                 @Html.LabelFor(m => m.Eleve.Utilisateur.Personne.Prenom,
             new { @class = "form-label" })

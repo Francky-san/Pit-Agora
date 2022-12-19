@@ -46,12 +46,26 @@ namespace PitAgora.Controllers
 
         }
 
+     
         //Contenu en dur, affichage de tous les profs
         public IActionResult ListeProfs()
         {
             DalProf dal = new DalProf();
             List<Professeur> nosProfs = dal.ObtientTousLesProfesseurs().ToList();
-            return View(nosProfs);
+           DalMatiereProf dalm = new DalMatiereProf();
+            List<Matiere> matieres= new List<Matiere>();
+            foreach(var prof in nosProfs)
+            {
+                matieres = dalm.GetMatiereProf(prof.Id);
+            }
+            DalNiveauxProf daln = new DalNiveauxProf();
+            List<Niveau> niveaux = new List<Niveau>();
+            foreach(var prof in nosProfs)
+            {
+                niveaux = daln.GetNiveauxProf(prof.Id);
+            }
+            ListProfViewModel lpvm = new ListProfViewModel() { matieres= matieres, niveaux=niveaux, profs=nosProfs }; 
+            return View(lpvm);
         }
 
 

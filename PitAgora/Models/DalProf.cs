@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,30 +65,18 @@ namespace PitAgora.Models
         {
            _bddContext.Evaluations.Add(eval);
             _bddContext.SaveChanges();
-           //_bddContext.Reservations.Where(r => r.Id == resaId).FirstOrDefault().EvaluationId = eval.Id;
-           // _bddContext.SaveChanges();
            return eval.Id;
         }
-          
-
 
         // Méthode d'obtention des cours à venir pour un professeur à partir de la liste des réservations
         public List<Reservation> GetCoursFuturs(int professeurId)
         {
-            //var query = _bddContext.Reservations.FromSqlRaw("select * from reservations" +
-            //" inner join creneaux" +
-            //" on creneaux.reservationId = Reservations.Id" +
-            //" group by reservationId" +
-            //" having creneaux.professeurId = " + professeurId + " and horaire > now()"
-            //);
-
             var query = from r in _bddContext.Reservations
                         join c in _bddContext.Creneaux
                         on r.Id equals c.ReservationId
                         where c.ProfesseurId == professeurId && r.Horaire > DateTime.Now
                         select r;
 
-            // var List = query.Distinct().OrderBy(r => r.Horaire).ToList(); 
             return query.Distinct().OrderBy(r => r.Horaire).ToList();
         }
 

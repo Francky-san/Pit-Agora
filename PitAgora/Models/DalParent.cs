@@ -47,9 +47,7 @@ namespace PitAgora.Models
         //Méthode crediter porte monnaie eleve
         public void CrediterEleve(int montant, int eleveId, int parentId)
         {
-            //DalEleve dal = new DalEleve();
-            //Eleve monEleve = dal.ObtientTousLesELeves().Where(e => e.Id == eleveId).FirstOrDefault();
-            //Console.WriteLine(monEleve.CreditCours+=montant);
+     
             _bddContext.Eleves.Where(e => e.Id == eleveId).FirstOrDefault().CreditCours+=montant;
             _bddContext.SaveChanges();
         

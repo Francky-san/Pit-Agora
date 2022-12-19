@@ -9,28 +9,121 @@
     <ul class="navbar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href=@Url.Action("AccueilParent", "Parent")>
+            <a class="nav-link " href=@Url.Action("AccueilParent", "Parent", new{id= Model.ParentId})>
                 Accueil
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
-                Déconnexion
+                Deconnexion
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href=@Url.Action("CrediterEleve", "Parent")>
-                Alimenter Crédit Cours
+                Alimenter Credit Cours
             </a>
         <li class="nav-item">
             <a class="nav-link" href=@Url.Action("Contact", "Home")>
                 Contact
             </a>
         </li>
+    }
 
-    </ul>
-}
 
 @section Main{
-   
-}
+            <div style="margin: 215px;">
+                <div class="container" style="background-color: white">
+
+
+                    <div class="col-12 mt-4">
+                        <div class="card p-3">
+                            <span>
+                                <p class="mb-0 fw-bold h4">
+                                    Paiement par carte
+
+                                    <div style="margin-top:20px;"><img src="~/Images/logosCartes.png" alt="Logo Visa et Mastercard"></div>
+
+                                </p>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card p-3">
+
+                            <div class="card-body">
+
+                            <form action="~/Parent/CrediterEleve" method="post">
+
+                                <div class="row">
+                                    <div class="col-lg-5 mb-lg-0 mb-3">
+                                        <p class="h4 mb-0">Détail</p>
+                                        <p class="mb-0">
+                                            <span class="fw-bold">Service:</span><span style="color:green"> Alimentation crédit cours</span>
+                                        </p>
+                                        <p class="mb-0">
+                                            <span class="fw-bold">Montant:</span>
+                                            <span style="color:green">@Html.TextBoxFor(m=>m.Montant)</span>
+                                        </p>
+                                        <p class="mb-0">en €.</p>
+                                    </div>
+                                    <div class="col-lg-7">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form__div">
+                                                        <label for="" class="form__label">Numéro de carte</label>
+                                                        <input type="text" required maxlength="19" class="form-control" placeholder=" ">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form__div">
+                                                        <label for="" class="form__label">MM / AA</label>
+                                                        <input type="text" required maxlength="5" class="form-control" placeholder="MM / AA">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form__div">
+                                                        <label for="" class="form__label">code cvv </label>
+                                                        <input type="password" required maxlength="3" class="form-control" placeholder="xxx (au dos de la carte)">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form__div">
+                                                        <label for="" class="form__label">Titulaire</label>
+                                                        <input type="text" required pattern="[a-zA-Z0-9]+" class="form-control" placeholder="(Nom indiqué sur la carte)">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p hidden> @Html.LabelFor(m=>m.EleveId)</p>
+                                            <p hidden>@Html.TextBoxFor(m=>m.EleveId)</p>
+                                            <p hidden>@Html.LabelFor(m=>m.ParentId)</p>
+                                            <p hidden>@Html.TextBoxFor(m=>m.ParentId)</p>
+                                                    <input type="submit" value="Valider"/>
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        
+        <!--Script Bootstrap-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+
+    }
+

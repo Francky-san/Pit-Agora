@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+            <a class="nav-link" href=@Url.Action("Déconnexion", "Login")>
                 Deconnexion
             </a>
         </li>
@@ -92,7 +92,7 @@
             <fieldset style="margin-block:25px; text-align:center;width:49%; float:left">
 
                 <legend style="text-decoration:underline">
-                    Les derniers cours de @Model.Eleve.Utilisateur.Personne.Prenom
+                    Les derniers cours 
                 </legend>
                 <table>
                     <tr>
@@ -118,7 +118,7 @@
             <fieldset style="margin-block:25px; text-align:center;width:49%; float:right">
 
                 <legend style="text-decoration:underline">
-                    Les prochains cours de @Model.Eleve.Utilisateur.Personne.Prenom
+                    Les prochains cours 
                 </legend>
                 <table>
                     <tr>
@@ -134,7 +134,7 @@
                         <tr>
                             <td>@resa.Jour</td>
                             <td>@resa.Prix</td>
-                            <td>@resa.Matiere</td>
+                            <td>@resa.Matiere </td>
                             <td>@resa.PrenomNomProf</td>
                         </tr>
                 }
@@ -144,7 +144,7 @@
         @*Evaluations*@
             <fieldset style="margin-block:25px; text-align:center; width:99%">
                 <legend style="text-decoration:underline">
-                    Les evaluations d' @Model.Eleve.Utilisateur.Personne.Prenom
+                    Les evaluations
                 </legend>
                 <table>
                     <thead>
@@ -170,6 +170,7 @@
                             @resa.Matiere
                             </td>
                             <td>
+                            @resa.Evaluation.Contenu
                             </td>
                         </tr>
                 }

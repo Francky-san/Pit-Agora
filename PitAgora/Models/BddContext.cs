@@ -107,6 +107,10 @@ namespace PitAgora.Models
                 dal.ModifierCreditProf(4, 90); 
                 dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON");
                 dal.ModifierCreditProf(5, 0);
+                dal.CreerProfesseur("Curie", "Marie", "mcurie@monmel.fr", "ccccc", "61 avenue Albert Sarraut 75011 Paris");
+                dal.ModifierCreditProf(6, 110);
+                dal.CreerProfesseur("Baer", "Ralph", "rbaer@monmel.fr", "bbbbb", " 6 Rue Neuve des Capucins 44000 Nantes");
+                dal.ModifierCreditProf(7, 67.5);
             }
 
             using (DalCreneaux dal = new DalCreneaux())

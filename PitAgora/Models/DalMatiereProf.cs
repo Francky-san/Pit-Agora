@@ -23,16 +23,16 @@ namespace PitAgora.Models
             MatiereProf matiereProf = new MatiereProf() { ProfesseurId = profId, MatiereId = matiereId };
             _bddContext.MatiereProfs.Add(matiereProf);
             _bddContext.SaveChanges();
-        }
+        }*/
 
         public List<Matiere> GetMatiereProf(int profId)
         {
             var query = from m in _bddContext.Matieres
-                        join mp in _bddContext.MatiereProfs on m.Id equals mp.MatiereId
+                        join mp in _bddContext.MatieresProfs on m.Id equals mp.MatiereId
                         join p in _bddContext.Professeurs on mp.ProfesseurId equals p.Id
                         select m;
 
             return query.ToList();
-        }*/
+        }
     }
 }
