@@ -22,8 +22,8 @@ namespace PitAgora.ViewModels
             DalEleve dalE = new DalEleve();
             Eleve = dalE.ObtenirUnEleve(eleveId);
             DalReservation dalR = new DalReservation();
-            CoursFuturs = dalR.ObtenirCoursFuturs(Eleve.Id);
-            CoursPasses = dalR.ObtenirCoursPasses(Eleve.Id);
+            CoursFuturs = dalE.ObtenirCoursFuturs(Eleve.Id);
+            CoursPasses = dalE.ObtenirCoursPasses(Eleve.Id);
         }
 
     }

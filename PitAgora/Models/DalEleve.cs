@@ -70,7 +70,32 @@ namespace PitAgora.Models
             _bddContext.Eleves.Add(eleve);
             _bddContext.SaveChanges();
             return eleve.Id;
+        }
 
+        // Retourne la liste des réservation d'un élève dont la date n'est pas passée (maximum 5)
+        public List<Reservation> ObtenirCoursFuturs(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
+                .Where(ar => ar.Reservation.Horaire > DateTime.Now).Take(5).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
+
+        // Retourne la liste des réservation d'un élève dont la date est passée (maximum 5)
+        public List<Reservation> ObtenirCoursPasses(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = _bddContext.AReserve.Include(ar => ar.Reservation).Where(ar => ar.EleveId == eleveId)
+                .Where(ar => ar.Reservation.Horaire < DateTime.Now).Take(5).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
         }
 
         //Retourne une string contenant prenom 

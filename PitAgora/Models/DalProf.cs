@@ -98,15 +98,6 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
         }
 
-        //public int CreneauAAjouter(Creneau creneau)
-        //{
-        //    if Id !==.    Where(c => c.ReservationId !== 0)
-
-        //     int personneId = dal.CreerPersonne(nom, prenom);
-        //int creneauId =  { Debut = debut, ProfesseurId = professeurId };
-        //_bddContext.Creneaux.Add(creneau);
-        //_bddContext.SaveChanges();
-        //return creneau.Id;
     }
 
 

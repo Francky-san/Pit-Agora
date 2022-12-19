@@ -26,7 +26,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href=@Url.Action("ChercherCours", "Eleve")>
+            <a class="nav-link active" href=@Url.Action("ChercherCours", "Eleve", new {id = Model.First().Eleve.Id})>
             Réserver un cours
         </a>
     <li class="nav-item">
@@ -49,14 +49,14 @@
     </script>
 
     <!-- Formulaire caché, pour transmettre certaines informations-->
-    <form id="choixCours" action="~/Eleve/CreerReservation" method="post">
+    <form id="choixCours" action="" method="post">
         <input type="hidden" id="retourProf" name="professeurId" />
         <input type="hidden" id="retourCreneaux" name="creneaux" />
         <input type="hidden" id="retourPrix" name="prix" />
         <input type="hidden" id="retourEleve" name="eleveId" value=@Model.First().Eleve.Id />
     </form>
 
-    <h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le @Model.First().Jour</h3>
+    <h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le <span id="jour">@Model.First().Jour</span></h3>
 
 
     <div style="height:70px">
@@ -69,8 +69,8 @@
                 <span>par élève</span>
             }
         </div>
-        <div id="creditDispo" class="creditDispo" onclick="demanderConfirmation()">
-            Crédit disponible : @Model.First().Eleve.CreditCours euros
+        <div class="creditDispo" onclick="demanderConfirmation()">
+            Crédit disponible : <span id="creditDispo">@Model.First().Eleve.CreditCours</span> euros
         </div>
     </div>
 
@@ -111,13 +111,6 @@
     }
     <br />
 }
-
-<script>
-    function demanderConfirmation() {
-    alert("test)")
-    window.confirm("test1","test2")
-}
-</script>
 
 @section Scripts {
     <script src="~/Scripts/ScriptsChoisirCours.js"></script>

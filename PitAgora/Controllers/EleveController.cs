@@ -36,7 +36,7 @@ namespace PitAgora.Controllers
             return View();
         }
 
-        //Méthode get recherche d'un cours
+        //Méthode get page d'accueil élève
         [HttpGet]
         public IActionResult AccueilEleve(int id)
         {
@@ -44,6 +44,7 @@ namespace PitAgora.Controllers
             return View(evm);
         }
 
+        //Méthode get recherche d'un cours
         [HttpGet]
         public IActionResult ChercherCours(int id)
         {
@@ -151,13 +152,12 @@ namespace PitAgora.Controllers
             // Affecter cette réservation à l'élève concerné
             dalR.AffecterAEleve(reservationId, eleveId);
 
-            EleveViewModel evm = new EleveViewModel(eleveId);
-
             /*
             A FAIRE :
             - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
+            - MaJ  créditCours
             */
-            return View("AccueilEleve", evm);
+            return Redirect("AccueilEleve/"+eleveId);
         }
 
       

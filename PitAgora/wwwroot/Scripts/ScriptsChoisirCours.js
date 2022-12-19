@@ -71,6 +71,12 @@ function majRetour(selection) {
 
 // Demander confirmation avant d'envoyer la requête
 function demanderConfirmation() {
-    alert("test)")
-    window.confirm("test1","test2")
+    let confirm = window.confirm("Je confirme ma réservation\nle " + document.getElementById("jour").innerHTML
+        + "\n\nRappel : un cours annulé moins de 48h à l'avance ne sera pas remboursé");
+    if (confirm) {
+        document.getElementById("choixCours").action = "../CreerReservation"
+    }
+    else {
+        document.getElementById("choixCours").action = ""
+    }
 }
