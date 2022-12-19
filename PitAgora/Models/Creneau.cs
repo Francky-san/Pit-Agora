@@ -12,8 +12,8 @@ namespace PitAgora.Models
 
         public DateTime Debut { get; set; }
 
-       //FK vers professeur, relation plsrs creneaux appartiennent à un prof
-       public int ProfesseurId { get; set; }
+        //FK vers professeur, relation plsrs creneaux appartiennent à un prof
+        public int ProfesseurId { get; set; }
         public Professeur Professeur { get; set; }
 
         //FK vers reservation, relation plsrs à un. Un créneaux peut appartenir à une seule résa
@@ -24,7 +24,7 @@ namespace PitAgora.Models
 
 
         // ***************** Méthodes *********************
-        
+
         // Renvoie le rang du créneau dans un planing (9:00-9:30 -> 0)
         public int Rang()
         {
@@ -42,9 +42,9 @@ namespace PitAgora.Models
             return res;
         }
 
-        
         // Donne l'intitule d'un jour sous forme 'Mercredi 1 janvier'
-        public static string JourEnFrancais(DateTime d) { 
+        public static string JourEnFrancais(DateTime d)
+        {
             return Jour(d.DayOfWeek.ToString()) + " " + d.Day + " " + Mois(d.Month);
         }
 

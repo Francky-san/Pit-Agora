@@ -4,6 +4,8 @@
     {
         public int Id { get; set; }
         public string Contenu { get; set; }
+
+
         
     }
 }

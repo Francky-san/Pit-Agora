@@ -92,16 +92,37 @@ namespace PitAgora.Models
             return query.Distinct().ToList();
         }
 
-        public void ModifierCreditProf(int id, double montant)
+        public void ModifierCreditProf(int professeurId, double montant)
         {
-            _bddContext.Professeurs.Find(id).CreditProf += montant;
+            _bddContext.Professeurs.Find(professeurId).CreditProf += montant;
             _bddContext.SaveChanges();
         }
 
+        public PlanningProf CreerPlanningProf(int professeurId, DateTime jour)
+        {
+            PlanningProf planning = new PlanningProf() { Jour = jour };
+            var query = _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).ToList();
+            query = query.Where(c => c.Debut.Date == jour.Date).ToList();
+            foreach (Creneau c in query)
+            {
+                int rang = c.Rang();
+
+                Console.WriteLine("rang = " + rang);
+                
+                if (c.ReservationId == 0) 
+                {
+                    planning.StatutsCreneaux[rang] = 1;
+                }
+                else
+                {
+                    planning.StatutsCreneaux[rang] = 2;
+                }
+            }
+            return planning;
+        }
+
+
     }
-
-
-
 
 }
 

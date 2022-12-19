@@ -100,11 +100,11 @@ namespace PitAgora.Models
                 dal.CreerProfesseur("Euler", "Leonhard", "leuler@monmel.fr", "eeeee", "2 rue Mozart 92160 ANTONY");
                 dal.ModifierCreditProf(1, 90);
                 dal.CreerProfesseur("Einstein", "Albert", "aeinstein@monmel.fr", "eeeee", "11 rue Porte d’Orange 84200 CARPENTRAS");
-                dal.ModifierCreditProf(2, 67.5); 
+                dal.ModifierCreditProf(2, 67.5);
                 dal.CreerProfesseur("Darwin", "Charles", "cdarwin@monmel.fr", "ddddd", "645 route de la Châtaigneraie 69490 ANCY");
-                dal.ModifierCreditProf(3, 90); 
+                dal.ModifierCreditProf(3, 90);
                 dal.CreerProfesseur("Descartes", "René", "rdescartes@monmel.fr", "ddddd", "32 rue Boileau 69006 LYON");
-                dal.ModifierCreditProf(4, 90); 
+                dal.ModifierCreditProf(4, 90);
                 dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON");
                 dal.ModifierCreditProf(5, 0);
                 dal.CreerProfesseur("Curie", "Marie", "mcurie@monmel.fr", "ccccc", "61 avenue Albert Sarraut 75011 Paris");
@@ -403,6 +403,13 @@ namespace PitAgora.Models
 
 
             this.SaveChanges();
+
+            DalProf dalProf = new DalProf();
+            int[] Test = dalProf.CreerPlanningProf(2, new DateTime(2022, 12, 20)).StatutsCreneaux;
+            for (int i = 0; i < 20; i++)
+            {
+                Console.WriteLine(Test[i]);
+            }
 
 
         }
