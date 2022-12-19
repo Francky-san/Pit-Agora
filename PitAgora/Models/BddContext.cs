@@ -79,6 +79,8 @@ namespace PitAgora.Models
                 dal.CreerEleve(3, "Potter", "Harry", "hpotter@monmel.fr", "ppppp", "32 rue Delmer 59242 TEMPLEUVE");
                 dal.CreerEleve(4, "Skywalker", "Luke", "lskywalker@monmel.fr", "sssss", "33 bd Marius Vivier Merle 69003 LYON");
                 dal.CreerEleve(5, "Blueberry", "Mike", "mbluberry@monmel.fr", "bbbbb", "78 bd de Souville 84200 CARPENTRAS");
+                this.Eleves.Where(e => e.Id==1).FirstOrDefault().CreditCours = 100;
+                this.Eleves.Where(e => e.Id == 1).FirstOrDefault().CreditPythos = 30;
             }
 
             using (DalProf dal = new DalProf())

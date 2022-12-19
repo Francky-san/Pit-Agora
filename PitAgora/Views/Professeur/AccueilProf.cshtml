@@ -78,9 +78,9 @@
                 {
                     <div class="celluleCours">
                         <table>
-                            <tr><td>@Model.Jour</td></tr>
-                            <tr><td>@Model.MatiereProf.Matiere avec</td></tr>
-                            <tr><td>@Model.AReserve.Eleve.Utilisateur.Personne.Prenom</td></tr>
+                            <tr><td>item.Jour</td></tr>
+                            <tr><td>item.Matiere avec</td></tr>
+                            <tr><td>item.AReserve.Eleve.Utilisateur.Personne.Prenom</td></tr>
                         </table>
                     </div>
                 }
@@ -102,9 +102,9 @@
                 {
                     <div class="celluleCours">
                         <table>
-                            <tr><td>@item.Jour</td></tr>
-                            <tr><td>@Model.MatiereProf.Matiere</td></tr>
-                            <tr><td>@Model.AReserve.Eleve.Utilisateur.Personne.Prenom</td></tr>
+                            <tr><td>item.Jour</td></tr>
+                            <tr><td>item.Matiere avec</td></tr>
+                            <tr><td>item.AReserve.Eleve.Utilisateur.Personne.Prenom</td></tr>
                         </table>
                     </div>
                 }
@@ -128,8 +128,7 @@
         <div>
             <h4> Gestion planning journalier </h4>
         </div>
-        @Html.LabelFor(m => m.Horaire )
-        <input type="date" name="horaire">
+       
         <span>
             <input type="submit" value="GererPlanning" />
         </span>

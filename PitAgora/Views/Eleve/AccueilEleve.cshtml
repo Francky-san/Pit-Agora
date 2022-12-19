@@ -21,7 +21,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href=@Url.Action("ChercherCours", "Eleve")>
+            <a class="nav-link " href=@Url.Action("ChercherCours", "Eleve", new {id = Model.Eleve.Id})>
                 Réserver un cours
             </a>
         <li class="nav-item">
@@ -40,7 +40,7 @@
         <div>
             @if (Model.CoursFuturs.Count>0)
             {
-                <div style="margin-bottom: 5px">Mes prochains cours :</div>
+                <div style="margin-bottom: 5px" >Mes prochains cours :</div>
                 @foreach (var item in @Model.CoursFuturs)
                 {
                     <div class="celluleCours">
@@ -97,7 +97,7 @@
         <br />
         <br />
         <br />
-        <a class="btnReserverCours" href="../ChercherCours/@Model.Eleve.Id">Réserver un cours</a>
+        <a class="btnReserverCours" href="../ChercherCours/@Model.Eleve.Id" method="get">Réserver un cours</a>
 
         <br />
         <br />

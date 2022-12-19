@@ -58,8 +58,7 @@ namespace PitAgora.Models
 
             return laPersonne.Prenom + " " + laPersonne.Nom;
         }
-
-          
+ 
 
         //public int CreneauAAjouter(Creneau creneau)
         //{
@@ -70,6 +69,8 @@ namespace PitAgora.Models
         //_bddContext.Creneaux.Add(creneau);
         //_bddContext.SaveChanges();
         //return creneau.Id;
+
+
     }
 
       
