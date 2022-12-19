@@ -67,11 +67,8 @@ namespace PitAgora.Controllers
             return View();
 
 
-            }
-
         }
+
     }
-
-
-
+ 
 }
