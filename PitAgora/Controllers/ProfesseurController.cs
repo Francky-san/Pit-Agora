@@ -12,35 +12,9 @@ namespace PitAgora.Controllers
         {
             return View();
         }
-        
-        //M�thode renvoyant accueil professeur avec le professeur connect� comme model
-        //public IActionResult AccueilProf(int id)
-        //{
-        //    DalProf dalProf = new DalProf();
-        //    Professeur professeur = dalProf.ObtenirUnProf(id);
-        //    ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
-        //    DalCreneaux dalCreneau = new DalCreneaux();
-        //    pvm.CreneauxDisponibles = dalCreneau.GetCreneauxDisponibles(id);
-        //    pvm.CreneauxReserves = dalCreneau.GetCreneauxReserves(id);
-        //    DalReservation dalReservation = new DalReservation();
-        //    pvm.CoursFuturs = dalReservation.GetCoursFuturs(id);
-        //    pvm.CoursPasses = dalReservation.GetCoursPasses(id);
-        //    return View(pvm);
-        //}
-
-        //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
-        //public IActionResult AfficherPlanning(int id)
-        //{
-        //    DalProf dalProf = new DalProf();
-        //    List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
-        //    return View(mesCreneaux);
-
-        //    DalReservation dalReservation = new DalReservation();
-        //    // List<Reservation> mesReservations = dalReservation. ;
 
 
-        //}
-        
+
         //Postuler plus ou moins égal création d'un prof
         [HttpGet]
         public IActionResult Postuler()
@@ -55,7 +29,7 @@ namespace PitAgora.Controllers
             {
                 DalProf dal = new DalProf();
                 int newProf = dal.CreerProfesseur(cvm.Professeur.Utilisateur.Personne.Nom, cvm.Professeur.Utilisateur.Personne.Prenom, cvm.Professeur.Utilisateur.Mail,
-                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse) ;
+                    cvm.Professeur.Utilisateur.MotDePasse, cvm.Professeur.Utilisateur.Adresse);
             }
             return Redirect("/Home/Index");
 
@@ -69,28 +43,47 @@ namespace PitAgora.Controllers
             return View(nosProfs);
         }
 
-        //Méthode renvoyant accueil professeur avec le professeur connecté comme model
+        // M�thode renvoyant la vue Accueil prof avec le professeur connecté comme modèle
         public IActionResult AccueilProf(int id)
         {
             DalProf dalProf = new DalProf();
-            Professeur professeur = dalProf.ObtientTousLesProfesseurs().FirstOrDefault(p => p.Id == id);
-            return View(professeur);
+            Professeur professeur = dalProf.ObtenirUnProf(id);
+
+            ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
+            pvm.CoursFuturs = dalProf.GetCoursFuturs(id);
+            pvm.CoursPasses = dalProf.GetCoursPasses(id);
+            return View(pvm);
         }
 
-        //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
-        public IActionResult AfficherPlanning(int id)
+        // M�thode renvoyant la vue Gérer mon planning avec le professeur connecté comme modèle
+        public IActionResult GérerPlanning(int id)
         {
             DalProf dalProf = new DalProf();
-            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
-            return View(mesCreneaux);
+            Professeur professeur = dalProf.ObtenirUnProf(id);
 
-            DalReservation dalReservation = new DalReservation();
-            // List<Reservation> mesReservations = dalReservation. ;
+            ProfViewModel pvm = new ProfViewModel() { Professeur = professeur, };
 
+   
+            return View();
+
+
+
+            //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
+            //public IActionResult AfficherPlanning(int id)
+            //{
+            //    DalProf dalProf = new DalProf();
+            //    List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
+            //    return View(mesCreneaux);
+
+            //    DalReservation dalReservation = new DalReservation();
+            //    // List<Reservation> mesReservations = dalReservation. ;
+
+
+            //}
 
         }
-
-
-
     }
+
+
+
 }
