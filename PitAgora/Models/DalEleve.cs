@@ -41,11 +41,6 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
         }
 
-        //Méthode pour obtenir la liste des résa d'un élève.
-        public List<AReserve> ObtenirReservations(int eleveId)
-        {
-            return _bddContext.AReserve.Include(ar=>ar.Reservation).ThenInclude(r=>r.Evaluation).Where(ar=>ar.EleveId==eleveId).ToList();
-        }
 
         //Méthode pour obtenir la liste des évaluations d'un élève
         public List<Evaluation> ObtenirEvaluations(int eleveId)

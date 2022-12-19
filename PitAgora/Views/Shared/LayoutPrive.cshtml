@@ -4,7 +4,6 @@
 
 
 <head>
-    <meta charset="UTF-16">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIT'AGORA | Prépare ton avenir</title>
@@ -53,7 +52,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
-@RenderSection("navbar")
+                    @RenderSection("navbar")
 
                 </div>
 
@@ -61,7 +60,7 @@
             </div>
         </nav>
         <!-- Fin NavBar -->
-        <div class="container" style="border:2px solid black">
+        <div class="container" style="background-color:#f8f9fa; border-radius:0.6rem; height:fit-content">
             @RenderSection("Main")
         </div>
 
@@ -89,7 +88,7 @@
 
                 <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
                     <a href=@Url.Action("Index", "Home")>
-                           <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
+                        <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
                 del sitio">
                     </a>
                     <ul class="list-unstyled my-4 fw-bold d-grid gap-2">

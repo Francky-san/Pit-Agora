@@ -44,51 +44,53 @@
 
 
 @section Main{
-        <content class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
-            <div class="col row justify-content-center">
-                <div class="col-4 col-md-4 col-lg-4">
+    <content class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
+        <div class="col row justify-content-center">
+            <div class="col-4 col-md-4 col-lg-4">
                 <form action="~/Login/Connexion" method="post">
 
-                @if (Model.Authentifie)
-            {
-                <h3>
-                    Vous êtes déjà authentifié avec le login :
-                    @Model.Utilisateur.Mail
-                </h3>
-                @Html.ActionLink("Deconnexion", "Deconnexion")
-                <p> @Html.ActionLink("Accueil","Index","Home") </p>
-            }
-            else
-            {
+                    @if (Model.Authentifie)
+                    {
+                        <h3>
+                            Vous êtes déjà authentifié avec le login :
+                            @Model.Utilisateur.Mail
+                        </h3>
+                        @Html.ActionLink("Deconnexion", "Deconnexion")
+                        <p> @Html.ActionLink("Accueil","Index","Home") </p>
+                    }
+                    else
+                    {
 
                         <p style="font-size:larger; text-decoration:underline"><h2>Connexion</h2></p>
 
 
-                    @Html.LabelFor(m => m.Utilisateur.Mail,
+                        @Html.LabelFor(m => m.Utilisateur.Mail,
                 new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.Utilisateur.Mail,
+                        @Html.TextBoxFor(m => m.Utilisateur.Mail,
                 new { @class = "form-control" })
 
-                    @Html.LabelFor(m => m.Utilisateur.MotDePasse,
+                        @Html.LabelFor(m => m.Utilisateur.MotDePasse,
                 new { @class = "form-label" })
-                    @Html.PasswordFor(m => m.Utilisateur.MotDePasse,
+                        @Html.PasswordFor(m => m.Utilisateur.MotDePasse,
                 new { @class = "form-control" })
 
 
 
 
-                    <button type="submit" class="btn btn-primary"href=@Url.Action("BaseMain", "Home")>Valider</button>
+                        <button type="submit" class="btn btn-primary" href=@Url.Action("BaseMain", "Home")>Valider</button>
 
-}
+                    }
 
                 </form>
-                        <!--Script Bootstrap-->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                crossorigin="anonymous"></script>
-        </content>
-        
+            </div>
+        </div>
+        <!--Script Bootstrap-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    </content>
 
-       
+
+
        }
 

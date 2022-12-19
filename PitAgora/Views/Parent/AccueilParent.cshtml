@@ -28,153 +28,157 @@
                 Contact
             </a>
         </li>
+    </ul>
     }
 
 @section Main{
-        <style>
-            table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-            }
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-            .absolute {
-                position: absolute;
-                top: 30px;
-                left: 360px;
-                width: 250px;
-                border: 2px solid blue;
-                text-align: center;
-            }
+        .absolute {
+            position: absolute;
+            top: 30px;
+            left: 360px;
+            width: 250px;
+            border: 2px solid blue;
+            text-align: center;
+        }
 
-            th {
-                border: 1px solid #dddddd;
-                text-align: center;
-                padding: 8px;
-            }
-            td {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
+        th {
+            border: 2px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
 
-            tr:nth-child(even) {
-                background-color: #dddddd;
-            }
-        </style>
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
 
-        <div>
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <div>
 
         @*Mon Eleve*@
-            <fieldset style="margin-block:25px; text-align:center; width:50%; margin-inline-start:300px">
+        <fieldset style="margin-block:25px; text-align:center; width:50%; margin-inline-start:300px">
 
-                <legend style="text-decoration:underline; color:"> @Model.Eleve.Utilisateur.Personne.Prenom </legend>
-                <table>
-                    <tr>
-                        <th>Nombre de cours</th>
-                        <th>Credit Cours</th>
-                    </tr>
+                <legend style="text-decoration:underline; color:#e24b2c"> @Model.Eleve.Utilisateur.Personne.Prenom </legend>
+            <table>
+                <tr>
+                    <th>Nombre de cours</th>
+                    <th>Credit Cours</th>
+                </tr>
 
 
-                    <tr>
-                        <td>@(Model.CoursFuturs.Count+Model.CoursPasses.Count)</td>
-                        <td>@Model.Eleve.CreditCours</td>
-                        <td>
-                            <form action="@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Parent.Id, ed = Model.Eleve.Id})">
-                                <input type="submit" value="Alimenter"/>
-                            </form>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
+                <tr>
+                    <td>@(Model.CoursFuturs.Count + Model.CoursPasses.Count)</td>
+                    <td>@Model.Eleve.CreditCours</td>
+                    <td>
+                        <form action="@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Parent.Id, ed = Model.Eleve.Id})">
+                            <input type="submit" value="Alimenter" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
 
         @*Reservations passées*@
-            <fieldset style="margin-block:25px; text-align:center;width:49%; float:left">
+        <fieldset style="margin-block:25px; text-align:center;width:49%; float:left">
 
-                <legend style="text-decoration:underline">
-                    Les derniers cours 
-                </legend>
-                <table>
-                    <tr>
-                        <th>Matiere</th>
-                        <th>Date</th>
-                        <th>Prix</th>
-                        <th>Professeur</th>
-                    </tr>
+            <legend style="text-decoration:underline">
+                Les derniers cours
+            </legend>
+            <table>
+                <tr>
+                    <th>Matiere</th>
+                    <th>Date</th>
+                    <th>Prix</th>
+                    <th>Professeur</th>
+                </tr>
 
                 @foreach (var resa in Model.CoursPasses)
                 {
-                        <tr>
-                            <td>@resa.Matiere</td>
-                            <td>@resa.Jour</td>
-                            <td>@resa.Prix</td>
-                            <td>@resa.PrenomNomProf</td>
-                        </tr>
+                    <tr>
+                        <td>@resa.Matiere</td>
+                        <td>@resa.Jour</td>
+                        <td>@resa.Prix</td>
+                        <td>@resa.PrenomNomProf</td>
+                    </tr>
                 }
-                </table>
-            </fieldset>
+            </table>
+        </fieldset>
 
         @*Reservations futures*@
-            <fieldset style="margin-block:25px; text-align:center;width:49%; float:right">
+        <fieldset style="margin-block:25px; text-align:center;width:49%; float:right">
 
-                <legend style="text-decoration:underline">
-                    Les prochains cours 
-                </legend>
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Prix</th>
-                        <th>Matiere</th>
-                        <th>Professeur</th>
+            <legend style="text-decoration:underline">
+                Les prochains cours
+            </legend>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Prix</th>
+                    <th>Matiere</th>
+                    <th>Professeur</th>
 
-                    </tr>
+                </tr>
 
                 @foreach (var resa in Model.CoursFuturs)
                 {
-                        <tr>
-                            <td>@resa.Jour</td>
-                            <td>@resa.Prix</td>
-                            <td>@resa.Matiere </td>
-                            <td>@resa.PrenomNomProf</td>
-                        </tr>
+                    <tr>
+                        <td>@resa.Jour</td>
+                        <td>@resa.Prix</td>
+                        <td>@resa.Matiere </td>
+                        <td>@resa.PrenomNomProf</td>
+                    </tr>
                 }
-                </table>
-            </fieldset>
+            </table>
+        </fieldset>
 
         @*Evaluations*@
-            <fieldset style="margin-block:25px; text-align:center; width:99%">
-                <legend style="text-decoration:underline">
-                    Les evaluations
-                </legend>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                Professeur
-                            </th>
-                            <th>
-                                Matiere
-                            </th>
-                            <th>
-                                Evaluation
-                            </th>
-                        </tr>
-                    </thead>
+        <fieldset style="margin-block:25px;margin-bottom:15px; text-align:center; width:99%">
+            <legend style="text-decoration:underline">
+                Les evaluations
+            </legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Professeur
+                        </th>
+                        <th>
+                            Matiere
+                        </th>
+                        <th>
+                            Evaluation
+                        </th>
+                    </tr>
+                </thead>
                 @foreach (var resa in Model.CoursPasses)
                 {
-                        <tr>
-                            <td>
+                    <tr>
+                        <td>
                             @resa.PrenomNomProf
-                            </td>
-                            <td>
+                        </td>
+                        <td>
                             @resa.Matiere
-                            </td>
-                            <td>
-                            @resa.Evaluation.Contenu
-                            </td>
-                        </tr>
+                        </td>
+                        <td>
+                           @* @resa.Evaluation.Contenu*@
+                        </td>
+                    </tr>
                 }
-                </table>
-            </fieldset>
+            </table>
+        </fieldset>
+    </div>
 
-        }
+    }
+

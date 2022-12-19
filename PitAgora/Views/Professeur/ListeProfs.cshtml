@@ -51,9 +51,9 @@
             width: 100%;
         }
 
-        td, th {
+       th,td {
             border: 1px solid #dddddd;
-            text-align: left;
+            text-align: center;
             padding: 8px;
         }
 
@@ -63,28 +63,23 @@
     </style>
     <section class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
         <h2>Nos Professeurs</h2>
+       <div class="container" style="display:grid">
         <table>
+            <thead>
             <tr>
                 <th>Nom</th>
-                <th>Matières enseignées</th>
             </tr>
-            <tr>
-
-                @foreach (var prof in @Model.profs)
-            {
-                <tr>@prof.Utilisateur.Personne.Prenom <strong>@prof.Utilisateur.Personne.Nom</strong></tr>
-            }
-
-                @foreach (var matiere in Model.matieres)
+            </thead>
+            <tbody>
+                @foreach(var prof in Model.profs)
                 {
-
-
-                    <td>@matiere.Intitule</td>
-
-
+                    <tr>
+                        <td>
+                            @prof.Utilisateur.Personne.Prenom <strong>@prof.Utilisateur.Personne.Nom</strong>
+                        </td>
+                    </tr>
                 }
-            </tr>
-            
+            </tbody>
     </table>
 </section>
 

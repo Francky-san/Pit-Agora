@@ -30,7 +30,7 @@ namespace PitAgora.Controllers
 
             DalReservation dalr = new DalReservation();
 
-            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, CoursFuturs = resaFutures, CoursPasses = resaPassees };
+            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, CoursFuturs = resaFutures, CoursPasses = resaPassees};
             return pvm;
         }
 

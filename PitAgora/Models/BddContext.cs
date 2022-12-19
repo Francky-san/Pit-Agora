@@ -29,7 +29,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -167,6 +167,16 @@ namespace PitAgora.Models
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 10, 00, 00), 2);    // 50-52 : cours de PC du 17/12 avec Harry
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 10, 30, 00), 2);
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 11, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 16, 11, 00, 00), 2);//dispos einstein non reservés
+                dal.CreerCreneau(new DateTime(2022, 12, 16, 11, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 16, 12, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 12, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 22, 12, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 20, 10, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 20, 10, 30, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 24, 11, 00, 00), 2);
+                dal.CreerCreneau(new DateTime(2022, 12, 24, 11, 30, 00), 2);
+
 
             }
 

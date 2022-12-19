@@ -13,10 +13,8 @@ namespace PitAgora.ViewModels
         public List<Reservation> CoursFuturs { get; set; }
 
         public List<Reservation> CoursPasses { get; set; }
-
-
-        //Constructeur pour redirection depuis homecontroller
-        public ParentViewModel() { Eleve eleve; Parent parent; }
+        public List<Evaluation> Evaluations { get; set; }
+       
     }
 
 }
