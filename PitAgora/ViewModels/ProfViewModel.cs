@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace PitAgora.ViewModels
 {
+    //ViewModel pour construction des vues du professeur
     public class ProfViewModel
     {
         public Professeur Professeur { get; set; }

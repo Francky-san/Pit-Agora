@@ -6,5 +6,6 @@ namespace PitAgora.ViewModels
     {
         public int EleveId { get; set; }
         public int Montant { get; set; }
+        public int ParentId { get; set; }
     }
 }

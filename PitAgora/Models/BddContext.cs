@@ -148,7 +148,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = false,
                     EstEnPresentiel = false,
-                    EstValide = true
+                    EstValide = true,
+                    EvaluationId= 1,
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(1));
                 dal.AffecterACreneau(id, this.Creneaux.Find(2));
@@ -167,7 +168,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = true,
                     EstEnPresentiel = false,
-                    EstValide = true
+                    EstValide = true,
+                    EvaluationId= 2,
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(4));
                 dal.AffecterACreneau(id, this.Creneaux.Find(5));
@@ -238,8 +240,8 @@ namespace PitAgora.Models
 
 
             this.Evaluations.AddRange(
-                new Evaluation { Contenu = "Nous avons abordé les sujets suivants blablabla. Untel a eu des difficultés sur l'exercice 3." },
-                new Evaluation { Contenu = "Eleve à l'aise sur tel sujets, necessite d'approfondir tel aspect." }
+                new Evaluation { Contenu = "Voir Jérôme pour éval fictive maths niveau 1ereG" },
+                new Evaluation { Contenu = "Voir Jérôme pour éval fictive physique niveau 1ereG" }
                 );
 
 
