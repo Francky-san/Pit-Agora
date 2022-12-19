@@ -3,6 +3,7 @@ using PitAgora.Models;
 using PitAgora.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 
 namespace PitAgora.Controllers
 {
@@ -31,7 +32,7 @@ namespace PitAgora.Controllers
         {
             return View();
         }
-        
+
         //Inscription professeur = création de l'objet professeur et intégration à la bdd
         [HttpPost]
         public IActionResult Postuler(CandidatViewModel cvm)
@@ -77,14 +78,17 @@ namespace PitAgora.Controllers
             Professeur professeur = dalProf.ObtenirUnProf(id);
 
             GererPlanningViewModel gpvm = new GererPlanningViewModel() { Professeur = professeur };
-            gpvm.PlanningSemaine.Add(dalProf.CreerPlanningProf(id, System.DateTime.Now));
 
-   
-            return View();
+            for (int i = -3; i < 4; i++)
+            {
+                gpvm.PlanningSemaine.Add(dalProf.CreerPlanningProf(id, System.DateTime.Now.AddDays(i)));
+            }
+
+            return View(gpvm);
 
 
         }
 
     }
- 
+
 }
