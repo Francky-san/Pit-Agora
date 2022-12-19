@@ -5,6 +5,9 @@
 
     ViewBag.Title = "Reservation d'un cours";
 }
+@section css {
+    <link href="~/css/ChercherCours.css" rel="stylesheet" />
+}
 @section navbar{
     <ul class="navbar-nav">
 
@@ -19,7 +22,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href=@Url.Action("ChercherCours", "Eleve")>
+            <a class="nav-link active" href=@Url.Action("ChercherCours", "Eleve", new {id = Model.Eleve.Id})>
                 Réserver un cours
             </a>
         <li class="nav-item">
@@ -31,9 +34,6 @@
     </ul>
 }
 
-@section css {
-    <link href="~/css/ChercherCours.css" rel="stylesheet" />
-}
 
 @section Main{
     <div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
@@ -96,7 +96,7 @@
                     </table>
                 </td>
                 <td>
-                            <input type="submit" value="Valider" style="margin-left: 200px" />
+                    <input type="submit" class="boutonValider" value="Valider" style="margin-left: 200px" />
                 </td>
             </tr>
                 <br>    
@@ -134,10 +134,7 @@
        
     <script>
         function changerStatutBinome() {
-            console.log("je rentre");
             let test = true;
-            console.log(test);
-            //console.log("je suis encore là")
             if (document.getElementById("boxBinome").class == "decochee") {
                 document.getElementById("ContainerBinome").hidden = true;
                 document.getElementById("boxBinome").class = "cochee";
@@ -146,7 +143,6 @@
                 document.getElementById("ContainerBinome").hidden = false;
                 document.getElementById("boxBinome").class = "decochee";
             }
-            console.log("je sors");
         }
     </script>
 }

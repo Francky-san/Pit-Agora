@@ -16,6 +16,8 @@ namespace PitAgora.Models
         physique,
         [Display(Name = "SVT")]
         svt,
+        [Display(Name = "Informatique")]
+        info,
         [Display(Name = "Technologie")]
         techno
     }

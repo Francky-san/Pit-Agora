@@ -17,6 +17,11 @@
 
   <ItemGroup>
     <Content Remove="Views\Home\AccueilGeneral.cshtml" />
+    <Content Remove="ViewModels\PostulerViewModel.cshtml" />
+    <Content Remove="Views\Home\Profs.cshtml" />
+    <Content Remove="Views\Shared\PageEnConstruction.cshtml" />
+    <Content Remove="wwwroot\Images\LogoPitAgoraFOOTER.svg" />
+    <Content Remove="wwwroot\Images\enconstruction.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\scss\" />

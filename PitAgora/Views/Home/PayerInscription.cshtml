@@ -1,0 +1,100 @@
+﻿@model PitAgora.ViewModels.UtilisateurViewModel
+@{
+    Layout = "LayoutGen";
+}
+
+
+}
+@section Main{
+    <div style="margin: 215px;">
+        <div class="container" style="background-color: white">
+            
+                
+            <div class="col-12 mt-4">
+                <div class="card p-3">
+                    <span>
+                        <p class="mb-0 fw-bold h4">Paiement par carte
+
+                            <div style="margin-top:20px;"><img src="~/Images/logosCartes.png" alt="Logo Visa et Mastercard"></div>
+
+                        </p>
+                       
+                    </span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card p-3">
+
+                    <div class="card-body">
+                       
+                        
+                            <div class="row">
+                                <div class="col-lg-5 mb-lg-0 mb-3">
+                                    <p class="h4 mb-0">Détail</p>
+                                    <p class="mb-0">
+                                        <span class="fw-bold">Service:</span><span style="color:green"> Inscription</span>
+                                    </p>
+                                    <p class="mb-0">
+                                        <span class="fw-bold">Prix:</span>
+                                        <span style="color:green">:40€</span>
+                                    </p>
+                                    <p class="mb-0">Cotisation annuelle Pit'Agora</p>
+                                </div>
+                                <div class="col-lg-7">
+                                    <form action="" class="form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <label for="" class="form__label">Numéro de carte</label>
+                                                    <input type="text" class="form-control" placeholder=" ">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <label for="" class="form__label">MM / AA</label>
+                                                    <input type="text" class="form-control" placeholder="MM / AA">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <label for="" class="form__label">code cvv </label>
+                                                    <input type="password" class="form-control" placeholder="xxx (au dos de la carte)">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <label for="" class="form__label">Titulaire</label>
+                                                    <input type="text" class="form-control" placeholder="(tel que sur la carte)">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <a class="btn btn-primary w-100" href=@Url.Action("MessageApresPaiement", "Home")>Payer</a>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+</div>
+
+    <!--Script Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+
+}
+
+

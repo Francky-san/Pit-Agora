@@ -4,6 +4,7 @@
 
     ViewBag.Title = "Accueil Prof";
 }
+
 @section navbar{
     <ul class="navbar-nav">
 
@@ -18,14 +19,20 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=@Url.Action("AfficherPlanning", "Professeur")>
-                Planning
+            <a class="nav-link" href=@Url.Action("GérerPlanning", "Professeur")>
+                Gérer mon planning
             </a>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("ElevesDuProf", "Professeur")>
+                Mes élèves
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href=@Url.Action("Contact", "Home")>
                 Contact
             </a>
         </li>
+
 
     </ul>
 }
@@ -36,51 +43,48 @@
 
 
 @section Main{
+    <div style="margin: 215px;padding:40px; place-items:center;">
+        <div class="container-fluid" style="background-color: white">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <h3>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</h3>
+
+                    <div class="col-md-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                @Html.ActionLink("Mon planning", "AfficherPlanning", "Professeur")
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Mes élèves", "Professeur")
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Mes ressources", "Professeur")
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Mon profil", "Professeur")
+                            </li>
+                        </ul>
+                    </div>
     <div>
         <div class="container -fluid">
-            <br />
-            <h4>Espace prof</h4>
-            <br />
+
             <div>Bonjour @Model.Professeur.Utilisateur.Personne.Prenom @Model.Professeur.Utilisateur.Personne.Nom</div>
             <br>  <br>
         </div>
 
         <div>
-            <h4> Planning du jour </h4>
-            @* @if (Model.CoursFuturs.Count > 0) && @item.Jour == date
-        {
-        <div style="margin-bottom: 5px">Mes prochains cours :</div>
-        @foreach (var item in @Model.CoursFuturs)
-        {
-        <div class="celluleCours">
-        <table>
-        <tr><td>@item.Jour</td></tr>
-        <tr><td>@item.Matiere avec</td></tr>
-        <tr><td>@item.PrenomNomEleve</td></tr>
-        </table>
-        </div>
-        }
-        }
-        else
-        {
-        <div>Pas de cours programmé pour aujourd'hui.</div>
-        }*@
-        </div>
-        <br />
-
-        <div>
-            <h4> Cours des prochains jours </h4>
-
+            <h4> Mes prochains cours </h4>
+            <br />
             @if (Model.CoursFuturs.Count > 0)
             {
-                <div style="margin-bottom: 5px">Mes prochains cours :</div>
                 @foreach (var item in @Model.CoursFuturs)
                 {
                     <div class="celluleCours">
                         <table>
                             <tr><td>@item.Jour</td></tr>
-                            <tr><td>@item.Matiere avec</td></tr>
-                            <tr><td>@item.PrenomNomEleve</td></tr>
+                            <tr><td>@item.Matiere avec </td></tr>
+                            <tr><td>@item.PrenomEleve</td></tr>
                         </table>
                     </div>
                 }
@@ -91,20 +95,23 @@
             }
         </div>
         <br />
-
+        <br />
+        <br />
+        <br />
         <div>
-            <h4> Cours passés  </h4>
+
+            <h4> Mes cours passés  </h4>
+            <br />
 
             @if (Model.CoursPasses.Count > 0)
             {
-                <div style="margin-bottom: 5px">Mes cours récents :</div>
                 @foreach (var item in @Model.CoursPasses)
                 {
                     <div class="celluleCours">
                         <table>
                             <tr><td>@item.Jour</td></tr>
                             <tr><td>@item.Matiere</td></tr>
-                            <tr><td>@item.</td></tr>
+                            <tr><td>@item.PrenomEleve</td></tr>
                         </table>
                     </div>
                 }
@@ -116,24 +123,95 @@
         </div>
         <br />
 
-    </div>
+                    <!--CENTRE SCENE-->
+                    <div class="col-md-5">
+                    </div>
+
+                    <!--CALENDRIER-->
+                    <div class="col-md-4">
+                        <h3>Mon planning</h3>
+                        <div>
+                            <div class="calendar" id="calendar">
+                            </div>
+
+                            <!--Script Bootstrap/Javascript CALENDER-->
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.businessHours/1.0.1/jquery.businessHours.min.js"></script>
+                            <script type="text/javascript" src="./js/calendar.js"></script>
+                            <script type="text/javascript">let calendar = new Calendar('calendar');
+                                calendar.getElement().addEventListener('change', e => {
+                                    console.log(calendar.value().format('LLL'));
+                                });</script>`
+
+                        </div>
+                    </div>
+                </div>
+
+
+                                @*div>
+
+                                            <li>Bonjour @Model.Utilisateur.Personne.Prenom @Model.Utilisateur.Personne.Nom</li>
+                                            <br>  <br>
+                                            @Html.ActionLink("Mon planning", "AfficherPlanning", "Professeur")
+                                            <br>  <br>
+                                            @Html.ActionLink("Mes élèves", "Professeur")
+                                            <br>  <br>
+                                            @Html.ActionLink("Mes ressources", "Professeur")
+                                            <br>  <br>
+                                            @Html.ActionLink("Mon Crédit Prof", "Professeur")
+                                            <br>  <br>
+                                            @Html.ActionLink("Mon profil", "Professeur")
+                                            <br>  <br>
+
+
+
+                                  </div>*@
+                    </div>
+                </div>
+
+            <!--Script Bootstrap-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                    crossorigin="anonymous"></script>
+
+
+
+        }
+    <br />
+    <br />
+    <br />
 
     <div>
-        <h4> Crédit cours : </h4>
-        Mon crédit cours est de : @Model.Professeur.CreditProf <span> € </span>
+        <h4> Récapitulatif rémunération à venir </h4>
+        En fin de semaine, vous percevrez : @Model.Professeur.CreditProf <span> € </span>
     </div>
     <br />
 
-    <span>
-        <div>
-            <h4> Gestion planning journalier </h4>
-        </div>
-       @* @Html.LabelFor(m => m.Horaire )*@
-        <input type="date" name="horaire">
-        <span>
-            <input type="submit" value="GererPlanning" />
-        </span>
+    <div>
+        <h4>Cours à évaluer </h4>
         <br />
-        <br />
+
+
+       @* @if (Model.CoursPasses.Count > 0) && (Model.Reservation.EvaluationId !==0)
+        {
+            @foreach (var item in @Model.CoursPasses)
+            {
+                <div class="celluleCours">
+                    <table>
+                        <tr><td>@item.Jour</td></tr>
+                        <tr><td>@item.Matiere</td></tr>
+                        <tr><td>@item.PrenomEleve</td></tr>
+                    </table>
+                </div>
+            }
+        }
+        else
+        {
+            <div>Vous êtes à jour : aucun cours à évaluer pour l'instant.</div>
+        }
+    </div>
+    <br />*@
+
+    <br />
 
     }

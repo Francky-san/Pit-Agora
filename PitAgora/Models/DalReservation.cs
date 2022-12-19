@@ -24,21 +24,8 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
             return reservation.Id;
         }
-
-        //Méthode d'obtention des cours à venir pour un professeur, List de creneaux
-        //public List<Reservation> GetCoursFuturs(int professeurId)//FT - Type de list modifié en list<creneau>
-        //{
-        //    return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).Where(C => C.Debut > DateTime.Today).ToList();
-        //}
-
-        //Méthode d'obtention des cours effectués pour un professeur, List de creneaux
-        public List<Creneau> GetCoursPasses(int professeurId)//FT - Type de list modifié en list<creneau>
-        {
-            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).Where(C => C.Debut < DateTime.Today).ToList();
-        }
-
-
-        // Affecte une réservation nouvellement créée à un créneau (le créneau devient indisponible)
+        
+// Affecte une réservation nouvellement créée à un créneau (le créneau devient indisponible)
         public void AffecterACreneau(int reservationId, Creneau c)
         {
             _bddContext.Creneaux.Find(c.Id).ReservationId = reservationId;
@@ -58,7 +45,6 @@ namespace PitAgora.Models
         {
             return _bddContext.Creneaux.Include(c=>c.Professeur).ThenInclude(p=>p.Utilisateur).ThenInclude(u=>u.Personne).Include(c=>c.Reservation).Where(c=>c.ReservationId== ResaId).ToList();
         }
-
 
     }
 

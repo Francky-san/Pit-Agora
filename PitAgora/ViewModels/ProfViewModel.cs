@@ -25,14 +25,5 @@ namespace PitAgora.ViewModels
             CoursPasses = new List<Reservation>();
         }
 
-
-
-        //Constructeur pour redirection depuis homecontroller 
-        ////////////////////////////////////////////////////////////////////////
-        ///////////////////// A VOIR AVEC FRANCK .....//////////////////////////
-        ////////////////////////////////////////////////////////////////////////
-
-        // public ProfViewModel() { Eleve eleve; Professeur professeur; }
-
     }
 }
