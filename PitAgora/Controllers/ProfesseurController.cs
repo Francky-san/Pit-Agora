@@ -77,18 +77,18 @@ namespace PitAgora.Controllers
             return View(professeur);
         }
 
-        //Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
-        public IActionResult AfficherPlanning(int id)
-        {
-            DalProf dalProf = new DalProf();
-            List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
-            return View(mesCreneaux);
+            ////Méthode renvoyant la vue planning, récupération de tous les créneaux liés au professeur
+            //public IActionResult AfficherPlanning(int id)
+            //{
+            //    DalProf dalProf = new DalProf();
+            //    List<Creneau> mesCreneaux = dalProf.ListCreneaux(id);
+            //    return View(mesCreneaux);
 
-            DalReservation dalReservation = new DalReservation();
-            // List<Reservation> mesReservations = dalReservation. ;
+            //    DalReservation dalReservation = new DalReservation();
+            //    // List<Reservation> mesReservations = dalReservation. ;
 
 
-        }
+            //}
 
 
 

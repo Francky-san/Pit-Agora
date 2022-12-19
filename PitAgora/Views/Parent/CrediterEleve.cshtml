@@ -3,9 +3,7 @@
     Layout = "LayoutPrive";
     ViewBag.Title = "Versement credit cours";
 }
-@section css{
-    <link href="~/css/Paiement.css" rel="stylesheet" />
-}
+
 
 @section navbar{
     <ul class="navbar-nav">
@@ -34,19 +32,5 @@
 }
 
 @section Main{
-    <form method="post" action="~/Parent/CrediterEleve">
-        <div class="container p-0">
-            <div class="card px-4">
-                <p class="h8 py-3">Alimenter Crédit Cours</p>
-
-                 @Html.LabelFor(m=>m.Montant)
-                 @Html.TextBoxFor(m=>m.Montant)
-                 @Html.LabelFor(m=>m.EleveId)
-                 @Html.TextBoxFor(m=>m.EleveId)
-                 @Html.LabelFor(m=>m.ParentId)
-                 @Html.TextBoxFor(m=>m.ParentId, new{})
-                 <input type="submit" value="Valider le paiement"/>
-            </div>
-        </div>
-    </form>
+   
 }

@@ -36,9 +36,9 @@ namespace PitAgora.Controllers
 
         //Méthode get créditer porte monnaie élève
         [HttpGet]
-        public IActionResult CrediterEleve(int id, int pd)
+        public IActionResult CrediterEleve(int ed, int id)
         {
-            return View(new CrediterViewModel { EleveId = id, Montant = 0, ParentId=pd}) ;
+            return View(new CrediterViewModel { EleveId = ed, Montant = 0, ParentId=id}) ;
         }
         //Méthode post créditer porte monnaire élève
         [HttpPost]

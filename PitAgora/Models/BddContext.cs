@@ -148,10 +148,28 @@ namespace PitAgora.Models
             }
 
 
+            this.Evaluations.AddRange(
+                  new Evaluation
+                  {
+                      Id = 1,
+                      Contenu = "Voir Jérôme pour éval fictive maths niveau 1ereG"
+                  },
+            new Evaluation
+            {
+                Id = 2,
+                Contenu = "Voir Jérôme pour éval fictive physique niveau 1ereG"
+
+            }
+            );
+            this.SaveChanges();
+
+
+
             using (DalReservation dal = new DalReservation())
             {
                 // Cours de maths du 14/12
-                int id = dal.creerReservation(new Reservation() {
+                int id = dal.creerReservation(new Reservation()
+                {
                     PrenomNomProf = "Leonhard Euler",
                     Horaire = new DateTime(2022, 12, 14, 16, 00, 00),
                     Jour = "Mercredi 14 décembre",
@@ -162,7 +180,7 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true,
-                    EvaluationId= 1,
+                    EvaluationId = 1,
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(1));
                 dal.AffecterACreneau(id, this.Creneaux.Find(2));
@@ -182,7 +200,7 @@ namespace PitAgora.Models
                     EstEnBinome = true,
                     EstEnPresentiel = false,
                     EstValide = true,
-                    EvaluationId= 2,
+                    EvaluationId = 2,
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(4));
                 dal.AffecterACreneau(id, this.Creneaux.Find(5));
@@ -314,6 +332,7 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true
+
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(50));
                 dal.AffecterACreneau(id, this.Creneaux.Find(51));
@@ -321,6 +340,9 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
 
             }
+
+            //Affectation d'évaluations, attention aux dates
+
 
             // Matières enseignées par chaque professeur
             this.MatieresProfs.AddRange(
@@ -345,11 +367,6 @@ namespace PitAgora.Models
                 new NiveauProf() { ProfesseurId = 5, NiveauId = 3 }
                 );
 
-
-            this.Evaluations.AddRange(
-                new Evaluation { Contenu = "Voir Jérôme pour éval fictive maths niveau 1ereG" },
-                new Evaluation { Contenu = "Voir Jérôme pour éval fictive physique niveau 1ereG" }
-                );
 
 
 
