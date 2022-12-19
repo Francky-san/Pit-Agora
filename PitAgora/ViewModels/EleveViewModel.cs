@@ -10,6 +10,7 @@ namespace PitAgora.ViewModels
         public List<Reservation> CoursFuturs { get; set; }
         public List<Reservation> CoursPasses { get; set; }
 
+
         public EleveViewModel()
         {
             CoursFuturs = new List<Reservation>();

@@ -29,7 +29,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -167,6 +167,23 @@ namespace PitAgora.Models
             }
 
 
+            this.Evaluations.AddRange(
+                  new Evaluation
+                  {
+                      Id = 1,
+                      Contenu = "Voir Jérôme pour éval fictive maths niveau 1ereG"
+                  },
+            new Evaluation
+            {
+                Id = 2,
+                Contenu = "Voir Jérôme pour éval fictive physique niveau 1ereG"
+
+            }
+            );
+            this.SaveChanges();
+
+
+
             using (DalReservation dal = new DalReservation())
             {
                 // Cours de maths du 14/12
@@ -182,7 +199,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = false,
                     EstEnPresentiel = false,
-                    EstValide = true
+                    EstValide = true,
+                    EvaluationId = 1,
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(1));
                 dal.AffecterACreneau(id, this.Creneaux.Find(2));
@@ -202,7 +220,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = true,
                     EstEnPresentiel = false,
-                    EstValide = true
+                    EstValide = true,
+                    EvaluationId = 2,
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(4));
                 dal.AffecterACreneau(id, this.Creneaux.Find(5));
@@ -341,6 +360,7 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true
+
                 });
                 dal.AffecterACreneau(id, this.Creneaux.Find(50));
                 dal.AffecterACreneau(id, this.Creneaux.Find(51));
@@ -348,6 +368,9 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
 
             }
+
+            //Affectation d'évaluations, attention aux dates
+
 
             // Matières enseignées par chaque professeur
             this.MatieresProfs.AddRange(
@@ -372,11 +395,6 @@ namespace PitAgora.Models
                 new NiveauProf() { ProfesseurId = 5, NiveauId = 3 }
                 );
 
-
-            this.Evaluations.AddRange(
-                new Evaluation { Contenu = "Nous avons abordé les sujets suivants blablabla. Untel a eu des difficultés sur l'exercice 3." },
-                new Evaluation { Contenu = "Eleve à l'aise sur tel sujets, necessite d'approfondir tel aspect." }
-                );
 
 
 

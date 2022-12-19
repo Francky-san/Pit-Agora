@@ -4,153 +4,176 @@
 
     ViewBag.Title = "Accueil Parent";
 }
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
 
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
 
 @section navbar{
-<ul class="navbar-nav">
+    <ul class="navbar-nav">
 
-    <li class="nav-item">
-        <a class="nav-link active" href=@Url.Action("AccueilParent", "Parent")>
-            Accueil
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
-            Deconnexion
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link " href=@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Eleve.Id})>
-            Alimenter Credit Cours
-        </a>
-    <li class="nav-item">
-        <a class="nav-link" href=@Url.Action("Contact", "Home")>
-            Contact
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link active" href=@Url.Action("AccueilParent", "Parent", new{id= Model.Parent.Id})>
+                Accueil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+                Deconnexion
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href=@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Parent.Id, ed = Model.Eleve.Id})>
+                Alimenter Credit Cours
+            </a>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                Contact
+            </a>
+        </li>
     }
 
-    @section Main{
-    <div>
-        Vue parent :
-            
-        <br/>
-        <p>Reservations de @Model.Eleve.Utilisateur.Personne.Prenom :</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>reservation</th>
-                    <th>Evaluation</th>
-                    <th>Prof</th>
-                    <th>Prix</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var resa in Model.Reservations){
-            
+@section Main{
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-                <tr>
-                    <td>
-                        @resa.Reservation.Jour
-                    </td>
-                    <td>
-                        @resa.Reservation.Evaluation
+            .absolute {
+                position: absolute;
+                top: 30px;
+                left: 360px;
+                width: 250px;
+                border: 2px solid blue;
+                text-align: center;
+            }
 
-                    </td>
-                    <td>
-                        @resa.Reservation.PrenomNomProf
-                        </td>
+            th {
+                border: 1px solid #dddddd;
+                text-align: center;
+                padding: 8px;
+            }
+            td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+
+        <div>
+
+        @*Mon Eleve*@
+            <fieldset style="margin-block:25px; text-align:center; width:50%; margin-inline-start:300px">
+
+                <legend style="text-decoration:underline; color:"> @Model.Eleve.Utilisateur.Personne.Prenom </legend>
+                <table>
+                    <tr>
+                        <th>Nombre de cours</th>
+                        <th>Credit Cours</th>
+                    </tr>
+
+
+                    <tr>
+                        <td>@(Model.CoursFuturs.Count+Model.CoursPasses.Count)</td>
+                        <td>@Model.Eleve.CreditCours</td>
                         <td>
-                            @resa.Reservation.Prix
-
+                            <form action="@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Parent.Id, ed = Model.Eleve.Id})">
+                                <input type="submit" value="Alimenter"/>
+                            </form>
                         </td>
                     </tr>
-             }
-        </tbody>
-            <br />
-        </table>
-    </div>
+                </table>
+            </fieldset>
 
-</ul>
-    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+        @*Reservations passées*@
+            <fieldset style="margin-block:25px; text-align:center;width:49%; float:left">
 
-        <legend style="text-decoration:underline">Bonjour @Model.Parent.Utilisateur.Personne.Prenom </legend>
-        <table>
-            <tr>
-                <th>Eleve</th>
-                <th>Credit Cours</th>
-            </tr>
-            
+                <legend style="text-decoration:underline">
+                    Les derniers cours de @Model.Eleve.Utilisateur.Personne.Prenom
+                </legend>
+                <table>
+                    <tr>
+                        <th>Matiere</th>
+                        <th>Date</th>
+                        <th>Prix</th>
+                        <th>Professeur</th>
+                    </tr>
 
-            <tr>
-                <td>@Model.Eleve.Utilisateur.Personne.Prenom</td>
-                <td>@Model.Eleve.CreditCours</td>
-                <td><input type="submit" href=@Url.Action("CrediterEleve", "Parent" ,new{id = Model.Eleve.Id}) style="width:100%;height:100%" />Alimenter</button></td>
-            </tr>
-        </table>
-    </fieldset>
-    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
+                @foreach (var resa in Model.CoursPasses)
+                {
+                        <tr>
+                            <td>@resa.Matiere</td>
+                            <td>@resa.Jour</td>
+                            <td>@resa.Prix</td>
+                            <td>@resa.PrenomNomProf</td>
+                        </tr>
+                }
+                </table>
+            </fieldset>
 
-        <legend style ="text-decoration:underline">
-            Les réservations de @Model.Eleve.Utilisateur.Personne.Prenom
-        </legend>
-        <table>
-            <tr>
-                <th>Reservations</th>
-            </tr>
+        @*Reservations futures*@
+            <fieldset style="margin-block:25px; text-align:center;width:49%; float:right">
 
-            @foreach (var resa in Model.Reservations)
-            {
-                <tr>
-                    <td>@resa.Reservation.Prix</td>
-                    <td>@resa.Reservation.DureeMinutes</td>
-                    <td>@resa.Reservation.Jour</td>
-                    <td>@resa.Reservation.PrenomNomProf</td>
-                </tr>
-            }
-        </table>
-    </fieldset>
+                <legend style="text-decoration:underline">
+                    Les prochains cours de @Model.Eleve.Utilisateur.Personne.Prenom
+                </legend>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Prix</th>
+                        <th>Matiere</th>
+                        <th>Professeur</th>
 
-    <fieldset style="border:solid black ; border-radius:12px ; margin-block:25px; text-align:center; max-width:500px">
-        <legend style="text-decoration:underline">
-            Les évaluations de @Model.Eleve.Utilisateur.Personne.Prenom
-        </legend>
-        <table>
-            <tr>
-                <th>Evaluations</th>
-            </tr>
+                    </tr>
 
-@*            @foreach (var reservation in Model.Reservations)
-            {
-                <tr>
-                    <td>@reservation.Reservation.Evaluation.Contenu</td>
-                </tr>
-            }
-            @foreach (var crenau in Model.Creneaux)
-            {
-                @crenau.Professeur.Utilisateur.Personne.Nom
-                @crenau.Professeur.Utilisateur.Personne.Prenom
-                <br />
-                @crenau.Reservation.PrenomNomProf
-            }*@
-        </table>
-    </fieldset>
+                @foreach (var resa in Model.CoursFuturs)
+                {
+                        <tr>
+                            <td>@resa.Jour</td>
+                            <td>@resa.Prix</td>
+                            <td>@resa.Matiere</td>
+                            <td>@resa.PrenomNomProf</td>
+                        </tr>
+                }
+                </table>
+            </fieldset>
 
-}
+        @*Evaluations*@
+            <fieldset style="margin-block:25px; text-align:center; width:99%">
+                <legend style="text-decoration:underline">
+                    Les evaluations d' @Model.Eleve.Utilisateur.Personne.Prenom
+                </legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Professeur
+                            </th>
+                            <th>
+                                Matiere
+                            </th>
+                            <th>
+                                Evaluation
+                            </th>
+                        </tr>
+                    </thead>
+                @foreach (var resa in Model.CoursPasses)
+                {
+                        <tr>
+                            <td>
+                            @resa.PrenomNomProf
+                            </td>
+                            <td>
+                            @resa.Matiere
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                }
+                </table>
+            </fieldset>
+
+        }

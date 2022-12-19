@@ -46,7 +46,6 @@ namespace PitAgora.Models
             return _bddContext.Creneaux.Include(c=>c.Professeur).ThenInclude(p=>p.Utilisateur).ThenInclude(u=>u.Personne).Include(c=>c.Reservation).Where(c=>c.ReservationId== ResaId).ToList();
         }
 
-        
     }
 
 }

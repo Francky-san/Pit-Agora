@@ -107,5 +107,6 @@ namespace PitAgora.Models
 
             return laPersonne.Prenom ;
         }
+
     }
 }
