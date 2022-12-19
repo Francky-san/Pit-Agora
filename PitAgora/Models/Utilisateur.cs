@@ -8,6 +8,7 @@ namespace PitAgora.Models
         public Personne Personne { get; set; }
         public string Mail { get; set; }
        [Display(Name="Mot de passe")]
+
         public string MotDePasse { get; set; }
         public string Adresse { get; set; }
         //longitude et latitude utiles?

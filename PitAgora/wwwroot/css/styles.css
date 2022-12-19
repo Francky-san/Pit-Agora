@@ -9481,3 +9481,87 @@ textarea.form-control-lg {
     border-top: 1px solid black;
 }
 /*# sourceMappingURL=estilos.css.map */
+
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg-calendar: #F2F2F2;
+    --color-cell: #F15A24;
+    --color-cell-disabled: #b2b6ba;
+}
+
+.root {
+    min-height: 100vh;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar {
+    padding: 20px 10px;
+    background-color: var(--color-bg-calendar);
+    border-radius: 3px;
+    width: 100%;
+    max-width: 300px;
+    font-family: sans-serif;
+}
+
+.calendar__header {
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.calendar .control {
+    color: #F15A24;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.grid__header, .grid__body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.grid__header {
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.grid__body {
+    grid-auto-rows: 40px;
+    color: var(--color-cell);
+}
+
+.grid__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid__cell--gd {
+    cursor: pointer;
+}
+
+.grid__cell--selected {
+    color: var(--color-bg-calendar);
+    background-color: #c35151;
+    border-radius: 10%;
+    box-shadow: 0 0 0 2px var(--color-bg-calendar) inset;
+}
+
+.grid__cell--disabled {
+    color: var(--color-cell-disabled);
+    cursor: not-allowed;
+}
+

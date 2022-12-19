@@ -41,8 +41,14 @@ namespace PitAgora.Controllers
                 int newEleve = dalE.CreerEleve(newParent, ivm.Eleve.Utilisateur.Personne.Nom, ivm.Eleve.Utilisateur.Personne.Prenom, ivm.Eleve.Utilisateur.Mail,
                      ivm.Eleve.Utilisateur.MotDePasse, ivm.Parent.Utilisateur.Adresse);
             }
+            return View("PayerInscription");
+        }
+
+        public IActionResult MessageApresPaiement()
+        {
             return View();
         }
+
 
 
         //Méthodes Franck pour renvoyer infos
@@ -93,5 +99,12 @@ namespace PitAgora.Controllers
 
             return View();
         }
+
+
+        //Test Mila pour structure de base Main
+        //public IActionResult BaseMain()
+        //
+         //   return View();
+        //}
     }
 }
