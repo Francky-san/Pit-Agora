@@ -22,13 +22,13 @@ namespace PitAgora.Models
         //Méthode récupérer liste complète des professeurs avec jointures utilisateur et personne pour accèder à tous les attributs
         public List<Professeur> ObtientTousLesProfesseurs()
         {
-            return _bddContext.Professeurs.Include(p=>p.Utilisateur).ThenInclude(u=>u.Personne).ToList();
+            return _bddContext.Professeurs.Include(p => p.Utilisateur).ThenInclude(u => u.Personne).ToList();
         }
 
 
         public Professeur ObtenirUnProf(int id)
         {
-            Professeur unProf = _bddContext.Professeurs.Find(id);
+            Professeur unProf = _bddContext.Professeurs.Include(p => p.Utilisateur).ThenInclude(u => u.Personne).Where(p => p.Id == id).FirstOrDefault();
             return unProf;
         }
 
@@ -59,7 +59,39 @@ namespace PitAgora.Models
             return laPersonne.Prenom + " " + laPersonne.Nom;
         }
 
-          
+
+        // Méthode d'obtention des cours à venir pour un professeur, List de creneaux
+        public List<Reservation> GetCoursFuturs(int professeurId)
+        {
+            //var query = _bddContext.Reservations.FromSqlRaw("select * from reservations" +
+            //" inner join creneaux" +
+            //" on creneaux.reservationId = Reservations.Id" +
+            //" group by reservationId" +
+            //" having creneaux.professeurId = " + professeurId + " and horaire > now()"
+            //);
+
+            var query = from r in _bddContext.Reservations
+                        join c in _bddContext.Creneaux
+                        on r.Id equals c.ReservationId
+                        where c.ProfesseurId == professeurId && r.Horaire > DateTime.Now
+                        select r;
+
+            return query.Distinct().ToList() ;
+
+
+        }
+
+        //Méthode d'obtention des cours effectués pour un professeur, List de creneaux
+        public List<Creneau> GetCoursPasses(int professeurId)//FT - Type de list modifié en list<creneau>
+        {
+            return _bddContext.Creneaux.Where(c => c.ProfesseurId == professeurId).Where(c => c.ReservationId != null).Where(C => C.Debut < DateTime.Today).ToList();
+        }
+
+        public void ModifierCreditProf(int id, double montant)
+        {
+            _bddContext.Professeurs.Find(id).CreditProf += montant;
+            _bddContext.SaveChanges();
+        }
 
         //public int CreneauAAjouter(Creneau creneau)
         //{
@@ -72,8 +104,8 @@ namespace PitAgora.Models
         //return creneau.Id;
     }
 
-      
-   
+
+
 
 }
 

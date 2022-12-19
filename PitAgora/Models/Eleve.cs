@@ -12,7 +12,7 @@
 
 
         public int CreditPythos { get; set; }
-        public int CreditCours { get; set; }
+        public double CreditCours { get; set; }
 
 
     }
