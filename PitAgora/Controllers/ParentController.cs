@@ -25,31 +25,28 @@ namespace PitAgora.Controllers
         {
             DalEleve dal = new DalEleve();
             Eleve eleve1 = dal.ObtientTousLesELeves().Where(e => e.ParentId == parent.Id).FirstOrDefault();
-            List<AReserve> resaEleve1 = dal.ObtenirReservations(eleve1.Id);
-            DalReservation dalr = new DalReservation();
-            List<Creneau> creneauxResa = new List<Creneau>();
-            foreach (AReserve resa in resaEleve1)
-            {
-                creneauxResa = dalr.GetCreneaux(resa.ReservationId);
-            }
+            List<Reservation> resaPassees = dal.ObtenirCoursPasses(eleve1.Id);
+            List<Reservation> resaFutures = dal.ObtenirCoursFuturs(eleve1.Id);
 
-            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, Reservations = resaEleve1, Creneaux = creneauxResa };
+            DalReservation dalr = new DalReservation();
+
+            ParentViewModel pvm = new ParentViewModel { Eleve = eleve1, Parent = parent, CoursFuturs = resaFutures, CoursPasses = resaPassees };
             return pvm;
         }
 
         //Méthode get créditer porte monnaie élève
         [HttpGet]
-        public IActionResult CrediterEleve(int Id)
+        public IActionResult CrediterEleve(int ed, int id)
         {
-            return View(new CrediterViewModel { EleveId = Id, Montant = 0 }) ;
+            return View(new CrediterViewModel { EleveId = ed, Montant = 0, ParentId=id}) ;
         }
         //Méthode post créditer porte monnaire élève
         [HttpPost]
-        public IActionResult CrediterEleve(int montant,int EleveId)
+        public IActionResult CrediterEleve(int montant,int EleveId, int ParentId)
         {
             DalParent dal = new DalParent();
-            dal.CrediterEleve( montant, EleveId);
-            return View();
+            dal.CrediterEleve( montant, EleveId, ParentId);
+            return Redirect("AccueilParent/"+ParentId);
         }
     }
 }

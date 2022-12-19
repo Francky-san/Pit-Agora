@@ -107,5 +107,30 @@ namespace PitAgora.Models
 
             return laPersonne.Prenom ;
         }
+
+        // Retourne la liste des réservation d'un élève dont la date n'est pas passée
+        public List<Reservation> ObtenirCoursFuturs(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = ObtenirReservations(eleveId).Where(ar => ar.Reservation.Horaire > DateTime.Now).ToList();
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
+
+        // Retourne la liste des réservation d'un élève dont la date n'est pas passée (maximum 5)
+        public List<Reservation> ObtenirCoursPasses(int eleveId)
+        {
+            List<Reservation> res = new List<Reservation>();
+            List<AReserve> l = ObtenirReservations(eleveId).Where(ar => ar.Reservation.Horaire < DateTime.Now).ToList();
+
+            foreach (AReserve ar in l)
+            {
+                res.Add(ar.Reservation);
+            }
+            return res;
+        }
     }
 }

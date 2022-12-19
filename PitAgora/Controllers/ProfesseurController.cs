@@ -55,6 +55,7 @@ namespace PitAgora.Controllers
         }
 
 
+
         // Méthode renvoyant la vue Gérer mon planning avec le professeur connecté comme modèle
         public IActionResult GérerPlanning(int id)
         {

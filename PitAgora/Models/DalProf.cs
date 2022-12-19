@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 
 
 namespace PitAgora.Models
@@ -58,6 +59,16 @@ namespace PitAgora.Models
 
             return laPersonne.Prenom + " " + laPersonne.Nom;
         }
+
+        public int CreerEval(Evaluation eval)
+        {
+           _bddContext.Evaluations.Add(eval);
+            _bddContext.SaveChanges();
+           //_bddContext.Reservations.Where(r => r.Id == resaId).FirstOrDefault().EvaluationId = eval.Id;
+           // _bddContext.SaveChanges();
+           return eval.Id;
+        }
+          
 
 
         // Méthode d'obtention des cours à venir pour un professeur à partir de la liste des réservations
