@@ -46,6 +46,15 @@ box-sizing: border-box;
     background-color: coral;
 }
 
+.nonPropose {
+    background-color: lightgray;
+}
+
+.reserve {
+    background-color: forestgreen;
+}
+
+
 .survole {
     background-color: indianred;
     opacity: .7;

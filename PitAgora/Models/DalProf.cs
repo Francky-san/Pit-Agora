@@ -118,8 +118,6 @@ namespace PitAgora.Models
             {
                 int rang = c.Rang();
 
-                Console.WriteLine("rang = " + rang);
-                
                 if (c.ReservationId == 0) 
                 {
                     planning.StatutsCreneaux[rang] = 1;

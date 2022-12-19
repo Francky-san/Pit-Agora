@@ -1,10 +1,14 @@
 ﻿@using PitAgora.Models;
-@model PitAgora.ViewModels.ProfViewModel
+@model PitAgora.ViewModels.GererPlanningViewModel
 
 @{
     Layout = "LayoutPrive";
 
     ViewBag.Title = "Gérer Planning";
+}
+
+@section css {
+    <link href="~/css/Planning.css" rel="stylesheet" />
 }
 
 @section navbar{
@@ -38,30 +42,79 @@
     </ul>
 }
 
-@section css {
-    <link href="~/css/Accueils.css" rel="stylesheet" />
-}
-
 @section Main{
-    <div>
-        <br />
-        <div class="container -fluid">
 
-            <div>Vue Gérer mon Planning</div>
+    <div class="container -fluid">
 
+        <h3 style="margin-left: 20px">
+            Planning du @System.DateTime.Now.AddDays(-3).ToString("d")
+            au @System.DateTime.Now.AddDays(3).ToString("d")
+        </h3>
 
+        @* <div style="float:left; width: 50%; padding:20px; font-size: 90%">Choisis au moins deux créneaux disponibles consécutifs</div>
+    <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled onclick="demanderConfirmation()">Valider</button>
+    <br />
 
-
-
-
-
-        </div>
-        <br />
+    <div class="creditDispo" onclick="demanderConfirmation()">
+    Crédit disponible : <span id="creditDispo">@Model.First().Eleve.CreditCours</span> euros
     </div>
-}
+    </div>
+
+    <br />
+    <br />
+    <br />*@
+
+
+        @foreach (var item in @Model.PlanningSemaine)
+        {
+            <em class="enTetePlanning">Planning du  </em>
+
+            <div class="conteneurHeures">
+                <span class="heure">09:00</span>
+                @for (int k = 2; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+                {
+                    if (k % 2 == 0)
+                    {
+                        <span class="heure">@(9 + k / 2):00</span>
+                    }
+                }
+                <span class="heure derniereHeure">19:00</span>
+            </div>
+
+            <div class="ConteneurPlanning">
+
+
+                @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+                {
+                    if (item.StatutsCreneaux[k] == 0)
+                    {
+                        <div id=@item.StatutsCreneaux[k] class="cellulePlanning nonPropose" onclick="changerStatut(this)"
+             onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                    }
+                    if (item.StatutsCreneaux[k] == 1)
+                    {
+                        <div id=@item.StatutsCreneaux[k] class="cellulePlanning dispo" onclick="changerStatut(this)"
+             onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                    }
+                    if (item.StatutsCreneaux[k] == 2)
+                    {
+                        <div id=@item.StatutsCreneaux[k] class="cellulePlanning reserve" onclick="changerStatut(this)"
+             onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                    }
+                }
+            </div>
+            <br />
+            <br />
+        }
+
+    }
 
 
 
+</div>
+
+
+    }
 
     }
 
