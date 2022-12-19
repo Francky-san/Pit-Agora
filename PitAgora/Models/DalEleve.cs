@@ -35,6 +35,12 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
         }
 
+        public void ModifierCreditCours(int id, double montant)
+        {
+            _bddContext.Eleves.Find(id).CreditCours += montant;
+            _bddContext.SaveChanges();
+        }
+
         //Méthode pour obtenir la liste des résa d'un élève.
         public List<AReserve> ObtenirReservations(int eleveId)
         {
@@ -92,5 +98,14 @@ namespace PitAgora.Models
             return res;
         }
 
+        //Retourne une string contenant prenom 
+        public string GetPrenom(int eleveId)
+        {
+            int utilisateurId = _bddContext.Eleves.Find(eleveId).UtilisateurId;
+            int personneId = _bddContext.Utilisateurs.Find(utilisateurId).PersonneId;
+            Personne laPersonne = _bddContext.Personnes.Find(personneId);
+
+            return laPersonne.Prenom ;
+        }
     }
 }

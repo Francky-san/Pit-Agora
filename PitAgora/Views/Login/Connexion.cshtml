@@ -30,7 +30,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href=@Url.Action("ListeProfs", "Professeur")>
-                Profs
+                Nos Profs
             </a>
         </li>
         <li class="nav-item">
@@ -70,8 +70,9 @@
 
                     @Html.LabelFor(m => m.Utilisateur.MotDePasse,
                 new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.Utilisateur.MotDePasse,
+                    @Html.PasswordFor(m => m.Utilisateur.MotDePasse,
                 new { @class = "form-control" })
+
 
 
 

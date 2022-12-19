@@ -24,8 +24,8 @@ namespace PitAgora.Models
             _bddContext.SaveChanges();
             return reservation.Id;
         }
-
-        // Affecte une réservation nouvellement créée à un créneau (le créneau devient indisponible)
+        
+// Affecte une réservation nouvellement créée à un créneau (le créneau devient indisponible)
         public void AffecterACreneau(int reservationId, Creneau c)
         {
             _bddContext.Creneaux.Find(c.Id).ReservationId = reservationId;

@@ -2,7 +2,7 @@
 
 namespace PitAgora.ViewModels
 {
-    public class CrediterViewController
+    public class CrediterViewModel
     {
         public int EleveId { get; set; }
         public int Montant { get; set; }
