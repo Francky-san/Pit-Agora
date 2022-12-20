@@ -85,7 +85,7 @@
                 </table>
             </fieldset>
 
-        @*Reservations passées*@
+        @*Reservations passï¿½es*@
             <fieldset style="margin-block:25px; text-align:center;width:49%; float:left">
 
                 <legend style="text-decoration:underline">
@@ -139,7 +139,7 @@
             </fieldset>
 
         @*Evaluations*@
-            <fieldset style="margin-block:2.5rem; text-align:center; width:99%">
+            @*<fieldset style="margin-block:2.5rem; text-align:center; width:99%">
                 <legend style="text-decoration:underline">
                     Les evaluations
                 </legend>
@@ -158,10 +158,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        
                 @foreach (var resa in Model.CoursPasses)
                 {
-                        
+                        <tr>
                             <td>
                             @resa.PrenomNomProf
                             </td>
@@ -173,13 +173,13 @@
                         @foreach(var res in Model.CoursPasses)
                         {
                         <td>
-                        @*@res.Evaluation.Contenu*@
+                        @res.Evaluation.Contenu
                         </td>    
                         }
                         
                     </tr>
                     </tbody>
                 </table>
-            </fieldset>
+            </fieldset>*@
 }
 }

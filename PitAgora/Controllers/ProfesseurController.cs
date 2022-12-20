@@ -74,13 +74,14 @@ namespace PitAgora.Controllers
 
         // Méthode renvoyant la vue Gérer mon planning avec le professeur connecté comme modèle
         [HttpGet]
-        public IActionResult GererPlanning(int id, DateTime jour)
+        public IActionResult GererPlanning(int id, string jour)
         {
             DalProf dalProf = new DalProf();
             Professeur professeur = dalProf.ObtenirUnProf(id);
 
+            DateTime dateTime= DateTime.Parse(jour);
             GererPlanningViewModel gpvm = new GererPlanningViewModel() { Professeur = professeur };
-            DateTime lundi = Creneau.LundiPrecedent(jour);
+            DateTime lundi = Creneau.LundiPrecedent(dateTime);
             for (int i = 0; i < 7; i++)
             {
                 gpvm.PlanningSemaine.Add(dalProf.CreerPlanningProf(id, lundi.AddDays(i)));
@@ -90,9 +91,34 @@ namespace PitAgora.Controllers
         }
 
         [HttpPost]
-        public IActionResult GererPlanning(int[] aAjouter, int[] aEnelver)
+        public IActionResult GererPlanning(string aAjouter, string aRetirer, int id)
         {
-            return View();
+            DalCreneaux dal = new DalCreneaux();
+            int aRetirerId;
+            DateTime debut = DateTime.Now;
+            if (aRetirer != null)
+            {
+                foreach (string s in aRetirer.Split(","))
+                {
+                    if (int.TryParse(s, out aRetirerId))
+                    {
+                        dal.SupprimerCreneau(aRetirerId);
+                    }
+                }
+            }
+            if (aAjouter != null)
+            {
+                foreach (string s in aAjouter.Split(","))
+                {
+                    if (s != "")
+                    {
+                        debut = DateTime.Parse(s);
+                        dal.CreerCreneau(debut, id);
+                    }
+
+                }
+            }
+            return Redirect("/Professeur/GererPlanning?id=" + id + "&jour=" + debut.ToString());
         }
     }
 }

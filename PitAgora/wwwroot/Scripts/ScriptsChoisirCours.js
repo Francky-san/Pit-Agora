@@ -34,15 +34,12 @@
 }
 
 function mOver(obj) {
-    //if (!statutModifie) {
-        statut = obj.className;
-        obj.className = "cellulePlanning survole";
-    //}
+    statut = obj.className;
+    obj.className = "cellulePlanning survole";
 }
 
 function mOut(obj) {
     obj.className = statut;
-    //statutModifie = false;
 }
 
 // Teste si la sélection de créneaux en cours est valide pour une réservation (consécutifs, au moins 2)

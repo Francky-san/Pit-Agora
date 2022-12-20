@@ -194,17 +194,17 @@ namespace PitAgora.Models
 
 
             this.Evaluations.AddRange(
-                  new Evaluation
+                  new Evaluation        // cours de maths du 14/12 Alain / Euler
                   {
                       Id = 1,
-                      Contenu = "Voir Jérôme pour éval fictive maths niveau 1ereG"
+                      Contenu = "Sujet abordé : dérivation des fonctions usuelles. Cours et méthodes bien compris, il faut encore t'entraîner pour aquérir les automatismes."
                   },
-            new Evaluation
-            {
-                Id = 2,
-                Contenu = "Voir Jérôme pour éval fictive physique niveau 1ereG"
+                new Evaluation          // cours de maths du 14/12 Alain+Alex / Einstein
+                {
+                    Id = 2,
+                    Contenu = "Sujet abordé : réactions acide/base. Bien compris."
 
-            }
+                }
             );
             this.SaveChanges();
 

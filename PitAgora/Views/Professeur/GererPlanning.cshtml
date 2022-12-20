@@ -46,16 +46,29 @@
 
 @section Main
 {
+     <!-- Variables de la page -->
+    <script>
+        const aAjouter = new Set();
+        const aRetirer = new Set();
+        var statut, prof;
+    </script>
+
+    <!-- Formulaire caché, pour transmettre certaines informations-->
+    <form id="modifierCreneaux" action="" method="post">
+        <input type="hidden" id="retourProf" name="id" value="@Model.Professeur.Id" />
+        <input type="hidden" id="retourAAjouter" name="aAjouter" />
+        <input type="hidden" id="retourASupprimer" name="aRetirer" />
+    </form>
 
     <div class="container -fluid" style="height:fit-content">
 
         <h3>
-            <a href=@Url.Action("GererPlanning", "Professeur", new {id = Model.Professeur.Id, jour = Model.PlanningSemaine.First().Jour.AddDays(-7)})><</a>
+            <a href=@Url.Action("GererPlanning", "Professeur", new {id = Model.Professeur.Id, jour = (Model.PlanningSemaine.First().Jour.AddDays(-7)).ToString()})><</a>
             Planning du @Model.PlanningSemaine.First().Jour.ToString("d") au @Model.PlanningSemaine.Last().Jour.ToString("d")
-            <a href=@Url.Action("GererPlanning", "Professeur", new {id = Model.Professeur.Id, jour = Model.PlanningSemaine.First().Jour.AddDays(7)})>></a>
+            <a href=@Url.Action("GererPlanning", "Professeur", new {id = Model.Professeur.Id, jour = (Model.PlanningSemaine.First().Jour.AddDays(7)).ToString()})>></a>
         </h3>
 
-        <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled onclick="demanderConfirmation()">Valider</button>
+        <button form="modifierCreneaux" type="submit" id="boutonValider" class="boutonValider" onclick="demanderConfirmation()">Valider</button>
     </div>
 
     <br />
