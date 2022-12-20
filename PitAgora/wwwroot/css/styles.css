@@ -185,7 +185,7 @@ sup {
 
 a {
     color: #F15A24;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
     a:hover {
@@ -600,6 +600,13 @@ progress {
     padding-left: var(--bs-gutter-x, 0.75rem);
     margin-right: auto;
     margin-left: auto;
+
+.containerFooter{
+
+    position: absolute;
+    width:100%
+}
+    
 }
 
 @media (min-width: 576px) {
@@ -2163,7 +2170,7 @@ textarea.form-control-lg {
     background-size: 16px 12px;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
-    appearance: none;
+    appeance: none;
 }
 
     .form-select:focus {
@@ -3373,6 +3380,7 @@ textarea.form-control-lg {
     color: #6c757d;
     pointer-events: none;
     cursor: default;
+    text-decoration:none;
 }
 
 .nav-tabs {
@@ -9333,11 +9341,17 @@ textarea.form-control-lg {
 
 .encabezado {
     background: url("../images/FondAccueilHeader.jpg") center center fixed;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @media (min-width: 992px) {
     .encabezado {
         background: url("../images/FondAccueilHeader.jpg") center center fixed;
+        background-origin: border-box;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }
 
@@ -9563,5 +9577,15 @@ textarea.form-control-lg {
 .grid__cell--disabled {
     color: var(--color-cell-disabled);
     cursor: not-allowed;
+}
+
+.contenidoadaptado {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    word-break: break-all;
 }
 

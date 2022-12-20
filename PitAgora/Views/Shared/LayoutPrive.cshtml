@@ -25,7 +25,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/libs/bootstrap-icons/bootstrap-icons.css">
     <link href="~/css/styles.css" rel="stylesheet">
-    @RenderSection("css" , required:false)
+
+    @RenderSection("css", required: false)
 </head>
 
 <body>
@@ -53,7 +54,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
-@RenderSection("navbar")
+                    @RenderSection("navbar")
 
                 </div>
 
@@ -61,80 +62,86 @@
             </div>
         </nav>
         <!-- Fin NavBar -->
-        <div class="container" style="border:2px solid black">
+        <div class="container">
             @RenderSection("Main")
         </div>
 
     </header>
     <!-- FIN ENCABEZADO -->
     <!-- INICIO PLAN DE ACCIÓN -->
-    <div class="container" style="border:2px solid black">
-
-        <!-- FIN PLAN DE ACCIÓN -->
-        @RenderSection("Aide", required:false)
+    <!-- FIN PLAN DE ACCIÓN -->
+    @RenderSection("Aide", required: false)
     </div>
     <!-- INICIO TE AYUDAMOS -->
     <!-- FIN TE AYUDAMOS -->
-    <div class="container" style="border:2px solid black">
+    <div class="container">
 
 
         @RenderSection("Projets", required: false)
     </div>
 
     <!-- INICIO PROYECTOS -->
-    <!-- INICIO PIE DE PÁGINA -->
-    <footer class="pieDePagina bg-dark text-white pt-5" id="footer">
-        <div class="container">
-            <div class="row text-center text-lg-start">
 
-                <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
-                    <a href=@Url.Action("Index", "Home")>
-                           <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
-                del sitio">
-                    </a>
-                    <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
-                        <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
-                        <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
-                    </ul>
+    @RenderSection("Scripts", required: false)
 
-
-                </div>
-                <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0 ms-lg-auto">
-                    <h5 class=" fw-bold mb-4">Partenaires</h5>
-                    <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="https://www.micromania.fr/">Micromania</a></li>
-                        <li><a href="https://www.fnac.com/">FNAC</a></li>
-                        <li><a href="https://www.ugc.fr/">UGC</a></li>
-                        <li><a href="https://www.zara.com/fr/">ZARA</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0">
-                    <h5 class=" fw-bold mb-4">A propos</h5>
-                    <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="~/Home/Presentation">Qui</a></li>
-                        <li><a href="~/Home/Presentation">Pourquoi</a></li>
-                        <li><a href="~/Home/Presentation">Comment</a></li>
-
-                    </ul>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-2 mb-5 mb-lg-0">
-                    <h5 class=" fw-bold mb-4">Contact</h5>
-                    <ul class="list-unstyled d-grid gap-2">
-                        <li><a href="~/Home/Presentation">Pédagogie</a></li>
-                        <li><a href="~/Eleve/Agora">Agora</a></li>
-                        <li><a href="~/Home/Presentation">FAQs</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <p class="creditos mt-lg-4 mb-0 py-4 text-center text-muted small">
-                Copyright © 2022 Pit'Agora.fr Tous droits réservés.
-            </p>
-
-
-        </div>
-    </footer>
-    @RenderSection("Scripts", required:false)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
 </body>
+
+<!-- INICIO PIE DE PÁGINA -->
+<footer class="pieDePagina bg-dark text-white pt-5" id="footer">
+    <div class="container">
+        <div class="row text-center text-lg-start">
+
+            <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
+                <a href=@Url.Action("Index", "Home")>
+                    <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
+                del sitio">
+                </a>
+                <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
+                    <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
+                    <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
+                </ul>
+
+
+            </div>
+            <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0 ms-lg-auto">
+                <h5 class=" fw-bold mb-4">Partenaires</h5>
+                <ul class="list-unstyled d-grid gap-2">
+                    <li><a href="https://www.micromania.fr/">Micromania</a></li>
+                    <li><a href="https://www.fnac.com/">FNAC</a></li>
+                    <li><a href="https://www.ugc.fr/">UGC</a></li>
+                    <li><a href="https://www.zara.com/fr/">ZARA</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0">
+                <h5 class=" fw-bold mb-4">A propos</h5>
+                <ul class="list-unstyled d-grid gap-2">
+                    <li><a href="~/Home/Presentation">Qui</a></li>
+                    <li><a href="~/Home/Presentation">Pourquoi</a></li>
+                    <li><a href="~/Home/Presentation">Comment</a></li>
+
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-2 mb-5 mb-lg-0">
+                <h5 class=" fw-bold mb-4">Contact</h5>
+                <ul class="list-unstyled d-grid gap-2">
+                    <li><a href="~/Home/Presentation">Pédagogie</a></li>
+                    <li><a href="~/Eleve/Agora">Agora</a></li>
+                    <li><a href="~/Home/Presentation">FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="creditos mt-lg-4 mb-0 py-4 text-center text-muted small">
+            Copyright © 2022 Pit'Agora.fr Tous droits réservés.
+        </p>
+
+
+    </div>
+
+
+</footer>
 
 </html>

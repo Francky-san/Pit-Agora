@@ -137,10 +137,11 @@ $utilities: ( "Orden de capas": ( property: z-index, responsive: false, class: z
         border-radius: 0.3rem;
     }
 
-    .navbar-dark .navbar-nav .nav-link {
+    .navbar-dark .navbar-nav .nav-link .nav-item{
         padding: 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 1px rgba(0, 0, 0, 0.4);
+        text-decoration: none;
     }
 }
 
@@ -251,8 +252,31 @@ $utilities: ( "Orden de capas": ( property: z-index, responsive: false, class: z
         border-top: 1px solid black;
     }
 
-    .container-fluid{
+    .container-fluid {
+        margin: inherit;
+    }
 
-        margin:inherit;
+
+    .celluleCours {
+        border-color: 1px solid $principal;
+    }
+
+    .Prof {
+    }
+
+    .nav-link{
+        text-decoration:none;
+    }
+
+
+    #footer{
+        position:
+     
+
+
+
     }
 }
+
+
+
