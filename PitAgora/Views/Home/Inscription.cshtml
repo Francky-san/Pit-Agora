@@ -45,6 +45,11 @@
     </ul>
 }
 @section Main{
+    <style>
+        #main{
+            background-color:white;
+        }
+    </style>
 
     <form action="~/Home/Inscription" method="post">
         <div class="container-fluid" style="margin-top:150px">
@@ -54,12 +59,15 @@
                 @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Prenom,
             new { @class = "form-label" })
                 @Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Prenom,
-            new { @class = "form-control" })
+            new { @class = "form-control"})
+                @Html.ValidationMessageFor(m=>m.Parent.Utilisateur.Personne.Prenom)
+
 
                 @Html.LabelFor(m => m.Parent.Utilisateur.Personne.Nom,
             new { @class = "form-label" })
                 @Html.TextBoxFor(m => m.Parent.Utilisateur.Personne.Nom,
             new { @class = "form-control" })
+                @Html.ValidationMessageFor(m=>m.Parent.Utilisateur.Personne.Nom)
 
                 @Html.LabelFor(m => m.Parent.Utilisateur.Adresse,
             new { @class = "form-label" })
@@ -69,7 +77,7 @@
                 @Html.LabelFor(m => m.Parent.Utilisateur.Mail,
             new { @class = "form-label" })
                 @Html.TextBoxFor(m => m.Parent.Utilisateur.Mail,
-            new { @class = "form-control" })
+            new { @class = "form-control", @type="email" })
 
                 @Html.LabelFor(m => m.Parent.Utilisateur.MotDePasse,
             new { @class = "form-label", label="Mot de passe"})
@@ -108,7 +116,7 @@
                 @Html.LabelFor(m => m.Eleve.Utilisateur.Mail,
             new { @class = "form-label" })
                 @Html.TextBoxFor(m => m.Eleve.Utilisateur.Mail,
-            new { @class = "form-control" })
+            new { @class = "form-control", @type="email" })
 
                 @Html.LabelFor(m => m.Eleve.Utilisateur.MotDePasse,
             new { @class = "form-label", text = "Mot de passe" })
