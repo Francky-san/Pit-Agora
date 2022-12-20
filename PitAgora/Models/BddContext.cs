@@ -179,7 +179,7 @@ namespace PitAgora.Models
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 10, 00, 00), 2);    // 50-52 : cours de PC du 17/12 avec Harry
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 10, 30, 00), 2);
                 dal.CreerCreneau(new DateTime(2022, 12, 17, 11, 00, 00), 2);
-                dal.CreerCreneau(new DateTime(2022, 12, 16, 11, 00, 00), 2);//dispos einstein non reservés
+                dal.CreerCreneau(new DateTime(2022, 12, 16, 11, 00, 00), 2);    //dispos einstein non reservés
                 dal.CreerCreneau(new DateTime(2022, 12, 16, 11, 30, 00), 2);
                 dal.CreerCreneau(new DateTime(2022, 12, 16, 12, 00, 00), 2);
                 dal.CreerCreneau(new DateTime(2022, 12, 22, 12, 00, 00), 2);
@@ -194,16 +194,20 @@ namespace PitAgora.Models
 
 
             this.Evaluations.AddRange(
-                  new Evaluation        // cours de maths du 14/12 Alain / Euler
-                  {
-                      Id = 1,
-                      Contenu = "Sujet abordé : dérivation des fonctions usuelles. Cours et méthodes bien compris, il faut encore t'entraîner pour aquérir les automatismes."
-                  },
-                new Evaluation          // cours de maths du 14/12 Alain+Alex / Einstein
+                new Evaluation        // cours de maths du 14/12 Alain / Euler
+                {
+                    Id = 1,
+                    Contenu = "Sujet abordé : dérivation des fonctions usuelles. Cours et méthodes bien compris, il faut encore t'entraîner pour aquérir les automatismes."
+                },
+                new Evaluation          // 47-49 : cours de PC du 17/12 Marie / Einstein
                 {
                     Id = 2,
                     Contenu = "Sujet abordé : réactions acide/base. Bien compris."
-
+                },
+                new Evaluation        // cours de PC du 14/12 Harry / Einstein
+                {
+                    Id = 3,
+                    Contenu = "Sujet abordé : Circuit électriques. Il faut retravailler la loi des noeuds."
                 }
             );
             this.SaveChanges();
@@ -213,7 +217,7 @@ namespace PitAgora.Models
             using (DalReservation dal = new DalReservation())
             {
                 // Cours de maths du 14/12
-                int id = dal.creerReservation(new Reservation()
+                int id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Leonhard Euler",
                     PrenomEleve = "Alain",
@@ -226,7 +230,7 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true,
-                    EvaluationId = 1,
+                    EvaluationId = 1
                 });
                 dal.AffecterACreneau(id, 1);
                 dal.AffecterACreneau(id, 2);
@@ -234,7 +238,7 @@ namespace PitAgora.Models
                 this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
 
                 // Cours de PC du 20/12 en binôme Alain & Alex
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Alain & Alex",
@@ -246,8 +250,7 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = true,
                     EstEnPresentiel = false,
-                    EstValide = true,
-                    EvaluationId = 2,
+                    EstValide = true
                 });
                 dal.AffecterACreneau(id, 4);
                 dal.AffecterACreneau(id, 5);
@@ -255,7 +258,7 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
 
                 // Cours de maths du 21/12 avec Alain
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Leonhard Euler",
                     PrenomEleve = "Alain",
@@ -275,7 +278,7 @@ namespace PitAgora.Models
                 this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
 
                 // Cours de PC prévu le 04/01 en binôme Alain & Alex
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Alain & Alex",
@@ -295,7 +298,7 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
 
                 // Cours de PC prévu le 22/12 avec Harry
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Harry",
@@ -314,7 +317,7 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
 
                 // Cours de PC prévu le 22/12 avec Luke
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Luke",
@@ -333,7 +336,7 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 5, ReservationId = id });
 
                 // Cours de PC prévu le 22/12 avec Marie
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Marie",
@@ -353,7 +356,7 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 5, ReservationId = id });
 
                 // Cours de PC du 17/12 avec Marie
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Marie",
@@ -365,7 +368,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = false,
                     EstEnPresentiel = false,
-                    EstValide = true
+                    EstValide = true,
+                    EvaluationId = 2
                 });
                 dal.AffecterACreneau(id, 47);
                 dal.AffecterACreneau(id, 48);
@@ -373,7 +377,7 @@ namespace PitAgora.Models
                 this.AReserve.AddRange(new AReserve { EleveId = 3, ReservationId = id });
 
                 // Cours de PC du 17/12 avec Harry
-                id = dal.creerReservation(new Reservation()
+                id = dal.CreerReservation(new Reservation()
                 {
                     PrenomNomProf = "Albert Einstein",
                     PrenomEleve = "Harry",
@@ -385,8 +389,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = false,
                     EstEnPresentiel = false,
-                    EstValide = true
-
+                    EstValide = true,
+                    EvaluationId = 3
                 });
                 dal.AffecterACreneau(id, 50);
                 dal.AffecterACreneau(id, 51);

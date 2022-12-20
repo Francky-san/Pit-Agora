@@ -150,7 +150,7 @@ namespace PitAgora.Controllers
                 Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
                 EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
 
-            int reservationId = dalR.creerReservation(laReservation);
+            int reservationId = dalR.CreerReservation(laReservation);
 
             // Affecter cette réservation aux créneaux concernés
             foreach (int creneauId in creneauxId)

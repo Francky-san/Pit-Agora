@@ -84,11 +84,16 @@
                                 <tr><td>@item.Matiere</td></tr>
                                 <tr><td>@item.PrenomEleve</td></tr>
                                 <tr>
-                                    @if (item.EvaluationId==null) {
+                                    @if (item.EvaluationId!=null) {
                                         <td id="item.EvaluationId" class="lienEval" onclick="afficherEval()">voir l'évaluation</td>
                                     }
                                     else {
-                                        <td id="item.EvaluationId" class="lienCreerEval" onclick="creerEval()">Créer l'évaluation</td>
+                                        <td>
+                                            <a id="item.EvaluationId" class="lienCreerEval" href=@Url.Action("CreerEvaluation", "Professeur", 
+                                            new {professeurId=Model.Professeur.Id, reservationId=item.Id})>
+                                            Evaluer ce cours
+                                            </a>
+                                        </td>
                                     }
                                 </tr>
                             </table>
