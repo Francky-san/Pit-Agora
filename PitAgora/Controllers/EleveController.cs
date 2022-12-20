@@ -116,11 +116,15 @@ namespace PitAgora.Controllers
             }
         }
         
-        [HttpPost]  //pour demander confirmation : nouvelle vue ou simple fenêtre pop-up ??
+        // Méthode pour créer une réservation
+        [HttpPost]
         public IActionResult CreerReservation(PlanningViewModel pvm, int professeurId, string creneaux, double prix, int eleveId)
         {
+            // Dhaines pour affichage
             string prenomNomProf = dalP.GetPrenomNom(professeurId);
             string prenomNomEleve = dalE.GetPrenom(eleveId);
+            
+            // Créneaux associés (pour tri)
             List<int> creneauxId = new List<int>();
             int i = 0;
             foreach (string s in creneaux.Split(","))
@@ -130,33 +134,36 @@ namespace PitAgora.Controllers
                 }
             }
             List<Creneau> lesCreneaux = dalC.listeCreneauxDepuisId(creneauxId).OrderBy(c => c.Debut).ToList();
-            DateTime horaire = lesCreneaux[0].Debut;
 
+            // Heure de début et durée
+            DateTime horaire = dalC.GetCreneau(creneauxId[0]).Debut;
             string jour = Creneau.JourEnFrancais(horaire);
             int dureeMinutes = 30*lesCreneaux.Count;
+
+            // estValide : false pour un binôme, en attente de la confirmation du binôme
             bool estValide = true;
             if (pvm.EstEnBinome) { estValide = false; }
 
-            Reservation laReservation = new Reservation() { PrenomNomProf = prenomNomProf, Horaire = horaire, Jour = jour, DureeMinutes = dureeMinutes, 
+            // Création de la réservation
+            Reservation laReservation = new Reservation() { PrenomNomProf = prenomNomProf, PrenomEleve = prenomNomEleve, 
+                Horaire = horaire, Jour = jour, DureeMinutes = dureeMinutes, 
                 Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
-                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide, PrenomEleve = prenomNomEleve};
+                EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
 
             int reservationId = dalR.creerReservation(laReservation);
 
             // Affecter cette réservation aux créneaux concernés
-            foreach (Creneau c in lesCreneaux)
+            foreach (int creneauId in creneauxId)
             {
-                dalR.AffecterACreneau(reservationId, c);
+                dalR.AffecterACreneau(reservationId, creneauId);
             }
 
             // Affecter cette réservation à l'élève concerné
             dalR.AffecterAEleve(reservationId, eleveId);
 
-            /*
-            A FAIRE :
-            - demander confirmation de la nouvelle reservation (rappeler la règle concernant une annulation)
-            - MaJ  créditCours
-            */
+            // MaJ  créditCours
+            dalE.ModifierCreditCours(eleveId, -prix);
+
             return Redirect("AccueilEleve/"+eleveId);
         }
 

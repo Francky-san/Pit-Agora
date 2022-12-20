@@ -29,7 +29,7 @@ namespace PitAgora.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");
+            optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");
         }
 
         //Methode suivante relatives à authentification et autorisation//////////////////////////////////////////////////
@@ -216,9 +216,9 @@ namespace PitAgora.Models
                     EstValide = true,
                     EvaluationId = 1,
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(1));
-                dal.AffecterACreneau(id, this.Creneaux.Find(2));
-                dal.AffecterACreneau(id, this.Creneaux.Find(3));
+                dal.AffecterACreneau(id, 1);
+                dal.AffecterACreneau(id, 2);
+                dal.AffecterACreneau(id, 3);
                 this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
 
                 // Cours de PC du 20/12 en binôme Alain & Alex
@@ -237,9 +237,9 @@ namespace PitAgora.Models
                     EstValide = true,
                     EvaluationId = 2,
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(4));
-                dal.AffecterACreneau(id, this.Creneaux.Find(5));
-                dal.AffecterACreneau(id, this.Creneaux.Find(6));
+                dal.AffecterACreneau(id, 4);
+                dal.AffecterACreneau(id, 5);
+                dal.AffecterACreneau(id, 6);
                 this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
 
                 // Cours de maths du 21/12 avec Alain
@@ -257,9 +257,9 @@ namespace PitAgora.Models
                     EstEnPresentiel = false,
                     EstValide = true
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(7));
-                dal.AffecterACreneau(id, this.Creneaux.Find(8));
-                dal.AffecterACreneau(id, this.Creneaux.Find(9));
+                dal.AffecterACreneau(id, 7);
+                dal.AffecterACreneau(id, 8);
+                dal.AffecterACreneau(id, 9);
                 this.AReserve.Add(new AReserve { EleveId = 1, ReservationId = id });
 
                 // Cours de PC prévu le 04/01 en binôme Alain & Alex
@@ -277,9 +277,9 @@ namespace PitAgora.Models
                     EstEnPresentiel = false,
                     EstValide = true
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(10));
-                dal.AffecterACreneau(id, this.Creneaux.Find(11));
-                dal.AffecterACreneau(id, this.Creneaux.Find(12));
+                dal.AffecterACreneau(id, 10);
+                dal.AffecterACreneau(id, 11);
+                dal.AffecterACreneau(id, 12);
                 this.AReserve.AddRange(new AReserve { EleveId = 1, ReservationId = id }, new AReserve { EleveId = 2, ReservationId = id });
 
                 // Cours de PC prévu le 22/12 avec Harry
@@ -297,8 +297,8 @@ namespace PitAgora.Models
                     EstEnPresentiel = false,
                     EstValide = true
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(40));
-                dal.AffecterACreneau(id, this.Creneaux.Find(41));
+                dal.AffecterACreneau(id, 40);
+                dal.AffecterACreneau(id, 41);
                 this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
 
                 // Cours de PC prévu le 22/12 avec Luke
@@ -316,8 +316,8 @@ namespace PitAgora.Models
                     EstEnPresentiel = false,
                     EstValide = true
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(42));
-                dal.AffecterACreneau(id, this.Creneaux.Find(43));
+                dal.AffecterACreneau(id, 42);
+                dal.AffecterACreneau(id, 43);
                 this.AReserve.AddRange(new AReserve { EleveId = 5, ReservationId = id });
 
                 // Cours de PC prévu le 22/12 avec Marie
@@ -335,9 +335,9 @@ namespace PitAgora.Models
                     EstEnPresentiel = false,
                     EstValide = true
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(44));
-                dal.AffecterACreneau(id, this.Creneaux.Find(45));
-                dal.AffecterACreneau(id, this.Creneaux.Find(46));
+                dal.AffecterACreneau(id, 44);
+                dal.AffecterACreneau(id, 45);
+                dal.AffecterACreneau(id, 46);
                 this.AReserve.AddRange(new AReserve { EleveId = 5, ReservationId = id });
 
                 // Cours de PC du 17/12 avec Marie
@@ -355,9 +355,9 @@ namespace PitAgora.Models
                     EstEnPresentiel = false,
                     EstValide = true
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(47));
-                dal.AffecterACreneau(id, this.Creneaux.Find(48));
-                dal.AffecterACreneau(id, this.Creneaux.Find(49));
+                dal.AffecterACreneau(id, 47);
+                dal.AffecterACreneau(id, 48);
+                dal.AffecterACreneau(id, 49);
                 this.AReserve.AddRange(new AReserve { EleveId = 3, ReservationId = id });
 
                 // Cours de PC du 17/12 avec Harry
@@ -376,9 +376,9 @@ namespace PitAgora.Models
                     EstValide = true
 
                 });
-                dal.AffecterACreneau(id, this.Creneaux.Find(50));
-                dal.AffecterACreneau(id, this.Creneaux.Find(51));
-                dal.AffecterACreneau(id, this.Creneaux.Find(52));
+                dal.AffecterACreneau(id, 50);
+                dal.AffecterACreneau(id, 51);
+                dal.AffecterACreneau(id, 52);
                 this.AReserve.AddRange(new AReserve { EleveId = 4, ReservationId = id });
 
             }
@@ -410,17 +410,7 @@ namespace PitAgora.Models
                 );
 
 
-
-
             this.SaveChanges();
-
-            DalProf dalProf = new DalProf();
-            int[] Test = dalProf.CreerPlanningProf(2, new DateTime(2022, 12, 20)).StatutsCreneaux;
-            for (int i = 0; i < 20; i++)
-            {
-                Console.WriteLine(Test[i]);
-            }
-
 
         }
 
