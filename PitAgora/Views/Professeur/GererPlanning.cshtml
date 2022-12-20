@@ -1,0 +1,118 @@
+﻿@using PitAgora.Models;
+@model PitAgora.ViewModels.GererPlanningViewModel
+
+@{
+    Layout = "LayoutPrive";
+
+    ViewBag.Title = "Gérer Planning";
+}
+
+@section css 
+{
+    <link href="~/css/PlanningProf.css" rel="stylesheet" />
+}
+
+@section navbar
+{
+    <ul class="navbar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link active" href=@Url.Action("AccueilProf", "Professeur")>
+                Accueil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+                Déconnexion
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("GererPlanning", "Professeur")>
+                Gérer mon planning
+            </a>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("ElevesDuProf", "Professeur")>
+                Mes élèves
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                Contact
+            </a>
+        </li>
+
+    </ul>
+}
+
+@section Main
+{
+     <!-- Variables de la page -->
+    <script>
+        const aAjouter = new Set();
+        const aRetirer = new Set();
+        var statut, prof;
+    </script>
+
+    <!-- Formulaire caché, pour transmettre certaines informations-->
+    <form id="modifierCreneaux" action="" method="post">
+        <input type="hidden" id="retourProf" name="id" value="@Model.Professeur.Id" />
+        <input type="hidden" id="retourAAjouter" name="aAjouter" />
+        <input type="hidden" id="retourASupprimer" name="aRetirer" />
+    </form>
+
+    <div class="container -fluid" style="height:fit-content">
+
+        <h3>
+            <a href=@Url.Action("GererPlanning", "Professeur", new {id = Model.Professeur.Id, jour = (Model.PlanningSemaine.First().Jour.AddDays(-7)).ToString()})><</a>
+            Planning du @Model.PlanningSemaine.First().Jour.ToString("d") au @Model.PlanningSemaine.Last().Jour.ToString("d")
+            <a href=@Url.Action("GererPlanning", "Professeur", new {id = Model.Professeur.Id, jour = (Model.PlanningSemaine.First().Jour.AddDays(7)).ToString()})>></a>
+        </h3>
+
+        <button form="modifierCreneaux" type="submit" id="boutonValider" class="boutonValider" onclick="demanderConfirmation()">Valider</button>
+    </div>
+
+    <br />
+
+    @foreach (var item in @Model.PlanningSemaine)
+    {
+        <em class="enTetePlanning">@Creneau.JourEnFrancais(item.Jour)</em>
+
+        <div class="conteneurHeures">
+            <span class="heure">09:00</span>
+            @for (int k = 2; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            {
+                if (k % 2 == 0)
+                {
+                    <span class="heure">@(9 + k / 2):00</span>
+                }
+            }
+            <span class="heure derniereHeure">19:00</span>
+        </div>
+
+        <div class="ConteneurPlanning">
+            @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            {
+                if (item.StatutsCreneaux[k] == 0)
+                {
+                    <div id="@item.Jour.Date.AddHours(9).AddMinutes(30 * k)" class="cellulePlanning nonPropose" onclick="changerStatut(this)"
+                    onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                }
+                if (item.StatutsCreneaux[k] == 1)
+                {
+                    <div id=@item.IdCreneaux[k] class="cellulePlanning dispo" onclick="changerStatut(this)"
+                    onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                }
+                if (item.StatutsCreneaux[k] == 2)
+                {
+                    <div id=@item.IdCreneaux[k] class="cellulePlanning reserve"></div>
+                }
+            }
+        </div>
+                  
+    }
+}
+
+@section Scripts {
+    <script src="~/Scripts/ScriptsGererPlanning.js"></script>
+}
+

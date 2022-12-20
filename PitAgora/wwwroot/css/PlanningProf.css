@@ -1,0 +1,94 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+h3 {
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.conteneurHeures {
+    width: 100%;
+    margin-left: 2px;
+}
+
+.heure {
+    color: #444444;
+    float: left;
+    width: calc(10% - 4px);
+    height: 100%;
+    font-size: 60%;
+}
+
+.derniereHeure {
+    width: 0px;
+}
+
+.enTetePlanning {
+    margin: 30px 0px 5px 20px;
+    display: inline-block;
+}
+
+.ConteneurPlanning {
+    width: 100%;
+    display: block;
+    height: 25px;
+    padding: 0px 20px;
+}
+
+.cellulePlanning {
+    color: blue;
+    float: left;
+    width: 5%;
+    height: 100%;
+    text-align: center;
+    border: 2px solid darkgrey;
+    border-radius: 2px;
+}
+
+.dispo {
+    background-color: coral;
+}
+
+.nonPropose {
+    background-color: lightgray;
+}
+
+.reserve {
+    background-color: forestgreen;
+}
+
+
+.survole {
+    background-color: indianred;
+    opacity: .7;
+}
+
+.selectionne {
+    background-color: orangered;
+}
+
+.nonDispo {
+    background-color: lightgray;
+}
+
+.boutonValider {
+    float: right;
+    background-color: rgba(241,90,36,.7);
+    border: 2px solid rgb(241,90,36);
+    border-radius: 8px;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.creditDispo {
+    float: left;
+    width: 35%;
+    padding: 25px;
+    font-size: larger
+}

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PitAgora.Models;
 using PitAgora.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -47,48 +48,77 @@ namespace PitAgora.Controllers
 
         }
 
-     
+
         //Contenu en dur, affichage de tous les profs
         public IActionResult ListeProfs()
         {
             DalProf dal = new DalProf();
             List<Professeur> nosProfs = dal.ObtientTousLesProfesseurs().ToList();
-           DalMatiereProf dalm = new DalMatiereProf();
-            List<Matiere> matieres= new List<Matiere>();
-            foreach(var prof in nosProfs)
+            DalMatiereProf dalm = new DalMatiereProf();
+            List<Matiere> matieres = new List<Matiere>();
+            foreach (var prof in nosProfs)
             {
                 matieres = dalm.GetMatiereProf(prof.Id);
             }
             DalNiveauxProf daln = new DalNiveauxProf();
             List<Niveau> niveaux = new List<Niveau>();
-            foreach(var prof in nosProfs)
+            foreach (var prof in nosProfs)
             {
                 niveaux = daln.GetNiveauxProf(prof.Id);
             }
-            ListProfViewModel lpvm = new ListProfViewModel() { matieres= matieres, niveaux=niveaux, profs=nosProfs }; 
+            ListProfViewModel lpvm = new ListProfViewModel() { matieres = matieres, niveaux = niveaux, profs = nosProfs };
             return View(lpvm);
         }
 
 
 
         // Méthode renvoyant la vue Gérer mon planning avec le professeur connecté comme modèle
-        public IActionResult GérerPlanning(int id)
+        [HttpGet]
+        public IActionResult GererPlanning(int id, string jour)
         {
             DalProf dalProf = new DalProf();
             Professeur professeur = dalProf.ObtenirUnProf(id);
 
+            DateTime dateTime= DateTime.Parse(jour);
             GererPlanningViewModel gpvm = new GererPlanningViewModel() { Professeur = professeur };
-
-            for (int i = -3; i < 4; i++)
+            DateTime lundi = Creneau.LundiPrecedent(dateTime);
+            for (int i = 0; i < 7; i++)
             {
-                gpvm.PlanningSemaine.Add(dalProf.CreerPlanningProf(id, System.DateTime.Now.AddDays(i)));
+                gpvm.PlanningSemaine.Add(dalProf.CreerPlanningProf(id, lundi.AddDays(i)));
             }
 
             return View(gpvm);
-
-
         }
 
-    }
+        [HttpPost]
+        public IActionResult GererPlanning(string aAjouter, string aRetirer, int id)
+        {
+            DalCreneaux dal = new DalCreneaux();
+            int aRetirerId;
+            DateTime debut = DateTime.Now;
+            if (aRetirer != null)
+            {
+                foreach (string s in aRetirer.Split(","))
+                {
+                    if (int.TryParse(s, out aRetirerId))
+                    {
+                        dal.SupprimerCreneau(aRetirerId);
+                    }
+                }
+            }
+            if (aAjouter != null)
+            {
+                foreach (string s in aAjouter.Split(","))
+                {
+                    if (s != "")
+                    {
+                        debut = DateTime.Parse(s);
+                        dal.CreerCreneau(debut, id);
+                    }
 
+                }
+            }
+            return Redirect("/Professeur/GererPlanning?id=" + id + "&jour=" + debut.ToString());
+        }
+    }
 }
