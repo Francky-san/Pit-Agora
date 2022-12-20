@@ -104,5 +104,14 @@ namespace PitAgora.Models
                     return "Erreur";
             }
         }
+
+        public static DateTime LundiPrecedent(DateTime jour)
+        {
+            while(jour.DayOfWeek!=DayOfWeek.Monday)
+            {
+                jour = jour.AddDays(-1);
+            }
+            return jour;
+        }
     }
 }

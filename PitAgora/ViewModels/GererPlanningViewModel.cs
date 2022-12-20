@@ -8,8 +8,8 @@ namespace PitAgora.ViewModels
     {
         public Professeur Professeur { get; set; }
 
-
         public List<PlanningProf> PlanningSemaine { get; set; }
+
 
         public GererPlanningViewModel()
         {

@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=@Url.Action("GérerPlanning", "Professeur", new {id=Model.Professeur.Id})>
+            <a class="nav-link" href=@Url.Action("GererPlanning", "Professeur", new {id=Model.Professeur.Id, jour=DateTime.Now})>
                 Gérer mon planning
             </a>
         <li class="nav-item">

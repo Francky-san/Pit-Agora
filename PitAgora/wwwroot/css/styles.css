@@ -9332,12 +9332,12 @@ textarea.form-control-lg {
 }
 
 .encabezado {
-    background: url("../images/FondAccueilHeader.jpg") center center fixed;
+    background: url("../Images/FondAccueilHeader.jpg") center center fixed;
 }
 
 @media (min-width: 992px) {
     .encabezado {
-        background: url("../images/FondAccueilHeader.jpg") center center fixed;
+        background: url("../Images/FondAccueilHeader.jpg") center center fixed;
     }
 }
 
@@ -9418,12 +9418,12 @@ textarea.form-control-lg {
     }
 
 .teAyudamos {
-    background: url("../images/PhotoAgora.jpg") center center/cover;
+    background: url("../Images/PhotoAgora.jpg") center center/cover;
 }
 
 @media (min-width: 992px) {
     .teAyudamos {
-        background: url("../images/PhotoAgora.jpg") center center/cover;
+        background: url("../Images/PhotoAgora.jpg") center center/cover;
     }
 }
 
