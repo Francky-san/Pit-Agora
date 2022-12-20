@@ -9,10 +9,14 @@
     margin-right: 3px;
 }
 
-.lienAnnuler, .lienEval {
+.lienAnnuler, .lienEval, .lienCreerEval {
     font-size: 70%;
     padding: 5px 0px;
     text-decoration: underline;
+}
+
+.lienCreerEval {
+    color: red;
 }
 
 .btnReserverCours {

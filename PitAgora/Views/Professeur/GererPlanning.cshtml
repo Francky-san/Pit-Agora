@@ -81,18 +81,17 @@
             {
                 if (item.StatutsCreneaux[k] == 0)
                 {
-                    <div id=@item.StatutsCreneaux[k] class="cellulePlanning nonPropose" onclick="changerStatut(this)"
-            onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                    <div id="@item.Jour.Date.AddHours(9).AddMinutes(30 * k)" class="cellulePlanning nonPropose" onclick="changerStatut(this)"
+                    onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
                 }
                 if (item.StatutsCreneaux[k] == 1)
                 {
-                    <div id=@item.StatutsCreneaux[k] class="cellulePlanning dispo" onclick="changerStatut(this)"
-            onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                    <div id=@item.IdCreneaux[k] class="cellulePlanning dispo" onclick="changerStatut(this)"
+                    onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
                 }
                 if (item.StatutsCreneaux[k] == 2)
                 {
-                    <div id=@item.StatutsCreneaux[k] class="cellulePlanning reserve" onclick="changerStatut(this)"
-            onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                    <div id=@item.IdCreneaux[k] class="cellulePlanning reserve"></div>
                 }
             }
         </div>
@@ -100,5 +99,7 @@
     }
 }
 
-
+@section Scripts {
+    <script src="~/Scripts/ScriptsGererPlanning.js"></script>
+}
 

@@ -97,7 +97,7 @@ namespace PitAgora.Models
             _bddContext.Professeurs.Find(professeurId).CreditProf += montant;
             _bddContext.SaveChanges();
         }
-
+        //Méthode pour créer le PlanningProf d'un jour donnée : contient Id et Statut des créneaux concernés
         public PlanningProf CreerPlanningProf(int professeurId, DateTime jour)
         {
             PlanningProf planning = new PlanningProf() { Jour = jour };
@@ -106,14 +106,16 @@ namespace PitAgora.Models
             foreach (Creneau c in query)
             {
                 int rang = c.Rang();
-
+                                                            // de base, le satut est à 0 (non proposé)
                 if (c.ReservationId == null) 
                 {
-                    planning.StatutsCreneaux[rang] = 1;
+                    planning.StatutsCreneaux[rang] = 1;     // cas 1 (libre)
+                    planning.IdCreneaux[rang] = c.Id;
                 }
                 else
                 {
-                    planning.StatutsCreneaux[rang] = 2;
+                    planning.StatutsCreneaux[rang] = 2;     // cas 2 (réservé pour un cours)
+                    planning.IdCreneaux[rang] = c.Id;
                 }
             }
             return planning;
