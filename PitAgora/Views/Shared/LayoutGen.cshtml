@@ -66,7 +66,7 @@
     <section class="bienvenue position-absolute w-100 top-50 start-50 translate-middle">
         @RenderSection("Main")
         </section>
-
+        @RenderSection("Corps" , required:false)
     <!-- FIN ENTETE -->
     <!-- DEBUT PLAN D'ACTION -->
 
@@ -91,7 +91,10 @@
                             nos professeurs sont hautement qualifiés
                             et toujours à l'écoute
                         </p>
-                        <a href="~/Professeur/ListeProfs" class="fw-bold">Info</a>
+                        <br />
+                        <br />
+                        <br />
+                        <a href="~/Professeur/ListeProfs" class="fw-bold">Infos</a>
 
                     </article>
 
@@ -103,7 +106,10 @@
                         <p>
                             Pit'Agora recompense ta participation avec des Pythos échangeables chez nos partenaires
                         </p>
-                        <a href="~/Home/Presentation" class="fw-bold">Info</a>
+                        
+                        <br />
+                        <br />
+                        <a href="~/Home/Presentation" class="fw-bold">Infos</a>
 
                     </article>
 
@@ -113,9 +119,14 @@
                         <img src="~/Images/accionExtrategia360.svg" alt="Extratégia 360" width="auto" height="70">
                         <h2 class="h3 text-secondary fw-bold my-3">Binôme</h2>
                         <p>
-                            Concept binôme ou Apprendre à deux
+                            Concept binôme ou apprendre à deux
                         </p>
-                        <a href="~/Home/Presentation" class="fw-bold">Info</a>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                       
+                        <a href="~/Home/Presentation" class="fw-bold">Infos</a>
 
                     </article>
                 </div>
@@ -136,9 +147,9 @@
                 <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
                     <a href=@Url.Action("Index", "Home")>
                 <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
-
                     </a>
-                    <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
+                    
+                    <ul class="list-unstyled my-4 fw-bold d-grid gap-2" style="list-style-type:none">
                         <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
                         <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
                     </ul>

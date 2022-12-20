@@ -68,16 +68,18 @@
                 new { @class = "form-label" })
                         @Html.TextBoxFor(m => m.Utilisateur.Mail,
                 new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.Utilisateur.Mail)
+
 
                         @Html.LabelFor(m => m.Utilisateur.MotDePasse,
                 new { @class = "form-label" })
                         @Html.PasswordFor(m => m.Utilisateur.MotDePasse,
                 new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m=>m.Utilisateur.MotDePasse)
 
 
 
-
-                        <button type="submit" class="btn btn-primary" href=@Url.Action("BaseMain", "Home")>Valider</button>
+                        <button type="submit" class="btn btn-primary" href=@Url.Action("BaseMain", "Home") style="margin-top:10px">Valider</button>
 
                     }
 

@@ -67,7 +67,7 @@
                         @Html.LabelFor(m => m.Utilisateur.Mail,
                         new { @class = "form-label" })
                         @Html.TextBoxFor(m => m.Utilisateur.Mail,
-                            new { @class = "form-control" })
+                            new { @class = "form-control", @type="email"})
 
                         <label for="inputMessage" class="form-label">Message</label>
                         <textarea type="text"
@@ -77,7 +77,7 @@
                     </textarea>
 
 
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <button type="submit" class="btn btn-primary" style="margin-top:10px">Envoyer</button>
                     </div>
                 </div>    
             </form>
