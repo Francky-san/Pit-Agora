@@ -66,7 +66,7 @@ $utilities: ( "Orden de capas": ( property: z-index, responsive: false, class: z
 
 @import "../libs/bootstrap/scss/reboot";
 @import "../libs/bootstrap/scss/type";
-@import "../libs/bootstrap/scss/images";
+@import "../libs/bootstrap/scss/Images";
 @import "../libs/bootstrap/scss/containers";
 @import "../libs/bootstrap/scss/grid";
 @import "../libs/bootstrap/scss/forms";
@@ -91,10 +91,10 @@ $utilities: ( "Orden de capas": ( property: z-index, responsive: false, class: z
 // 7. Estilos para el encabezado
 //////////////////////////////////////
 .encabezado {
-    background: url("../images/FondAccueilHeader.jpg") center center/cover fixed;
+    background: url("../Images/FondAccueilHeader.jpg") center center/cover fixed;
 
     @include media-breakpoint-up(lg) {
-        background: url("../images/FondAccueilHeader.jpg") center center/cover fixed;
+        background: url("../Images/FondAccueilHeader.jpg") center center/cover fixed;
     }
 }
 
@@ -180,10 +180,10 @@ $utilities: ( "Orden de capas": ( property: z-index, responsive: false, class: z
 // 9. Estilos para Te ayudamos
 //////////////////////////////////////
 .teAyudamos {
-    background: url("../images/PhotoAgora.jpg") center center/cover;
+    background: url("../Images/PhotoAgora.jpg") center center/cover;
 
     @include media-breakpoint-up(lg) {
-        background: url("../images/PhotoAgora.jpg") center center/cover;
+        background: url("../Images/PhotoAgora.jpg") center center/cover;
     }
 }
 
