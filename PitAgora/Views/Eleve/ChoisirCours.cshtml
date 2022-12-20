@@ -1,33 +1,116 @@
-﻿@model List<PitAgora.ViewModels.CreneauResaViewModel>
+﻿@using PitAgora.Models;
+@model List<PitAgora.ViewModels.PlanningViewModel>
 @{
-    Layout = "_Layout";
+    Layout = "LayoutPrive";
+    ViewBag.Title = "Reserver un cours";
+}
 
-    ViewBag.Title = "Reservation d'un cours";
+@section css {
+    <link href="~/css/Planning.css" rel="stylesheet" />
 }
 
 
+@section navbar{
+<ul class="navbar-nav">
 
+    <li class="nav-item">
+        <a class="nav-link " href=@Url.Action("AccueilEleve", "Eleve")>
+            Accueil
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+            Déconnexion
+        </a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link active" href=@Url.Action("ChercherCours", "Eleve", new {id = Model.First().Eleve.Id})>
+            Réserver un cours
+        </a>
+    <li class="nav-item">
+        <a class="nav-link" href=@Url.Action("Contact", "Home")>
+            Contact
+        </a>
+    </li>
 
-<h2>Cours disponibles</h2>
-
-<table>
-    <tr>
-        <th>Professeur</th>
-        <th>Id du créneau</th>
-        <th>Heure de début</th>
-
-    </tr>
-@foreach (var item in @Model)
-{
-   <tr>
-            <td>@item.NomProf</td>
-            <td>@item.CreneauId</td>
-            <td>@item.Debut.Hour:@item.Debut.Minute</td>
-   </tr>
-
-    
-    
+</ul>
 }
-</table>
+
+@section Main{
+
+       <!-- Variables de la page -->
+    <script>
+        const selectionnes = [];
+        var retour = "";
+        var statutModifie = false;
+        var statut, prof;
+    </script>
+
+    <!-- Formulaire caché, pour transmettre certaines informations-->
+    <form id="choixCours" action="" method="post">
+        <input type="hidden" id="retourProf" name="professeurId" />
+        <input type="hidden" id="retourCreneaux" name="creneaux" />
+        <input type="hidden" id="retourPrix" name="prix" />
+        <input type="hidden" id="retourEleve" name="eleveId" value=@Model.First().Eleve.Id />
+    </form>
+
+    <h3 style="margin-left: 20px">Proposition de cours de @Model.First().Matiere le <span id="jour">@Model.First().Jour</span></h3>
 
 
+    <div style="height:70px">
+        <div style="float:left; width: 50%; padding:20px; font-size: 90%">Choisis au moins deux créneaux disponibles consécutifs</div>
+        <button form="choixCours" type="submit" id="boutonValider" class="boutonValiderInactif" disabled onclick="demanderConfirmation()">Valider</button>
+        <br />
+        <div style="float:left; width: 60%; padding:25px; font-size: larger">Prix du cours : 
+            <span id="prixCours" value="0"> 0</span> euros
+            @if (Model.First().EstEnBinome) {
+                <span>par élève</span>
+            }
+        </div>
+        <div class="creditDispo" onclick="demanderConfirmation()">
+            Crédit disponible : <span id="creditDispo">@Model.First().Eleve.CreditCours</span> euros
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    @foreach (var item in @Model)
+    {
+        <em class="enTetePlanning">Disponibilités de @item.PrenomNomProf :</em>
+        <div class="conteneurHeures">
+            <span class="heure">09:00</span>
+            @for (int k = 2; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            {
+                if (k % 2 == 0)
+                {
+                    <span class="heure">@(9 + k / 2):00</span>
+                }
+            }
+            <span class="heure derniereHeure">19:00</span>
+        </div>
+        <div class="ConteneurPlanning" id=@("P"+item.ProfesseurId)>
+            @for (int k = 0; k < Creneau.NB_CRENEAUX_PAR_JOUR; k++)
+            {
+                if (item.Dispos[k] != 0)
+                {
+                    <div id=@item.Dispos[k] class="cellulePlanning dispo" onclick="changerStatut(this)"
+                        onmouseover="mOver(this)" onmouseout="mOut(this)"></div>
+                }
+                else
+                {
+                    <div class="cellulePlanning nonDispo"></div>
+                }
+            }
+        </div>
+        <br />
+        <br />
+    }
+    <br />
+}
+
+@section Scripts {
+    <script src="~/Scripts/ScriptsChoisirCours.js"></script>
+    <script src="~/Scripts/FormulesMetier.js"></script>
+}

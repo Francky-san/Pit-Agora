@@ -11,7 +11,7 @@ namespace PitAgora.Models
 
         [Required(ErrorMessage = "Le Prénom doit être renseigné.")]
         public string Prenom { get; set; }
-        
-       
+
+
     }
 }

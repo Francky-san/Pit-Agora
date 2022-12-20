@@ -11,7 +11,23 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.5" />
+    <PackageReference Include="AspNetCore.SassCompiler" Version="1.56.2" />
   </ItemGroup>
 
 
+  <ItemGroup>
+    <Content Remove="Views\Home\AccueilGeneral.cshtml" />
+    <Content Remove="ViewModels\PostulerViewModel.cshtml" />
+    <Content Remove="Views\Home\Profs.cshtml" />
+    <Content Remove="Views\Shared\PageEnConstruction.cshtml" />
+    <Content Remove="wwwroot\Images\LogoPitAgoraFOOTER.svg" />
+    <Content Remove="wwwroot\Images\enconstruction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\scss\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="AspNetCore.SassCompiler" />
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties libs_4bootstrap_4dist_4css_4bootstrap_1css_1map__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>

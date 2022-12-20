@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+
+<html lang="fr">
+
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIT'AGORA | Prépare ton avenir</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="~/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="~/images/favicon/ico.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta nam*@e="msapplication-TileImage" content="~/images/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="~/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/libs/bootstrap-icons/bootstrap-icons.css">
+    <link href="~/css/styles.css" rel="stylesheet">
+    @RenderSection("css" , required:false)
+</head>
+
+<body>
+
+    <!-- INICIO entete -->
+    <header class="encabezado bg-dark vh-100 position-left py-md-4 fondoCover">
+
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-md navbar-dark  z-index-1">
+            <div class="container">
+
+                <a class="navbar-brand" href=@Url.Action("Index", "Home")>
+                    <img src="~/Images/LogoPitAgora.svg" alt="Logo del sitio" width="600" height="auto">
+
+                </a>
+
+                <a href="#" class="inicioSesion ms-auto me-2 mt-n1 d-md-none">
+                    <i class="bi bi-person-fill text-white display-4"></i>
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#enlacesMenuPrincipal" aria-controls="enlacesMenuPrincipal" aria-expanded="false"
+                        aria-label="Conmutar navegación">
+                    <i class="bi bi-list display-1"></i>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-md-center" id="enlacesMenuPrincipal">
+                    @RenderSection("navbar")
+
+                </div>
+
+
+            </div>
+        </nav>
+        <!-- Fin NavBar -->
+        <div class="container" id="main" style="background-color:#f8f9fa; border-radius:0.6rem; height:fit-content">
+            @RenderSection("Main")
+        </div>
+
+    </header>
+    <!-- FIN ENCABEZADO -->
+    <!-- INICIO PLAN DE ACCIÓN -->
+    <div class="container" style="border:2px solid black">
+
+        <!-- FIN PLAN DE ACCIÓN -->
+        @RenderSection("Aide", required:false)
+    </div>
+    <!-- INICIO TE AYUDAMOS -->
+    <!-- FIN TE AYUDAMOS -->
+    <div class="container" style="border:2px solid black">
+
+
+        @RenderSection("Projets", required: false)
+    </div>
+
+    <!-- INICIO PROYECTOS -->
+    <!-- INICIO PIE DE PÁGINA -->
+    <footer class="pieDePagina bg-dark text-white pt-5" id="footer">
+        <div class="container">
+            <div class="row text-center text-lg-start">
+
+                <div class="col-12 col-sm-6 col-lg-3  mb-5 mb-lg-0">
+                    <a href=@Url.Action("Index", "Home")>
+                        <img src="~/Images/LogoPitAgoraFOOTER.svg" width="200" height="auto" alt="Logo
+                del sitio">
+                    </a>
+                    <ul class="list-unstyled my-4 fw-bold d-grid gap-2">
+                        <li><a href="tel:(+33) 783464092">(+33) 7 83 46 40 92</a></li>
+                        <li><a href="mailto:info@pitagora.fr">info@pitagora.fr</a></li>
+                    </ul>
+
+
+                </div>
+                <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0 ms-lg-auto">
+                    <h5 class=" fw-bold mb-4">Partenaires</h5>
+                    <ul class="list-unstyled d-grid gap-2">
+                        <li><a href="https://www.micromania.fr/">Micromania</a></li>
+                        <li><a href="https://www.fnac.com/">FNAC</a></li>
+                        <li><a href="https://www.ugc.fr/">UGC</a></li>
+                        <li><a href="https://www.zara.com/fr/">ZARA</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-2  mb-5 mb-lg-0">
+                    <h5 class=" fw-bold mb-4">A propos</h5>
+                    <ul class="list-unstyled d-grid gap-2">
+                        <li><a href="~/Home/Presentation">Qui</a></li>
+                        <li><a href="~/Home/Presentation">Pourquoi</a></li>
+                        <li><a href="~/Home/Presentation">Comment</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-2 mb-5 mb-lg-0">
+                    <h5 class=" fw-bold mb-4">Contact</h5>
+                    <ul class="list-unstyled d-grid gap-2">
+                        <li><a href="~/Home/Presentation">Pédagogie</a></li>
+                        <li><a href="~/Eleve/Agora">Agora</a></li>
+                        <li><a href="~/Home/Presentation">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="creditos mt-lg-4 mb-0 py-4 text-center text-muted small">
+                Copyright © 2022 Pit'Agora.fr Tous droits réservés.
+            </p>
+
+
+        </div>
+    </footer>
+    @RenderSection("Scripts", required:false)
+</body>
+
+</html>

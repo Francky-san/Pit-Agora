@@ -1,0 +1,133 @@
+@model PitAgora.ViewModels.EleveViewModel
+@{
+    Layout = "LayoutPrive";
+    ViewBag.Title = "Accueil infos eleve";
+}
+
+@section css {
+    <link href="~/css/Accueils.css" rel="stylesheet" />
+}
+
+@section navbar{
+    <ul class="navbar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link active" href=@Url.Action("AccueilEleve", "Eleve")>
+                Accueil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Deconnexion", "Login")>
+                Déconnexion
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href=@Url.Action("ChercherCours", "Eleve", new {id = Model.Eleve.Id})>
+                Réserver un cours
+            </a>
+        <li class="nav-item">
+            <a class="nav-link" href=@Url.Action("Contact", "Home")>
+                Contact
+            </a>
+        </li>
+
+    </ul>
+}
+
+@section Main{
+    <div style="padding:20px; place-items:center;">
+        <div class="container" style="background-color: white">
+            <div class="container -fluid">
+                <h4>Mon espace perso</h4>
+
+                <div>
+                    @if (Model.CoursFuturs.Count > 0)
+                    {
+                        <div style="margin-bottom: 5px">Mes prochains cours :</div>
+                        @foreach (var item in @Model.CoursFuturs)
+                        {
+                            <div class="celluleCours">
+                                <table>
+                                    <tr><td>@item.Jour</td></tr>
+                                    <tr><td>@item.Matiere avec</td></tr>
+                                    <tr><td>@item.PrenomNomProf</td></tr>
+                                    <tr><td class="lienAnnuler" onclick="annulerCours()">annuler le cours</td></tr>
+                                </table>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>Pas de cours programmé pour le moment.</div>
+                    }
+                </div>
+
+                <div style="float:right">
+                    Mon Crédit Cours : @Model.Eleve.CreditCours euros
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <div>
+                    @if (Model.CoursPasses.Count > 0)
+                    {
+                        <div style="margin-bottom: 5px">Mes cours récents :</div>
+                        @foreach (var item in @Model.CoursPasses)
+                        {
+                            <div class="celluleCours">
+                                <table>
+                                    <tr><td>@item.Jour</td></tr>
+                                    <tr><td>@item.Matiere avec</td></tr>
+                                    <tr><td>@item.PrenomNomProf</td></tr>
+                                    <tr><td class="lienEval" onclick="afficherEval()">voir l'évaluation</td></tr>
+                                </table>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>Tu n'as pas encore pris de cours avec nos super professeurs !'</div>
+                    }
+                </div>
+
+                <div style="float:right">
+                    Mon Solde de Pythos : @Model.Eleve.CreditPythos
+                </div>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <a class="btnReserverCours" href="../ChercherCours/@Model.Eleve.Id" method="get">Réserver un cours</a>
+
+                <br />
+                <br />
+
+                <div class="conteneurFacultatif" hidden>Test</div>
+            </div>
+            <div>
+
+                <!--Script Bootstrap-->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                    crossorigin="anonymous">$
+                </script>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    function annulerCours() {
+        alert("On y travaille...")
+    }
+</script>
+<script>
+    function afficherEval() {
+        alert("On y travaille...")
+    }
+</script>

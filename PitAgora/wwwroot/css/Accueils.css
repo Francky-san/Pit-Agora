@@ -1,0 +1,32 @@
+﻿.celluleCours {
+    width: 220px;
+    background-color: grey;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 80%;
+    float: left;
+    margin-right: 3px;
+}
+
+.lienAnnuler, .lienEval {
+    font-size: 70%;
+    padding: 5px 0px;
+    text-decoration: underline;
+}
+
+.btnReserverCours {
+    color: darkslategrey;
+    background-color: rgba(241,90,36,.7);
+    border: 2px solid rgb(241,90,36);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 80%;
+}
+
+div {
+    color: darkslategrey;
+}

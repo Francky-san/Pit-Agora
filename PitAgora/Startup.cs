@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,13 +18,20 @@ namespace PitAgora
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //Authentification, ajout au cookie
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Login/Connexion";
+
+            });
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
+
             using (BddContext ctx = new BddContext())
             {
                 ctx.InitializeDb();
@@ -36,13 +44,20 @@ namespace PitAgora
 
             app.UseRouting();
             app.UseStaticFiles();
+          
+
+            //Utilise authentification et autorisation
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
           name: "default",
-                  pattern: "{controller=Eleve}/{action=ChercherCours}/{id?}");
+
+                  pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

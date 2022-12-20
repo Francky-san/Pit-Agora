@@ -8,7 +8,7 @@ namespace TestPitAgora
 {
     public class UnitTest1
     {
-        [Fact]
+        /*   [Fact]
         public void Creer_Professeur_Verification()
         {
 
@@ -29,7 +29,7 @@ namespace TestPitAgora
 
         }
 
-       /*[Fact]
+     [Fact]
         public void Creer_Eleve_Verification()
         {
             using Dal dal = new Dal();

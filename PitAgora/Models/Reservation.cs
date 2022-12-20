@@ -1,22 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-
 
 namespace PitAgora.Models
 {
     public class Reservation
     {
         public int Id { get; set; }
-        public int Eleve1Id { get; set; }
-        public int Eleve2Id { get; set; }
-        public int ProfesseurId { get; set; }
-        public string Matiere { get; set; }
-        public string Niveau { get; set; }
+        //Suppression FK Eleve, la table intermediaire pointe vers Eleve et pointe vers Reservation, relation plsrs à plsrs
+        public string PrenomNomProf { get; set; }
+        public string PrenomEleve { get; set; }
+
+        //Suppression FK prof, prof pointe créneau qui pointe réservation, relation un à plsrs
         public DateTime Horaire { get; set; }
-        public List<Creneau> Creneaux { get; set; }
-        public float Prix { get; set; }
-        public bool Binome { get; set; }
-        public bool Presentiel { get; set; }
+        public string Jour { get; set; }   // pour afficher le jour en français
+        public int DureeMinutes { get; set; }
+        public MatiereEnum Matiere { get; set; } // faire une FK ?
+        public NiveauEnum Niveau { get; set; }  // faire une FK ?
+        public double Prix { get; set; }
+        public bool EstEnBinome { get; set; }
+        public bool EstEnPresentiel { get; set; }
         public bool EstValide { get; set; }
+        //FT - Ajout FK vers évaluation, évaluation relative à la réservation.
+        public int? EvaluationId { get; set; }
+        public Evaluation Evaluation { get; set; }
     }
+    
 }
