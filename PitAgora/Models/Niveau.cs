@@ -7,6 +7,7 @@ namespace PitAgora.Models
     {
           
         public int Id { get; set; }
+        [MaxLength(20)]
         public string Intitule { get; set; }
 
 

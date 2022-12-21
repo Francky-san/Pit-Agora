@@ -11,6 +11,5 @@ namespace PitAgora.Models
         public virtual Utilisateur Utilisateur { get; set; }
         public double CreditProf { get; set; }
      
-        public string Motivation { get; set; }
     }
 }

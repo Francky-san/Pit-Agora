@@ -5,6 +5,7 @@ namespace PitAgora.Models
     public class Matiere
     {
         public int Id { get; set; }
+        [MaxLength(20)]
         public string Intitule { get; set; }
     }
 
