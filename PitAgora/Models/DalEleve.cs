@@ -90,6 +90,21 @@ namespace PitAgora.Models
             {
                 res.Add(ar.Reservation);
             }
+            res = res.OrderByDescending(res => res.Horaire).ToList();
+            // Affectation des évaluations
+            foreach (Reservation rCherchee in res)
+            {
+                if (rCherchee.EvaluationId != null)
+                {
+                    var query = from e in _bddContext.Evaluations
+                                join r in _bddContext.Reservations
+                                on e.Id equals r.EvaluationId
+                                where r.Id == rCherchee.Id
+                                select e;
+
+                    rCherchee.Evaluation = query.FirstOrDefault();
+                }
+            }
             return res;
         }
 

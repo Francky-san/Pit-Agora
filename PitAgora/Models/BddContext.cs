@@ -230,7 +230,8 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true,
-                    EvaluationId = 1
+                    EvaluationId = 1,
+                    Evaluation = dal.GetEvaluation(1)
                 });
                 dal.AffecterACreneau(id, 1);
                 dal.AffecterACreneau(id, 2);
@@ -369,7 +370,8 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true,
-                    EvaluationId = 2
+                    EvaluationId = 2,
+                    Evaluation = dal.GetEvaluation(2)
                 });
                 dal.AffecterACreneau(id, 47);
                 dal.AffecterACreneau(id, 48);
@@ -390,7 +392,8 @@ namespace PitAgora.Models
                     EstEnBinome = false,
                     EstEnPresentiel = false,
                     EstValide = true,
-                    EvaluationId = 3
+                    EvaluationId = 3,
+                    Evaluation = dal.GetEvaluation(3)
                 });
                 dal.AffecterACreneau(id, 50);
                 dal.AffecterACreneau(id, 51);

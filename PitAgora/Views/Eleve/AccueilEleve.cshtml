@@ -82,7 +82,14 @@
                                     <tr><td>@item.Jour</td></tr>
                                     <tr><td>@item.Matiere avec</td></tr>
                                     <tr><td>@item.PrenomNomProf</td></tr>
-                                    <tr><td class="lienEval" onclick="afficherEval()">voir l'évaluation</td></tr>
+                                    @if (item.EvaluationId==null)
+                                    {
+                                        <td style="font-size: small; padding: 5px 0px">ce cours n'a pas encore été évalué</td>
+                                    }
+                                    else
+                                    {
+                                    <tr><td id="@item.Evaluation.Contenu" class="lienEval" onclick="afficherEval(this)">voir l'évaluation</td></tr>
+                                    }
                                 </table>
                             </div>
                         }
@@ -118,16 +125,15 @@
             </div>
         </div>
     </div>
-}
-
 
 <script>
     function annulerCours() {
-        alert("On y travaille...")
+        alert("Fonctionnalité non implémentée.\nOn y travaille...")
     }
 </script>
 <script>
-    function afficherEval() {
-        alert("On y travaille...")
+    function afficherEval(obj) {
+        alert(obj.id);
     }
 </script>
+}

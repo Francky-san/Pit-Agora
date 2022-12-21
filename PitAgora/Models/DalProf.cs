@@ -83,13 +83,29 @@ namespace PitAgora.Models
         // Méthode d'obtention des cours passés pour un professeur à partir de la liste des réservations
         public List<Reservation> GetCoursPasses(int professeurId)
         {
-            var query = from r in _bddContext.Reservations
+            List<Reservation> res = new List<Reservation>();
+            var query1 = from r in _bddContext.Reservations
                         join c in _bddContext.Creneaux
                         on r.Id equals c.ReservationId
                         where c.ProfesseurId == professeurId && r.Horaire < DateTime.Now
                         select r;
 
-            return query.Distinct().ToList();
+            res = query1.Distinct().ToList();
+            // Affectation des évaluations
+            foreach (Reservation rCherchee in res)
+            {
+                if (rCherchee.EvaluationId != null)
+                {
+                    var query2 = from e in _bddContext.Evaluations
+                            join r in _bddContext.Reservations
+                            on e.Id equals r.EvaluationId
+                            where r.Id == rCherchee.Id
+                            select e;
+                
+                    rCherchee.Evaluation = query2.FirstOrDefault();
+                }
+            }
+            return res;
         }
 
         public void ModifierCreditProf(int professeurId, double montant)
