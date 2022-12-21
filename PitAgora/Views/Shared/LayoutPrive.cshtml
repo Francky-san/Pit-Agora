@@ -27,10 +27,10 @@
     @RenderSection("css" , required:false)
 </head>
 
-<body>
+<body class="encabezado">
 
     <!-- INICIO entete -->
-    <header class="encabezado bg-dark vh-100 position-left py-md-4 fondoCover">
+    <header class=" bg-dark vh-100 position-left py-md-4 fondoCover">
 
         <!-- NavBar -->
         <nav class="navbar navbar-expand-md navbar-dark  z-index-1">
@@ -60,14 +60,15 @@
             </div>
         </nav>
         <!-- Fin NavBar -->
-        <div class="container" id="main" style="background-color:#f8f9fa; border-radius:0.6rem; height:fit-content">
+        <div class="container" id="main" style="background-color:#f8f9fa; border-radius:0.6rem; height:fit-content; ">
             @RenderSection("Main")
         </div>
+
 
     </header>
     <!-- FIN ENCABEZADO -->
     <!-- INICIO PLAN DE ACCIÓN -->
-    <div class="container" style="border:2px solid black">
+    <div class="container" style="border:2px solid black; margin-top:150px;">
 
         <!-- FIN PLAN DE ACCIÓN -->
         @RenderSection("Aide", required:false)
@@ -82,7 +83,7 @@
 
     <!-- INICIO PROYECTOS -->
     <!-- INICIO PIE DE PÁGINA -->
-    <footer class="pieDePagina bg-dark text-white pt-5" id="footer">
+    <footer class="pieDePagina bg-dark text-white pt-5" id="footer" >
         <div class="container">
             <div class="row text-center text-lg-start">
 
