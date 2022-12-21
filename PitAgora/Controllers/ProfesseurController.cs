@@ -3,6 +3,7 @@ using PitAgora.Models;
 using PitAgora.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 
@@ -72,7 +73,7 @@ namespace PitAgora.Controllers
 
 
 
-        // Méthode renvoyant la vue Gérer mon planning avec le professeur connecté comme modèle
+        // Méthode envoyant vers la vue Gérer mon planning
         [HttpGet]
         public IActionResult GererPlanning(int id, string jour)
         {
@@ -90,6 +91,7 @@ namespace PitAgora.Controllers
             return View(gpvm);
         }
 
+        // Méthode gérant les demandes de modification de planning
         [HttpPost]
         public IActionResult GererPlanning(string aAjouter, string aRetirer, int id)
         {
@@ -115,10 +117,30 @@ namespace PitAgora.Controllers
                         debut = DateTime.Parse(s);
                         dal.CreerCreneau(debut, id);
                     }
-
                 }
             }
             return Redirect("/Professeur/GererPlanning?id=" + id + "&jour=" + debut.ToString());
+        }
+
+        [HttpGet]
+        // Méthode envoyant vers la vue pour créer une évaluation
+        public IActionResult CreerEvaluation(int professeurId, int reservationId)
+        {
+            ViewData["professeurId"] = professeurId;
+            DalReservation dal = new DalReservation();
+            return View(dal.GetReservation(reservationId));
+        }
+
+        [HttpPost]
+        // Méthode gérant la nouvelle évaluation
+        public IActionResult CreerEvaluation(int professeurId, string contenu, int reservationId)
+        {
+            DalReservation dal = new DalReservation();
+            Evaluation evaluation = new Evaluation() { Contenu = contenu};
+            int evaluationId = dal.CreerEvaluation(evaluation);
+            dal.AffecterEvaluation(evaluationId, reservationId);
+
+            return Redirect("/Professeur/AccueilProf/"+professeurId);
         }
     }
 }

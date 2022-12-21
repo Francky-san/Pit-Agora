@@ -36,15 +36,15 @@
 
 
 @section Main{
-    <div id="messageChercherCours">@ViewData["messageChercherCours"]</div>
 
 @using (Html.BeginForm())
 {
     <!-- items caché, pour transmettre certaines informations-->
-    <input type="hidden" id="retourEleve" name="eleveId" value="@Model.Eleve.Id"/>
-
+    <input type="hidden" id="retourEleve" name="eleveId" value="@Model.Eleve.Id" />
+    
     <fieldset id="fieldset">
-        <legend>Formulaire de réservation : </legend>
+        <legend style="float:left">Formulaire de réservation : </legend>
+        <div id="messageChercherCours" style="float: right; font-weight: bold">@ViewData["messageChercherCours"]</div>
         <br>
         <table>
             <tr>

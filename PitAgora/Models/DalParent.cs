@@ -27,7 +27,7 @@ namespace PitAgora.Models
             return _bddContext.Parents.Include(pa => pa.Utilisateur).ThenInclude(u => u.Personne).ToList();
 
         }
-        public Parent ObtiensUnParent(int id)
+        public Parent GetParent(int id)
         {
             Parent unParent = _bddContext.Parents.Find(id);
             return unParent;

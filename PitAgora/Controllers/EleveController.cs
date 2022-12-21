@@ -54,7 +54,7 @@ namespace PitAgora.Controllers
             return View(ccvm);
         }
 
-        //Méthode post recherche d'un cours, prends les critères de recherche en arguments
+        //Méthode recherche d'un cours, prend les critères de recherche en arguments
         [HttpPost]
         public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel, int eleveId)
         {
@@ -150,7 +150,7 @@ namespace PitAgora.Controllers
                 Matiere = pvm.Matiere, Niveau = pvm.Niveau, Prix = prix, EstEnBinome = pvm.EstEnBinome, 
                 EstEnPresentiel = pvm.EstEnPresentiel, EstValide = estValide};
 
-            int reservationId = dalR.creerReservation(laReservation);
+            int reservationId = dalR.CreerReservation(laReservation);
 
             // Affecter cette réservation aux créneaux concernés
             foreach (int creneauId in creneauxId)

@@ -12,9 +12,9 @@ namespace PitAgora.Controllers
 {
     public class HomeController : Controller
     {
+        // Point d'entrée de l'application, envoie vers la vue d'accueil
         public IActionResult Index()
         {
-
             return View();
         }
 
@@ -69,27 +69,20 @@ namespace PitAgora.Controllers
      
             if (eleve != null)
             {
-                return Redirect("/Eleve/AccueilEleve/"+ eleve.Id.ToString()) ;
+                return Redirect("/Eleve/AccueilEleve/"+ eleve.Id) ;
             }
             else if (prof != null)
             {
-                return Redirect("/Professeur/AccueilProf/"+ prof.Id.ToString());
+                return Redirect("/Professeur/AccueilProf/"+ prof.Id);
 
             }
             else if (parent != null)
             {
-                return Redirect("/Parent/AccueilParent/"+parent.Id.ToString());
+                return Redirect("/Parent/AccueilParent/"+parent.Id);
             }
             return View("ERROR");
 
         }
-
-
-        //Test Mila pour structure de base Main
-        //public IActionResult BaseMain()
-        //
-         //   return View();
-        //}
 
     }
 }
