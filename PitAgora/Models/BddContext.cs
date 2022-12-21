@@ -32,7 +32,7 @@ namespace PitAgora.Models
         {
 			if (System.Diagnostics.Debugger.IsAttached)
             {
-               optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");  // connexion string. Attention au password. avec comme nom de BDD : ChoixSejourTest
+               optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");  // connexion string. Attention au password. avec comme nom de BDD : ChoixSejourTest
             }
             else
             {
@@ -87,7 +87,7 @@ namespace PitAgora.Models
             {
                 dal.CreerEleve(1, "Terrieur", "Alain", "aterrieur1@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.ModifierPythos(1, 30);
-                dal.ModifierCreditCours(1, 10);
+                dal.ModifierCreditCours(1, 100);
                 dal.CreerEleve(1, "Terrieur", "Alex", "aterrieur2@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.ModifierPythos(2, 30);
                 dal.ModifierCreditCours(2, 150);
@@ -251,8 +251,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = true,
                     EstEnPresentiel = false,
-                    EstValide = true,
-                    EvaluationId = 2
+                    EstValide = true
+                    
                 });
                 dal.AffecterACreneau(id, 4);
                 dal.AffecterACreneau(id, 5);
