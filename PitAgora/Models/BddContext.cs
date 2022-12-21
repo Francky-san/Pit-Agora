@@ -32,7 +32,7 @@ namespace PitAgora.Models
         {
 			if (System.Diagnostics.Debugger.IsAttached)
             {
-               optionsBuilder.UseMySql("server = localhost; user id = root; password = rrrrr ; database = PitAgora");  // connexion string. Attention au password. avec comme nom de BDD : ChoixSejourTest
+               optionsBuilder.UseMySql("server = localhost; user id = root; password = Hina ; database = PitAgora");  // connexion string. Attention au password. avec comme nom de BDD : ChoixSejourTest
             }
             else
             {
@@ -251,7 +251,8 @@ namespace PitAgora.Models
                     Prix = 67.5,
                     EstEnBinome = true,
                     EstEnPresentiel = false,
-                    EstValide = true
+                    EstValide = true,
+                    EvaluationId = 2
                 });
                 dal.AffecterACreneau(id, 4);
                 dal.AffecterACreneau(id, 5);
