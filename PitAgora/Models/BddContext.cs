@@ -87,7 +87,7 @@ namespace PitAgora.Models
             {
                 dal.CreerEleve(1, "Terrieur", "Alain", "aterrieur1@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.ModifierPythos(1, 30);
-                dal.ModifierCreditCours(1, 100);
+                dal.ModifierCreditCours(1, 10);
                 dal.CreerEleve(1, "Terrieur", "Alex", "aterrieur2@monmel.fr", "ttttt", "64 rue Velpeau 92160 ANTONY");
                 dal.ModifierPythos(2, 30);
                 dal.ModifierCreditCours(2, 150);
@@ -120,9 +120,9 @@ namespace PitAgora.Models
                 dal.CreerProfesseur("Laplace", "Pierre-Simon", "pslaplace@monmel.fr", "lllll", "22 rue Roger Salengro 69009 LYON");
                 dal.ModifierCreditProf(5, 0);
                 dal.CreerProfesseur("Curie", "Marie", "mcurie@monmel.fr", "ccccc", "61 avenue Albert Sarraut 75011 Paris");
-                dal.ModifierCreditProf(6, 110);
+                dal.ModifierCreditProf(6, 0);
                 dal.CreerProfesseur("Baer", "Ralph", "rbaer@monmel.fr", "bbbbb", " 6 Rue Neuve des Capucins 44000 Nantes");
-                dal.ModifierCreditProf(7, 67.5);
+                dal.ModifierCreditProf(7, 0);
             }
 
             using (DalCreneaux dal = new DalCreneaux())

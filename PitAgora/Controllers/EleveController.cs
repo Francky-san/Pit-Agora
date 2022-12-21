@@ -54,7 +54,7 @@ namespace PitAgora.Controllers
             return View(ccvm);
         }
 
-        //Méthode post recherche d'un cours, prends les critères de recherche en arguments
+        //Méthode recherche d'un cours, prend les critères de recherche en arguments
         [HttpPost]
         public IActionResult ChercherCours(MatiereEnum matiere, NiveauEnum niveau, DateTime debutJournee, bool estEnBinome, bool estEnPresentiel, int eleveId)
         {
